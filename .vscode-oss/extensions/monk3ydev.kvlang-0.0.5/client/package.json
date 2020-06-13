@@ -1,0 +1,28 @@
+{
+    "name": "kvlang-language-sever",
+    "description": "VSCode extension for running kvlang language server",
+    "author": "Monk3yDev",
+    "license": "MIT",
+    "version": "0.0.5",
+    "publisher": "Monk3yDev",
+    "engines": {
+        "vscode": "^1.34.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Monk3yDev/kvlang-vscode"
+    },
+    "bugs": {
+        "url": "https://github.com/Monk3yDev/kvlang-vscode/issues"
+    },
+    "scripts": {},
+    "devDependencies": {
+        "@types/node": "11.13.17",
+        "typescript": "^3.5.3",
+        "vscode": "^1.1.35"
+    },
+    "dependencies": {
+        "vscode-languageclient": "^5.2.1",
+        "vscode-languageserver-protocol": "^3.14.1"
+    }
+}

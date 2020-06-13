@@ -1,0 +1,5172 @@
+:root {
+  --component-padding: 10px;
+  --negative-component-padding: -10px;
+  --half-padding: 5px;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: var(--link-color);
+}
+
+ul, i {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* UI elements */
+
+.input-toggle {
+  -webkit-appearance: none;
+  margin: 0;
+  margin-top: 0.1em;
+  width: 3em;
+  height: 1.5em;
+  border-radius: 999px;
+  background: var(--button-background);
+  position: relative;
+  outline: none !important;
+}
+.input-toggle:after {
+  content: '';
+  z-index: 100;
+  position: absolute;
+  left: 0.6em;
+  top: 0.35em;
+  width: 0.8em;
+  height: 0.8em;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  border-radius: 999px;
+  transition: left 120ms ease-out;
+  background: var(--button-color);
+}
+.input-toggle:checked {
+  background: var(--link-color);
+}
+.input-toggle:checked:after {
+  left: 1.6em;
+}
+.input-toggle:checked:after {
+  background: var(--sticky-header-hover-background);
+}
+
+select {
+  position: relative;
+  border: none;
+  background: var(--button-background);
+  color: var(--button-text);
+  height: 2em;
+  outline: none !important;
+}
+.vscode-high-contrast select {
+  color: black;
+}
+
+/* Icons */
+
+.icon-kite::before {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  width: 16px;
+  height: 16px;
+   mask-image: url('../images/logo-no-text.svg');
+   mask-size: contain;
+   mask-repeat: no-repeat;
+  -webkit-mask-image: url('../images/logo-no-text.svg');
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  background-color: #999;
+}
+
+.icon-so::before {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 1.2em;
+  line-height: 1em;
+  height: 1em;
+  width: 1em;
+  background-image: url('../images/so.svg');
+}
+
+.icon-kite-gift::before {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 1.2em;
+  line-height: 1em;
+  height: 1em;
+  width: 1em;
+  background-size: 100%;
+}
+
+.platform-darwin .icon-kite-gift::before {
+  background-image: url('../images/icon-gift.png');
+}
+
+.platform-win32 .icon-kite-gift::before {
+  background-image: url('../images/icon-gift-windows.png');
+}
+.auto-cursor {
+  cursor: default;
+}
+.tab[data-type=".kite-error-rescue-sidebar"] .icon-question::before {
+  color: #6494ed;
+}
+.kite-error-rescue-sidebar .settings-view {
+  background: var(--header-background) !important;
+  flex-direction: column;
+  padding: var(--sidebar-left-indent) var(--sidebar-padding);
+  position: relative;
+  line-height: 1.6;
+}
+.kite-error-rescue-sidebar .settings-view .settings-panel {
+  margin-left: var(--sidebar-left-indent);
+}
+.kite-error-rescue-sidebar .settings-view .setting-title,
+.kite-error-rescue-sidebar .settings-view .form-control {
+  font-size: 1em;
+}
+.kite-error-rescue-sidebar .settings-view .control-group.checkbox {
+  padding-left: 3.25em;
+  margin-bottom: 1em;
+}
+.kite-error-rescue-sidebar .settings-view .control-group.checkbox:not(.checked) + .control-group.select {
+  pointer-events: none;
+  opacity: 0.5;
+}
+.kite-error-rescue-sidebar .settings-view:not(.error-rescue-enabled) + .content {
+  display: none;
+}
+.kite-error-rescue-sidebar .settings-view input.input-toggle {
+  margin-left: -4em;
+  position: absolute;
+}
+.kite-error-rescue-sidebar .settings-view .control-group.select {
+  padding-left: 3.25em;
+}
+.kite-error-rescue-sidebar .settings-view .control-group.select label {
+  flex-direction: row;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+.kite-error-rescue-sidebar .settings-view .control-group.select label .setting-title {
+  white-space: nowrap;
+  margin-right: 5px;
+}
+.kite-error-rescue-sidebar .settings-view .control-group.select label .form-control {
+  width: auto;
+  flex: 1 1 0;
+}
+.kite-error-rescue-sidebar .content:not(:empty) {
+  padding-top: 20px;
+  padding-left: var(--sidebar-padding);
+  padding-right: var(--sidebar-padding);
+}
+.kite .kite-error-rescue-sidebar h4 {
+  font-size: 0.9em;
+  margin-bottom: 1em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 400;
+  color: var(--text-color-highlight);
+  opacity: 0.5;
+}
+.kite-error-rescue-sidebar .diff {
+  margin: 10px 0;
+  margin-bottom: 20px;
+}
+.kite-error-rescue-sidebar .diff a,
+.kite-error-rescue-sidebar .diff a:hover,
+.kite-error-rescue-sidebar .diff a:focus,
+.kite-error-rescue-sidebar .diff a:active {
+  font-size: 1em;
+}
+.kite-error-rescue-sidebar .diff .feedback-actions a {
+  white-space: nowrap;
+}
+.kite-error-rescue-sidebar .diff:not(:first-child) .feedback-actions {
+  display: none;
+  pointer-events: none;
+}
+.kite-error-rescue-sidebar .timestamp {
+  margin-left: var(--sidebar-left-indent);
+}
+.kite-error-rescue-sidebar .diff-content {
+  margin-top: 10px;
+  margin-left: var(--sidebar-left-indent);
+  display: block;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.kite-error-rescue-sidebar .feedback-actions {
+  display: flex;
+  text-align: left;
+  margin-top: 10px;
+  margin-left: var(--sidebar-left-indent);
+  line-height: 1.4;
+}
+.kite-error-rescue-sidebar .feedback-actions a {
+  padding-right: 5px;
+  margin-right: 10px;
+  color: var(--text-color) !important;
+}
+.kite-error-rescue-sidebar .feedback-actions a.thumb-up,
+.kite-error-rescue-sidebar .feedback-actions a.thumb-down {
+  text-decoration: none;
+  filter: saturate(0);
+  opacity: 0.75;
+  margin-right: 5px;
+}
+
+.kite-error-rescue-sidebar .feedback-actions a:hover {
+  color: #d6dae1;
+  opacity: 1;
+  filter: saturate(0.5);
+}
+.kite-error-rescue-sidebar .feedback-actions a.clicked {
+  color: white;
+  opacity: 1;
+}
+.kite-error-rescue-sidebar .feedback-feedback {
+  min-height: 3em;
+  padding-left: .4em;
+  color: transparent;
+  transition: color 300ms;
+}
+.kite-error-rescue-sidebar .feedback-feedback.hint {
+  color: var(--text-color);
+  opacity: 0.75;
+}
+.kite-error-rescue-sidebar .feedback-feedback.confirmation {
+  color: var(--text-color-highlight);
+  opacity: 1;
+}
+.kite-error-rescue-sidebar del,
+.kite-error-rescue-sidebar ins {
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  border: 1px solid var(--subtle-border-color);
+}
+.kite-error-rescue-sidebar del .line-number,
+.kite-error-rescue-sidebar ins .line-number {
+  width: 80px;
+  opacity: 0.75;
+  padding: 6px 10px;
+  color: var(--text-color);
+  border-right: 1px solid var(--subtle-border-color);
+}
+.kite-error-rescue-sidebar del strong,
+.kite-error-rescue-sidebar ins strong {
+  padding: 0.2em 0.1em;
+  margin: -0.2em -0.1em;
+  font-weight: inherit;
+}
+.kite-error-rescue-sidebar del .line,
+.kite-error-rescue-sidebar ins .line {
+  padding: 6px;
+  padding-left: 30px;
+  position: relative;
+  color: var(--text-color);
+  white-space: pre-wrap;
+  margin-left: 4ch;
+  text-indent: -4ch;
+  flex: 1 1 0;
+}
+.kite-error-rescue-sidebar del .line::before,
+.kite-error-rescue-sidebar ins .line::before {
+  opacity: 0.5;
+  position: absolute;
+  left: 0;
+  padding-left: 10px;
+}
+.kite-error-rescue-sidebar ins {
+  border-top: 0 !important;
+}
+.kite-error-rescue-sidebar del .line::before {
+  content: '+';
+}
+.kite-error-rescue-sidebar ins .line::before {
+  content: '-';
+}
+.kite-error-rescue-sidebar ins .line-number {
+  text-align: right;
+}
+.kite-error-rescue-sidebar del strong {
+  border: 1px solid rgba(224, 102, 102, 0.3);
+}
+.kite-error-rescue-sidebar ins strong {
+  border: 1px solid rgba(151, 220, 151, 0.3);
+}
+.kite-error-rescue-sidebar .recent del,
+.kite-error-rescue-sidebar .recent ins {
+  border: 0;
+  margin: 0;
+}
+.kite-error-rescue-sidebar .recent del {
+  background-color: var(--line-del-background);
+}
+.kite-error-rescue-sidebar .recent ins {
+  background-color: var(--line-ins-background);
+}
+.kite-error-rescue-sidebar .recent del .line-number,
+.kite-error-rescue-sidebar .recent ins .line-number {
+  background-color: var(--line-number-background);
+  border: none;
+}
+.kite-error-rescue-sidebar .recent del strong,
+.kite-error-rescue-sidebar .recent ins strong {
+  background-color: var(--subtle-border-color);
+  border: none;
+}
+
+.kite-error-rescue-sidebar a.icon-question {
+  position: absolute;
+  top: var(--sidebar-padding);
+  right: var(--sidebar-padding);
+  z-index: 2;
+  font-size: 1.2em;
+  color: var(--button-color) !important;
+}
+.kite-error-rescue-sidebar a.icon-question:hover::before {
+  color: var(--text-color-highlight) !important;
+}
+.kite-error-rescue-sidebar a.icon-question::before {
+  font-size: 1em;
+  width: auto;
+  height: auto;
+  margin: 0;
+}
+.kite-error-rescue-sidebar .messages {
+  background: var(--header-background) !important;
+}
+.kite-error-rescue-sidebar .messages:not(:empty) {
+  padding-top: var(--sidebar-padding);
+}
+.kite-error-rescue-sidebar .message-box {
+  line-height: 1.8;
+  position: relative;
+  margin: 0 var(--sidebar-padding);
+  padding: var(--sidebar-padding) var(--sidebar-padding) var(--sidebar-padding) var(--sidebar-left-indent);
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .5);
+  background: var(--text-color-highlight) !important;
+  color: var(--messages-text) !important;
+}
+.kite-error-rescue-sidebar .message-box h4 {
+  margin-top: 0;
+  opacity: 0.75;
+  color: var(--messages-text) !important;
+}
+
+.kite-error-rescue-sidebar .message-box .btn-close {
+  -webkit-appearance: none;
+  background: transparent;
+  border: none;
+  padding: 0.5em;
+  margin: -0.5em;
+  position: absolute;
+  right: calc(var(--sidebar-padding) - 4px); /* For optical correction */
+  top: var(--sidebar-padding);
+  color: inherit;
+  opacity: 0.5;
+  z-index: 100;
+}
+.kite-error-rescue-sidebar .message-box .btn-close:hover {
+  opacity: 1;
+}
+.kite-error-rescue-sidebar .message-box .diff-content {
+  margin-left: 0;
+  margin-bottom: 20px;
+}
+.kite-error-rescue-sidebar .message-box del,
+.kite-error-rescue-sidebar .message-box ins,
+.kite-error-rescue-sidebar .message-box del strong,
+.kite-error-rescue-sidebar .message-box ins strong {
+  border-color: var(--subtle-inverse-border-color);
+}
+.kite-error-rescue-sidebar .message-box del .line,
+.kite-error-rescue-sidebar .message-box ins .line {
+  color: inherit;
+}
+
+.kite-error-rescue-sidebar .kite-column {
+  display: block !important;
+  overflow-y: auto !important;
+  padding: 0;
+}
+
+
+
+.vscode-high-contrast .kite .kite-error-rescue-sidebar h4 {
+  opacity: 1;
+}
+.vscode-high-contrast .kite-error-rescue-sidebar .message-box a {
+  color: black;
+}
+.vscode-high-contrast .kite-error-rescue-sidebar .recent del,
+.vscode-high-contrast .kite-error-rescue-sidebar .recent ins {
+  border: 1px solid white;
+}
+.vscode-high-contrast .kite-error-rescue-sidebar del strong,
+.vscode-high-contrast .kite-error-rescue-sidebar ins strong {
+  border-color: white;
+}
+.vscode-high-contrast .kite-error-rescue-sidebar .recent del strong,
+.vscode-high-contrast .kite-error-rescue-sidebar .recent ins strong {
+  color: black;
+  border: none;
+}
+.vscode-high-contrast .kite-error-rescue-sidebar .line::before {
+  color: white;
+}
+
+
+@font-face {
+  font-family: 'Octicons Regular';
+  src: url("../fonts/octicons.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.icon-alert::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f02d";
+}
+.icon-alignment-align::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f08a";
+}
+.icon-alignment-aligned-to::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f08e";
+}
+.icon-alignment-unalign::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f08b";
+}
+.icon-arrow-down::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f03f";
+}
+.icon-arrow-left::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f040";
+}
+.icon-arrow-right::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f03e";
+}
+.icon-arrow-small-down::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0a0";
+}
+.icon-arrow-small-left::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0a1";
+}
+.icon-arrow-small-right::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f071";
+}
+.icon-arrow-small-up::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f09f";
+}
+.icon-arrow-up::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f03d";
+}
+.icon-beaker::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0dd";
+}
+.icon-beer::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f069";
+}
+.icon-bell::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0de";
+}
+.icon-bold::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0e2";
+}
+.icon-book::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f007";
+}
+.icon-bookmark::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f07b";
+}
+.icon-briefcase::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0d3";
+}
+.icon-broadcast::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f048";
+}
+.icon-browser::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0c5";
+}
+.icon-bug::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f091";
+}
+.icon-calendar::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f068";
+}
+.icon-check::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f03a";
+}
+.icon-checklist::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f076";
+}
+.icon-chevron-down::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0a3";
+}
+.icon-chevron-left::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0a4";
+}
+.icon-chevron-right::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f078";
+}
+.icon-chevron-up::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0a2";
+}
+.icon-circle-slash::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f084";
+}
+.icon-circuit-board::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0d6";
+}
+.icon-clippy::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f035";
+}
+.icon-clock::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f046";
+}
+.icon-cloud-download::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f00b";
+}
+.icon-cloud-upload::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f00c";
+}
+.icon-code::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f05f";
+}
+.icon-color-mode::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f065";
+}
+.icon-comment::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f02b";
+}
+.icon-comment-add::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f02b";
+}
+.icon-comment-discussion::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f04f";
+}
+.icon-credit-card::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f045";
+}
+.icon-dash::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0ca";
+}
+.icon-dashboard::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f07d";
+}
+.icon-database::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f096";
+}
+.icon-desktop-download::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0dc";
+}
+.icon-device-camera::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f056";
+}
+.icon-device-camera-video::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f057";
+}
+.icon-device-desktop::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f27c";
+}
+.icon-device-mobile::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f038";
+}
+.icon-diff::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f04d";
+}
+.icon-diff-added::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f06b";
+}
+.icon-diff-ignored::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f099";
+}
+.icon-diff-modified::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f06d";
+}
+.icon-diff-removed::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f06c";
+}
+.icon-diff-renamed::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f06e";
+}
+.icon-ellipses::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f101";
+}
+.icon-ellipsis::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f09a";
+}
+.icon-eye::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f04e";
+}
+.icon-eye-unwatch::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f04e";
+}
+.icon-eye-watch::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f04e";
+}
+.icon-file::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f102";
+}
+.icon-file-add::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f05d";
+}
+.icon-file-binary::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f094";
+}
+.icon-file-code::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f010";
+}
+.icon-file-directory::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f016";
+}
+.icon-file-directory-create::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f05d";
+}
+.icon-file-media::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f012";
+}
+.icon-file-pdf::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f014";
+}
+.icon-file-submodule::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f017";
+}
+.icon-file-symlink-directory::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0b1";
+}
+.icon-file-symlink-file::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0b0";
+}
+.icon-file-text::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f011";
+}
+.icon-file-zip::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f013";
+}
+.icon-flame::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0d2";
+}
+.icon-fold::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0cc";
+}
+.icon-gear::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f02f";
+}
+.icon-gift::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f042";
+}
+.icon-gist::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f00e";
+}
+.icon-gist-fork::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f002";
+}
+.icon-gist-new::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f05d";
+}
+.icon-gist-private::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f06a";
+}
+.icon-gist-secret::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f08c";
+}
+.icon-git-branch::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f020";
+}
+.icon-git-branch-create::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f020";
+}
+.icon-git-branch-delete::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f020";
+}
+.icon-git-commit::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f01f";
+}
+.icon-git-compare::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0ac";
+}
+.icon-git-fork-private::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f06a";
+}
+.icon-git-merge::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f023";
+}
+.icon-git-pull-request::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f009";
+}
+.icon-git-pull-request-abandoned::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f009";
+}
+.icon-globe::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0b6";
+}
+.icon-grabber::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f103";
+}
+.icon-graph::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f043";
+}
+.icon-heart::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\2665";
+}
+.icon-history::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f07e";
+}
+.icon-home::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f08d";
+}
+.icon-horizontal-rule::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f070";
+}
+.icon-hourglass::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f09e";
+}
+.icon-hubot::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f09d";
+}
+.icon-inbox::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0cf";
+}
+.icon-info::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f059";
+}
+.icon-issue-closed::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f028";
+}
+.icon-issue-opened::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f026";
+}
+.icon-issue-reopened::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f027";
+}
+.icon-italic::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0e4";
+}
+.icon-jersey::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f019";
+}
+.icon-jump-down::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f072";
+}
+.icon-jump-left::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0a5";
+}
+.icon-jump-right::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0a6";
+}
+.icon-jump-up::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f073";
+}
+.icon-key::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f049";
+}
+.icon-keyboard::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f00d";
+}
+.icon-law::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0d8";
+}
+.icon-light-bulb::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f000";
+}
+.icon-link::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f05c";
+}
+.icon-link-external::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f07f";
+}
+.icon-list-ordered::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f062";
+}
+.icon-list-unordered::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f061";
+}
+.icon-location::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f060";
+}
+.icon-lock::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f06a";
+}
+.icon-log-in::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f036";
+}
+.icon-log-out::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f032";
+}
+.icon-logo-gist::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0ad";
+}
+.icon-logo-github::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f092";
+}
+.icon-mail::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f03b";
+}
+.icon-mail-read::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f03c";
+}
+.icon-mail-reply::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f051";
+}
+.icon-mark-github::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f00a";
+}
+.icon-markdown::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0c9";
+}
+.icon-megaphone::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f077";
+}
+.icon-mention::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0be";
+}
+.icon-microscope::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f089";
+}
+.icon-milestone::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f075";
+}
+.icon-mirror::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f024";
+}
+.icon-mirror-private::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f06a";
+}
+.icon-mirror-public::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f024";
+}
+.icon-mortar-board::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0d7";
+}
+.icon-move-down::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0a8";
+}
+.icon-move-left::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f074";
+}
+.icon-move-right::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0a9";
+}
+.icon-move-up::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0a7";
+}
+.icon-mute::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f080";
+}
+.icon-no-newline::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f09c";
+}
+.icon-octoface::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f008";
+}
+.icon-organization::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f037";
+}
+.icon-package::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0c4";
+}
+.icon-paintcan::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0d1";
+}
+.icon-pencil::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f058";
+}
+.icon-person::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f018";
+}
+.icon-person-add::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f018";
+}
+.icon-person-follow::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f018";
+}
+.icon-pin::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f041";
+}
+.icon-playback-fast-forward::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0bd";
+}
+.icon-playback-pause::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0bb";
+}
+.icon-playback-play::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0bf";
+}
+.icon-playback-rewind::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0bc";
+}
+.icon-plug::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0d4";
+}
+.icon-plus::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f05d";
+}
+.icon-plus-small::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f104";
+}
+.icon-podium::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0af";
+}
+.icon-primitive-dot::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f052";
+}
+.icon-primitive-square::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f053";
+}
+.icon-pulse::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f085";
+}
+.icon-puzzle::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0c0";
+}
+.icon-question::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f02c";
+}
+.icon-quote::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f063";
+}
+.icon-radio-tower::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f030";
+}
+.icon-remove-close::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f081";
+}
+.icon-reply::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f105";
+}
+.icon-repo::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f001";
+}
+.icon-repo-clone::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f04c";
+}
+.icon-repo-create::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f05d";
+}
+.icon-repo-delete::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f001";
+}
+.icon-repo-force-push::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f04a";
+}
+.icon-repo-forked::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f002";
+}
+.icon-repo-pull::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f006";
+}
+.icon-repo-push::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f005";
+}
+.icon-repo-sync::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f087";
+}
+.icon-rocket::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f033";
+}
+.icon-rss::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f034";
+}
+.icon-ruby::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f047";
+}
+.icon-screen-full::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f066";
+}
+.icon-screen-normal::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f067";
+}
+.icon-search::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f02e";
+}
+.icon-search-save::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f02e";
+}
+.icon-server::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f097";
+}
+.icon-settings::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f07c";
+}
+.icon-shield::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0e1";
+}
+.icon-sign-in::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f036";
+}
+.icon-sign-out::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f032";
+}
+.icon-smiley::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0e7";
+}
+.icon-split::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0c6";
+}
+.icon-squirrel::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0b2";
+}
+.icon-star::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f02a";
+}
+.icon-star-add::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f02a";
+}
+.icon-star-delete::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f02a";
+}
+.icon-steps::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0c7";
+}
+.icon-stop::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f08f";
+}
+.icon-sync::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f087";
+}
+.icon-tag::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f015";
+}
+.icon-tag-add::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f015";
+}
+.icon-tag-remove::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f015";
+}
+.icon-tasklist::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0e5";
+}
+.icon-telescope::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f088";
+}
+.icon-terminal::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0c8";
+}
+.icon-text-size::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0e3";
+}
+.icon-three-bars::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f05e";
+}
+.icon-thumbsdown::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0db";
+}
+.icon-thumbsup::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0da";
+}
+.icon-tools::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f031";
+}
+.icon-trashcan::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0d0";
+}
+.icon-triangle-down::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f05b";
+}
+.icon-triangle-left::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f044";
+}
+.icon-triangle-right::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f05a";
+}
+.icon-triangle-up::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0aa";
+}
+.icon-unfold::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f039";
+}
+.icon-unmute::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0ba";
+}
+.icon-unverified::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0e8";
+}
+.icon-verified::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0e6";
+}
+.icon-versions::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f064";
+}
+.icon-watch::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f0e0";
+}
+.icon-x::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\f081";
+}
+.icon-zap::before {
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  content: "\26A1";
+}
+
+/*
+  Provided variables:
+    --background-color
+    --color
+    --font-family
+    --font-weight
+    --font-size
+*/
+
+.kite {
+  --sidebar-padding: 20px;
+  --sidebar-left-indent: 20px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.auto-cursor {
+  cursor: default;
+}
+.kite {
+  display: flex;
+  font-size: 1em;
+  font-family: sans-serif;
+  flex-direction: column;
+  position: absolute;
+  padding: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.block {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.inline-block {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.text-danger {
+  color: var(--color-red);
+}
+
+.text-warning {
+  color: var(--color-orange);
+}
+
+.text-info {
+  color: var(--color-blue);
+}
+
+.text-success {
+  color: var(--color-green);
+}
+
+a[data-action="collapse"],
+a[data-action="expand"] {
+  margin: -10px 10px 20px;
+}
+
+.kite section.summary:empty {
+  display: none;
+}
+
+.kite section.summary {
+  line-height: 1.4em;
+}
+
+.kite section.summary dd,
+.kite section.summary dt {
+  font-size: 1em;
+}
+
+.kite section.summary dt {
+  color: var(--text-color-highlight);
+}
+
+.kite section.summary dd {
+  color: var(--text-color);
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.kite section.summary dl dd a {
+  font-size: 1em;
+}
+
+.kite section.summary table {
+  border-collapse: collapse;
+}
+
+.kite section.summary pre {
+  background: var(--examples-output-background);
+  border-radius: 3px;
+  padding: var(--half-padding);
+}
+
+.kite section.summary table td ul:first-child {
+  margin-top: 0;
+}
+
+.kite section.summary table td ul li {
+  font-size: 1em;
+}
+
+.kite header {
+  padding: 10px 0;
+  display: block;
+}
+.kite header .btn-group {
+  display: flex;
+  flex-direction: row;
+}
+
+.kite header .btn-group .btn {
+  text-align: center;
+  padding: 0.2em 0.5em;
+  line-height: 1em;
+  display: inline-block;
+  background: var(--button-background);
+  color: var(--button-color);
+  cursor: pointer;
+}
+
+.kite header .btn-group .btn:hover {
+  color: var(--button-color);
+}
+
+.kite header .btn-group .btn.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.kite footer {
+  display: block;
+  flex: 0 0 auto;
+  display: flex;
+  padding: 10px;
+  margin: 0 -10px;
+  justify-content: space-between;
+}
+
+.kite footer .actions a {
+  background: var(--button-background);
+  color: var(--text-color-highlight);
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.2em 0.5em;
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  font-weight: 100;
+}
+
+.kite footer .actions a span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.kite footer .actions a svg {
+  height: 1em;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.kite footer .actions a svg polygon,
+.kite footer .actions a svg path {
+  fill: var(--text-color-highlight);
+}
+
+.kite footer .actions a:hover {
+  background: var(--color-blue);
+  color: var(--text-color-highlight);
+}
+
+.auto-cursor {
+  cursor: default;
+}
+.unreachable,
+.unreachable:hover,
+.unreachable:active,
+.unreachable:focus {
+  color: var(--text-color);
+  opacity: 0.6;
+  text-decoration: none;
+}
+.unreachable * {
+  color: var(--text-color);
+}
+
+.split-line {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+}
+.split-line > * {
+  flex: 1 1 0;
+}
+.split-line > :last-child {
+  text-align: right;
+  padding-left: 10px;
+}
+.split-line > :last-child:empty {
+  display: none;
+}
+.split-line + .split-line {
+  margin-top: 5px;
+}
+.split-line .name {
+  padding-left: 10px;
+  text-indent: -10px;
+}
+.kite {
+  cursor: default;
+}
+.kite pre {
+  -webkit-user-select: text;
+  user-select: text;
+  cursor: text;
+  overflow-x: auto;
+}
+.kite .debug {
+  margin-top: 5px;
+  flex: 0 1 auto;
+  display: flex;
+  max-height: 300px;
+}
+.kite .debug pre {
+  flex: 1 1 auto;
+  cursor: text;
+  -webkit-user-select: all;
+  user-select: all;
+  user-select: all;
+  overflow: auto;
+}
+.kite .debug pre > * {
+  pointer-events: none;
+}
+
+.kite .expand-header {
+  flex: 0 0 auto;
+  margin-bottom: 10px;
+  padding: var(--sidebar-padding);
+}
+.kite section.summary pre code {
+  white-space: pre;
+}
+.kite section.summary caption {
+  padding: 0;
+  color: var(--text-color-highlight);
+  margin-bottom: 5px;
+}
+.kite section.summary table {
+  width: 100%;
+  margin-bottom: 5px;
+}
+.kite section.summary table th,
+.kite section.summary table td {
+  padding: 0.4em;
+  border: 1px solid var(--border-color);
+}
+.kite section.kwargs,
+.kite section.parameters {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.kite section .kite-pro-features {
+  margin-bottom: 10px;
+}
+
+.kite section.kwargs .section-content,
+.kite section.parameters .section-content {
+  flex: 0 1 auto;
+  overflow-y: auto;
+}
+.kite a * {
+  pointer-events: none;
+}
+.kite a[href],
+.kite a[href]:hover,
+.kite a[href]:active,
+.kite a[href]:focus,
+.kite a[href] code {
+  color: var(--color-blue);
+}
+.kite a:not([href]) {
+  pointer-events: none;
+}
+.kite a:not([href]),
+.kite a:not([href]):hover,
+.kite a:not([href]):active,
+.kite a:not([href]):focus,
+.kite a:not([href]) code {
+  color: inherit;
+}
+.kite a.external_link::after {
+  content: "\f07f";
+  font-family: 'Octicons Regular';
+}
+.kite a.unreachable,
+.kite a.unreachable:hover,
+.kite a.unreachable:active,
+.kite a.unreachable:focus {
+  color: var(--text-color);
+  opacity: 0.6;
+  text-decoration: none;
+}
+.kite a.unreachable * {
+  color: var(--text-color);
+}
+.kite a i {
+  font-style: normal;
+  font-size: 0.8em;
+  font-weight: lighter;
+}
+.kite .scroll-wrapper {
+  flex: 1 1 auto;
+  position: relative;
+  transform: translateZ(0);
+}
+.kite .scroll-wrapper .sections-wrapper {
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: var(--sidebar-padding);
+}
+
+.kite h3 {
+  font-weight: 100;
+  margin: 0;
+  font-size: 1.4em;
+  margin-bottom: 1em;
+  margin-top: 0.5em;
+  color: var(--text-color-highlight);
+}
+
+.kite h4 {
+  font-weight: 100;
+  margin: 0;
+  font-size: 1.1em;
+}
+
+.kite .type {
+  white-space: nowrap;
+}
+.kite .type,
+.kite .signature {
+  color: var(--text-color);
+}
+.kite .split-line {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+}
+.kite .split-line > * {
+  flex: 1 1 0;
+}
+.kite .split-line > :last-child {
+  text-align: right;
+  padding-left: 10px;
+}
+.kite .split-line > :last-child:empty {
+  display: none;
+}
+.kite .split-line + .split-line {
+  margin-top: 5px;
+}
+.kite .split-line .name {
+  padding-left: 10px;
+  text-indent: -10px;
+}
+.kite section {
+  margin: 0;
+}
+.kite section .section-content {
+  margin-left: 10px;
+}
+.kite .expand-header {
+  font-size: 1.4em;
+  color: var(--text-color-highlight);
+}
+.kite .expand-extend {
+  font-size: 1.2em;
+}
+.kite section.summary {
+  margin: 0 0 15px;
+}
+.kite section.collapsible.collapse > div {
+  max-height: 250px;
+  position: relative;
+  overflow: hidden;
+}
+
+.kite section.collapsible.collapse > div {
+  max-height: 250px;
+  position: relative;
+  overflow: hidden;
+}
+
+.kite section.collapsible.collapse.overflow > div::after {
+  content: '';
+  position: absolute;
+  height: 30px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(to top, var(--background-color) 0%, transparent 100%);
+}
+
+.kite section.summary .description {
+  margin-top: 10px;
+  font-size: 1em;
+  color: var(--text-color-highlight);
+}
+.kite section.summary .description h1,
+.kite section.summary .description h2,
+.kite section.summary .description h3,
+.kite section.summary .description h4 {
+  font-size: inherit;
+  margin: inherit;
+  line-height: inherit;
+}
+.kite section.collapsed > :not(h4) {
+  display: none !important;
+}
+.kite section.collapsed h4 {
+  margin-bottom: 0;
+}
+.kite section.popular-members .split-line .name {
+  flex: 1 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.kite section.popular-members .split-line .type {
+  flex: 0 0 auto;
+}
+.kite section.popular-members a.more-members {
+  display: block;
+  margin-top: 10px;
+}
+.kite section.how-to a.more-examples {
+  display: block;
+  margin-top: 10px;
+}
+
+.kite .members-list {
+  flex: 1 1 auto;
+  overflow-y: auto;
+}
+
+.kite ul {
+  margin: 20px 0;
+}
+
+.kite ul li + li {
+  margin-top: 10px;
+}
+.kite section.how-to ul li {
+  position: relative;
+}
+.kite section.how-to ul li > .icon {
+  position: absolute;
+  top: 0;
+}
+.kite section.how-to ul li > a,
+.kite section.how-to ul li > span {
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  display: inline-block;
+}
+.kite section.how-to ul li > a span,
+.kite section.how-to ul li > span span {
+  display: inline-block;
+}
+.kite section.how-to ul li > a .icon,
+.kite section.how-to ul li > span .icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.kite section.links a.more-links {
+  display: block;
+  margin-top: 10px;
+}
+.kite section.links ul li {
+  position: relative;
+}
+.kite section.links ul li > .icon {
+  position: absolute;
+  top: 0;
+}
+.kite section.links ul li > a,
+.kite section.links ul li > span {
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  display: inline-block;
+}
+.kite section.links ul li > a span,
+.kite section.links ul li > span span {
+  display: inline-block;
+}
+.kite section.links ul li > a .icon,
+.kite section.links ul li > span .icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.kite section.definition ul li {
+  position: relative;
+}
+.kite section.definition ul li > .icon {
+  position: absolute;
+  top: 0;
+}
+.kite section.definition ul li > a,
+.kite section.definition ul li > span {
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+}
+.kite section.definition ul li > a span,
+.kite section.definition ul li > span span {
+  display: inline-block;
+}
+.kite section.definition ul li > a .icon,
+.kite section.definition ul li > span .icon {
+  position: absolute;
+  right: 0;
+}
+
+.kite pre {
+  -webkit-user-select: text;
+  user-select: text;
+  cursor: text;
+}
+.kite .debug {
+  margin-top: 5px;
+  flex: 0 1 auto;
+  display: flex;
+  max-height: 300px;
+}
+.kite .debug pre {
+  flex: 1 1 auto;
+  cursor: text;
+  -webkit-user-select: all;
+  user-select: all;
+  user-select: all;
+  overflow: auto;
+}
+.kite .debug pre > * {
+  pointer-events: none;
+}
+.kite kite-expand-module,
+.kite kite-expand-function,
+.kite kite-expand-instance {
+  flex-direction: column;
+}
+.kite kite-expand-module .expand-header,
+.kite kite-expand-function .expand-header,
+.kite kite-expand-instance .expand-header,
+.kite kite-expand-module .expand-extend,
+.kite kite-expand-function .expand-extend,
+.kite kite-expand-instance .expand-extend {
+  flex: 0 0 auto;
+  margin-bottom: 10px;
+}
+.kite kite-expand-module section.summary pre code,
+.kite kite-expand-function section.summary pre code,
+.kite kite-expand-instance section.summary pre code {
+  white-space: pre;
+}
+.kite kite-expand-module section.summary caption,
+.kite kite-expand-function section.summary caption,
+.kite kite-expand-instance section.summary caption,
+.kite kite-expand-module section.summary figcaption,
+.kite kite-expand-function section.summary figcaption,
+.kite kite-expand-instance section.summary figcaption {
+  padding: 0;
+  color: var(--text-color-highlight);
+  margin-bottom: 5px;
+}
+.kite kite-expand-module section.summary table,
+.kite kite-expand-function section.summary table,
+.kite kite-expand-instance section.summary table {
+  width: 100%;
+  margin-bottom: 5px;
+}
+.kite kite-expand-module section.summary table th,
+.kite kite-expand-function section.summary table th,
+.kite kite-expand-instance section.summary table th,
+.kite kite-expand-module section.summary table td,
+.kite kite-expand-function section.summary table td,
+.kite kite-expand-instance section.summary table td {
+  padding: 0.4em;
+  border: 1px solid var(--border-color);
+}
+.kite kite-expand-module section.parameters,
+.kite kite-expand-function section.parameters,
+.kite kite-expand-instance section.parameters {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+.kite kite-expand-module section.parameters dl,
+.kite kite-expand-function section.parameters dl,
+.kite kite-expand-instance section.parameters dl {
+  margin-top: 0;
+}
+.kite kite-expand-module section.parameters .section-content,
+.kite kite-expand-function section.parameters .section-content,
+.kite kite-expand-instance section.parameters .section-content {
+  flex: 0 1 auto;
+  overflow-y: auto;
+}
+.kite a * {
+  pointer-events: none;
+}
+.kite a[href],
+.kite a[href]:hover,
+.kite a[href]:active,
+.kite a[href]:focus,
+.kite a[href] code {
+  color: var(--color-blue);
+}
+.kite a:not([href]) {
+  pointer-events: none;
+}
+.kite a:not([href]),
+.kite a:not([href]):hover,
+.kite a:not([href]):active,
+.kite a:not([href]):focus,
+.kite a:not([href]) code {
+  color: inherit;
+}
+.kite a.external_link::after {
+  content: "\f07f";
+  font-family: 'Octicons Regular';
+}
+.kite a.unreachable,
+.kite a.unreachable:hover,
+.kite a.unreachable:active,
+.kite a.unreachable:focus {
+  color: var(--text-color);
+  opacity: 0.6;
+  text-decoration: none;
+}
+.kite a.unreachable * {
+  color: var(--text-color);
+}
+.kite a i {
+  font-style: normal;
+  font-size: 0.8em;
+  font-weight: lighter;
+}
+.kite .scroll-wrapper {
+  flex: 1 1 auto;
+  position: relative;
+  transform: translateZ(0);
+}
+.kite .scroll-wrapper .sections-wrapper {
+  overflow-y: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.kite .type {
+  white-space: nowrap;
+}
+.kite .type,
+.kite .signature {
+  color: var(--text-color);
+}
+.kite .split-line {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+}
+.kite .split-line > * {
+  flex: 1 1 0;
+}
+.kite .split-line > :last-child {
+  text-align: right;
+  padding-left: 10px;
+}
+.kite .split-line > :last-child:empty {
+  display: none;
+}
+.kite .split-line + .split-line {
+  margin-top: 5px;
+}
+.kite .split-line .name {
+  padding-left: 10px;
+  text-indent: -10px;
+}
+.kite section {
+  margin: 0;
+}
+.kite section .section-content {
+  margin-left: 10px;
+}
+.kite .expand-header {
+  font-size: 1.4em;
+  color: var(--text-color-highlight);
+}
+.kite .expand-extend {
+  font-size: 1.2em;
+}
+.kite section.summary {
+  margin: 0 0 15px;
+}
+.kite section.summary.collapsible.collapse .description {
+  max-height: 250px;
+  position: relative;
+  overflow: hidden;
+}
+.kite section.summary .description {
+  margin-top: 10px;
+  font-size: 1em;
+  color: var(--text-color-highlight);
+}
+.kite section.summary .description h1,
+.kite section.summary .description h2,
+.kite section.summary .description h3,
+.kite section.summary .description h4 {
+  font-size: inherit;
+  margin: inherit;
+  line-height: inherit;
+}
+.kite section.collapsed > :not(h4) {
+  display: none !important;
+}
+.kite section.collapsed h4 {
+  margin-bottom: 0;
+}
+.kite section.popular-members .split-line .name {
+  flex: 1 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.kite section.popular-members .split-line .type {
+  flex: 0 0 auto;
+}
+.kite section.popular-members a.more-members {
+  display: block;
+  margin-top: 10px;
+}
+.kite section.how-to a.more-examples {
+  display: block;
+  margin-top: 10px;
+}
+.kite section.how-to ul li {
+  position: relative;
+}
+.kite section.how-to ul li > .icon {
+  position: absolute;
+}
+.kite section.how-to ul li > a,
+.kite section.how-to ul li > span {
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+}
+.kite section.how-to ul li > a span,
+.kite section.how-to ul li > span span {
+  display: inline-block;
+}
+.kite section.how-to ul li > a .icon,
+.kite section.how-to ul li > span .icon {
+  position: absolute;
+  right: 0;
+}
+.kite section.links a.more-links {
+  display: block;
+  margin-top: 10px;
+}
+.kite section.links ul li {
+  position: relative;
+}
+.kite section.links ul li > .icon {
+  position: absolute;
+}
+.kite section.links ul li > a,
+.kite section.links ul li > span {
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+}
+.kite section.links ul li > a span,
+.kite section.links ul li > span span {
+  display: inline-block;
+}
+.kite section.links ul li > a .icon,
+.kite section.links ul li > span .icon {
+  position: absolute;
+  top: 0.2em;
+  right: 0;
+}
+.kite section.definition ul li {
+  position: relative;
+}
+.kite section.definition ul li > .icon {
+  position: absolute;
+}
+.kite section.definition ul li > a,
+.kite section.definition ul li > span {
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+}
+.kite section.definition ul li > a span,
+.kite section.definition ul li > span span {
+  display: inline-block;
+}
+.kite section.definition ul li > a .icon,
+.kite section.definition ul li > span .icon {
+  position: absolute;
+  top: 0.2em;
+  right: 0;
+}
+.kite section.examples-from-your-code .section-content .kite-pro-features {
+  font-size: 1.2em;
+}
+.kite section.examples-from-your-code .section-content .usages-box .usage-container {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+}
+.kite section.examples-from-your-code .section-content .usages-box .usage-bullet {
+  width: 0.8em;
+  height: 0.8em;
+  border-radius: 50%;
+  background-color: var(--usage-bullet-color);
+  margin-right: 0em;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+.kite section.examples-from-your-code .section-content .usages-box .usage {
+  flex-grow: 1;
+  padding: 0.5em;
+  margin: 0;
+}
+.kite section.examples-from-your-code .section-content .usages-box .usage + .usage {
+  margin-top: 1px;
+}
+.kite section.examples-from-your-code .section-content .usages-box .usage pre {
+  margin: 0;
+  background-color: transparent;
+  padding: 0;
+  overflow-x: auto;
+  white-space: pre;
+}
+.kite section.examples-from-your-code .section-content .usages-box .usage .links {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.kite ul {
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+}
+.kite ul li {
+  overflow: hidden;
+}
+.kite ul li + li {
+  margin-top: 5px;
+}
+.kite ul li .icon::before {
+  margin: 0;
+}
+.kite ul li .icon,
+.kite ul li > .file,
+.kite ul li > .example,
+.kite ul li > .link {
+  display: inline-block;
+  vertical-align: middle;
+}
+.kite ul li .file,
+.kite ul li .example,
+.kite ul li .link {
+  font-weight: 300;
+  color: var(--text-color-highlight);
+}
+.kite ul li .file .icon,
+.kite ul li .example .icon,
+.kite ul li .link .icon {
+  color: var(--text-color);
+  font-weight: 0.8em;
+}
+.kite ul li .icon {
+  line-height: 1em;
+}
+.kite ul li .icon-file-code::before {
+  color: var(--color-blue);
+  font-size: 1.2em;
+  line-height: 1em;
+  height: 1em;
+}
+.kite ul li .icon-code::before {
+  color: var(--color-green);
+  font-size: 1.2em;
+  line-height: 1em;
+  height: 1em;
+}
+.kite ul li pre {
+  clear: both;
+  margin-top: 5px;
+  margin-left: 20px;
+}
+
+
+.kite .section-content {
+  margin: 10px 0 20px;
+}
+.kite dl,
+.kite ul {
+  margin: 0;
+}
+
+.kite dl dt,
+.kite ul li {
+  color: var(--text-color);
+  font-weight: normal;
+  font-size: 1.2em;
+}
+.kite dl dd p {
+  margin: 0;
+}
+.kite dl dd a {
+  font-size: 0.9em;
+}
+.kite dl dt + dt,
+.kite dl dd + dt,
+.kite ul li + li {
+  margin-top: 10px;
+}
+.kite pre {
+  color: var(--text-color-highlight);
+  margin-bottom: 5px;
+}
+.kite pre a.icon,
+.kite pre a.icon:hover,
+.kite pre a.icon:active,
+.kite pre a.icon:focus {
+  color: var(--color-blue);
+}
+
+.kite .expand-header .signature a.kwargs {
+  color: var(--text-color);
+  pointer-events: none;
+  text-decoration: none;
+}
+
+.kite p {
+  /* Default Atom p margin is assymetrical. Overriding for sanity */
+  margin: 0.5em 0;
+}
+.kite .split-line > * {
+  flex: 1 1 auto;
+}
+.kite-breadcrumb {
+  display: flex;
+  flex-direction: row;
+  padding-right: 10px;
+}
+.kite-breadcrumb ul.breadcrumb {
+  display: inline-block;
+  margin-bottom: 0;
+  padding: 0;
+  margin-left: 10px;
+  vertical-align: middle;
+  white-space: nowrap;
+  overflow-x: auto;
+  flex: 1 1 0;
+  position: relative;
+}
+
+.hidden {
+  display: none;
+}
+
+.kite .examples-list ul {
+  width: 100%;
+  padding-right: 0 !important;
+  margin-top: 0 !important;
+  display: flex;
+  flex-direction: column;
+}
+.examples-list {
+  flex: 1 1 0;
+  overflow-y: auto;
+}
+.examples-list .split-line .name {
+  flex: 1 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.examples-list .split-line .type {
+  flex: 0 0 auto;
+}
+.examples-list ul li {
+  position: relative;
+}
+.examples-list ul li > .icon {
+  position: absolute;
+  top: 0.2em;
+}
+.examples-list ul li > a,
+.examples-list ul li > span {
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+}
+.examples-list ul li > a span,
+.examples-list ul li > span span {
+  display: inline-block;
+}
+.examples-list ul li > a .icon,
+.examples-list ul li > span .icon {
+  position: absolute;
+  top: 0.2em;
+  right: 0;
+}
+.examples-list caption,
+.examples-list figcaption {
+  padding: 0;
+  color: var(--text-color-highlight);
+  margin-bottom: 5px;
+}
+
+.example-wrapper {
+  overflow-y: auto;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+.example-wrapper pre {
+  -webkit-user-select: text;
+  user-select: text;
+  cursor: text;
+}
+.example-wrapper caption,
+.example-wrapper figcaption {
+  padding: 0;
+  color: var(--text-color-highlight);
+  margin-bottom: 5px;
+}
+.example-wrapper table {
+  width: 100%;
+  margin-bottom: 5px;
+}
+.example-wrapper table th,
+.example-wrapper table td {
+  padding: 0.4em;
+  border: 1px solid var(--border-color);
+}
+.example-wrapper .related-examples ul li {
+  position: relative;
+}
+.example-wrapper .related-examples ul li > .icon {
+  position: absolute;
+  top: 0.2em;
+}
+.example-wrapper .related-examples ul li > a,
+.example-wrapper .related-examples ul li > span {
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+}
+.example-wrapper .related-examples ul li > a span,
+.example-wrapper .related-examples ul li > span span {
+  display: inline-block;
+}
+.example-wrapper .related-examples ul li > a .icon,
+.example-wrapper .related-examples ul li > span .icon {
+  position: absolute;
+  top: 0.2em;
+  right: 0;
+}
+.example-wrapper .example-code {
+  background: var(--examples-background);
+  border-radius: 3px;
+  padding: 5px;
+  margin-bottom: var(--component-padding);
+}
+.example-wrapper .example-code figcaption {
+  margin-top: 10px;
+  font-size: 0.8em;
+  font-weight: 300;
+  font-style: italic;
+}
+.example-wrapper .example-code a {
+  text-decoration: none;
+}
+.example-wrapper .example-code a:hover {
+  text-decoration: underline;
+}
+.example-wrapper img {
+  max-width: 100%;
+}
+.example-wrapper pre {
+  flex: 0 0 auto;
+  background: transparent;
+  padding: 0;
+  margin-bottom: 10px;
+}
+.example-wrapper pre a {
+  color: inherit;
+}
+.example-wrapper pre code {
+  white-space: pre;
+}
+.example-wrapper pre.output {
+  display: block;
+}
+.example-wrapper pre.input {
+  background: var(--examples-background);
+  border-radius: 3px;
+  padding: 5px;
+}
+.example-wrapper table,
+.example-wrapper ul.list-tree.root,
+.example-wrapper pre.output {
+  width: auto;
+  background: var(--examples-output-background);
+  padding: 5px;
+  border-radius: 3px;
+}
+.example-wrapper ul.list-tree {
+  padding-left: 20px;
+  margin: 0;
+}
+figcaption + .example-wrapper table,
+figcaption + .example-wrapper ul.list-tree.root,
+figcaption + .example-wrapper pre.output {
+  margin-top: -5px;
+}
+.example-wrapper table,
+.example-wrapper ul.list-tree.root,
+.example-wrapper pre {
+  margin-bottom: 10px;
+}
+.example-wrapper table:last-child,
+.example-wrapper ul.list-tree.root:last-child,
+.example-wrapper pre:last-child {
+  margin-bottom: 0;
+}
+.example-wrapper ul.list-tree.root {
+  display: inline-block;
+  padding-right: 10px;
+}
+.example-wrapper ul.list-tree li {
+  font-size: 1em;
+}
+.example-wrapper ul.list-tree li + li {
+  margin-top: 0;
+}
+.example-wrapper table {
+  border-radius: 3px;
+  border-collapse: separate !important;
+}
+.example-wrapper table th,
+.example-wrapper table td {
+  border: none;
+}
+.example-wrapper table td:not(:last-child) {
+  padding-right: 2rem;
+}
+
+.links-list ul {
+  width: 100%;
+  padding-right: 0 !important;
+  margin-top: 0 !important;
+  display: flex;
+  flex-direction: column;
+}
+.links-list {
+  flex: 1 1 0;
+  overflow-y: auto;
+}
+.links-list .split-line .name {
+  flex: 1 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.links-list .split-line .type {
+  flex: 0 0 auto;
+}
+.links-list ul li {
+  position: relative;
+}
+.links-list ul li > .icon {
+  position: absolute;
+  top: 0.2em;
+}
+.links-list ul li > a,
+.links-list ul li > span {
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+}
+.links-list ul li > a span,
+.links-list ul li > span span {
+  display: inline-block;
+}
+.links-list ul li > a .icon,
+.links-list ul li > span .icon {
+  position: absolute;
+  top: 0.2em;
+  right: 0;
+}
+.links-list caption,
+.links-list figcaption {
+  padding: 0;
+  color: var(--text-color-highlight);
+  margin-bottom: 5px;
+}
+
+a[href].kite-open-link {
+  display: block;
+  transition: 125ms opacity;
+  margin-right: 0.5em;
+  text-decoration: none;
+  margin: -10px;
+  padding: 10px;
+  color: var(--text-color);
+}
+
+a[href].kite-open-link:hover {
+  background: var(--color-blue);
+  color: var(--text-color-highlight);
+}
+
+a[href].kite-open-link:hover svg polygon {
+  fill: var(--text-color-highlight);
+}
+
+a.kite-open-link > * {
+  pointer-events: none;
+}
+
+a.kite-open-link svg {
+  margin-left: 0.5em;
+}
+
+svg {
+  vertical-align: middle;
+  display: inline-block;
+  width: 1.2em;
+}
+
+svg polygon {
+  fill: var(--text-color-highlight);
+}
+
+
+.search-form {
+  position: relative;
+}
+/* .kite a[href].internal_link {
+  pointer-events: none;
+  text-decoration: none;
+  color: inherit;
+} */
+.search-form i {
+  position: absolute;
+  right: 0;
+  top: 0;
+  pointer-events: none;
+}
+
+input:not([type="checkbox"]) {
+  -webkit-appearance: none;
+  appearance: none;
+  background: none;
+  border: none;
+  width: 100%;
+  font-size: 1.2em;
+  border-bottom: 1px solid var(--border-color);
+  padding: 5px;
+  color: var(--text-color-highlight);
+}
+input:not([type="checkbox"]):focus {
+  border:none;
+  border-bottom: 1px solid var(--color-blue);
+  outline: none;
+}
+
+inpu:not([type="checkbox"])t:-webkit-input-placeholder {
+  color: var(--text-color-highlight);
+}
+#results {
+  position: relative;
+  background: var(--examples-background);
+  border-bottom: 1px solid var(--border-color);
+}
+#results ul {
+  position: relative;
+  overflow-y: auto;
+  max-height: 120px;
+}
+#results.has-results {
+  padding-bottom: 10px;
+}
+#results.has-results:after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-bottom-color: var(--text-color);
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+}
+
+#results.has-results:before {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-top-color: var(--text-color);
+  position: absolute;
+  bottom: -4px;
+  right: 12px;
+}
+
+#results p.grim {
+  opacity: 0.7;
+  padding: 10px;
+}
+
+#results p.no-results {
+  background: var(--examples-background);
+  height: 120px;
+  padding: 20px;
+  margin: 0;
+  text-align: center;
+}
+
+#results li {
+  padding: 5px;
+  cursor: pointer;
+}
+
+#results li + li {
+  margin: 0;
+}
+
+#results li.selected {
+  background: var(--button-background);
+}
+
+#results li small {
+  opacity: 0.75;
+  margin-left: 0.5em;
+  float: right;
+  text-transform: uppercase;
+}
+#view {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+#view .history li {
+  cursor: pointer;
+}
+
+#view:not(:empty) {
+  border-top: 1px solid var(--examples-output-background);
+  padding-top: 10px;
+}
+
+form:not(.password-less) .no-password {
+  display: none;
+}
+
+form.password-less .has-password {
+  display: none;
+}
+
+.pull-right {
+  float: right;
+  margin-left: 10px;
+}
+
+.login-form {
+  padding: 0 10px;
+}
+
+.kite-status-panel .btn,
+.kite-status-panel a.btn,
+.install .btn,
+.install button,
+.login-form .btn,
+.login-form button {
+  background-color: var(--open-web-link-background);
+  color: var(--text-color);
+  padding: 0.25em 0.5em;
+  border-radius: 0.25em;
+  font-size: 1.1em;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  box-sizing: border-box;
+  display: inline-block;
+}
+
+.kite-status-panel .btn.primary,
+.install .btn.primary,
+.login-form .btn.primary,
+.login-form button.primary {
+  background-color: var(--color-blue);
+  color: var(--text-color-highlight);
+  padding: 0.25em 0.5em;
+  border-radius: 0.25em;
+  font-size: 1.1em;
+  border: none;
+}
+
+.kite-status-panel .btn.warning,
+.install .btn.warning,
+.login-form .btn.warning,
+.login-form button.warning {
+  background-color: var(--color-orange);
+  color: var(--text-color-highlight);
+  padding: 0.25em 0.5em;
+  border-radius: 0.25em;
+  font-size: 1.1em;
+  border: none;
+}
+
+.kite-status-panel .btn.error,
+.install .btn.error,
+.login-form .btn.error,
+.login-form button.error {
+  background-color: var(--color-red);
+  color: var(--text-color-highlight);
+  padding: 0.25em 0.5em;
+  border-radius: 0.25em;
+  font-size: 1.1em;
+  border: none;
+}
+
+.kite-status-panel .btn.purple,
+.install .btn.purple,
+.login-form .btn.purple,
+.login-form button.purple {
+  background-color: var(--color-purple);
+  color: var(--text-color-highlight);
+  padding: 0.25em 0.5em;
+  border-radius: 0.25em;
+  font-size: 1.1em;
+  border: none;
+}
+
+.kite-status-panel .btn {
+  margin-bottom: 5px;
+}
+
+.kite-status-panel a.btn[href]:hover,
+.kite-status-panel a.btn[href]:focus,
+.kite-status-panel a.btn[href]:active,
+.install a.btn[href]:hover,
+.install a.btn[href]:focus,
+.install a.btn[href]:active,
+.login-form a.btn[href]:hover,
+.login-form a.btn[href]:focus,
+.login-form a.btn[href]:active {
+  color: var(--text-color-highlight);
+}
+
+.kite-status-panel {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.kite-status-panel .enterprise,
+.kite-status-panel .pro {
+  height: 16px;
+}
+.kite-status-panel .pro,
+.kite-status-panel .enterprise,
+.kite-status-panel .logo {
+  margin-right: 5px;
+  display: inline-block
+}
+.kite-status-panel .pro svg,
+.kite-status-panel .enterprise svg,
+.kite-status-panel .logo svg {
+  height: 16px;
+  width: auto;
+}
+.kite-status-panel .pro svg polygon,
+.kite-status-panel .pro svg path,
+.kite-status-panel .enterprise svg polygon,
+.kite-status-panel .enterprise svg path,
+.kite-status-panel .logo svg polygon,
+.kite-status-panel .logo svg path {
+  fill: var(--text-color-highlight);
+}
+
+.kite-status-panel .split-line {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.kite-status-panel .split-line > * {
+  flex: 1 1 0;
+}
+.kite-status-panel .split-line > :last-child {
+  text-align: right;
+  padding-left: 10px;
+}
+.kite-status-panel .split-line > :last-child:empty {
+  display: none;
+}
+.kite-status-panel .split-line + .split-line {
+  margin-top: 5px;
+}
+.kite-status-panel .split-line .name {
+  padding-left: 10px;
+  text-indent: -10px;
+}
+.kite-status-panel .split-line > * {
+  white-space: nowrap;
+}
+.kite-status-panel .links {
+  list-style: none;
+}
+.kite-status-panel .links:nth-child(1n+2) {
+  padding: 10px 5px 0;
+  border-top: 1px solid var(--border-color);
+}
+.kite-status-panel .links li + li {
+  margin-top: 5px;
+}
+.kite-status-panel .links a:not(.btn),
+.kite-status-panel .links a:not(.btn):active,
+.kite-status-panel .links a:not(.btn):visited,
+.kite-status-panel .links a:not(.btn):focus {
+  color: var(--text-color-highlight);
+  font-size: 1em;
+}
+.kite-status-panel .links a:not(.btn).kite-gift,
+.kite-status-panel .links a:not(.btn).kite-gift:active,
+.kite-status-panel .links a:not(.btn).kite-gift:visited,
+.kite-status-panel .links a:not(.btn).kite-gift:focus {
+  color: var(--color-red);
+}
+.kite-status-panel .status {
+  text-align: right;
+  padding: 5px 5px 0;
+}
+.kite-status-panel .status > div {
+  margin-bottom: 5px;
+  white-space: nowrap;
+}
+.kite-status-panel .status > div + .btn {
+  margin-top: 5px;
+}
+.kite-status-panel .status .btn + .btn {
+  margin-top: 10px;
+}
+.kite-status-panel .status:nth-child(1n+2) {
+  padding: 10px 5px 0;
+  border-top: 1px solid var(--border-color);
+}
+.kite-status-panel .status .dot {
+  font-size: 2.4em;
+  line-height: 0.5em;
+  vertical-align: bottom;
+  display: inline-block;
+}
+.kite-status-panel .status .ready .dot {
+  color: var(--color-blue);
+}
+.kite-status-panel a:not(.btn),
+.kite-status-panel a:not(.btn):active,
+.kite-status-panel a:not(.btn):visited,
+.kite-status-panel a:not(.btn):focus {
+  color: var(--color-blue);
+  text-decoration: none;
+}
+.kite-status-panel a:not(.btn):hover,
+.kite-status-panel a:not(.btn):active:hover,
+.kite-status-panel a:not(.btn):visited:hover,
+.kite-status-panel a:not(.btn):focus:hover {
+  text-decoration: underline;
+}
+.kite-status-panel .kite-warning-box {
+  background: rgba(255, 99, 71, 0.2);
+  color: var(--text-color-highlight);
+  padding: 5px 10px;
+  margin: 10px 0;
+  border-radius: 0.3em;
+}
+.kite-status-panel .kite-warning-box .actions {
+  display: block;
+  text-align: right;
+  margin-top: 10px;
+}
+.kite-status-panel .kite-warning-box a,
+.kite-status-panel .kite-warning-box a:active,
+.kite-status-panel .kite-warning-box a:visited,
+.kite-status-panel .kite-warning-box a:focus {
+  color: var(--text-color-highlight);
+  text-decoration: underline;
+}
+
+.kite-status-panel .kite-info-box {
+  background: rgba(100, 148, 237, 0.2);
+  color: var(--text-color-highlight);
+  padding: 5px 10px;
+  margin: 10px 0;
+  border-radius: 0.3em;
+}
+.kite-status-panel .kite-info-box .actions {
+  display: block;
+  text-align: right;
+  margin-top: 10px;
+}
+.kite-status-panel .kite-info-box a,
+.kite-status-panel .kite-info-box a:active,
+.kite-status-panel .kite-info-box a:visited,
+.kite-status-panel .kite-info-box a:focus {
+  color: var(--text-color-highlight);
+  text-decoration: underline;
+}
+
+.kite-status-panel .no-account a:not(.btn).account-dependent {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.install {
+  position: relative;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.install .logo {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+.install input {
+  margin-bottom: 10px;
+}
+.install .secondary-actions {
+  float: right;
+}
+
+.secondary-actions * {
+  margin-left: 10px;
+}
+
+.install header {
+  height: 2em;
+  padding: 0 30px 0 0;
+}
+
+.install progress {
+  width: 100%;
+  height: 8px;
+  margin: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+}
+
+.install progress::-webkit-progress-bar {
+  background: var(--examples-output-background);
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset
+}
+.install progress::-webkit-progress-value {
+  background: var(--color-blue);
+  border-radius: 4px;
+}
+
+.install .progress-indicators span {
+  font-size: 0.8em;
+}
+
+.install .progress-indicators svg path {
+  fill: var(--color-blue);
+}
+
+.install .content {
+  color: var(--text-color-highlight);
+}
+
+.install .disabled a:not(.no-disable),
+.install .disabled button:not(.no-disable) {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.install .actions {
+  margin-top: 20px;
+}
+
+.install .actions .secondary-cta {
+  float: right;
+  margin-top: 5px;
+}
+
+#view h4 {
+  text-transform: uppercase;
+  color: var(--text-color-highlight);
+}
+
+.install .status {
+  margin: 0 0 20px;
+}
+
+.vscode-dark {
+  --color-green: #73c990;
+  --color-blue: #6494ed;
+  --color-red: #BF616A;
+  --color-orange: #D08460;
+  --color-purple: #9B92FB;
+  --link-color: #6494ed;
+  --text-color: #9ba5b6;
+  --text-color-highlight: #d6dae1;
+  --button-background: rgba(255, 255, 255, 0.1);
+  --button-color: #9ba5b6;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --usage-bullet-color: rgba(255, 255, 255, 0.2);
+  --examples-background: rgba(255, 255, 255, 0.05);
+  --examples-output-background: rgba(0, 0, 0, 0.1);
+  --open-web-link-background: rgba(255, 255, 255, 0.2);
+  --open-web-link-color: #9ba5b6;
+  --sticky-header-hover-background: #2b3445;
+
+  /* Error Rescue */
+  --line-del-background: rgba(120, 40, 40, .75);
+  --line-ins-background: rgba(40, 110, 40, .75);
+  --line-number-background: rgba(0, 0, 0, .25);
+  --subtle-border-color: rgba(255, 255, 255, 0.15);
+  --subtle-inverse-border-color: rgba(0, 0, 0, 0.1);
+  --header-background: rgba(255, 255, 255, 0.05);
+  --messages-text: black;
+}
+
+
+.vscode-high-contrast {
+  --color-green: lightgreen;
+  --color-blue: cyan;
+  --color-red: red;
+  --color-orange: orange;
+  --color-purple: violet;
+  --link-color: cyan;
+  --text-color: white;
+  --text-color-highlight: white;
+  --button-background: white;
+  --button-color: black;
+  --border-color: white;
+  --usage-bullet-color: white;
+  --examples-background: black;
+  --examples-output-background: black;
+  --open-web-link-background: white;
+  --open-web-link-color: black;
+
+  /* Error Rescue */
+  --line-del-background: black;
+  --line-ins-background: black;
+  --line-number-background: black;
+  --subtle-border-color: white;
+  --subtle-inverse-border-color: black;
+  --header-background: black;
+  --messages-text: black;
+}
+.vscode-light {
+  --color-green: #73c990;
+  --color-blue: #6494ed;
+  --color-red: #BF616A;
+  --color-orange: #D08460;
+  --color-purple: #9B92FB;
+  --link-color: #6494ed;
+  --text-color: #333333;
+  --text-color-highlight: #000000;
+  --button-background: rgba(0, 0, 0, 0.1);
+  --button-color: #333333;
+  --border-color: rgba(0,0,0,0.1);
+  --usage-bullet-color: rgba(0, 0, 0, 0.2);
+  --examples-background: rgba(0, 0, 0, 0.05);
+  --examples-output-background: rgba(0, 0, 0, 0.1);
+  --open-web-link-background: rgba(0, 0, 0, 0.2);
+  --open-web-link-color: #333333;
+
+  /* Error Rescue */
+  --line-del-background: rgba(250, 180, 180, .8);
+  --line-ins-background: rgba(190, 240, 190, .8);
+  --line-number-background: rgba(255, 255, 255, .5);
+  --subtle-border-color: rgba(0, 0, 0, 0.1);
+  --subtle-inverse-border-color: rgba(255, 255, 255, 0.15);
+  --header-background: rgba(0, 0, 0, 0.05);
+  --messages-text: rgb(180, 180, 180);
+}

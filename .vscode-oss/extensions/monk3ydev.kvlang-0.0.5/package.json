@@ -1,0 +1,125 @@
+{
+	"name": "kvlang",
+	"displayName": "KvLang",
+	"description": "Support for the KvLang language of Kivy: Cross-platform Python Framework for NUI Development",
+	"version": "0.0.5",
+	"publisher": "Monk3yDev",
+	"license": "MIT",
+	"engines": {
+		"vscode": "^1.34.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Monk3yDev/kvlang-vscode"
+	},
+	"bugs": {
+		"url": "https://github.com/Monk3yDev/kvlang-vscode/issues"
+	},
+	"icon": "icon.png",
+	"keywords": [
+		"python",
+		"kivy",
+		"kvlang",
+		"kv",
+		"linter"
+	],
+	"categories": [
+		"Programming Languages",
+		"Snippets",
+		"Other",
+		"Linters"
+	],
+	"contributes": {
+		"configuration": {
+			"type": "object",
+			"title": "KvLang configuration",
+			"properties": {
+				"kvlang.pythonPath": {
+					"scope": "resource",
+					"type": "string",
+					"default": "python",
+					"description": "Python path which will be used by KvLang Language Server."
+				}
+			}
+		},
+		"languages": [
+			{
+				"id": "kv",
+				"aliases": [
+					"KvLang",
+					"kv"
+				],
+				"extensions": [
+					".kv"
+				],
+				"configuration": "./language-configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "kv",
+				"scopeName": "source.kv",
+				"path": "./syntaxes/kv.tmLanguage.json"
+			},
+			{
+				"injectTo": [
+					"source.python"
+				],
+				"scopeName": "kv-string.injection",
+				"path": "./syntaxes/embedded-grammars-kv.json",
+				"embeddedLanguages": {
+					"meta.embedded.source.kv": "kv"
+				}
+			}
+		],
+		"snippets": [
+			{
+				"language": "kv",
+				"path": "./snippets/snippets.json"
+			},
+			{
+				"language": "kv",
+				"path": "./snippets/uix.layout.json"
+			},
+			{
+				"language": "kv",
+				"path": "./snippets/uix.ux.json"
+			},
+			{
+				"language": "kv",
+				"path": "./snippets/uix.complex.ux.json"
+			},
+			{
+				"language": "python",
+				"path": "./snippets/embedded.kvlang.json"
+			}
+		]
+	},
+	"activationEvents": [
+		"onLanguage:kv",
+		"onLanguage:python"
+	],
+	"main": "./client/out/src/extension",
+	"scripts": {
+		"postinstall": "cd client && npm install && node ./node_modules/vscode/bin/install && cd ..",
+		"compile": "tsc -p client/tsconfig.json",
+		"vscode:prepackage": "tsc -p client/tsconfig.json",
+		"vscode:prepublish": "tsc -p client/tsconfig.json",
+		"compile:client": "tsc -p client/tsconfig.json",
+		"watch:client": "tsc -w -p client/tsconfig.json"
+	},
+	"devDependencies": {
+		"@types/node": "11.13.17",
+		"typescript": "^3.5.3",
+		"vscode": "^1.1.35"
+	},
+	"dependencies": {
+		"vscode-languageclient": "^5.2.1",
+		"vscode-languageserver-protocol": "^3.14.1"
+	},
+	"__metadata": {
+		"id": "41171db1-e0ed-4636-a965-9c7c14f5deca",
+		"publisherId": "82b72968-24f9-4150-a460-2de91eae0daa",
+		"publisherDisplayName": "Monk3yDev"
+	}
+}
