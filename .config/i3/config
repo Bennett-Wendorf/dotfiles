@@ -22,6 +22,12 @@ font pango:monospace 11
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
+# Run the autorandr -c command when i3 loads so the proper display configuration is used
+exec --no-startup-id autorandr -c
+
+# Set wallpaper using feh
+exec --no-startup-id ~/.fehbg
+
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
