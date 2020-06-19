@@ -11,8 +11,13 @@
 
 set $mod Mod4
 
+# Set up gaps
+gaps inner 10
+gaps outer 5
+
 # Set no title bar on windows
 new_window pixel 2
+for_window [class="^.*"] border pixel 2
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -27,6 +32,9 @@ exec --no-startup-id autorandr -c
 
 # Set wallpaper using feh
 exec --no-startup-id ~/.fehbg
+
+# Start picom for transparency
+exec_always --no-startup-id picom -b
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
