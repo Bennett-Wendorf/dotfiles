@@ -8,16 +8,15 @@ primary = #88C0D0
 secondary = #A3BE8C
 alert = #BF616A
 
-[bar/test]
-monitor = eDP1
-bottom = true
-width = 25%
-height = 35
-radius = 20.0
+[bar/monitor]
+monitor = DVI-I-1-1
+width = 100%
+height = 18
+radius = 6.0
 fixed-center = true
-offset-x = 50%
+;offset-x = 50%
 
-background = #4a4948
+background = ${colors.background}
 foreground = ${colors.foreground}
 
 line-size = 3
@@ -27,25 +26,27 @@ border-size = 4
 border-color = #00000000
 
 padding-left = 0
-padding-right = 2
+padding-right = 1
 
 module-margin-left = 1
-module-margin-right = 2
+module-margin-right = 1
 
-font-0 = Hack:size=10;0
+font-0 = Hack:size=8;0
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pizelsize=10;1
+font-2 = siji:pixelsize=8;1
 
+modules-left = powermenu
 modules-center = i3
+modules-right = battery date
 
 cursor-click = pointer
 
 [bar/top]
 ;monitor = ${env:MONITOR:HDMI-1}
 ;monitor = ${eng:MONITOR:DP1}
-monitor = eDP1
+monitor = eDP-1
 width = 100%
-height = 27
+height = 25
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 6.0
@@ -68,11 +69,11 @@ module-margin-right = 2
 
 font-0 = Hack:size=10;0
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1
+font-2 = siji:pixelsize=20;1
 
-modules-left = powermenu wlan eth memory cpu temperature mpd
+modules-left = powermenu memory cpu temperature
 modules-center = i3
-modules-right = xbacklight pulseaudio battery date
+modules-right = mpd battery date
 
 tray-position = right
 tray-padding = 2
@@ -155,23 +156,6 @@ icon-next = 
 label-song-maxlen = 25
 label-song-ellipsis = true
 
-[module/xbacklight]
-type = internal/xbacklight
-
-format = <label> <bar>
-label = Bright
-
-bar-width = 10
-bar-indicator = |
-bar-indicator-foreground = #fff
-bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = #88C0D0
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
-
 [module/cpu]
 type = internal/cpu
 interval = 2
@@ -242,33 +226,6 @@ format-underline = #0a6cf5
 
 label = %date% %time%
 
-[module/pulseaudio]
-type = internal/pulseaudio
-
-format-volume = <label-volume> <bar-volume>
-label-volume = Vol %percentage%%
-label-volume-foreground = ${root.foreground}
-
-label-muted = 🔇 muted
-label-muted-foreground = #666
-
-bar-volume-width = 10
-bar-volume-foreground-0 = #88C0D0
-bar-volume-foreground-1 = #88C0D0
-bar-volume-foreground-2 = #88C0D0
-bar-volume-foreground-3 = #88C0D0
-bar-volume-foreground-4 = #88C0D0
-bar-volume-foreground-5 = #EBCB8B
-bar-volume-foreground-6 = #BF616A
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
-
 [module/battery]
 type = internal/battery
 battery = BAT0
@@ -304,7 +261,8 @@ animation-discharging-framerate = 750
 
 [module/temperature]
 type = internal/temperature
-thermal-zone = 0
+; 0 is acpitz, 1 is INT3400 Thermal, 2 is TMEM/SODIMM, 3 is TSKN, 4 is pch_skylake, 5 is B0D4, 6 is iwlwifi_1, 7 is x86_pkg_temp
+thermal-zone = 7
 warn-temperature = 60
 
 format = <ramp> <label>
