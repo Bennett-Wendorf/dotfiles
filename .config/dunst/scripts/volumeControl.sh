@@ -14,13 +14,13 @@ function send_notification {
 			echo  "Max Volume: "$max_volume
 			icon="./symbolic/audio-volume-high-symbolic"
 			bar=$($scripts_folder/getProgressBar.sh $bar_length $current_volume $max_volume)
-			# Send the notification
-			dunstify -i "$icon" -r 66666 -u control "$bar"
+			# Send the notification with custom appname for styling via dunst rules
+			dunstify -i "$icon" -r 66666 -a "brightness/volume_control" "$bar"
 			;;
 		mute)
 			icon="./symbolic/audio-volume-muted-symbolic"
-			# Send the notification
-			dunstify -i "$icon" -r 66666 -u control "Muted"
+			# Send the notification with custom appname for styling via dunst rules
+			dunstify -i "$icon" -r 66666 -a "brightness/volume_control" "Muted"
 			;;
 	esac
 }

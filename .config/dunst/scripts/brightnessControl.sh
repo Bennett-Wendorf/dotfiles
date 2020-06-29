@@ -8,8 +8,8 @@ function send_notification {
 	icon="./symbolic/display-brightness-medium-symbolic"
 	scripts_folder=$(dirname $(realpath $0))
 	bar=$($scripts_folder/getProgressBar.sh 20 $current_brightness $max_brightness)
-	# Send the notification
-	dunstify -i "$icon" -r 55555 -u control "$bar"	
+	# Send the notification with custom app name for styling via dunst rules
+	dunstify -i "$icon" -r 55555 -a "brightness/volume_control" "$bar"	
 }
 
 case $1 in
