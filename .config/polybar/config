@@ -262,7 +262,7 @@ animation-discharging-framerate = 750
 [module/temperature]
 type = internal/temperature
 ; 0 is acpitz, 1 is INT3400 Thermal, 2 is TMEM/SODIMM, 3 is TSKN, 4 is pch_skylake, 5 is B0D4, 6 is iwlwifi_1, 7 is x86_pkg_temp
-thermal-zone = 7
+thermal-zone = 6
 warn-temperature = 60
 
 format = <ramp> <label>
