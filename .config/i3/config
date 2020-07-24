@@ -19,6 +19,11 @@ gaps outer 5
 new_window pixel 2
 for_window [class="^.*"] border pixel 2
 
+# Set color of window highlight for focused windows
+# class				border	backgr.	text	indicator	child_border	
+#client.focused		#4c7899	#285577	#ffffff	#2e9ef4		#285577
+client.focused		#60d0f0	#222222	#ffffff	#60d0f0		#60d0f0
+
 # Set some windows to be always floating
 for_window [class="MEGAsync"] floating enable
 
@@ -30,20 +35,27 @@ font pango:monospace 11
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
+# Generate pywal colorscheme
+exec --no-startup-id wal -R -n
+exec --no-startup-id pacwall -W
+
 # Run the autorandr -c command when i3 loads so the proper display configuration is used
 exec --no-startup-id autorandr -c
 
 # Set wallpaper using feh
-exec --no-startup-id ~/.fehbg
+#exec --no-startup-id ~/.fehbg
 
 # Start picom for transparency
-exec_always --no-startup-id picom -b
+exec --no-startup-id picom -b
 
 # Start dunst for notifications
-exec_always --no-startup-id dunst
+exec --no-startup-id dunst
 
 # Start megasync
 exec_always --no-startup-id megasync
+
+# Start screenrotator
+exec --no-startup-id screenrotator
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -83,29 +95,17 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-#bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec dmenu_run -i -fn "Hack-10" -nb "#2E3440" -nf "#88C0D0" -sb "#88C0D0" -sf "#2E3440"
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-
-# change focus
-#bindsym $mod+j focus left
-#bindsym $mod+k focus down
-#bindsym $mod+l focus up
-#bindsym $mod+semicolon focus right
+#bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
-
-# move focused window
-#bindsym $mod+Shift+j move left
-#bindsym $mod+Shift+k move down
-#bindsym $mod+Shift+l move up
-#bindsym $mod+Shift+semicolon move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -186,7 +186,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # Locks with i3lock-color
 bindsym $mod+l exec ~/.config/i3lock/i3lock.sh
 
-# Make the currently focised window a scratchpad
+# Make the currently focused window a scratchpad
 bindsym $mod+Shift+minus move scratchpad
 
 # Show the first scratchpad winodw
