@@ -32,8 +32,9 @@ module-margin-left = 1
 module-margin-right = 1
 
 font-0 = Hack:size=8;0
+;font-1 = "Font Awesome 5 Free"
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=8;1
+font-2 = "Wuncon Siji:pixelsize=8;1"
 
 modules-left = powermenu
 modules-center = i3
@@ -71,11 +72,13 @@ font-2 = siji:pixelsize=20;1
 
 modules-left = powermenu memory cpu temperature
 modules-center = i3
-modules-right = mpd battery date
+modules-right = previous playpause next battery date
 
 tray-position = right
 tray-padding = 2
 ;tray-background = #0063ff00
+
+enable-ipc = true
 
 wm-restack = i3
 
@@ -153,6 +156,25 @@ icon-next = 
 
 label-song-maxlen = 25
 label-song-ellipsis = true
+
+[module/playpause]
+type = custom/script
+exec = ~/scripts/media_controls/playpause.sh
+interval = 2
+click-left = ~/scripts/media_controls/playpause.sh -t
+
+[module/previous]
+type = custom/script
+exec = echo ""
+exec-if = playerctl status
+click-left = playerctl previous
+
+[module/next]
+type = custom/script
+exec = echo ""
+exec-if = playerctl status
+;exec-if = [ $(playerctl status) != "No players found" ]
+click-left = playerctl next
 
 [module/cpu]
 type = internal/cpu
