@@ -22,8 +22,8 @@ for_window [class="^.*"] border pixel 2
 # Set colors from Xresouces
 # Change 'color7' and 'color0' to whatever colors you want i3 to use from the generated scheme
 # NOTE: The hex codes listed after the resource reference are the colors that i3 will use if it fails to get colors from Xresouces
-set_from_resource $fg i3wm.color7 #ffffff
-set_from_resource $bg i3wm.color0 #000000
+set_from_resource $fg color7 #ffffff
+set_from_resource $bg color0 #000000
 
 # Set color of window highlight for focused windows
 # class				border	backgr.	text	indicator	child_border	
@@ -52,6 +52,13 @@ exec --no-startup-id autorandr -c
 # Start blueman applet
 exec --no-startup-id blueman-applet
 
+# Start copyq
+exec --no-startup-id copyq
+
+# Start flameshot
+exec --no-startup-id flameshot
+bindsym $mod+c exec --no-startup-id flameshot gui
+
 # Set wallpaper using feh
 #exec --no-startup-id ~/.fehbg
 
@@ -66,6 +73,10 @@ exec_always --no-startup-id megasync
 
 # Start screenrotator
 exec --no-startup-id screenrotator
+
+# Start protonvpn tray
+exec --no-startup-id protonvpn
+exec --no-startup-id protonvpn-tray
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
