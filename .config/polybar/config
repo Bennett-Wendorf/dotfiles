@@ -71,7 +71,7 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=20;1
 
 modules-left = powermenu memory cpu temperature
-modules-center = i3 xworkspaces
+modules-center = i3
 modules-right = previous playpause next battery date
 
 tray-position = right

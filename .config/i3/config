@@ -95,7 +95,7 @@ exec "xidlehook --not-when-fullscreen --not-when-audio --timer 1800 '~/.config/i
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-#Start polybar
+# Start polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Use pactl to adjust volume in PulseAudio.
@@ -122,6 +122,9 @@ bindsym $mod+Shift+q kill
 #bindsym $mod+d exec dmenu_run -i -fn "Hack-10" -nb "#2E3440" -nf "#88C0D0" -sb "#88C0D0" -sf "#2E3440"
 bindsym $mod+d exec dmenu_run -i -fn "Hack-10" -nb "$bg" -nf "$fg" -sb "$fg" -sf "$bg"
 
+# Run bashtop in a new terminator window
+bindsym $mod+b exec terminator -e bashtop
+
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -144,6 +147,11 @@ bindsym $mod+h split h
 
 # split in vertical orientation
 bindsym $mod+v split v
+
+# toggle the split on every new window
+bindsym $mod+m split toggle
+# for_window [class="^.*"] split toggle
+exec --no-startup-id ~/alternating_layouts.py
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -208,6 +216,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# bindsym $mod+Shift+e exec "i3-msg exit"
 
 # Locks with i3lock-color
 bindsym $mod+l exec ~/.config/i3lock/i3lock.sh
