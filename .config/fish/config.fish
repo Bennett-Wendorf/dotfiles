@@ -9,6 +9,7 @@ end
 export GEM_HOME="$HOME/ruby_gems"
 export PATH="$HOME/ruby_gems/bin:$PATH"
 export PATH="$HOME/.gem/ruby/2.7.0/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 # Import colorscheme from 'wal' asynchronously
 # &   # Run the process in the background

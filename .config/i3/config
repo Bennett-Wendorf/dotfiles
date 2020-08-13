@@ -10,6 +10,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+set $radius 15
 
 # Set up gaps
 gaps inner 10
@@ -18,6 +19,8 @@ gaps outer 5
 # Set no title bar on windows
 new_window pixel 2
 for_window [class="^.*"] border pixel 2
+
+# border_radius $radius
 
 # Set colors from Xresouces
 # Change 'color7' and 'color0' to whatever colors you want i3 to use from the generated scheme
@@ -167,7 +170,7 @@ bindsym $mod+a focus parent
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
-set $ws4 "4"
+set $ws4 "4" 
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
