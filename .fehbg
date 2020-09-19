@@ -1,3 +1,2 @@
 #!/bin/sh
-#feh --no-fehbg --bg-scale '/home/bennett/.local/share/wallpapers/Desert Blue.jpg' 
-feh --no-fehbg --bg-scale '/home/bennett/pacwall.png'
+feh --no-fehbg --bg-fill '/home/bennett/Desktop/pics/jonatan-pie-3l3RwQdHRHg-unsplash.jpg' 

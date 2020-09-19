@@ -11,7 +11,7 @@ alert = #BF616A
 [bar/monitor]
 monitor = DP2
 width = 100%
-height = 18
+height = 25
 radius = 6.0
 fixed-center = true
 ;offset-x = 50%
@@ -20,7 +20,7 @@ background = ${colors.background}
 foreground = ${colors.foreground}
 
 line-size = 3
-lone-color = #f00
+line-color = #f00
 
 border-size = 4
 border-color = #00000000
@@ -31,13 +31,12 @@ padding-right = 1
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = Hack:size=8;0
-;font-1 = "Font Awesome 5 Free"
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = "Wuncon Siji:pixelsize=8;1"
+font-0= Hack:size=12
+font-1= Font Awesome 5 Free Solid:style=Solid:size=12;-1
+font-2= Font Awesome 5 Brands:style=Regular:size=12;-1
 
 modules-left = powermenu
-modules-center = xworkspaces
+modules-center = i3
 modules-right = battery date
 
 cursor-click = pointer
@@ -66,9 +65,10 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = Hack:size=10;0
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=20;1
+;font-0 = Siji:style=Regular:size=18;0
+font-0= Hack:size=12
+font-1= Font Awesome 5 Free Solid:style=Solid:size=12;-1
+font-2= Font Awesome 5 Brands:style=Regular:size=12;-1
 
 modules-left = powermenu memory cpu temperature
 modules-center = i3
@@ -80,7 +80,7 @@ tray-padding = 2
 
 enable-ipc = true
 
-wm-restack = i3
+;wm-restack = i3
 
 ;override-redirect = true
 
@@ -112,6 +112,8 @@ format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
 
+strip-wsnumbers = true
+
 ; Only show workspaces on the same output as the bar
 ;pin-workspaces = true
 
@@ -120,23 +122,23 @@ label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
-label-focused = %index%
+label-focused = %name%
 label-focused-background = ${colors.background-alt}
 label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %index%
+label-unfocused = %name%
 label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %index%
+label-visible = %name%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %index%
+label-urgent = %name%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
@@ -207,31 +209,36 @@ click-left = ~/scripts/media_controls/playpause.sh -t
 
 [module/previous]
 type = custom/script
-exec = echo ""
+;exec = echo ""
+exec = echo ""
 exec-if = playerctl status
 click-left = playerctl previous
 
 [module/next]
 type = custom/script
-exec = echo ""
+;exec = echo ""
+exec = echo ""
 exec-if = playerctl status
-;exec-if = [ $(playerctl status) != "No players found" ]
 click-left = playerctl next
 
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
+;format-prefix = " "
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground}
-format-underline = #A3BE8c
+format-underline = ${xrdb:color5}
+;#A3BE8c
 label = CPU %percentage:2%%
 
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
+;format-prefix = " "
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground}
-format-underline = #4bffdc
+format-underline = ${xrdb:color3}
+;#4bffdc
 label = Mem %percentage_used%%
 
 [module/wlan]
@@ -277,14 +284,15 @@ type = internal/date
 interval = 5
 
 date =
-date-alt = " %Y-%m-%d"
+date-alt = "%m-%d-%Y"
 
-time = %I:%M %p
-time-alt = %H:%M:%S
+time = "%I:%M %p"
+time-alt = "%I:%M:%S %p"
 
-format-prefix = 
+;format-prefix = 
 format-prefix-foreground = ${colors.foreground}
-format-underline = #0a6cf5
+format-underline = ${xrdb:color7}
+;#0a6cf5
 
 label = %date% %time%
 
@@ -295,30 +303,44 @@ adapter = AC
 full-at = 98
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
+format-charging-underline = #88C0D0
 
 format-discharging = <animation-discharging> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
+format-discharging-underline = #EBCB8B
 
-format-full-prefix = " "
+format-full-prefix = " "
+;format-full-prefix = " "
 format-full-prefix-foreground = #A3BE8C
 format-full-underline = ${self.format-charging-underline}
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
+;ramp-capacity-0 = 
+;ramp-capacity-1 = 
+;ramp-capacity-2 = 
 ramp-capacity-foreground = ${colors.foreground-alt}
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-foreground = #88C0D0
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+;animation-charging-0 = 
+;animation-charging-1 = 
+;animation-charging-2 = 
+animation-charging-foreground = ${self.format-charging-underline}
 animation-charging-framerate = 750
 
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
-animation-discharging-foreground = #EBCB8B
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-3 = 
+animation-discharging-4 = 
+;animation-discharging-0 = 
+;animation-discharging-1 = 
+;animation-discharging-2 = 
+animation-discharging-foreground = ${self.format-discharging-underline}
 animation-discharging-framerate = 750
 
 [module/temperature]
@@ -328,17 +350,20 @@ thermal-zone = 6
 warn-temperature = 60
 
 format = <ramp> <label>
-format-underline = ${xrdb:color7}
+format-underline = ${xrdb:color6}
 format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
+format-warn-underline = ${self.label-warn-foreground}
 
 label = %temperature-c%
 label-warn = %temperature-c%
-label-warn-foreground = ${colors.secondary}
+label-warn-foreground = ${xrdb:color5}
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+;ramp-0 = 
+;ramp-1 = 
+;ramp-2 = 
 ramp-foreground = ${colors.foreground}
 
 [module/powermenu]
@@ -348,10 +373,12 @@ expand-right = false
 
 format-spacing = 1
 
-label-open = 
-label-open-foreground = ${colors.secondary}
-label-close =  cancel
-label-close-foreground = ${colors.secondary}
+label-open = " "
+;label-open = 
+label-open-foreground = ${xrdb:color7}
+label-close =  cancel
+;label-close =  cancel
+label-close-foreground = ${xrdb:color7}
 label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
 
