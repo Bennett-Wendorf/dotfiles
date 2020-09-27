@@ -1,10 +1,13 @@
-alias dotfiles='/usr/bin/git --git-dir=/home/bennett/dotfiles --work-tree=/home/bennett'
+alias dotfiles='/usr/bin/git --git-dir=/home/bennett/.dotfiles --work-tree=/home/bennett'
 alias clock='watch -n .5 "lscpu | grep MHz"'
 alias batt="upower -i /org/freedesktop/UPower/devices/battery_BAT0"
 
 function fish_greeting
 	fortune -a computers
 end
+
+export QT_QPA_PLATFORMTHEME=qt5ct
+export XDG_DATA_DIRS=/usr/share/:/usr/local/share
 
 # Install Ruby Gems to ~/ruby_gems
 export GEM_HOME="$HOME/ruby_gems"

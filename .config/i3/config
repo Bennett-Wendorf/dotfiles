@@ -53,7 +53,7 @@ exec --no-startup-id wal -R
 #exec --no-startup-id pacwall -W
 
 # Run the autorandr -c command when i3 loads so the proper display configuration is used
-exec --no-startup-id autorandr -c
+exec_always --no-startup-id autorandr -c
 
 # Start blueman applet
 exec --no-startup-id blueman-applet
@@ -69,7 +69,7 @@ bindsym $mod+c exec --no-startup-id flameshot gui
 #exec --no-startup-id ~/.fehbg
 
 # Start picom for transparency
-exec --no-startup-id picom -b
+exec --no-startup-id picom -b -i 1 -m 1
 
 # Start dunst for notifications
 exec --no-startup-id dunst
