@@ -53,7 +53,7 @@ exec --no-startup-id wal -R
 #exec --no-startup-id pacwall -W
 
 # Run the autorandr -c command when i3 loads so the proper display configuration is used
-exec_always --no-startup-id autorandr -c
+exec --no-startup-id autorandr -c
 
 # Start blueman applet
 exec --no-startup-id blueman-applet
@@ -161,7 +161,7 @@ bindsym $mod+v split v
 # toggle the split on every new window
 bindsym $mod+m split toggle
 # for_window [class="^.*"] split toggle
-exec_always ~/alternating_layouts.py
+exec_always ~/scripts/alternating_layouts.py
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle

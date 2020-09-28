@@ -6,8 +6,7 @@ function fish_greeting
 	fortune -a computers
 end
 
-export QT_QPA_PLATFORMTHEME=qt5ct
-export XDG_DATA_DIRS=/usr/share/:/usr/local/share
+export QT_QPA_PLATFORMTHEME=gtk2
 
 # Install Ruby Gems to ~/ruby_gems
 export GEM_HOME="$HOME/ruby_gems"

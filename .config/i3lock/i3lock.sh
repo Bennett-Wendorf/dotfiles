@@ -4,6 +4,6 @@
 
 timecolor="FFFFFFFF"
 datecolor="FFFFFFFF"
-background="/home/bennett/Desktop/pics/rAqXlM.jpg"
+background="/home/bennett/files/Pics/rAqXlM.jpg"
 
 i3lock --clock --indicator --timecolor=$timecolor --datecolor=$datecolor --pass-media-keys --pass-screen-keys --pass-power-keys --image=$background
