@@ -161,7 +161,7 @@ bindsym $mod+v split v
 # toggle the split on every new window
 bindsym $mod+m split toggle
 # for_window [class="^.*"] split toggle
-exec_always ~/scripts/alternating_layouts.py
+exec_always ~/scripts/i3_alternating_layouts/alternating_layouts.py
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
