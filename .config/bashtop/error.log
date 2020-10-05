@@ -49,3 +49,5 @@ New instance of bashtop version: 0.9.25 Pid: 135931
 /usr/bin/bashtop: line 1353: ((: Pid: Program:       Arguments:                                  Threads: User:    Mem%       Cpu%: syntax error in expression (error token is ": Program:       Arguments:                                  Threads: User:    Mem%       Cpu%")
 /usr/bin/bashtop: line 1334: ((: Pid: Program:       Arguments:                                  Threads: User:    Mem%       Cpu%: syntax error in expression (error token is ": Program:       Arguments:                                  Threads: User:    Mem%       Cpu%")
 /usr/bin/bashtop: line 3037: Pid: Program:       Arguments:                                  Threads: User:    Mem%       Cpu%: syntax error in expression (error token is ": Program:       Arguments:                                  Threads: User:    Mem%       Cpu%")
+ 
+New instance of bashtop version: 0.9.25 Pid: 232931
