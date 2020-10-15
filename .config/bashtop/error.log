@@ -53,3 +53,53 @@ New instance of bashtop version: 0.9.25 Pid: 135931
 New instance of bashtop version: 0.9.25 Pid: 232931
  
 New instance of bashtop version: 0.9.25 Pid: 4847
+/usr/bin/bashtop: line 1337: ((: 56 ksoftirqd/6    [ksoftirqd/6]                                      1 root      0.0        0.0 : syntax error in expression (error token is "ksoftirqd/6    [ksoftirqd/6]                                      1 root      0.0        0.0 ")
+/usr/bin/bashtop: line 1347: ((: 56 ksoftirqd/6    [ksoftirqd/6]                                      1 root      0.0        0.0 : syntax error in expression (error token is "ksoftirqd/6    [ksoftirqd/6]                                      1 root      0.0        0.0 ")
+/usr/bin/bashtop: line 1353: ((: 56 ksoftirqd/6    [ksoftirqd/6]                                      1 root      0.0        0.0 : syntax error in expression (error token is "ksoftirqd/6    [ksoftirqd/6]                                      1 root      0.0        0.0 ")
+/usr/bin/bashtop: line 1334: ((: 56 ksoftirqd/6    [ksoftirqd/6]                                      1 root      0.0        0.0 : syntax error in expression (error token is "ksoftirqd/6    [ksoftirqd/6]                                      1 root      0.0        0.0 ")
+/usr/bin/bashtop: line 1347: ((: 56 ksoftirqd/6    [ksoftirqd/6]                                      1 root      0.0        0.0 : syntax error in expression (error token is "ksoftirqd/6    [ksoftirqd/6]                                      1 root      0.0        0.0 ")
+/usr/bin/bashtop: line 1353: ((: 56 ksoftirqd/6    [ksoftirqd/6]                                      1 root      0.0        0.0 : syntax error in expression (error token is "ksoftirqd/6    [ksoftirqd/6]                                      1 root      0.0        0.0 ")
+/usr/bin/bashtop: line 1334: ((: 56 ksoftirqd/6    [ksoftirqd/6]                                      1 root      0.0        0.0 : syntax error in expression (error token is "ksoftirqd/6    [ksoftirqd/6]                                      1 root      0.0        0.0 ")
+/usr/bin/bashtop: line 3037: 56 ksoftirqd/6    [ksoftirqd/6]                                      1 root      0.0        0.0 : syntax error in expression (error token is "ksoftirqd/6    [ksoftirqd/6]                                      1 root      0.0        0.0 ")
+ 
+New instance of bashtop version: 0.9.25 Pid: 70970
+ 
+New instance of bashtop version: 0.9.25 Pid: 3904
+ 
+New instance of bashtop version: 0.9.25 Pid: 925
+ 
+New instance of bashtop version: 0.9.25 Pid: 4616
+ 
+New instance of bashtop version: 0.9.25 Pid: 896
+ 
+New instance of bashtop version: 0.9.25 Pid: 88428
+ 
+New instance of bashtop version: 0.9.25 Pid: 97900
+ 
+New instance of bashtop version: 0.9.25 Pid: 35638
+ 
+New instance of bashtop version: 0.9.25 Pid: 36866
+ 
+New instance of bashtop version: 0.9.25 Pid: 61338
+ 
+New instance of bashtop version: 0.9.25 Pid: 5764
+ 
+New instance of bashtop version: 0.9.25 Pid: 1085
+ 
+New instance of bashtop version: 0.9.25 Pid: 223643
+ 
+New instance of bashtop version: 0.9.25 Pid: 1466
+ 
+New instance of bashtop version: 0.9.25 Pid: 314998
+ 
+New instance of bashtop version: 0.9.25 Pid: 4662
+ 
+New instance of bashtop version: 0.9.25 Pid: 9459
+ 
+New instance of bashtop version: 0.9.25 Pid: 1109
+ 
+New instance of bashtop version: 0.9.25 Pid: 314095
+ 
+New instance of bashtop version: 0.9.25 Pid: 325023
+ 
+New instance of bashtop version: 0.9.25 Pid: 6910

@@ -76,7 +76,7 @@ modules-right = battery date
 
 tray-position = right
 tray-padding = 2
-;tray-background = #0063ff00
+tray-background = #00000000
 
 enable-ipc = true
 

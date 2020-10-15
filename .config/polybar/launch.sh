@@ -9,6 +9,6 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 #~/scripts/spotify/launchlistener.sh
 
 # Launch Polybar, using default config location ~/.config/polybar/config
-polybar top &
+polybar -r top &
 
 echo "Polybar launched..."

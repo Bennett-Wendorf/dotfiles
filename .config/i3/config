@@ -80,6 +80,9 @@ exec_always --no-startup-id megasync
 # Start screenrotator
 exec --no-startup-id screenrotator
 
+# Start touchegg for gestures
+exec --no-startup-id touchegg
+
 # Start protonvpn tray
 exec --no-startup-id protonvpn
 exec --no-startup-id protonvpn-tray
