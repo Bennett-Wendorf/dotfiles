@@ -32,18 +32,8 @@ alias gpull="git pull"
 alias gstatus="git status"
 
 # Set environment variables
-export QT_QPA_PLATFORMTHEME=qt5ct
 set --export EDITOR vim
 set --export GIT_EDITOR vim
-
-# Install Ruby Gems to ~/ruby_gems
-export GEM_HOME="$HOME/ruby_gems"
-export PATH="$HOME/ruby_gems/bin:$PATH"
-export PATH="$HOME/.gem/ruby/2.7.0/bin:$PATH"
-
-# Update PATH
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="/usr/lib/jvm/java-14-openjdk/bin:$PATH"
 
 # Import colorscheme from 'wal' asynchronously
 # &   # Run the process in the background
