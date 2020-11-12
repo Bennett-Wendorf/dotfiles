@@ -7,16 +7,17 @@ local dpi = require('beautiful').xresources.apply_dpi
 local icons = require('theme.icons')
 local TagList = require('widget.tag-list')
 local clickable_container = require('widget.material.clickable-container')
-local battery = require('widget.awesome-wm-widgets-master.battery-widget.battery')
+local battery = require('widget.battery')
+local battery_awesome = require('widget.awesome-wm-widgets-master.battery-widget.battery')
 local cal = require('widget.awesome-wm-widgets-master.calendar-widget.calendar')
 
 return function(screen, panel, action_bar_width)
   -- Clock / Calendar 24h format
-  local textclock = wibox.widget.textclock('<span font="Jetbrains Mono Bold 11">%H\n%M</span>')
+  -- local textclock = wibox.widget.textclock('<span font="Jetbrains Mono Bold 11">%H\n%M</span>')
 
   -- Clock / Calendar 12AM/PM fornat
-  -- local textclock = wibox.widget.textclock('<span font="Roboto Mono bold 11">%I\n%M</span>\n<span font="Roboto Mono bold 9">%p</span>')
-  -- textclock.forced_height = 56
+  local textclock = wibox.widget.textclock('<span font="Hack 14">%I\n%M</span>\n<span font="Hack 9">%p</span>')
+  textclock.forced_height = 120
 
   -- Add a calendar (credits to kylekewley for the original code)
   --[[local month_calendar = awful.widget.calendar_popup.month({
@@ -102,7 +103,8 @@ return function(screen, panel, action_bar_width)
       -- Right widgets
       layout = wibox.layout.fixed.vertical,
       clock_widget,
-      battery(),
+      battery,
+      -- battery(),
       wibox.container.margin(systray, dpi(10), dpi(10)),
       --require('widget.package-updater'),
       --require('widget.wifi'),

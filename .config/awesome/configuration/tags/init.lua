@@ -17,8 +17,8 @@ local tags = {
     screen = 1
   },
   {
-    icon = icons.social,
-    type = 'social',
+    icon = icons.social_forum,
+    type = 'social_forum',
     defaultApp = apps.default.social,
     screen = 1
   },

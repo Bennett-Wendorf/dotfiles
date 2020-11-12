@@ -11,7 +11,7 @@ return {
   default = {
     terminal = 'env terminator',
     rofi = rofi_command,
-    lock = '~/.config/i3lock/i3lock.sh',
+    lock = '/home/bennett/.config/i3lock/i3lock.sh',
     quake = 'terminator',
     screenshot = 'flameshot gui',
     region_screenshot = '~/.config/awesome/configuration/utils/screenshot -r',
