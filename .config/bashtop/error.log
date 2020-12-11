@@ -153,3 +153,79 @@ New instance of bashtop version: 0.9.25 Pid: 302862
 New instance of bashtop version: 0.9.25 Pid: 387602
  
 New instance of bashtop version: 0.9.25 Pid: 584025
+ 
+New instance of bashtop version: 0.9.25 Pid: 97488
+ 
+New instance of bashtop version: 0.9.25 Pid: 22313
+ 
+New instance of bashtop version: 0.9.25 Pid: 123937
+ 
+New instance of bashtop version: 0.9.25 Pid: 18512
+ 
+New instance of bashtop version: 0.9.25 Pid: 26636
+ 
+New instance of bashtop version: 0.9.25 Pid: 139554
+ 
+New instance of bashtop version: 0.9.25 Pid: 392339
+ 
+New instance of bashtop version: 0.9.25 Pid: 408324
+ 
+New instance of bashtop version: 0.9.25 Pid: 574278
+05:10:23 PM ERROR: On line 4353 
+ 
+New instance of bashtop version: 0.9.25 Pid: 812374
+ 
+New instance of bashtop version: 0.9.25 Pid: 863690
+ 
+New instance of bashtop version: 0.9.25 Pid: 1007202
+ 
+New instance of bashtop version: 0.9.25 Pid: 1142052
+ 
+New instance of bashtop version: 0.9.25 Pid: 1175926
+ 
+New instance of bashtop version: 0.9.25 Pid: 1128
+ 
+New instance of bashtop version: 0.9.25 Pid: 19746
+ 
+New instance of bashtop version: 0.9.25 Pid: 32720
+ 
+New instance of bashtop version: 0.9.25 Pid: 1557
+ 
+New instance of bashtop version: 0.9.25 Pid: 2566343
+ 
+New instance of bashtop version: 0.9.25 Pid: 2686219
+ 
+New instance of bashtop version: 0.9.25 Pid: 3360332
+ 
+New instance of bashtop version: 0.9.25 Pid: 1974154
+ 
+New instance of bashtop version: 0.9.25 Pid: 2599094
+ 
+New instance of bashtop version: 0.9.25 Pid: 151214
+ 
+New instance of bashtop version: 0.9.25 Pid: 1358781
+ 
+New instance of bashtop version: 0.9.25 Pid: 18790
+ 
+New instance of bashtop version: 0.9.25 Pid: 122981
+ 
+New instance of bashtop version: 0.9.25 Pid: 231450
+ 
+New instance of bashtop version: 0.9.25 Pid: 16267
+ 
+New instance of bashtop version: 0.9.25 Pid: 1505217
+ 
+New instance of bashtop version: 0.9.25 Pid: 18870
+ 
+New instance of bashtop version: 0.9.25 Pid: 1109167
+/usr/bin/bashtop: line 1337: ((: Pid: Program:       Arguments:                                 Threads: User:    Mem%       Cpu%: syntax error in expression (error token is ": Program:       Arguments:                                 Threads: User:    Mem%       Cpu%")
+/usr/bin/bashtop: line 1347: ((: Pid: Program:       Arguments:                                 Threads: User:    Mem%       Cpu%: syntax error in expression (error token is ": Program:       Arguments:                                 Threads: User:    Mem%       Cpu%")
+/usr/bin/bashtop: line 1353: ((: Pid: Program:       Arguments:                                 Threads: User:    Mem%       Cpu%: syntax error in expression (error token is ": Program:       Arguments:                                 Threads: User:    Mem%       Cpu%")
+/usr/bin/bashtop: line 1334: ((: Pid: Program:       Arguments:                                 Threads: User:    Mem%       Cpu%: syntax error in expression (error token is ": Program:       Arguments:                                 Threads: User:    Mem%       Cpu%")
+/usr/bin/bashtop: line 1353: ((: Pid: Program:       Arguments:                                 Threads: User:    Mem%       Cpu%: syntax error in expression (error token is ": Program:       Arguments:                                 Threads: User:    Mem%       Cpu%")
+/usr/bin/bashtop: line 1334: ((: Pid: Program:       Arguments:                                 Threads: User:    Mem%       Cpu%: syntax error in expression (error token is ": Program:       Arguments:                                 Threads: User:    Mem%       Cpu%")
+/usr/bin/bashtop: line 3037: Pid: Program:       Arguments:                                 Threads: User:    Mem%       Cpu%: syntax error in expression (error token is ": Program:       Arguments:                                 Threads: User:    Mem%       Cpu%")
+ 
+New instance of bashtop version: 0.9.25 Pid: 1485311
+ 
+New instance of bashtop version: 0.9.25 Pid: 1058

@@ -15,3 +15,4 @@ image/gif=okularApplication_kimgio.desktop;feh.desktop;
 image/jpeg=okularApplication_kimgio.desktop;feh.desktop;
 image/png=okularApplication_kimgio.desktop;
 image/jpg=okularApplication_kimgio.desktop;
+text/x-java=code-oss.desktop;
