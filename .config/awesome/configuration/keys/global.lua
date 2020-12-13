@@ -1,4 +1,5 @@
 local awful = require('awful')
+local naughty = require('naughty')
 require('awful.autofocus')
 local beautiful = require('beautiful')
 local hotkeys_popup = require('awful.hotkeys_popup').widget

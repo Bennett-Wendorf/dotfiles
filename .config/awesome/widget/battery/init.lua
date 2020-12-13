@@ -33,7 +33,7 @@ local widget =
   layout = wibox.layout.fixed.horizontal
 }
 
-local widget_button = clickable_container(wibox.container.margin(widget, dpi(14), dpi(14), 4, 4))
+local widget_button = clickable_container(wibox.container.margin(widget, dpi(10), dpi(10), 4, 4))
 widget_button:buttons(
   gears.table.join(
     awful.button(
@@ -81,7 +81,7 @@ local last_battery_check = os.time()
 
 watch(
   'acpi -i',
-  1,
+  5,
   function(_, stdout)
     local batteryIconName = 'battery'
 
@@ -89,7 +89,7 @@ watch(
     local capacities = {}
     for s in stdout:gmatch('[^\r\n]+') do
       local status, charge_str, time = string.match(s, '.+: (%a+), (%d?%d?%d)%%,?.*')
-      if status ~= nil then
+      if (status ~= nil and status ~= "Unknown") then
         table.insert(battery_info, {status = status, charge = tonumber(charge_str)})
       else
         local cap_str = string.match(s, '.+:.+last full capacity (%d+)')
@@ -104,12 +104,15 @@ watch(
 
     local charge = 0
     local status
+    --naughty.notify( {title="Battery Info", message=tostring(battery_info[1][status]), timeout=0} )
     for i, batt in ipairs(battery_info) do
       if batt.charge >= charge then
         status = batt.status -- use most charged battery status
       -- this is arbitrary, and maybe another metric should be used
       end
 
+      -- Calculates total mAh charge of all batteries
+      -- Note that this assumes that there is a capacity for every battery
       charge = charge + batt.charge * capacities[i]
     end
     charge = charge / capacity
@@ -122,6 +125,8 @@ watch(
         show_battery_warning()
       end
     end
+
+    --naughty.notify( {title="Battery Charge", message=charge, timeout=0} )
 
     if status == 'Charging' or status == 'Full' then
       batteryIconName = batteryIconName .. '-charging'
@@ -137,6 +142,9 @@ watch(
     widget.icon:set_image(PATH_TO_ICONS .. batteryIconName .. '.svg')
     -- Update popup text
     battery_popup.text = string.gsub(stdout, '\n$', '')
+    local popup_text = tostring(battery_info[1])
+    --naughty.notify( {title="Battery Popup", message=popup_text, timeout=0} )
+    --battery_popup.text = string.gsub(popup_text, '\n$', '')
     collectgarbage('collect')
   end,
   widget

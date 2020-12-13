@@ -1,6 +1,6 @@
 local awful = require('awful')
-local left_panel = require('layout.left-panel')
-local top_panel = require('layout.top-panel')
+local left_panel = require('panel.left-panel')
+local top_panel = require('panel.top-panel')
 local use_top_panel = false
 
 -- Create a wibox for each screen and add it

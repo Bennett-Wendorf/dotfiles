@@ -15,20 +15,47 @@ awful.rules.rules = {
       buttons = client_buttons,
       screen = awful.screen.preferred,
       placement = awful.placement.no_offscreen,
-      floating = false,
+      --[[floating = false,
       maximized = false,
       above = false,
       below = false,
       ontop = false,
       sticky = false,
       maximized_horizontal = false,
-      maximized_vertical = false
+      maximized_vertical = false--]]
     }
   },
   {
     rule_any = {name = {'QuakeTerminal'}},
     properties = {skip_decoration = true}
   },
+  -- Floating Clients
+  { rule_any = {
+        instance = {
+          "copyq",  -- Includes session name in class.
+        },
+        class = {
+          "megasync",
+          "Protonvpn-gui",
+  	},
+        name = {
+          "Event Tester",  -- xev.
+	  "MEGAsync",
+        },
+        role = {
+          "AlarmWindow",  -- Thunderbird's calendar.
+          "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
+        }
+      }, 
+      properties = { 
+	      floating = true, 
+	      above = true,
+	      ontop = true,
+	      drawBackdrop = true,
+	      placement = awful.placement.centered,
+      }
+  },
+
   -- Titlebars
   {
     rule_any = {type = {'dialog'}, class = {'Wicd-client.py', 'calendar.google.com'}},

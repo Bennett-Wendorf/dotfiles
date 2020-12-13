@@ -2,6 +2,7 @@ local awful = require('awful')
 require('awful.autofocus')
 local modkey = require('configuration.keys.mod').modKey
 local altkey = require('configuration.keys.mod').altKey
+local naughty = require('naughty')
 
 local clientKeys =
   awful.util.table.join(
@@ -21,6 +22,16 @@ local clientKeys =
       c:kill()
     end,
     {description = 'close', group = 'client'}
+  ),
+  awful.key(
+    {modkey},
+    'a',
+    function(c)
+      c.floating = not c.floating
+      c.ontop = true
+      c.above = true
+      naughty.notify({ title = "Floating Status", text = tostring(c.floating)  })
+    end
   )
 )
 

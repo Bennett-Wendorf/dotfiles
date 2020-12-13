@@ -11,10 +11,7 @@
 # is intended to be a copy of this file
 # to allow out of tree autostart programs
 APPS=(
-    keepassxc
-    kdeconnect-indicator
-    radeon-profile
-    $HOME/.config/awesomestart
+    protonvpn-tray
     )
 
 # Some applications start child applications that need to be killed on reload

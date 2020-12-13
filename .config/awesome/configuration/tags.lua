@@ -5,8 +5,8 @@ local apps = require('configuration.apps')
 
 local tags = {
   {
-    icon = icons.chrome,
-    type = 'chrome',
+    icon = icons.firefox,
+    type = 'firefox',
     defaultApp = apps.default.browser,
     screen = 1
   },
@@ -17,9 +17,21 @@ local tags = {
     screen = 1
   },
   {
-    icon = icons.social_forum,
-    type = 'social_forum',
-    defaultApp = apps.default.social,
+    icon = icons.folder,
+    type = 'folder',
+    defaultApp = apps.default.files,
+    screen = 1
+  },
+  {
+    icon = icons.vm,
+    type = 'vm',
+    defaultApp = apps.default.rofi,
+    screen = 1
+  },
+  {
+    icon = icons.lab,
+    type = 'any',
+    defaultApp = apps.default.rofi,
     screen = 1
   },
   {
@@ -29,15 +41,9 @@ local tags = {
     screen = 1
   },
   {
-    icon = icons.vm,
-    type = 'vms',
-    defaultApp = apps.default.game,
-    screen = 1
-  },
-  {
-    icon = icons.folder,
-    type = 'files',
-    defaultApp = apps.default.files,
+    icon = icons.social_forum,
+    type = 'social_forum',
+    defaultApp = apps.default.social,
     screen = 1
   },
   {
@@ -47,19 +53,18 @@ local tags = {
     screen = 1
   },
   {
-    icon = icons.lab,
-    type = 'any',
-    defaultApp = apps.default.rofi,
+    icon = icons.debug,
+    type = 'debug',
+    defaultApp = apps.default.debug,
     screen = 1
   }
 }
 
 awful.layout.layouts = {
+  awful.layout.suit.spiral.dwindle,
+  awful.layout.suit.floating,
   awful.layout.suit.tile,
   awful.layout.suit.max,
-  awful.layout.suit.floating,
-  awful.layout.suit.spiral.dwindle,
-  awful.layout.suit.spiral.name
 }
 
 awful.screen.connect_for_each_screen(
@@ -70,7 +75,7 @@ awful.screen.connect_for_each_screen(
         {
           icon = tag.icon,
           icon_only = true,
-          layout = awful.layout.suit.tile,
+          layout = awful.layout.layouts[1],
           gap_single_client = true,
           gap = 4,
           screen = s,
@@ -87,9 +92,9 @@ _G.tag.connect_signal(
   function(t)
     local currentLayout = awful.tag.getproperty(t, 'layout')
     if (currentLayout == awful.layout.suit.max) then
-      t.gap = 4
+      t.gap = 6
     else
-      t.gap = 4
+      t.gap = 6
     end
   end
 )

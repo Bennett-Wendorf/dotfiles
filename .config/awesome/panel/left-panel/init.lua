@@ -103,11 +103,11 @@ local left_panel = function(screen)
       visible = false,
       forced_width = panel_content_width,
       {
-        require('layout.left-panel.dashboard')(screen, panel),
+        require('panel.left-panel.dashboard')(screen, panel),
         layout = wibox.layout.stack
       }
     },
-    require('layout.left-panel.action-bar')(screen, panel, action_bar_width)
+    require('panel.left-panel.action-bar')(screen, panel, action_bar_width)
   }
   return panel
 end
