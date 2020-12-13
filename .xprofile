@@ -6,3 +6,4 @@ export PATH="$HOME/.gem/ruby/2.7.0/bin:$PATH"
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/lib/jvm/java-14-openjkd/bin:$PATH"
+

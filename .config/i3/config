@@ -84,6 +84,9 @@ exec --no-startup-id touchegg
 exec --no-startup-id protonvpn
 exec --no-startup-id protonvpn-tray
 
+# Start polkit authentication agent
+exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
+
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
