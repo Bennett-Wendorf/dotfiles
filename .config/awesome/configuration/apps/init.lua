@@ -30,24 +30,18 @@ return {
   -- List of apps to start once on start-up
   run_on_start_up = {
     -- 'compton --config ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf',
-    -- 'picom -b -i 1 -m 1',
-    'picom -b',
-    'nm-applet --indicator', -- wifi
     --'blueberry-tray', -- Bluetooth tray icon
     --'xfce4-power-manager', -- Power manager
     -- 'ibus-daemon --xim --daemonize', -- Ibus daemon for keyboard
     -- 'scream-start', -- scream audio sink
-    'numlockx on', -- enable numlock
     -- '/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)', -- credential manager
     --'/usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)', -- credential manager
     --'blueman-tray', -- bluetooth tray
-    'blueman-applet',
     -- 'geary --hidden', -- Email client
     -- Add applications that need to be killed between reloads
     -- to avoid multipled instances, inside the awspawn script
     --'~/.config/awesome/configuration/apps/awspawn', -- Spawn "dirty" apps that can linger between sessions
     'flameshot',
-    'dunst',
     'megasync',
     'screenrotator',
     'copyq',
@@ -56,6 +50,5 @@ return {
     'xss-lock --transfer-sleep-lock -- /home/bennett/.config/i3lock/i3lock.sh',
     'xfce4-power-manager',
     'autorandr -c', --Makes sure that the correct display configuration is set when logging in
-    '/usr/lib/polkit-kde-authentication-agent-1' --Start the polkit authentication agent.
   }
 }

@@ -1,3 +1,4 @@
+# Environment Variables
 export QT_QPA_PLATFORMTHEME="qt5ct"
 
 export GEM_HOME="$HOME/ruby_gems"
@@ -7,3 +8,16 @@ export PATH="$HOME/.gem/ruby/2.7.0/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/lib/jvm/java-14-openjkd/bin:$PATH"
 
+# Polkit Agent
+/usr/lib/polkit-kde-authentication-agent-1 &
+
+# Set numlock
+numlockx on &
+
+# Picom
+# OLD: picom -b -i 1 -m 1
+picom -b &
+
+# Network and Bluetooth managers
+nm-applet --indicator &
+blueman-applet &

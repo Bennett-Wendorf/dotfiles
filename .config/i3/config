@@ -41,18 +41,12 @@ font pango:Font Awesome 5 Brands 10
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
-# Turn on numlock
-exec_always --no-startup-id numlockx on
-
 # Generate pywal colorscheme
 exec --no-startup-id wal -R
 #exec --no-startup-id pacwall -W
 
 # Run the autorandr -c command when i3 loads so the proper display configuration is used
 exec --no-startup-id autorandr -c
-
-# Start blueman applet
-exec --no-startup-id blueman-applet
 
 # Start copyq
 exec --no-startup-id copyq
@@ -63,10 +57,6 @@ bindsym $mod+c exec --no-startup-id flameshot gui
 
 # Set wallpaper using feh
 #exec --no-startup-id ~/.fehbg
-
-# Start picom for transparency
-#exec --no-startup-id picom -b -i 1 -m 1
-exec --no-startup-id picom -b
 
 # Start dunst for notifications
 exec --no-startup-id dunst
@@ -84,9 +74,6 @@ exec --no-startup-id touchegg
 exec --no-startup-id protonvpn
 exec --no-startup-id protonvpn-tray
 
-# Start polkit authentication agent
-exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
-
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
@@ -96,10 +83,6 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/.config/i3lock/i3lock.s
 
 # Start xautolock for lockout timer
 exec "xidlehook --not-when-fullscreen --not-when-audio --timer 1800 '~/.config/i3lock/i3lock.sh' ''"
-
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
 
 # Start polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
