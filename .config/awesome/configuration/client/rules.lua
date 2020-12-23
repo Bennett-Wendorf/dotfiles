@@ -1,7 +1,8 @@
 local awful = require('awful')
 local gears = require('gears')
 local client_keys = require('configuration.client.keys')
-local client_buttons = require('configuration.client.buttons')
+local client_buttons = require('configuration.client.mouse_buttons')
+local beautiful = require('beautiful')
 
 -- Rules
 awful.rules.rules = {
@@ -15,14 +16,6 @@ awful.rules.rules = {
       buttons = client_buttons,
       screen = awful.screen.preferred,
       placement = awful.placement.no_offscreen,
-      --[[floating = false,
-      maximized = false,
-      above = false,
-      below = false,
-      ontop = false,
-      sticky = false,
-      maximized_horizontal = false,
-      maximized_vertical = false--]]
     }
   },
   {
@@ -40,7 +33,7 @@ awful.rules.rules = {
   	},
         name = {
           "Event Tester",  -- xev.
-	  "MEGAsync",
+	        "MEGAsync",
         },
         role = {
           "AlarmWindow",  -- Thunderbird's calendar.
@@ -69,7 +62,7 @@ awful.rules.rules = {
           gears.shape.rounded_rect(cr, w, h, 0)
         end
       end,
-      skip_decoration = true
+      skip_decoration = false
     }
   }
 }

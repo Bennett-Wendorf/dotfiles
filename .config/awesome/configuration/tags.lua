@@ -75,7 +75,7 @@ awful.screen.connect_for_each_screen(
         {
           icon = tag.icon,
           icon_only = true,
-          layout = awful.layout.layouts[1],
+          layout = awful.layout.layouts[3],
           gap_single_client = true,
           gap = 4,
           screen = s,

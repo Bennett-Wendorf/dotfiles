@@ -16,7 +16,7 @@ require('module.decorate-client')
 require('module.exit-screen')
 
 -- Setup all configurations
--- require('configuration.client')
+require('configuration.client')
 require('configuration.tags')
 _G.root.keys(require('configuration.keys.global'))
 
@@ -76,71 +76,3 @@ _G.client.connect_signal(
     c.border_color = beautiful.border_normal
   end
 )
-
-local client_keys = require('configuration.client.keys')
-local client_buttons = require('configuration.client.mouse_buttons')
-
--- Rules
-awful.rules.rules = {
-  -- All clients will match this rule.
-  {
-    rule = {},
-    properties = {
-      focus = awful.client.focus.filter,
-      raise = true,
-      keys = client_keys,
-      buttons = client_buttons,
-      screen = awful.screen.preferred,
-      placement = awful.placement.no_offscreen,
-      --[[floating = false,
-      maximized = false,
-      above = false,
-      below = false,
-      ontop = false,
-      sticky = false,
-      maximized_horizontal = false,
-      maximized_vertical = false--]]
-    }
-  },
-  -- Floating Clients
-  --[[{ rule_any = {
-        instance = {
-          "copyq",  -- Includes session name in class.
-        },
-        class = {
-          "megasync",
-          "Protonvpn-gui",
-  	},
-        name = {
-          "Event Tester",  -- xev.
-	  "MEGAsync",
-        },
-        role = {
-          "AlarmWindow",  -- Thunderbird's calendar.
-          "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
-        }
-      }, 
-      properties = { floating = true, above = true }
-  }, --]]
-  --[[{ rule = { class = "firefox" },
-    properties = { floating = true } },--]]
-  { rule = { instance = "protonvpn-gui" },
-    properties = { floating = true } },
-
-  -- Titlebars
-  {
-    rule_any = {type = {'dialog'}, class = {'Wicd-client.py', 'calendar.google.com'}},
-    properties = {
-      placement = awful.placement.centered,
-      ontop = true,
-      floating = true,
-      drawBackdrop = true,
-      shape = function()
-        return function(cr, w, h)
-          gears.shape.rounded_rect(cr, w, h, 0)
-        end
-      end,
-      skip_decoration = true
-    }
-  }
-}

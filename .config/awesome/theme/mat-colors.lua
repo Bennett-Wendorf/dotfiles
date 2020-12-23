@@ -1,3 +1,5 @@
+local xresources = require('beautiful.xresources').get_current_theme()
+
 return {
   -- Red
   red = {
@@ -102,7 +104,7 @@ return {
     hue_A700 = '#2962FF'
   },
   -- Light Blue
-  hue_blue = {
+  light_blue = {
     hue_50 = '#E1F5FE',
     hue_100 = '#B3E5FC',
     hue_200 = '#81D4FA',
@@ -309,6 +311,22 @@ return {
     hue_700 = '#455A64',
     hue_800 = '#cc000000',
     hue_900 = '#cc000000'
+  },
+  -- BG color
+  bg_color = {
+    hue_50 = '#FAFAFA',
+    hue_100 = '#F5F5F5',
+    hue_200 = '#EEEEEE',
+    hue_300 = '#E0E0E0',
+    hue_400 = '#BDBDBD',
+    hue_500 = '#9E9E9E',
+    -- Opaque
+    hue_600 = xresources.color0 .. 'ff',
+    -- Transparent
+    hue_700 = '00000000',
+    -- Translucent
+    hue_800 = xresources.color0 .. 'bb',
+    hue_900 = '#121e25'
   },
   -- Black
   black = '#000000',
