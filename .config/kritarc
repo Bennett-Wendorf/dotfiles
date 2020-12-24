@@ -21,7 +21,7 @@ ArtColorSel.showValueScale=false
 CanvasOnlyActive=false
 CanvasSize/ConstrainProportions=false
 CanvasSize/KeepAspectRatio=false
-ExportConfiguration-image/jpeg=<!DOCTYPE params>\n<params>\n <param name="baseline" type="internal">true</param>\n <param name="exif" type="internal">true</param>\n <param name="filters" type="string"><![CDATA[]]></param>\n <param name="forceSRGB" type="internal">false</param>\n <param name="iptc" type="internal">true</param>\n <param name="optimize" type="internal">true</param>\n <param name="progressive" type="internal">false</param>\n <param name="quality" type="internal">80</param>\n <param name="saveProfile" type="internal">true</param>\n <param name="smoothing" type="internal">0</param>\n <param name="storeAuthor" type="internal">false</param>\n <param name="storeMetaData" type="internal">false</param>\n <param name="subsampling" type="internal">0</param>\n <param name="transparencyFillcolor" type="color"><![CDATA[<!DOCTYPE color>\n<color>\n <RGB r="1" b="1" g="1" space="sRGB-elle-V2-g10.icc"/>\n</color>\n]]></param>\n <param name="xmp" type="internal">true</param>\n</params>\n
+ExportConfiguration-image/jpeg=<!DOCTYPE params>\n<params>\n <param name="baseline" type="internal">true</param>\n <param name="exif" type="internal">true</param>\n <param name="filters" type="string"><![CDATA[]]></param>\n <param name="forceSRGB" type="internal">false</param>\n <param name="iptc" type="internal">true</param>\n <param name="optimize" type="internal">true</param>\n <param name="progressive" type="internal">false</param>\n <param name="quality" type="internal">80</param>\n <param name="saveProfile" type="internal">true</param>\n <param name="smoothing" type="internal">0</param>\n <param name="storeAuthor" type="internal">false</param>\n <param name="storeMetaData" type="internal">false</param>\n <param name="subsampling" type="internal">0</param>\n <param name="transparencyFillcolor" type="color"><![CDATA[<!DOCTYPE color>\n<color>\n <RGB space="sRGB-elle-V2-g10.icc" b="1" g="1" r="1"/>\n</color>\n]]></param>\n <param name="xmp" type="internal">true</param>\n</params>\n
 GamutMasks.viewMode=0
 Krita/Ocio/DisplayDevice=sRGB
 Krita/Ocio/DisplayLook=None
@@ -32,8 +32,8 @@ Krita/Ocio/OcioConfigPath=
 Krita/Ocio/OcioLockColorVisualRepresentation=false
 Krita/Ocio/OcioLutPath=
 Krita/Ocio/UseOcio=false
-LastBackGroundColor=<!DOCTYPE LastBackGroundColor>\n<LastBackGroundColor>\n <RGB r="0" b="0" g="0" space="sRGB-elle-V2-srgbtrc.icc"/>\n</LastBackGroundColor>\n
-LastForeGroundColor=<!DOCTYPE LastForeGroundColor>\n<LastForeGroundColor>\n <RGB r="0" b="0" g="0" space="sRGB-elle-V2-srgbtrc.icc"/>\n</LastForeGroundColor>\n
+LastBackGroundColor=<!DOCTYPE LastBackGroundColor>\n<LastBackGroundColor>\n <RGB space="sRGB-elle-V2-srgbtrc.icc" b="0" g="0" r="0"/>\n</LastBackGroundColor>\n
+LastForeGroundColor=<!DOCTYPE LastForeGroundColor>\n<LastForeGroundColor>\n <RGB space="sRGB-elle-V2-srgbtrc.icc" b="0" g="0" r="0"/>\n</LastForeGroundColor>\n
 LastPreset=b)_Basic-5_Size
 LineSmoothingDelayDistance=50
 LineSmoothingDistance=50
@@ -73,6 +73,8 @@ imagesizedlg_resunit=Pixels/Inch
 imagesizedlg_sizeunit=in
 levelOfDetailEnabled=false
 logviewer_enabled=false
+moveToolChangedValueX=1919
+moveToolChangedValueY=90
 moveToolUnit=0
 numberOfOnionSkins=10
 oninSkinTintColorForward=0,255,0
@@ -425,24 +427,19 @@ xPosition=2
 yPosition=30
 
 [RecentFiles]
-File1[$e]=$HOME/files/Pics/rAqXlM.jpg
-File2[$e]=$HOME/svgs/bug-solid.svg
-File3[$e]=$HOME/svgs/code-solid.svg
-File4[$e]=$HOME/svgs/comments-solid.svg
-File5[$e]=$HOME/.config/awesome/theme/icons/looking-glass.svg
-File6[$e]=/usr/share/icons/Abyss-DEEP-Suru-GLOW/apps/16/mega.svg
-File7[$e]=$HOME/files/Pics/up_down_arrows.jpg
-File8[$e]=$HOME/files/Pics/green_up_arrow.jpg
-File9[$e]=$HOME/files/Pics/downvotejpg.jpg
-Name1[$e]=rAqXlM.jpg
-Name2[$e]=bug-solid.svg
-Name3[$e]=code-solid.svg
-Name4[$e]=comments-solid.svg
-Name5[$e]=looking-glass.svg
-Name6[$e]=mega.svg
-Name7[$e]=up_down_arrows.jpg
-Name8[$e]=green_up_arrow.jpg
-Name9[$e]=downvotejpg.jpg
+File1[$e]=$HOME/svgs/bug-solid.svg
+File2[$e]=$HOME/svgs/code-solid.svg
+File3[$e]=$HOME/svgs/comments-solid.svg
+File4[$e]=$HOME/.config/awesome/theme/icons/looking-glass.svg
+File5[$e]=/usr/share/icons/Abyss-DEEP-Suru-GLOW/apps/16/mega.svg
+File6[$e]=$HOME/files/Pics/rAqXlM.jpg
+Name1[$e]=bug-solid.svg
+Name2[$e]=code-solid.svg
+Name3[$e]=comments-solid.svg
+Name4[$e]=looking-glass.svg
+Name5[$e]=mega.svg
+Name6[$e]=rAqXlM.jpg
+maxRecentFileItems=100
 
 [SvgSymbolCollection]
 currentCollection=0
