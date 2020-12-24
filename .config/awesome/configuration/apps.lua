@@ -11,11 +11,13 @@ return {
   default = {
     terminal = 'env terminator',
     rofi = rofi_command,
+    calc = "=",
     lock = '/home/bennett/.config/i3lock/i3lock.sh',
     quake = 'terminator',
-    screenshot = 'flameshot gui',
-    region_screenshot = '~/.config/awesome/configuration/utils/screenshot -r',
-    delayed_screenshot = '~/.config/awesome/configuration/utils/screenshot --delayed -r',
+    screenshot = 'flameshot screen -c',
+    region_screenshot = 'flameshot gui',
+    delayed_screenshot = 'flameshot screen -c -d 5000',
+    clipboard_manager = 'copyq menu',
     
     -- Editing these also edits the default program
     -- associated with each tag/workspace

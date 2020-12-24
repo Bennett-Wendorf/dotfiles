@@ -17,7 +17,6 @@ return function(_, panel)
     wibox.widget {
       text = 'Choose Weapon',
       height = dpi(24),
-      -- font = 'Iosevka NerdFont Mono 13',
       font = 'Hack 13',
       widget = wibox.widget.textbox
     },
@@ -46,7 +45,6 @@ return function(_, panel)
     },
     wibox.widget {
       text = 'Take a break',
-      -- font = 'Iosevka NerdFont Mono 13',
       font = 'Hack 13',
       widget = wibox.widget.textbox
     },

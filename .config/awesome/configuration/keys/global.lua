@@ -39,15 +39,17 @@ local globalKeys =
     {modkey},
     'd',
     function()
-      _G.screen.primary.left_panel:toggle(true)
+      -- _G.screen.primary.left_panel:toggle(true)
+      awful.screen.focused().left_panel:toggle("rofi")
     end,
-    {description = 'show main menu', group = 'awesome'}
+    {description = 'show run prompt', group = 'awesome'}
   ),
   awful.key(
     {altkey},
     'space',
     function()
-      _G.screen.primary.left_panel:toggle(false)
+      -- _G.screen.primary.left_panel:toggle(false)
+      awful.screen.focused().left_panel:toggle(false)
     end,
     {description = 'show main menu', group = 'awesome'}
   ),
@@ -86,54 +88,61 @@ local globalKeys =
     {description = 'Lock the screen', group = 'awesome'}
   ),
   awful.key(
-    {'Control','Shift'},
-    'Print',
+    {modkey,'Control'},
+    'c',
     function()
       awful.util.spawn_with_shell(apps.default.delayed_screenshot)
     end,
-    {description = 'Mark an area and screenshot it 10 seconds later (clipboard)', group = 'screenshots (clipboard)'}
-  ),
-  awful.key(
-    {altkey},
-    'Print',
-    function()
-      awful.util.spawn_with_shell(apps.default.screenshot)
-    end,
-    {description = 'Take a screenshot of your active monitor and copy it to clipboard', group = 'screenshots (clipboard)'}
-  ),
-  awful.key(
-    {'Control'},
-    'Print',
-    function()
-      awful.util.spawn_with_shell(apps.default.region_screenshot)
-    end,
-    {description = 'Mark an area and screenshot it to your clipboard', group = 'screenshots (clipboard)'}
+    {description = 'Take a screnshot of your active monitor after 5 seconds (clipboard)', group = 'screenshots'}
   ),
   awful.key(
     {modkey},
     'c',
     function()
-      awful.util.spawn(apps.default.editor)
+      awful.util.spawn_with_shell(apps.default.screenshot)
     end,
-    {description = 'open a text/code editor', group = 'launcher'}
+    {description = 'Take a screenshot of your active monitor and copy it to clipboard', group = 'screenshots'}
+  ),
+  awful.key(
+    {},
+    'Print',
+    function()
+      awful.util.spawn_with_shell(apps.default.screenshot)
+    end,
+    {description = 'Take a screenshot of your active monitor and copy it to clipboard', group = 'screenshots'}
+  ),
+  awful.key(
+    {modkey, 'Shift'},
+    'c',
+    function()
+      awful.util.spawn_with_shell(apps.default.region_screenshot)
+    end,
+    {description = 'Mark an area and screenshot it', group = 'screenshots'}
+  ),
+  awful.key(
+    {'Shift'},
+    'Print',
+    function()
+      awful.util.spawn_with_shell(apps.default.region_screenshot)
+    end,
+    {description = 'Mark an area and screenshot it', group = 'screenshots'}
   ),
   awful.key(
     {modkey},
-    'b',
+    'v',
     function()
-      awful.util.spawn(apps.default.browser)
+        awful.util.spawn_with_shell(apps.default.clipboard_manager)
     end,
-    {description = 'open a browser', group = 'launcher'}
+    {description = 'Open the clipboard manager', group = 'launcher'}
   ),
-  -- Open private browser/brave
-  --[[awful.key(
+  awful.key(
     {modkey},
-    'p',
+    '=',
     function()
-      awful.util.spawn_with_shell('firefox')
+      awful.screen.focused().left_panel:toggle("=")
     end,
-    {description = 'Open Brave', group = 'launcher'}
-  ),--]]
+    {description = 'Open the menu-calc application', group = 'launcher'}
+  ),
   -- Standard program
   awful.key(
     {modkey},

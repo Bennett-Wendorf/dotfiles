@@ -53,14 +53,42 @@ local left_panel = function(screen)
     )
   end
 
-  local openPanel = function(should_run_rofi)
+  function panel:run_calc()
+    _G.awesome.spawn(
+      apps.default.calc,
+      false,
+      false,
+      false,
+      false,
+      function()
+        panel:toggle()
+      end
+    )
+  end
+
+  -- local openPanel = function(should_run_rofi)
+  --   panel.width = action_bar_width + panel_content_width
+  --   backdrop.visible = true
+  --   panel.visible = false
+  --   panel.visible = true
+  --   panel:get_children_by_id('panel_content')[1].visible = true
+  --   if should_run_rofi then
+  --     panel:run_rofi()
+  --   end
+  --   panel:emit_signal('opened')
+  -- end
+
+  -- This command should be an empty string "", "rofi", or "="
+  local openPanel = function(command)
     panel.width = action_bar_width + panel_content_width
     backdrop.visible = true
     panel.visible = false
     panel.visible = true
     panel:get_children_by_id('panel_content')[1].visible = true
-    if should_run_rofi then
+    if command == "rofi" then
       panel:run_rofi()
+    elseif command == "=" then
+      panel:run_calc()
     end
     panel:emit_signal('opened')
   end
@@ -72,10 +100,20 @@ local left_panel = function(screen)
     panel:emit_signal('closed')
   end
 
-  function panel:toggle(should_run_rofi)
+  -- function panel:toggle(should_run_rofi)
+  --   self.opened = not self.opened
+  --   if self.opened then
+  --     openPanel(should_run_rofi)
+  --   else
+  --     closePanel()
+  --   end
+  -- end
+
+  -- This command should be "rofi", "=", or left out entirely for just the panel
+  function panel:toggle(command)
     self.opened = not self.opened
     if self.opened then
-      openPanel(should_run_rofi)
+      openPanel(command)
     else
       closePanel()
     end
