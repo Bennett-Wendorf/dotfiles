@@ -25,7 +25,7 @@ return {
     editor = 'code', -- gui text editor
     social = 'env discord',
     game = rofi_command,
-    files = 'nautilus',
+    files = 'pcmanfm',
     music = rofi_command,
     debug = 'terminator -e bashtop'
   },

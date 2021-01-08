@@ -10,6 +10,7 @@ source ~/.config/fish/functions/extract.fish
 alias clock='watch -n .5 "lscpu | grep MHz"'
 alias batt="upower -i /org/freedesktop/UPower/devices/battery_BAT0"
 alias zip="zip -r"
+alias space="ncdu -x"
 
 # Terminal Navigation
 alias ls="exa --icons -g --color=always --group-directories-first"

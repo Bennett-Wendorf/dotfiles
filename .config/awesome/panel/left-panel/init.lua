@@ -136,7 +136,7 @@ local left_panel = function(screen)
     nil,
     {
       id = 'panel_content',
-      bg = beautiful.background.hue_900,
+      bg = beautiful.background.hue_600,
       widget = wibox.container.background,
       visible = false,
       forced_width = panel_content_width,

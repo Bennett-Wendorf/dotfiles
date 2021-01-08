@@ -319,7 +319,8 @@ return {
     hue_200 = '#EEEEEE',
     hue_300 = '#E0E0E0',
     hue_400 = '#BDBDBD',
-    hue_500 = '#9E9E9E',
+    -- Slightly Darker version of 600
+    hue_500 = '#262626' .. 'ff',
     -- Opaque
     hue_600 = xresources.color0 .. 'ff',
     -- Transparent

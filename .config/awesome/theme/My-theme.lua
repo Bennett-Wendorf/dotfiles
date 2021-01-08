@@ -29,8 +29,8 @@ local awesome_overrides =
 
   theme.icons = theme.dir .. '/icons/'
   theme.wallpaper = os.getenv('HOME') .. wallpaper
-  theme.font = 'Jetbrains Mono 10'
-  theme.title_font = 'Jetbrains Mono 14'
+  theme.font = 'Hack 13'
+  theme.title_font = 'Hack 14'
 
   theme.fg_normal = mat_colors.white
   --theme.fg_normal = xresources.color7

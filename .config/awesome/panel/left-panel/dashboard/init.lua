@@ -17,7 +17,7 @@ return function(_, panel)
     wibox.widget {
       text = 'Choose Weapon',
       height = dpi(24),
-      font = 'Hack 13',
+      font = beautiful.font,
       widget = wibox.widget.textbox
     },
     clickable = true,
@@ -45,7 +45,7 @@ return function(_, panel)
     },
     wibox.widget {
       text = 'Take a break',
-      font = 'Hack 13',
+      font = beautiful.font,
       widget = wibox.widget.textbox
     },
     clickable = true,
@@ -72,7 +72,7 @@ return function(_, panel)
       layout = wibox.layout.fixed.vertical,
       {
         search_button,
-        bg = beautiful.background.hue_800,
+        bg = beautiful.background.hue_500,
         widget = wibox.container.background
       },
       wibox.widget {
@@ -89,7 +89,7 @@ return function(_, panel)
       layout = wibox.layout.fixed.vertical,
       {
         exit_button,
-        bg = beautiful.background.hue_800,
+        bg = beautiful.background.hue_500,
         widget = wibox.container.background
       }
     }

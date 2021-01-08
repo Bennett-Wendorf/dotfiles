@@ -5,7 +5,7 @@ return wibox.widget {
   wibox.widget {
     wibox.widget {
       text = 'Hardware monitor',
-      font = 'Iosevka NerdFont Mono 12',
+      font = require('beautiful').font,
       widget = wibox.widget.textbox
     },
     widget = mat_list_item
