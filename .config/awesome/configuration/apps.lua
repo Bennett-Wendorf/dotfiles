@@ -3,7 +3,7 @@ local filesystem = require('gears.filesystem')
 -- Thanks to jo148 on github for making rofi dpi aware!
 local with_dpi = require('beautiful').xresources.apply_dpi
 local get_dpi = require('beautiful').xresources.get_dpi
-local rofi_command = 'env rofi -show run --width 30'
+local rofi_command = 'env rofi -show drun --width 30'
 local dmenu_command = 'env dmenu_run -i -fn "Hack-10"'
 
 return {
