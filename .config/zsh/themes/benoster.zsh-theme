@@ -1,5 +1,7 @@
 # vim:ft=zsh ts=2 sw=2 sts=2
 #
+# This theme was edited from the agnoster theme that comes built in with oh-my-zsh. I altered the color scheme slightly and removed the prompt_context from the prompt build. 
+#
 # agnoster's Theme - https://gist.github.com/3712874
 # A Powerline-inspired theme for ZSH
 #
