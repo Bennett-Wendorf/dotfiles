@@ -116,7 +116,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec dmenu_run -i -fn "Hack-10" -nb "$bg" -nf "$fg" -sb "$fg" -sf "$bg"
 
 # Run bashtop in a new terminator window
-bindsym $mod+b exec terminator -e bashtop
+bindsym $mod+b exec terminator -e bpytop
 
 # Run menu-calc
 bindsym $mod+equal exec =

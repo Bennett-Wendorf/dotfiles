@@ -40,7 +40,7 @@ source $ZSH/oh-my-zsh.sh
 # Utilities
 alias batt="upower -i /org/freedesktop/UPower/devices/battery_BAT0"
 alias zip="zip -r"
-alias space="ncdu -x"
+alias space="sudo ncdu -x"
 
 # Terminal Navigation
 alias ls="exa --icons -g --color=always --group-directories-first"
