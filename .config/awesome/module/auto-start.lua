@@ -20,3 +20,12 @@ end--]]
 for _,i in pairs(apps.run_on_start_up) do
 	awful.util.spawn(i)
 end
+
+-- This will delay the startup of the delayed_start_apps to ensure the system tray exists
+-- I'm not sure why, but it seems to only work with a 0 second delay.
+delay_amount = 0
+os.execute('sleep ' .. tonumber(delay_amount))
+
+for _,i in pairs(apps.delayed_start_up) do
+	awful.util.spawn(i)
+end

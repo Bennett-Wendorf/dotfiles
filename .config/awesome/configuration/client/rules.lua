@@ -16,7 +16,12 @@ awful.rules.rules = {
       buttons = client_buttons,
       screen = awful.screen.preferred,
       placement = awful.placement.no_offscreen,
-    }
+    },
+    -- Forces all applications to start not maximized
+    -- This seemed to fix an issue where some applications start maximized and are unable to pull out of it.
+    callback = function(c)
+    	    c.maximized, c.maximized_vertical, c.maximized_horizontal = false, false, false
+    end,
   },
   {
     rule_any = {name = {'QuakeTerminal'}},
@@ -47,6 +52,17 @@ awful.rules.rules = {
 	      drawBackdrop = true,
 	      placement = awful.placement.centered,
       }
+  },
+
+  { rule_any = {
+	class = {
+	  "Org.gnome.Nautilus",
+	  "Gnome-boxes"
+	}
+    },
+    properties = {
+	
+    }      
   },
 
   -- Titlebars

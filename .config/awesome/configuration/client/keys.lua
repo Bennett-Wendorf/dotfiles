@@ -32,6 +32,16 @@ local clientKeys =
       c.above = true
       naughty.notify({ title = "Floating Status", text = tostring(c.floating)  })
     end
+  ),
+  awful.key(
+    {modkey},
+    'm',
+    function (c)
+      c.maximized_horizontal = not c.maximized_horizontal
+      c.maximized_vertical = not c.maximized_vertical
+      c.maximized = not c.maximized
+      naughty.notify({title = "Maximized", text = tostring(c.maximized)})
+    end
   )
 )
 

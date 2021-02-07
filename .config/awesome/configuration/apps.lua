@@ -25,9 +25,9 @@ return {
     editor = 'code', -- gui text editor
     social = 'env discord',
     game = rofi_command,
-    files = 'pcmanfm',
+    files = 'thunar',
     music = rofi_command,
-    debug = 'terminator -e bashtop'
+    debug = 'terminator -e bpytop'
   },
   -- List of apps to start once on start-up
   run_on_start_up = {
@@ -53,5 +53,10 @@ return {
     -- 'xfce4-power-manager',
     'killall cbatticon', "cbatticon -n -r 3 -c 'poweroff'", --A simple battery icon that lives in the system tray
     'autorandr -c', --Makes sure that the correct display configuration is set when logging in
+  },
+
+  -- List of apps to start up a bit after everything else.
+  delayed_start_up = {
+    'killall onedrive_tray', 'onedrive_tray',
   }
 }
