@@ -12,7 +12,6 @@ require('panel')
 
 -- Init all modules
 require('module.notifications')
-require('module.auto-start')
 require('module.decorate-client')
 require('module.exit-screen')
 
@@ -77,3 +76,7 @@ _G.client.connect_signal(
     c.border_color = beautiful.border_normal
   end
 )
+
+-- Autostart apps should happen after everything else
+-- This ensures that a system tray as well as any other required resources are available
+require('module.auto-start')

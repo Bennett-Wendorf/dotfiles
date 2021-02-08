@@ -44,6 +44,7 @@ return {
     -- to avoid multipled instances, inside the awspawn script
     'flameshot',
     'megasync',
+    'killall onedrive_tray', 'onedrive_tray',
     'screenrotator',
     'copyq',
     'protonvpn', 'killall protonvpn-tray', 'protonvpn-tray',
@@ -54,9 +55,4 @@ return {
     'killall cbatticon', "cbatticon -n -r 3 -c 'poweroff'", --A simple battery icon that lives in the system tray
     'autorandr -c', --Makes sure that the correct display configuration is set when logging in
   },
-
-  -- List of apps to start up a bit after everything else.
-  delayed_start_up = {
-    'killall onedrive_tray', 'onedrive_tray',
-  }
 }
