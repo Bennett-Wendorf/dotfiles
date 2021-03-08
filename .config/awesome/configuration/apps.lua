@@ -49,8 +49,9 @@ return {
     'copyq',
     'protonvpn', 'killall protonvpn-tray', 'protonvpn-tray',
     'wal -R',
-    'xss-lock --transfer-sleep-lock -- /home/bennett/.config/i3lock/i3lock.sh --nofork',
-    'killall xidlehook', "xidlehook --not-when-fullscreen --not-when-audio --timer 1800 '~/.config/i3lock/i3lock.sh' ''",
+    'nitrogen --restore',
+    --'xss-lock --transfer-sleep-lock -- /home/bennett/.config/i3lock/i3lock.sh --nofork',
+    --'killall xidlehook', "xidlehook --not-when-fullscreen --not-when-audio --timer 1800 '~/.config/i3lock/i3lock.sh' ''",
     -- 'xfce4-power-manager',
     'killall cbatticon', "cbatticon -n -r 3 -c 'poweroff'", --A simple battery icon that lives in the system tray
     'autorandr -c', --Makes sure that the correct display configuration is set when logging in

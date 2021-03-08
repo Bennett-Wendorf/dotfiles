@@ -58,6 +58,9 @@ bindsym $mod+c exec --no-startup-id flameshot gui
 # Set wallpaper using feh
 #exec --no-startup-id ~/.fehbg
 
+# Set wallpaper using nitrogen
+exec --no-startup-id nitrogen --restore
+
 # Start dunst for notifications
 exec --no-startup-id dunst
 

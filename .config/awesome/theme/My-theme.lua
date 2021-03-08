@@ -7,8 +7,8 @@ local xresources = require('beautiful.xresources').get_current_theme()
 local theme = {}
 theme.icons = theme_dir .. '/icons/'
 theme.font = 'Jetbrains Mono 10'
-local wallpaper = '/files/Pics/jonatan-pie-3l3RwQdHRHg-unsplash.jpg'
--- local wallpaper = '/files/Pics/yash-raut-sHXHvPtcdEQ-unsplash.jpg'
+-- local wallpaper = '/files/Pics/jonatan-pie-3l3RwQdHRHg-unsplash.jpg'
+local wallpaper = '/files/Pics/yash-raut-sHXHvPtcdEQ-unsplash.jpg'
 local border_width = 3
 
 -- Colors Pallets
@@ -28,7 +28,7 @@ local awesome_overrides =
   theme.dir = os.getenv('HOME') .. '/.config/awesome/theme'
 
   theme.icons = theme.dir .. '/icons/'
-  theme.wallpaper = os.getenv('HOME') .. wallpaper
+  -- theme.wallpaper = os.getenv('HOME') .. wallpaper
   theme.font = 'Hack 13'
   theme.title_font = 'Hack 14'
 
