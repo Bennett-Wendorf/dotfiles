@@ -1,0 +1,10 @@
+[Unit]
+Description=Fix touchscreen after resume
+After=suspend.target
+
+[Service]
+Type=simple
+ExecStart=/opt/touchscreen_fix/resume.sh
+
+[Install]
+WantedBy=suspend.target
