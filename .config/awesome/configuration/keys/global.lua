@@ -346,10 +346,18 @@ local globalKeys =
   ),
   -- Screen management
   awful.key(
-    {modkey},
+    {modkey, 'Shift'},
     'p',
     awful.client.movetoscreen,
     {description = 'move window to next screen', group = 'client'}
+  ),
+  awful.key(
+    {modkey},
+    'p',
+    function()
+      awful.screen.focus_relative(1)
+    end,
+    {description = 'Focus the next screen', group = 'awesome'}
   ),
   -- Open default program for tag
   awful.key(
