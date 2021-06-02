@@ -25,20 +25,20 @@ else
 	BACKGROUND=(-B 10)
 fi
 
-RING=( --radius=30 --ring-width=5.0 --insidecolor=$clear_color --ringcolor=$base_color \
-	--linecolor=$base_color --keyhlcolor=$accent_color --indpos="x+50:y+h-50" --insidevercolor=$clear_color \
-	--insidewrongcolor=$clear_color --ringvercolor=$verify_color --veriftext="" --wrongtext="X" --noinputtext="")
+RING=( --radius=30 --ring-width=5.0 --inside-color=$clear_color --ring-color=$base_color \
+	--line-color=$base_color --keyhl-color=$accent_color --ind-pos="x+50:y+h-50" --insidever-color=$clear_color \
+	--insidewrong-color=$clear_color --ringver-color=$verify_color --verif-text="" --wrong-text="X" --noinput-text="")
 
 BAR=( --bar-indicator --bar-orientation=vertical --bar-color=$base_color --bar-position="x")
 
 PARAM=( --clock --pass-media-keys --pass-screen-keys --pass-power-keys)
 
 #This particular greeter requires that the greeter_font is a font that has a valid character for the text. Font awesome does this, so make sure it's installed!
-GREETER=( --greetertext="" --greeter-font="$greeter_font" --greetercolor=$base_color --greeterpos="x+w/2:y+h/2+30" --greetersize=100)
+GREETER=( --greeter-text="" --greeter-font="$greeter_font" --greeter-color=$base_color --greeter-pos="x+w/2:y+h/2+30" --greeter-size=100)
 
-DATETIME=( --datecolor=$font_color --timecolor=$font_color --timestr="%I:%M:%S %p" \
-	--timesize=$date_time_size --datesize=$date_time_size --datestr="%A %B %m, %Y" --timepos="x+w/2:(y+h/2)-90" \
-	--datepos="x+w/2:(y+h/2)+120" --time-font=$font --date-font=$font)
+DATETIME=( --date-color=$font_color --time-color=$font_color --time-str="%I:%M:%S %p" \
+	--time-size=$date_time_size --date-size=$date_time_size --date-str="%A %B %m, %Y" --time-pos="x+w/2:(y+h/2)-90" \
+	--date-pos="x+w/2:(y+h/2)+120" --time-font=$font --date-font=$font)
 
 command_params=()
 
