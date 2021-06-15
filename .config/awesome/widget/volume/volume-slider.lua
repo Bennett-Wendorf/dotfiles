@@ -5,11 +5,18 @@ local mat_icon_button = require('widget.material.icon-button')
 local icons = require('theme.icons')
 local watch = require('awful.widget.watch')
 local spawn = require('awful.spawn')
+local naughty = require('naughty')
 
 local slider =
   wibox.widget {
   read_only = false,
   widget = mat_slider
+}
+
+local icon =
+  wibox.widget {
+  image = icons.volume,
+  widget = wibox.widget.imagebox
 }
 
 slider:connect_signal(
@@ -25,18 +32,25 @@ watch(
   function(_, stdout)
     local mute = string.match(stdout, '%[(o%D%D?)%]')
     local volume = string.match(stdout, '(%d?%d?%d)%%')
+    if mute == 'off' then
+	    icon.image = icons.volume_mute
+    else
+	    icon.image = icons.volume
+    end
     slider:set_value(tonumber(volume))
     collectgarbage('collect')
   end
 )
 
-local icon =
-  wibox.widget {
-  image = icons.volume,
-  widget = wibox.widget.imagebox
-}
-
 local button = mat_icon_button(icon)
+
+button:connect_signal(
+  'button::press',
+  function()
+    button.bg = '#ffffff22'
+    spawn('amixer -D pulse sset Master toggle')
+  end
+)
 
 local volume_setting =
   wibox.widget {

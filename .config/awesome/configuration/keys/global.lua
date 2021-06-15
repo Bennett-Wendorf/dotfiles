@@ -39,7 +39,7 @@ local globalKeys =
     {modkey},
     'd',
     function()
-      -- _G.screen.primary.left_panel:toggle(true)
+      --_G.screen.primary.left_panel:toggle("rofi")
       awful.screen.focused().left_panel:toggle("rofi")
     end,
     {description = 'show run prompt', group = 'awesome'}
@@ -48,8 +48,8 @@ local globalKeys =
     {altkey},
     'space',
     function()
-      -- _G.screen.primary.left_panel:toggle(false)
-      awful.screen.focused().left_panel:toggle(false)
+      --_G.screen.primary.left_panel:toggle()
+      awful.screen.focused().left_panel:toggle()
     end,
     {description = 'show main menu', group = 'awesome'}
   ),
@@ -131,7 +131,8 @@ local globalKeys =
     {modkey},
     'v',
     function()
-        awful.util.spawn_with_shell(apps.default.clipboard_manager)
+        -- awful.util.spawn_with_shell(apps.default.clipboard_manager)
+	awful.screen.focused().left_panel:toggle("clipboard")
     end,
     {description = 'Open the clipboard manager', group = 'launcher'}
   ),
@@ -139,6 +140,7 @@ local globalKeys =
     {modkey},
     '=',
     function()
+      --_G.screen.primary.left_panel:toggle("=")
       awful.screen.focused().left_panel:toggle("=")
     end,
     {description = 'Open the menu-calc application', group = 'launcher'}
@@ -258,7 +260,7 @@ local globalKeys =
     {description = 'dropdown application', group = 'launcher'}
   ),
   -- Widgets popups
-  --[[awful.key(
+  awful.key(
     {altkey},
     'h',
     function()
@@ -277,7 +279,7 @@ local globalKeys =
       end
     end,
     {description = 'show weather', group = 'widgets'}
-  ),--]]
+  ),
   -- Brightness
   awful.key(
     {},

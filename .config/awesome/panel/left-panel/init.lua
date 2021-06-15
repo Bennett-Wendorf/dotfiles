@@ -66,6 +66,19 @@ local left_panel = function(screen)
     )
   end
 
+  function panel:run_clipboard()
+    _G.awesome.spawn(
+      apps.default.clipboard_manager,
+      false,
+      false,
+      false,
+      false,
+      function()
+        panel:toggle()
+      end
+    )
+  end
+
   -- local openPanel = function(should_run_rofi)
   --   panel.width = action_bar_width + panel_content_width
   --   backdrop.visible = true
@@ -78,7 +91,7 @@ local left_panel = function(screen)
   --   panel:emit_signal('opened')
   -- end
 
-  -- This command should be an empty string "", "rofi", or "="
+  -- This command should be an empty string "", "rofi", "clipboard", or "="
   local openPanel = function(command)
     panel.width = action_bar_width + panel_content_width
     backdrop.visible = true
@@ -89,6 +102,8 @@ local left_panel = function(screen)
       panel:run_rofi()
     elseif command == "=" then
       panel:run_calc()
+    elseif command == "clipboard" then
+      panel:run_clipboard()
     end
     panel:emit_signal('opened')
   end
@@ -109,7 +124,7 @@ local left_panel = function(screen)
   --   end
   -- end
 
-  -- This command should be "rofi", "=", or left out entirely for just the panel
+  -- This command should be "rofi", "=", "clipboard", or left out entirely for just the panel
   function panel:toggle(command)
     self.opened = not self.opened
     if self.opened then

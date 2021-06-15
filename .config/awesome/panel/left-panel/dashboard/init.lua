@@ -82,7 +82,8 @@ return function(_, panel)
         widget = wibox.widget.separator
       },
       require('panel.left-panel.dashboard.quick-settings'),
-      require('panel.left-panel.dashboard.hardware-monitor')
+      require('panel.left-panel.dashboard.hardware-monitor'),
+      require('panel.left-panel.dashboard.media-control')
     },
     nil,
     {

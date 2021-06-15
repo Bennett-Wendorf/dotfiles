@@ -37,10 +37,17 @@ local clientKeys =
     {modkey},
     'm',
     function (c)
-      c.maximized_horizontal = not c.maximized_horizontal
-      c.maximized_vertical = not c.maximized_vertical
-      c.maximized = not c.maximized
-      naughty.notify({title = "Maximized", text = tostring(c.maximized)})
+      if(c.maximized) then
+	c.maximized_horizontal = false
+      	c.maximized_vertical = false
+      	c.maximized = false
+      	naughty.notify({title = "Maximized", text = tostring(c.maximized)})
+      else
+	c.maximized_horizontal = true
+	c.maximized_vertical = true
+	c.maximized = true
+	naughty.notify({title = "Maximized", text = tostring(c.maximized)})
+      end
     end
   )
 )

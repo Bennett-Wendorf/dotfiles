@@ -17,8 +17,9 @@ return {
     screenshot = 'flameshot screen -c',
     region_screenshot = 'flameshot gui',
     delayed_screenshot = 'flameshot screen -c -d 5000',
-    clipboard_manager = 'copyq menu',
-    
+    -- clipboard_manager = 'copyq menu',
+    clipboard_manager = 'rofi -modi "clipboard:greenclip print" -show clipboard -run-command "{cmd}"',
+
     -- Editing these also edits the default program
     -- associated with each tag/workspace
     browser = 'env firefox',
@@ -47,13 +48,14 @@ return {
     'killall onedrive_tray', 'onedrive_tray',
     'screenrotator',
     'copyq',
-    'protonvpn', 'killall protonvpn-tray', 'protonvpn-tray',
+    'greenclip daemon',
+    -- 'protonvpn', 'killall protonvpn-tray', 'protonvpn-tray',
     'wal -R',
     'nitrogen --restore',
-    --'xss-lock --transfer-sleep-lock -- /home/bennett/.config/i3lock/i3lock.sh --nofork',
-    --'killall xidlehook', "xidlehook --not-when-fullscreen --not-when-audio --timer 1800 '~/.config/i3lock/i3lock.sh' ''",
+    'xss-lock --transfer-sleep-lock -- /home/bennett/.config/i3lock/i3lock.sh --nofork',
+    'killall xidlehook', "xidlehook --not-when-fullscreen --not-when-audio --timer 1800 '~/.config/i3lock/i3lock.sh' ''",
     -- 'xfce4-power-manager',
-    'killall cbatticon', "cbatticon -n -r 3 -c 'poweroff'", --A simple battery icon that lives in the system tray
+    'killall cbatticon', "cbatticon -n -r 3 -c 'poweroff' BAT0", --A simple battery icon that lives in the system tray
     'autorandr -c', --Makes sure that the correct display configuration is set when logging in
   },
 }
