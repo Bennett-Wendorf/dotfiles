@@ -7,6 +7,7 @@ local hotkeys_popup = require('awful.hotkeys_popup').widget
 local modkey = require('configuration.keys.mod').modKey
 local altkey = require('configuration.keys.mod').altKey
 local apps = require('configuration.apps')
+local sharedtags = require('module.awesome-sharedtags')
 -- Key bindings
 local globalKeys =
   awful.util.table.join(
@@ -250,15 +251,6 @@ local globalKeys =
     end,
     {description = 'restore minimized', group = 'client'}
   ),
-  -- Dropdown application
-  awful.key(
-    {modkey},
-    'z',
-    function()
-      _G.toggle_quake()
-    end,
-    {description = 'dropdown application', group = 'launcher'}
-  ),
   -- Widgets popups
   awful.key(
     {altkey},
@@ -421,6 +413,7 @@ for i = 1, 9 do
         local tag = screen.tags[i]
         if tag then
           tag:view_only()
+          -- sharedtags.viewonly(tag, screen)
         end
       end,
       descr_view
@@ -434,6 +427,7 @@ for i = 1, 9 do
         local tag = screen.tags[i]
         if tag then
           awful.tag.viewtoggle(tag)
+          -- sharedtags.viewtoggle(tag, screen)
         end
       end,
       descr_toggle

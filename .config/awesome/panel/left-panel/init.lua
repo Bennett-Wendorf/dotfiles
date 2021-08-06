@@ -79,18 +79,6 @@ local left_panel = function(screen)
     )
   end
 
-  -- local openPanel = function(should_run_rofi)
-  --   panel.width = action_bar_width + panel_content_width
-  --   backdrop.visible = true
-  --   panel.visible = false
-  --   panel.visible = true
-  --   panel:get_children_by_id('panel_content')[1].visible = true
-  --   if should_run_rofi then
-  --     panel:run_rofi()
-  --   end
-  --   panel:emit_signal('opened')
-  -- end
-
   -- This command should be an empty string "", "rofi", "clipboard", or "="
   local openPanel = function(command)
     panel.width = action_bar_width + panel_content_width
@@ -114,15 +102,6 @@ local left_panel = function(screen)
     backdrop.visible = false
     panel:emit_signal('closed')
   end
-
-  -- function panel:toggle(should_run_rofi)
-  --   self.opened = not self.opened
-  --   if self.opened then
-  --     openPanel(should_run_rofi)
-  --   else
-  --     closePanel()
-  --   end
-  -- end
 
   -- This command should be "rofi", "=", "clipboard", or left out entirely for just the panel
   function panel:toggle(command)

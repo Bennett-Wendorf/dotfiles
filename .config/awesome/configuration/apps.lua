@@ -26,7 +26,7 @@ return {
     editor = 'code', -- gui text editor
     social = 'env discord',
     game = rofi_command,
-    files = 'thunar',
+    files = 'nautilus',
     music = rofi_command,
     debug = 'terminator -e bpytop'
   },
@@ -47,8 +47,8 @@ return {
     'megasync',
     'killall onedrive_tray', 'onedrive_tray',
     'screenrotator',
-    'copyq',
-    'greenclip daemon',
+    --'copyq',
+    'killall greenclip', 'greenclip daemon',
     -- 'protonvpn', 'killall protonvpn-tray', 'protonvpn-tray',
     'wal -R',
     'nitrogen --restore',

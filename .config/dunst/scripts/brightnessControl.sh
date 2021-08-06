@@ -15,12 +15,14 @@ function send_notification {
 case $1 in
 	up)
 		# Increase the backlight by 10%
-		brightnessctl -d intel_backlight s +10%
+		# brightnessctl -d intel_backlight s +10%
+		xbacklight -inc 10
 		send_notification
 		;;
 	down)
 		# Decrease the backlight by 10%
-		brightnessctl -d intel_backlight s 10%-
+		# brightnessctl -d intel_backlight s 10%-
+		xbacklight -dec 10
 		send_notification
 		;;
 esac

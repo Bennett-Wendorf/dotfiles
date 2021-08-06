@@ -15,6 +15,13 @@ require('module.notifications')
 require('module.decorate-client')
 require('module.exit-screen')
 
+local bling = require("module.bling")
+bling.signal.playerctl.enable {
+  ignore = {},
+  backend = "playerctl_lib",
+  update_on_activity = true
+}
+
 -- Setup all configurations
 require('configuration.client')
 require('configuration.tags')

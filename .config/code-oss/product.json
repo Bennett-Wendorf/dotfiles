@@ -11,8 +11,8 @@
 	"introductoryVideosUrl": "https://go.microsoft.com/fwlink/?linkid=832146",
 	"tipsAndTricksUrl": "https://go.microsoft.com/fwlink/?linkid=852118",
 	"keyboardShortcutsUrlLinux": "https://go.microsoft.com/fwlink/?linkid=832144",
-	"commit": "3c4e3df9e89829dce27b7b5c24508306b151f30d",
-	"date": "2021-04-22T15:03:39.218Z",
+	"commit": "054a9295330880ed74ceaedda236253b4f39a335",
+	"date": "2021-06-18T02:30:22.835Z",
 	"nameShort": "Code - OSS",
 	"nameLong": "Code - OSS",
 	"applicationName": "code-oss",
@@ -39,7 +39,7 @@
 	"extensionAllowedProposedApi": ["ms-vscode.vscode-js-profile-flame", "ms-vscode.vscode-js-profile-table", "ms-vscode.github-browser", "ms-vscode.github-richnav", "ms-vscode.remotehub", "ms-vscode.remotehub-insiders"],
 	"builtInExtensions": [{
 		"name": "ms-vscode.node-debug",
-		"version": "1.44.19",
+		"version": "1.44.27",
 		"repo": "https://github.com/microsoft/vscode-node-debug",
 		"metadata": {
 			"id": "b6ded8fb-a0a0-4c1c-acbd-ab2a3bc995a6",
@@ -53,7 +53,7 @@
 		}
 	}, {
 		"name": "ms-vscode.node-debug2",
-		"version": "1.42.5",
+		"version": "1.42.6",
 		"repo": "https://github.com/microsoft/vscode-node-debug2",
 		"metadata": {
 			"id": "36d19e17-7569-4841-a001-947eb18602b2",
@@ -67,7 +67,7 @@
 		}
 	}, {
 		"name": "ms-vscode.references-view",
-		"version": "0.0.77",
+		"version": "0.0.80",
 		"repo": "https://github.com/microsoft/vscode-references-view",
 		"metadata": {
 			"id": "dc489f46-520d-4556-ae85-1f9eab3c412d",
@@ -81,7 +81,7 @@
 		}
 	}, {
 		"name": "ms-vscode.js-debug-companion",
-		"version": "1.0.9",
+		"version": "1.0.13",
 		"repo": "https://github.com/microsoft/vscode-js-debug-companion",
 		"metadata": {
 			"id": "99cb0b7f-7354-4278-b8da-6cc79972169d",
@@ -95,7 +95,7 @@
 		}
 	}, {
 		"name": "ms-vscode.js-debug",
-		"version": "1.55.2",
+		"version": "1.56.3",
 		"repo": "https://github.com/microsoft/vscode-js-debug",
 		"metadata": {
 			"id": "25629058-ddac-4e17-abba-74678e126c5d",
@@ -109,7 +109,7 @@
 		}
 	}, {
 		"name": "ms-vscode.vscode-js-profile-table",
-		"version": "0.0.11",
+		"version": "0.0.18",
 		"repo": "https://github.com/microsoft/vscode-js-profile-visualizer",
 		"metadata": {
 			"id": "7e52b41b-71ad-457b-ab7e-0620f1fc4feb",
@@ -121,10 +121,24 @@
 			},
 			"publisherDisplayName": "Microsoft"
 		}
+	}, {
+		"name": "ms-vscode.remotehub",
+		"version": "0.5.3",
+		"repo": "https://github.com/microsoft/vscode-remotehub",
+		"metadata": {
+			"id": "ed0ffe1d-36f0-49a0-bafe-da68355eb33a",
+			"publisherId": {
+				"publisherId": "5f5636e7-69ed-4afe-b5d6-8d231fb3d3ee",
+				"publisherName": "ms-vscode",
+				"displayName": "Microsoft",
+				"flags": "verified"
+			},
+			"publisherDisplayName": "Microsoft"
+		}
 	}],
 	"webBuiltInExtensions": [{
 		"name": "ms-vscode.remotehub",
-		"version": "0.1.2",
+		"version": "0.5.3",
 		"repo": "https://github.com/microsoft/vscode-remotehub",
 		"metadata": {
 			"id": "ed0ffe1d-36f0-49a0-bafe-da68355eb33a",
@@ -138,11 +152,11 @@
 		}
 	}],
 	"checksums": {
-		"vs/base/parts/sandbox/electron-browser/preload.js": "mSFIIbulFgw9Fo6+6fEIGA",
-		"vs/workbench/workbench.desktop.main.js": "OJwnCbQlpE54rOOCt4jDZg",
-		"vs/workbench/workbench.desktop.main.css": "RWtlnNL1Ndjxc6BUK4X6LA",
-		"vs/workbench/services/extensions/node/extensionHostProcess.js": "NUTZkyvwoM/wezm7jWpx3w",
-		"vs/code/electron-browser/workbench/workbench.html": "FA7IN1fg7dReTGbMS997BQ",
-		"vs/code/electron-browser/workbench/workbench.js": "gQ44wp13Pw3A9r9Iyl67rQ"
+		"vs/base/parts/sandbox/electron-browser/preload.js": "CN8UXQH2inP8evdLmw2bXw",
+		"vs/workbench/workbench.desktop.main.js": "T9bVmcy2aL1vb1PJynw1RQ",
+		"vs/workbench/workbench.desktop.main.css": "0cVnYm1dkNtBR7sPjje3Nw",
+		"vs/workbench/services/extensions/node/extensionHostProcess.js": "O9caZj0gFIcItG8sAtnz9Q",
+		"vs/code/electron-browser/workbench/workbench.html": "MbD9WtskfC2PADPB7eh5yQ",
+		"vs/code/electron-browser/workbench/workbench.js": "HpgSLogkDjZWMpj3Oc11ow"
 	}
 }

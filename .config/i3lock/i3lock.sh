@@ -37,7 +37,7 @@ PARAM=( --clock --pass-media-keys --pass-screen-keys --pass-power-keys)
 GREETER=( --greeter-text="" --greeter-font="$greeter_font" --greeter-color=$base_color --greeter-pos="x+w/2:y+h/2+30" --greeter-size=100)
 
 DATETIME=( --date-color=$font_color --time-color=$font_color --time-str="%I:%M:%S %p" \
-	--time-size=$date_time_size --date-size=$date_time_size --date-str="%A %B %m, %Y" --time-pos="x+w/2:(y+h/2)-90" \
+	--time-size=$date_time_size --date-size=$date_time_size --date-str="%A %B %d, %Y" --time-pos="x+w/2:(y+h/2)-90" \
 	--date-pos="x+w/2:(y+h/2)+120" --time-font=$font --date-font=$font)
 
 command_params=()

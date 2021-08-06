@@ -2,61 +2,62 @@ local awful = require('awful')
 local gears = require('gears')
 local icons = require('theme.icons')
 local apps = require('configuration.apps')
+local sharedtags = require('module.awesome-sharedtags')
 
 local tags = {
   {
     icon = icons.firefox,
     type = 'firefox',
     defaultApp = apps.default.browser,
-    screen = 1
+    -- screen = 1
   },
   {
     icon = icons.code,
     type = 'code',
     defaultApp = apps.default.editor,
-    screen = 1
+    -- screen = 1
   },
   {
     icon = icons.folder,
     type = 'folder',
     defaultApp = apps.default.files,
-    screen = 1
+    -- screen = 1
   },
   {
     icon = icons.vm,
     type = 'vm',
     defaultApp = apps.default.rofi,
-    screen = 1
+    -- screen = 1
   },
   {
     icon = icons.lab,
     type = 'any',
     defaultApp = apps.default.rofi,
-    screen = 1
+    -- screen = 1
   },
   {
     icon = icons.game,
     type = 'game',
     defaultApp = apps.default.game,
-    screen = 1
+    -- screen = 1
   },
   {
     icon = icons.social_forum,
     type = 'social_forum',
     defaultApp = apps.default.social,
-    screen = 1
+    -- screen = 1
   },
   {
     icon = icons.music,
     type = 'music',
     defaultApp = apps.default.music,
-    screen = 1
+    -- screen = 1
   },
   {
     icon = icons.debug,
     type = 'debug',
     defaultApp = apps.default.debug,
-    screen = 1
+    -- screen = 1
   }
 }
 

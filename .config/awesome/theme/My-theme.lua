@@ -34,6 +34,27 @@ local awesome_overrides =
 
   theme.fg_normal = mat_colors.white
   --theme.fg_normal = xresources.color7
+  
+  -- Stuff for JavaCafe01 awedots replication
+  theme.xbackground = xresources.background or "#303030"
+  theme.xforeground = xresources.foreground or "#ffffff"
+  theme.xcolor0 = xresources.color0 or "#303030"
+  theme.xcolor1 = xresources.color1 or "#0E4B71"
+  theme.xcolor2 = xresources.color2 or "#348E71"
+  theme.xcolor3 = xresources.color3 or "#116397"
+  theme.xcolor4 = xresources.color4 or "#165CA5"
+  theme.xcolor5 = xresources.color5 or "#258FA2"
+  theme.xcolor6 = xresources.color6 or "#4DB0AE"
+  theme.xcolor7 = xresources.color7 or "#86c8e0"
+  theme.xcolor8 = xresources.color8 or "#5d8c9c"
+  theme.xcolor9 = xresources.color9 or "#0E4B71"
+  theme.xcolor10 = xresources.color10 or "#348E71"
+  theme.xcolor11 = xresources.color11 or "#116397"
+  theme.xcolor12 = xresources.color12 or "#165CA5"
+  theme.xcolor13 = xresources.color13 or "#258FA2"
+  theme.xcolor14 = xresources.color14 or "#4DB0AE"
+  theme.xcolor15 = xresources.color15 or "#86c8e0"
+  theme.icon_font_name = "FiraCode Nerd Font Mono "
 
   theme.fg_focus = xresources.color7
   theme.fg_urgent = '#B30000'
