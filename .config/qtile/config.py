@@ -104,6 +104,7 @@ keys = [
 # QTILE FUNCTIONS
     Key([mod, "shift"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "shift"],"e", lazy.shutdown(), desc="Shutdown Qtile"),
+    Key([mod], "l", lazy.spawn("./.config/i3lock/i3lock.sh"), desc="Lock the screen with i3lock-color"),
 
 # QTILE LAYOUT KEYS
     Key([mod], "n", lazy.layout.normalize(), desc="Normalize the layout"),
@@ -114,10 +115,6 @@ keys = [
     Key([mod], "Down", lazy.layout.down(), desc="Change focus down"),
     Key([mod], "Left", lazy.layout.left(), desc="Change focus left"),
     Key([mod], "Right", lazy.layout.right(), desc="Change focus right"),
-    Key([mod], "k", lazy.layout.up(), desc="Change focus up"),
-    Key([mod], "j", lazy.layout.down(), desc="Change focus down"),
-    Key([mod], "h", lazy.layout.left(), desc="Change focus left"),
-    Key([mod], "l", lazy.layout.right(), desc="Change focus right"),
 
 # RESIZE UP, DOWN, LEFT, RIGHT
     Key([mod, "control"], "l",
@@ -206,16 +203,17 @@ keys = [
     Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause"), desc="Play or pause audio with playerctl"),
     Key([], "XF86AudioNext", lazy.spawn("playerctl next"), desc="Skip to the next track with playerctl"),
     Key([], "XF86AudioPrev", lazy.spawn("playerctl previous"), desc="Skip to the previous track with playerctl"),
-    Key([], "XF86AudioMute", lazy.spawn("amixer -D pulse set Master 1+ toggle"), desc="Mute"),
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -D pulse sset Master 5%+"), desc="Volume up 5%"),
-    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -D pulse sset Master 5%-"), desc="Volume down 5%"),
-    Key([], "XF86MonBrightnessUp", lazy.spawn("xbacklight -inc 10"), desc="Increase brightness 10%"),
-    Key([], "XF86MonBrightnessDown", lazy.spawn("xbacklight -dec 10"), desc="Decrease brightness 10%"),
+    Key([], "XF86AudioMute", lazy.spawn("./.config/eww/scripts/eww_vol.sh mute"), desc="Mute"),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("./.config/eww/scripts/eww_vol.sh up"), desc="Volume up 5%"),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("./.config/eww/scripts/eww_vol.sh down"), desc="Volume down 5%"),
+    Key([], "XF86MonBrightnessUp", lazy.spawn("./.config/eww/scripts/eww_bright.sh up"), desc="Increase brightness 10%"),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("./.config/eww/scripts/eww_bright.sh down"), desc="Decrease brightness 10%"),
 
     # Key([mod], "h",lazy.spawn("sh -c 'echo \"" + show_keys() + '" | rofi -dmenu -i -p "?"\''), desc="Print keyboard bindings"),
 
 # TODO: Helper apps
     # Need to add things like '=' and 'greenclip' here
+    Key(["mod1"], "space", lazy.spawn("./.config/eww/scripts/eww_sidebar.sh"), desc="Toggle sidebar"),
 
 ]
 
@@ -226,8 +224,8 @@ group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0",]
 
 # group_labels = ["1 ", "2 ", "3 ", "4 ", "5 ", "6 ", "7 ", "8 ", "9 ", "0",]
 # group_labels = ["", "", "", "", "", "", "", "", "", "",]
-group_labels = ["", "", "", "", "", "", "", "", "", "",]
 # group_labels = ["", "", "", "", "", "", "", "", "", "",]
+group_labels = ["", "︁", "", "", "", "", "", "", "", "",]
 # group_labels = ["Web", "Edit/chat", "Image", "Gimp", "Meld", "Video", "Vb", "Files", "Mail", "Music",]
 
 group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall",]
@@ -313,16 +311,13 @@ widget_defaults = init_widgets_defaults()
 def init_widgets_list():
     prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
     widgets_list = [
-                # TODO: Check why these don't all show the same size
                widget.GroupBox(
-                        # font="FontAwesomeSolid",
-                        fontsize = 18,
-                        # margin_y = -1,
-                        margin_y = 1,
+                        font="Font Awesome 5 Free Solid",
+                        fontsize = 16,
+                        margin_y = 2,
                         margin_x = 0,
                         padding_y = 6,
-                        # padding_x = 5,
-                        padding_x = 10,
+                        padding_x = 8,
                         borderwidth = 0,
                         disable_drag = True,
                         active = colors[9],
@@ -356,12 +351,6 @@ def init_widgets_list():
                         foreground = colors[5],
                         background = colors[1],
                         ),
-                widget.TextBox(
-                    font="FontAwesome",
-                    fontsize="40",
-                    # text=", , , , , , , , , "
-                    text=", , , , , , "
-                ),
                # widget.Net(
                #          font="Noto Sans",
                #          fontsize=12,
@@ -510,7 +499,6 @@ def init_widgets_list():
 
 widgets_list = init_widgets_list()
 
-
 def init_widgets_screen1():
     widgets_screen1 = init_widgets_list()
     return widgets_screen1
@@ -522,12 +510,10 @@ def init_widgets_screen2():
 widgets_screen1 = init_widgets_screen1()
 widgets_screen2 = init_widgets_screen2()
 
-
 def init_screens():
     return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=26, opacity=0.8)),
             Screen(top=bar.Bar(widgets=init_widgets_screen2(), size=26, opacity=0.8))]
 screens = init_screens()
-
 
 # MOUSE CONFIGURATION
 mouse = [
@@ -586,13 +572,13 @@ main = None
 
 @hook.subscribe.startup_once
 def start_once():
-    home = os.path.expanduser('~')
-    subprocess.call([home + '/.config/qtile/scripts/autostart.sh'])
+    # Set the cursor to something sane in X
+    subprocess.Popen(['xsetroot', '-cursor_name', 'left_ptr'])
 
 @hook.subscribe.startup
 def start_always():
-    # Set the cursor to something sane in X
-    subprocess.Popen(['xsetroot', '-cursor_name', 'left_ptr'])
+    home = os.path.expanduser('~')
+    subprocess.call([home + '/.config/qtile/scripts/autostart.sh'])
 
 @hook.subscribe.client_new
 def set_floating(window):
@@ -607,8 +593,6 @@ follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
 floating_layout = layout.Floating(float_rules=[
-    {'wmclass': 'Arcolinux-welcome-app.py'},
-    {'wmclass': 'Arcolinux-tweak-tool.py'},
     {'wmclass': 'confirm'},
     {'wmclass': 'dialog'},
     {'wmclass': 'download'},
@@ -635,7 +619,7 @@ auto_fullscreen = True
 
 focus_on_window_activation = "focus" # or smart
 
-# XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
+# Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the
 # mailing lists, GitHub issues, and other WM documentation that suggest setting
 # this string if your java app doesn't work correctly. We may as well just lie

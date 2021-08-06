@@ -18,3 +18,13 @@ autorandr -c
 #starting user applications at boot time
 run volumeicon &
 nitrogen --restore &
+flameshot &
+megasync &
+run onedrive_tray &
+screenrotator &
+run greenclip daemon &
+wal -restore &
+xss-lock --transfer-sleep-lock -- /home/bennett/.config/i3lock/i3lock.sh --nofork &
+killall xidlehook
+xidlehook --not-when-fullscreen --not-when-audio --timer 1800 '~/.config/i3lock/i3lock.sh' '' &
+eww daemon &

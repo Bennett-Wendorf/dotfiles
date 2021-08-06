@@ -1,0 +1,150 @@
+* {
+  all: unset; //Unsets everything so you can style everything from scratch
+}
+
+//Global Styles
+window {
+  background-color: #2e3440;
+  color: #e5e9f0;
+  font-family: Hack;
+}
+
+// Styles on classes (see eww.xml for more information)
+
+// vol
+.vol { 
+  border-width: 3px;
+  border-style: solid;
+  border-color: #3b4252;
+  border-radius: 12px;
+}
+
+.vol scale trough highlight {
+  all: unset;
+	background-color: #88c0d0;
+	color: #000000;
+	border-radius: 100px;
+}
+
+.vol scale trough {
+	all: unset;
+	background-color: #434c5e;
+	border-radius: 50px;
+	min-height: 35px;
+  min-width: 250px;
+  margin: 30px;
+}
+
+.vol-icon {
+  font-family: "Font Awesome 5 Free Solid";
+  font-size: 96px; 
+  margin-top: 80px; 
+  //margin-right: 9px;
+  color: #88c0d0;
+}
+
+// bright
+.bright { 
+  border-width: 3px;
+  border-style: solid;
+  border-color: #3b4252;
+  border-radius: 12px;
+}
+
+.bright scale trough highlight {
+  all: unset;
+	background-color: #ebcb8b;
+	color: #000000;
+	border-radius: 100px;
+}
+
+.bright scale trough {
+	all: unset;
+	background-color: #434c5e;
+	border-radius: 50px;
+	min-height: 35px;
+  min-width: 250px;
+  margin: 30px;
+}
+
+.bright-icon {
+  font-family: "Font Awesome 5 Free Solid";
+  font-size: 96px; 
+  margin-top: 80px; 
+  //margin-right: 9px;
+  color: #ebcb8b;
+}
+
+//player
+.player {
+  background-color: #232831;
+  border-radius: 12px; 
+  //border-top-width: 5px;
+  //border-style: solid;
+  //border-color: #66cccc;
+  margin: 40px 20px 40px 20px;
+  //width: 250px;
+}
+.musicart {
+  background-size: 250px;
+  background-repeat: no-repeat;
+  min-height: 250px;
+  min-width: 250px;
+  margin: 30px;
+  border-radius: 12px;
+  // padding: 10px;
+}
+
+.musictitle {
+  font-size: 24px;
+  font-weight: bold;
+  //margin-top: 80px;
+  margin-bottom: 10px;
+  margin-right: 30px;
+  color: #a3be8c;
+}
+
+.musicalbum {
+    font-size: 24px;
+    margin-bottom: 10px;
+    margin-right: 30px;
+    //color: #8fbcbb;
+}
+
+.musicartist {
+  font-size: 24px;
+  margin-bottom: 0px; 
+  margin-right: 30px;
+  //color: #88c0d0;
+}
+
+.musicbtn {
+  margin-right: 30px;
+}
+.musicbtn button {
+  font-size: 24px;
+  font-family: icons;
+  color: #434c5e;
+}
+
+.musicbtn button:hover {
+  color: #bf616a;
+}
+
+.music-info scale trough highlight {
+  all: unset;
+	background-color: #8fbcbb;;
+	color: #000000;
+	border-radius: 50px;
+}
+
+.music-info scale trough {
+	all: unset;
+	background-color: #434c5e;
+	border-radius: 50px;
+	min-height: 25px;
+  min-width: 250px;
+  margin-top: 10px;
+  margin-left: 0px;
+  margin-right: 30px;
+}
