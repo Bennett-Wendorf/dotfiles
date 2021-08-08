@@ -8,16 +8,15 @@ contain are defined. -->
       <box orientation="h" space-evenly="false" class="player">
         <box class="musicart" halign="center" valign="center" style="background-image: url('{{cover}}');">{{art}}</box>
         <box orientation="v" class="music-info" valign="center" halign="center" space-evenly="false">
-          <box class="musictitle">{{music3}}</box>
-          <box class="musicalbum">{{music2}}</box>
-          <box class="musicartist">{{music}}</box>
+          <box class="musictitle">{{music-title}}</box>
+          <box class="musicalbum">{{music-album}}</box>
+          <box class="musicartist">{{music-artist}}</box>
           <box orientation="h" halign="center" valign="center" class="musicbtn" space-evenly="false">
             <button onclick="playerctl previous"></button>
             <button onclick="playerctl play-pause">{{musicstat}}</button>
             <button onclick="playerctl next"></button>
-            <button onclick="cd ~/.config/eww/scripts/spotify/ && ./spotify_to_like_or_not.sh -c &">{{like_status}}</button>
           </box>
-          <scale min="0" max="{{duration}}" active="false" value="{{position}}" class="progress-bar"/>
+          <!-- <scale min="0" max="{{duration}}" active="false" value="{{position}}" class="progress-bar"/> -->
         </box>
       </box>
     </def>
@@ -41,15 +40,14 @@ contain are defined. -->
   <variables>
 
     <!-- Player vars -->
-    <script-var name="music" interval="3s">playerctl metadata --format '{{ artist }}'</script-var>
-    <script-var name="music2" interval="3s">playerctl metadata --format '{{ album }}'</script-var>
-    <script-var name="music3" interval="3s">playerctl metadata --format '{{ title }}'</script-var>
-    <script-var name="musicstat" interval="1s">~/.local/bin/spotifystatus</script-var>
-    <script-var name="position" interval="3s">current_track.py | jq -r '.progress_ms'</script-var>
-    <script-var name="duration" interval="2s">current_track.py | jq -r '.item.duration_ms'</script-var>
-    <script-var name="cover" interval="1s">~/.config/eww/scripts/echoart</script-var>
-    <script-var name="art" interval="1s">~/.config/eww/scripts/getart || cp ~/.config/eww/images/image.png /tmp/spotify/cover.png</script-var>
-    <script-var name="like_status" interval="1s">~/.config/eww/scripts/spotify/spotify_to_like_or_not.sh -s</script-var>
+    <script-var name="music-artist" interval="3s">playerctl metadata --format '{{ artist }}'</script-var>
+    <script-var name="music-album" interval="3s">playerctl metadata --format '{{ album }}'</script-var>
+    <script-var name="music-title" interval="3s">playerctl metadata --format '{{ title }}'</script-var>
+    <script-var name="musicstat" interval="1s">~/.config/eww/scripts/get_audio_status.sh</script-var>
+    <!-- <script-var name="position" interval="3s">current_track.py | jq -r '.progress_ms'</script-var>
+    <script-var name="duration" interval="2s">current_track.py | jq -r '.item.duration_ms'</script-var> -->
+    <script-var name="cover" interval="1s">~/.config/eww/scripts/echoart.sh</script-var>
+    <script-var name="art" interval="1s">~/.config/eww/scripts/getart.sh || cp ~/.config/eww/images/image.png /tmp/spotify/cover.png</script-var>
 
 	  <!-- Vol vars -->
     <script-var name="vol-icon">tail -f /tmp/vol-icon</script-var>
@@ -62,7 +60,7 @@ contain are defined. -->
   <windows>
     <!-- These are the windows -->
     <window name="sidebar">
-      <geometry height="95%" y="0%" anchor="center left"/>
+      <geometry height="99%" y="2%" anchor="center left"/>
       <widget>
         <box class="sidebar_box" orientation="v" space-evenly="false">
           <player/>

@@ -122,29 +122,31 @@ window {
   margin-right: 30px;
 }
 .musicbtn button {
-  font-size: 24px;
-  font-family: icons;
+  font-size: 35px;
+  font-family: "Font Awesome 5 Free Solid";
   color: #434c5e;
+  padding: 20px;
+  margin-top: 20px;
 }
 
 .musicbtn button:hover {
-  color: #bf616a;
+  color: #88c0d0;
 }
 
-.music-info scale trough highlight {
-  all: unset;
-	background-color: #8fbcbb;;
-	color: #000000;
-	border-radius: 50px;
-}
+// .music-info scale trough highlight {
+//   all: unset;
+// 	background-color: #8fbcbb;;
+// 	color: #000000;
+// 	border-radius: 50px;
+// }
 
-.music-info scale trough {
-	all: unset;
-	background-color: #434c5e;
-	border-radius: 50px;
-	min-height: 25px;
-  min-width: 250px;
-  margin-top: 10px;
-  margin-left: 0px;
-  margin-right: 30px;
-}
+// .music-info scale trough {
+// 	all: unset;
+// 	background-color: #434c5e;
+// 	border-radius: 50px;
+// 	min-height: 25px;
+//   min-width: 250px;
+//   margin-top: 10px;
+//   margin-left: 0px;
+//   margin-right: 30px;
+// }

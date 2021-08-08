@@ -311,190 +311,191 @@ widget_defaults = init_widgets_defaults()
 def init_widgets_list():
     prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
     widgets_list = [
-               widget.GroupBox(
-                        font="Font Awesome 5 Free Solid",
-                        fontsize = 16,
-                        margin_y = 2,
-                        margin_x = 0,
-                        padding_y = 6,
-                        padding_x = 8,
-                        borderwidth = 0,
-                        disable_drag = True,
-                        active = colors[9],
-                        inactive = colors[5],
-                        rounded = True,
-                        highlight_method = "text",
-                        this_current_screen_border = colors[8],
-                        foreground = colors[2],
-                        background = colors[1],
-                        hide_unused = True,
-                        ),
-               widget.Sep(
-                        linewidth = 1,
-                        padding = 10,
-                        foreground = colors[2],
-                        background = colors[1]
-                        ),
-               widget.CurrentLayout(
-                        font = "Noto Sans Bold",
-                        foreground = colors[5],
-                        background = colors[1]
-                        ),
-               widget.Sep(
-                        linewidth = 1,
-                        padding = 10,
-                        foreground = colors[2],
-                        background = colors[1]
-                        ),
-               widget.WindowName(font="Noto Sans",
-                        fontsize = 12,
-                        foreground = colors[5],
-                        background = colors[1],
-                        ),
-               # widget.Net(
-               #          font="Noto Sans",
-               #          fontsize=12,
-               #          interface="enp0s31f6",
-               #          foreground=colors[2],
-               #          background=colors[1],
-               #          padding = 0,
-               #          ),
-               # widget.Sep(
-               #          linewidth = 1,
-               #          padding = 10,
-               #          foreground = colors[2],
-               #          background = colors[1]
-               #          ),
-               # widget.NetGraph(
-               #          font="Noto Sans",
-               #          fontsize=12,
-               #          bandwidth="down",
-               #          interface="auto",
-               #          fill_color = colors[8],
-               #          foreground=colors[2],
-               #          background=colors[1],
-               #          graph_color = colors[8],
-               #          border_color = colors[2],
-               #          padding = 0,
-               #          border_width = 1,
-               #          line_width = 1,
-               #          ),
-               # widget.Sep(
-               #          linewidth = 1,
-               #          padding = 10,
-               #          foreground = colors[2],
-               #          background = colors[1]
-               #          ),
-               # # do not activate in Virtualbox - will break qtile
-            #    widget.ThermalSensor(
-            #             foreground = colors[5],
-            #             foreground_alert = colors[6],
-            #             background = colors[1],
-            #             metric = True,
-            #             padding = 3,
-            #             threshold = 80
-            #             ),
-               # # battery option 1  ArcoLinux Horizontal icons do not forget to import arcobattery at the top
-               # widget.Sep(
-               #          linewidth = 1,
-               #          padding = 10,
-               #          foreground = colors[2],
-               #          background = colors[1]
-               #          ),
-               arcobattery.BatteryIcon(
-                        padding=0,
-                        scale=0.7,
-                        y_poss=2,
-                        theme_path=home + "/.config/qtile/icons/battery_icons_horiz",
-                        update_interval = 5,
-                        background = colors[1]
-                        ),
-               # # battery option 2  from Qtile
-               # widget.Sep(
-               #          linewidth = 1,
-               #          padding = 10,
-               #          foreground = colors[2],
-               #          background = colors[1]
-               #          ),
-            #    widget.Battery(
-            #             font="Noto Sans",
-            #             update_interval = 10,
-            #             fontsize = 12,
-            #             foreground = colors[5],
-            #             background = colors[1],
-	        #             ),
-            #    widget.TextBox(
-            #             font="FontAwesome",
-            #             text="  ",
-            #             foreground=colors[6],
-            #             background=colors[1],
-            #             padding = 0,
-            #             fontsize=16
-            #             ),
-            #    widget.CPUGraph(
-            #             border_color = colors[2],
-            #             fill_color = colors[8],
-            #             graph_color = colors[8],
-            #             background=colors[1],
-            #             border_width = 1,
-            #             line_width = 1,
-            #             core = "all",
-            #             type = "box"
-            #             ),
-               # widget.Sep(
-               #          linewidth = 1,
-               #          padding = 10,
-               #          foreground = colors[2],
-               #          background = colors[1]
-               #          ),
-            #    widget.TextBox(
-            #             font="FontAwesome",
-            #             text="  ",
-            #             foreground=colors[4],
-            #             background=colors[1],
-            #             padding = 0,
-            #             fontsize=16
-            #             ),
-            #    widget.Memory(
-            #             font="Noto Sans",
-            #             format = '{MemUsed}M/{MemTotal}M',
-            #             update_interval = 1,
-            #             fontsize = 12,
-            #             foreground = colors[5],
-            #             background = colors[1],
-            #            ),
-               # widget.Sep(
-               #          linewidth = 1,
-               #          padding = 10,
-               #          foreground = colors[2],
-               #          background = colors[1]
-               #          ),
-               widget.TextBox(
-                        font="FontAwesome",
-                        text="  ",
-                        foreground=colors[3],
-                        background=colors[1],
-                        padding = 0,
-                        fontsize=16
-                        ),
-               widget.Clock(
-                        foreground = colors[5],
-                        background = colors[1],
-                        fontsize = 12,
-                        format="%m-%d-%y %I:%M %P"
-                        ),
-            #    widget.Sep(
-            #             linewidth = 1,
-            #             padding = 10,
-            #             foreground = colors[2],
-            #             background = colors[1]
-            #             ),
-               widget.Systray(
-                        background=colors[1],
-                        icon_size=20,
-                        padding = 4
-                        ),
-              ]
+        widget.GroupBox(
+            font="Font Awesome 5 Free Solid",
+            fontsize = 16,
+            margin_y = 2,
+            margin_x = 0,
+            padding_y = 6,
+            padding_x = 8,
+            borderwidth = 0,
+            disable_drag = True,
+            active = colors[9],
+            inactive = colors[5],
+            rounded = True,
+            highlight_method = "text",
+            this_current_screen_border = colors[8],
+            foreground = colors[2],
+            background = colors[1],
+            hide_unused = True,
+        ),
+        widget.Sep(
+            linewidth = 1,
+            padding = 10,
+            foreground = colors[2],
+            background = colors[1]
+        ),
+        widget.CurrentLayoutIcon(
+            foreground=colors[2],
+            background=colors[1],
+            scale=.75,
+        ),
+        # widget.Sep(    
+        #     linewidth = 1,
+        #     padding = 10,
+        #     foreground = colors[2],
+        #     background = colors[1]
+        # ),
+        widget.Spacer(),
+        # widget.WindowName(font="Noto Sans",
+        #     fontsize = 12,
+        #     foreground = colors[5],
+        #     background = colors[1],
+        # ),
+        # widget.Net(
+        #     font="Noto Sans",
+        #     fontsize=12,
+        #     interface="enp0s31f6",
+        #     foreground=colors[2],
+        #     background=colors[1],
+        #     padding = 0,
+        # ),
+        # widget.Sep(
+        #          linewidth = 1,
+        #          padding = 10,
+        #          foreground = colors[2],
+        #          background = colors[1]
+        #          ),
+        # widget.NetGraph(
+        #     font="Noto Sans",
+        #     fontsize=12,
+        #     bandwidth="down",
+        #     interface="auto",
+        #     fill_color = colors[8],
+        #     foreground=colors[2],
+        #     background=colors[1],
+        #     graph_color = colors[8],
+        #     border_color = colors[2],
+        #     padding = 0,
+        #     border_width = 1,
+        #     line_width = 1,
+        # ),
+        # widget.Sep(
+        #          linewidth = 1,
+        #          padding = 10,
+        #          foreground = colors[2],
+        #          background = colors[1]
+        #          ),
+        # # do not activate in Virtualbox - will break qtile
+        widget.ThermalSensor(
+                foreground = colors[5],
+                foreground_alert = colors[6],
+                background = colors[1],
+                metric = True,
+                padding = 3,
+                threshold = 80
+                ),
+        # # battery option 1  ArcoLinux Horizontal icons do not forget to import arcobattery at the top
+        # widget.Sep(
+        #          linewidth = 1,
+        #          padding = 10,
+        #          foreground = colors[2],
+        #          background = colors[1]
+        #          ),
+        arcobattery.BatteryIcon(
+            padding=0,
+            scale=0.7,
+            y_poss=2,
+            theme_path=home + "/.config/qtile/icons/battery_icons_horiz",
+            update_interval = 5,
+            background = colors[1]
+        ),
+        # # battery option 2  from Qtile
+        # widget.Sep(
+        #          linewidth = 1,
+        #          padding = 10,
+        #          foreground = colors[2],
+        #          background = colors[1]
+        #          ),
+        # widget.Battery(
+        #     font="Noto Sans",
+        #     update_interval = 10,
+        #     fontsize = 12,
+        #     foreground = colors[5],
+        #     background = colors[1],
+        # ),
+    #    widget.TextBox(
+    #             font="FontAwesome",
+    #             text="  ",
+    #             foreground=colors[6],
+    #             background=colors[1],
+    #             padding = 0,
+    #             fontsize=16
+    #             ),
+    #    widget.CPUGraph(
+    #             border_color = colors[2],
+    #             fill_color = colors[8],
+    #             graph_color = colors[8],
+    #             background=colors[1],
+    #             border_width = 1,
+    #             line_width = 1,
+    #             core = "all",
+    #             type = "box"
+    #             ),
+        # widget.Sep(
+        #          linewidth = 1,
+        #          padding = 10,
+        #          foreground = colors[2],
+        #          background = colors[1]
+        #          ),
+    #    widget.TextBox(
+    #             font="FontAwesome",
+    #             text="  ",
+    #             foreground=colors[4],
+    #             background=colors[1],
+    #             padding = 0,
+    #             fontsize=16
+    #             ),
+    #    widget.Memory(
+    #             font="Noto Sans",
+    #             format = '{MemUsed}M/{MemTotal}M',
+    #             update_interval = 1,
+    #             fontsize = 12,
+    #             foreground = colors[5],
+    #             background = colors[1],
+    #            ),
+        # widget.Sep(
+        #          linewidth = 1,
+        #          padding = 10,
+        #          foreground = colors[2],
+        #          background = colors[1]
+        #          ),
+        widget.TextBox(
+            font="FontAwesome",
+            text="  ",
+            foreground=colors[3],
+            background=colors[1],
+            padding = 0,
+            fontsize=16
+        ),
+        widget.Clock(
+            foreground = colors[5],
+            background = colors[1],
+            fontsize = 12,
+            format="%m-%d-%y %I:%M %P"
+        ),
+        # widget.Sep(
+        #     linewidth = 1,
+        #     padding = 10,
+        #     foreground = colors[2],
+        #     background = colors[1]
+        # ),
+        widget.Systray(
+            background=colors[1],
+            icon_size=20,
+            padding = 4
+        ),
+    ]
     return widgets_list
 
 widgets_list = init_widgets_list()
@@ -590,7 +591,7 @@ def set_floating(window):
 floating_types = ["notification", "toolbar", "splash", "dialog"]
 
 follow_mouse_focus = True
-bring_front_click = False
+bring_front_click = True
 cursor_warp = False
 floating_layout = layout.Floating(float_rules=[
     {'wmclass': 'confirm'},
@@ -606,6 +607,7 @@ floating_layout = layout.Floating(float_rules=[
     {'wmclass': 'maketag'},
     {'wmclass': 'Arandr'},
     {'wmclass': 'feh'},
+    {'wmclass': 'MEGAsync'},
     {'wmclass': 'Galculator'},
     {'wmclass': 'arcolinux-logout'},
     {'wmclass': 'xfce4-terminal'},
