@@ -28,12 +28,13 @@ import os
 import re
 import socket
 import subprocess
-from libqtile.config import Drag, Key, Screen, Group, Drag, Click, Rule
+from libqtile.config import Drag, Key, Screen, Group, Drag, Click, Rule, Match
 from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook
 from libqtile.widget import Spacer
 import arcobattery
 from libqtile.log_utils import logger
+from libqtile import qtile
 
 #mod4 or mod = super key
 mod = "mod4"
@@ -41,7 +42,20 @@ mod1 = "alt"
 mod2 = "control"
 home = os.path.expanduser('~')
 terminal = "terminator"
-run_launcher = "dmenu_run -i -fn 'Hack-10' -nb '#2E3440' -nf '#88C0D0' -sb '#88C0D0' -sf '#2E3440'"
+# run_launcher = "dmenu_run -i -fn 'Hack-10' -nb '#2E3440' -nf '#88C0D0' -sb '#88C0D0' -sf '#2E3440'"
+run_launcher = "rofi -show drun -theme '~/.config/rofi/launchers/colorful/style_1.rasi'"
+
+# COLORS
+colors = {
+    # 'bg_color': "#2F343F",
+    'bg_color': "#303030",
+    'fg_color': "#c0c5ce",
+    'fg_color_alt': "#f3f4f5",
+    'fg_crit': "#cd1f3f",
+    'highlight_color': "#4dd0e1",
+    'border_focus': "#4dd0e1",
+    'border_normal': "#303030",
+}
 
 @lazy.function
 def window_to_prev_group(qtile):
@@ -66,33 +80,11 @@ def getIndex(currentGroupName):
 # Spawn the default app for this group
 def spawn_default_app(qtile):
     groupIndex = getIndex(qtile.current_group.name)
-    logger.warning(groupIndex)
     if qtile.current_group is not None and groupIndex is not None:
         app = groups[groupIndex].default_app
-        logger.warning("Launching: " + app)
         qtile.cmd_spawn(app)
     elif qtile.current_group is not None and groupIndex is None:
         qtile.cmd_spawn(run_launcher)
-
-# def show_keys():
-# 	key_help = ""
-# 	for k in keys:
-# 		mods = ""
-
-# 		for m in k.modifiers:
-# 			if m == "mod4":
-# 				mods += "Super + "
-# 			else:
-# 				mods += m.capitalize() + " + "
-
-# 		if len(k.key) > 1:
-# 			mods += k.key.capitalize()
-# 		else:
-# 			mods += k.key
-
-# 		key_help += "{:<30} {}".format(mods, k.desc + "\n")
-
-# 	return key_help
 
 keys = [
 
@@ -103,7 +95,7 @@ keys = [
 
 # QTILE FUNCTIONS
     Key([mod, "shift"], "r", lazy.restart(), desc="Restart Qtile"),
-    Key([mod, "shift"],"e", lazy.shutdown(), desc="Shutdown Qtile"),
+    Key([mod, "shift"],"e", lazy.spawn("./.config/rofi/applets/menu/powermenu.sh"), desc="Launch exit menu"),
     Key([mod], "l", lazy.spawn("./.config/i3lock/i3lock.sh"), desc="Lock the screen with i3lock-color"),
 
 # QTILE LAYOUT KEYS
@@ -115,6 +107,9 @@ keys = [
     Key([mod], "Down", lazy.layout.down(), desc="Change focus down"),
     Key([mod], "Left", lazy.layout.left(), desc="Change focus left"),
     Key([mod], "Right", lazy.layout.right(), desc="Change focus right"),
+
+# CHANGE SCREEN FOCUS
+    Key([mod], "p", lazy.next_screen(), desc="Next monitor"),
 
 # RESIZE UP, DOWN, LEFT, RIGHT
     Key([mod, "control"], "l",
@@ -187,7 +182,7 @@ keys = [
 # APPLICATIONS
     Key([mod], "Return", lazy.spawn(terminal), desc="Spawn a terminal"),
     Key([mod], "d", lazy.spawn(run_launcher),
-    desc="Spawn dmenu"),
+    desc="Spawn run launcher"),
 
 # SPAWN DEFAULT APP FOR THIS GROUP
     Key([mod], "t", lazy.function(spawn_default_app)),
@@ -209,13 +204,36 @@ keys = [
     Key([], "XF86MonBrightnessUp", lazy.spawn("./.config/eww/scripts/eww_bright.sh up"), desc="Increase brightness 10%"),
     Key([], "XF86MonBrightnessDown", lazy.spawn("./.config/eww/scripts/eww_bright.sh down"), desc="Decrease brightness 10%"),
 
-    # Key([mod], "h",lazy.spawn("sh -c 'echo \"" + show_keys() + '" | rofi -dmenu -i -p "?"\''), desc="Print keyboard bindings"),
 
-# TODO: Helper apps
-    # Need to add things like '=' and 'greenclip' here
     Key(["mod1"], "space", lazy.spawn("./.config/eww/scripts/eww_sidebar.sh"), desc="Toggle sidebar"),
+    Key([mod], "v", lazy.spawn("rofi -theme '~/.config/rofi/launchers/colorful/style_7.rasi' -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}'"), desc="Open clipboard manager"),
+    Key([mod], "equal", lazy.spawn("= -- -theme '~/.config/rofi/launchers/colorful/style_7.rasi'"), desc="Run calculator in rofi"),
 
 ]
+
+def show_keys():
+	key_help = ""
+	for k in keys:
+		mods = ""
+
+		for m in k.modifiers:
+			if m == "mod4":
+				mods += "Super + "
+			else:
+				mods += m.capitalize() + " + "
+
+		if len(k.key) > 1:
+			mods += k.key.capitalize()
+		else:
+			mods += k.key
+
+		key_help += "{:<30} {}".format(mods, k.desc + "\n")
+
+	return key_help
+
+keys.extend([
+    Key([mod], "h",lazy.spawn("sh -c 'echo \"" + show_keys() + '" | rofi -theme "~/.config/rofi/launchers/colorful/style_7.rasi" -dmenu -i -p "?"\''), desc="Print keyboard bindings"),
+])
 
 groups = []
 
@@ -224,7 +242,6 @@ group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0",]
 
 # group_labels = ["1 ", "2 ", "3 ", "4 ", "5 ", "6 ", "7 ", "8 ", "9 ", "0",]
 # group_labels = ["", "", "", "", "", "", "", "", "", "",]
-# group_labels = ["", "", "", "", "", "", "", "", "", "",]
 group_labels = ["", "︁", "", "", "", "", "", "", "", "",]
 # group_labels = ["Web", "Edit/chat", "Image", "Gimp", "Meld", "Video", "Vb", "Files", "Mail", "Music",]
 
@@ -240,8 +257,6 @@ for i in range(len(group_names)):
             label=group_labels[i],
         )
     group.default_app = group_defaults[i]
-    logger.warning(group)
-    logger.warning(vars(group))
     groups.append(group)
 for i in groups:
     keys.extend([
@@ -261,18 +276,15 @@ for i in groups:
 def init_layout_theme():
     return {"margin":5,
             "border_width":2,
-            # TODO: Change this color to a variable
-            "border_focus": "#5e81ac",
-            # TODO: Change this color to a variable
-            "border_normal": "#4c566a"
+            "border_focus": colors['border_focus'],
+            "border_normal": colors['border_normal']
             }
 
 layout_theme = init_layout_theme()
 
 layouts = [
-    # TODO: Change these colors to variables
-    layout.MonadTall(margin=8, border_width=2, border_focus="#5e81ac", border_normal="#4c566a"),
-    layout.MonadWide(margin=8, border_width=2, border_focus="#5e81ac", border_normal="#4c566a"),
+    layout.MonadTall(margin=8, border_width=2, border_focus=colors['border_focus'], border_normal=colors['border_normal']),
+    layout.MonadWide(margin=8, border_width=2, border_focus=colors['border_focus'], border_normal=colors['border_normal']),
     layout.Matrix(**layout_theme),
     layout.Bsp(**layout_theme),
     layout.Floating(**layout_theme),
@@ -281,219 +293,114 @@ layouts = [
     layout.Zoomy(**layout_theme)
 ]
 
-# COLORS FOR THE BAR
-
-# TODO: Define these colors in a variable
-def init_colors():
-    return [["#2F343F", "#2F343F"], # color 0
-            ["#2F343F", "#2F343F"], # color 1
-            ["#c0c5ce", "#c0c5ce"], # color 2
-            ["#fba922", "#fba922"], # color 3
-            ["#3384d0", "#3384d0"], # color 4
-            ["#f3f4f5", "#f3f4f5"], # color 5
-            ["#cd1f3f", "#cd1f3f"], # color 6
-            ["#62FF00", "#62FF00"], # color 7
-            ["#6790eb", "#6790eb"], # color 8
-            ["#a9a9a9", "#a9a9a9"]] # color 9
-
-colors = init_colors()
-
 # WIDGETS FOR THE BAR
 
 def init_widgets_defaults():
     return dict(font="Noto Sans",
                 fontsize = 14,
                 padding = 2,
-                background=colors[1])
+                background=colors['bg_color'])
 
 widget_defaults = init_widgets_defaults()
+
+def launch_power_menu():
+    qtile.cmd_spawn('./.config/rofi/applets/menu/powermenu.sh')
 
 def init_widgets_list():
     prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
     widgets_list = [
+        widget.TextBox(
+            font = "Font Awesome 5 Free Solid",
+            text = "",
+            foreground = colors['highlight_color'],
+            background = colors['bg_color'],
+            padding = 5,
+            fontsize = 18,
+            mouse_callbacks = {"Button1": launch_power_menu}
+        ),
+        widget.TextBox(
+            font="Font Awesome 5 Free Regular",
+            text="  ",
+            foreground=["#fba922", "#fba922"],
+            background=colors['bg_color'],
+            padding = 0,
+            fontsize=18
+        ),
+        widget.Clock(
+            foreground = colors['fg_color_alt'],
+            background = colors['bg_color'],
+            fontsize = 16,
+            format="%I:%M %P"
+        ),
+        # TODO: Enable this widget on click of clock widget
+        # widget.Clock(
+        #     foreground = colors['fg_color_alt'],
+        #     background = colors['bg_color'],
+        #     fontsize = 16,
+        #     format = "%m-%d-%y"
+        # ),
+        widget.Sep(
+            linewidth = 1,
+            padding = 10,
+            foreground = colors['fg_color'],
+            background = colors['bg_color']
+        ),
+        widget.CurrentLayoutIcon(
+            foreground=colors['fg_color'],
+            background=colors['bg_color'],
+            scale=.75,
+        ),
+        widget.Spacer(),
         widget.GroupBox(
             font="Font Awesome 5 Free Solid",
-            fontsize = 16,
+            fontsize = 18,
             margin_y = 2,
             margin_x = 0,
             padding_y = 6,
             padding_x = 8,
             borderwidth = 0,
             disable_drag = True,
-            active = colors[9],
-            inactive = colors[5],
+            # active = ["#a9a9a9", "#a9a9a9"],
+            active = "#116397",
+            inactive = colors['fg_color_alt'],
             rounded = True,
             highlight_method = "text",
-            this_current_screen_border = colors[8],
-            foreground = colors[2],
-            background = colors[1],
+            this_current_screen_border = colors['highlight_color'],
+            # this_current_screen_border = "#ff3399",
+            foreground = colors['fg_color'],
+            background = colors['bg_color'],
             hide_unused = True,
         ),
-        widget.Sep(
-            linewidth = 1,
-            padding = 10,
-            foreground = colors[2],
-            background = colors[1]
-        ),
-        widget.CurrentLayoutIcon(
-            foreground=colors[2],
-            background=colors[1],
-            scale=.75,
-        ),
-        # widget.Sep(    
-        #     linewidth = 1,
-        #     padding = 10,
-        #     foreground = colors[2],
-        #     background = colors[1]
-        # ),
         widget.Spacer(),
-        # widget.WindowName(font="Noto Sans",
-        #     fontsize = 12,
-        #     foreground = colors[5],
-        #     background = colors[1],
-        # ),
-        # widget.Net(
-        #     font="Noto Sans",
-        #     fontsize=12,
-        #     interface="enp0s31f6",
-        #     foreground=colors[2],
-        #     background=colors[1],
-        #     padding = 0,
-        # ),
-        # widget.Sep(
-        #          linewidth = 1,
-        #          padding = 10,
-        #          foreground = colors[2],
-        #          background = colors[1]
-        #          ),
-        # widget.NetGraph(
-        #     font="Noto Sans",
-        #     fontsize=12,
-        #     bandwidth="down",
-        #     interface="auto",
-        #     fill_color = colors[8],
-        #     foreground=colors[2],
-        #     background=colors[1],
-        #     graph_color = colors[8],
-        #     border_color = colors[2],
-        #     padding = 0,
-        #     border_width = 1,
-        #     line_width = 1,
-        # ),
-        # widget.Sep(
-        #          linewidth = 1,
-        #          padding = 10,
-        #          foreground = colors[2],
-        #          background = colors[1]
-        #          ),
         # # do not activate in Virtualbox - will break qtile
         widget.ThermalSensor(
-                foreground = colors[5],
-                foreground_alert = colors[6],
-                background = colors[1],
-                metric = True,
-                padding = 3,
-                threshold = 80
-                ),
-        # # battery option 1  ArcoLinux Horizontal icons do not forget to import arcobattery at the top
-        # widget.Sep(
-        #          linewidth = 1,
-        #          padding = 10,
-        #          foreground = colors[2],
-        #          background = colors[1]
-        #          ),
+            foreground = colors['fg_color_alt'],
+            foreground_alert = colors['fg_crit'],
+            background = colors['bg_color'],
+            metric = True,
+            padding = 3,
+            threshold = 85,
+            fontsize = 16,
+        ),
+        widget.Sep(),
         arcobattery.BatteryIcon(
             padding=0,
             scale=0.7,
             y_poss=2,
             theme_path=home + "/.config/qtile/icons/battery_icons_horiz",
             update_interval = 5,
-            background = colors[1]
+            background = colors['bg_color']
         ),
-        # # battery option 2  from Qtile
-        # widget.Sep(
-        #          linewidth = 1,
-        #          padding = 10,
-        #          foreground = colors[2],
-        #          background = colors[1]
-        #          ),
-        # widget.Battery(
-        #     font="Noto Sans",
-        #     update_interval = 10,
-        #     fontsize = 12,
-        #     foreground = colors[5],
-        #     background = colors[1],
-        # ),
-    #    widget.TextBox(
-    #             font="FontAwesome",
-    #             text="  ",
-    #             foreground=colors[6],
-    #             background=colors[1],
-    #             padding = 0,
-    #             fontsize=16
-    #             ),
-    #    widget.CPUGraph(
-    #             border_color = colors[2],
-    #             fill_color = colors[8],
-    #             graph_color = colors[8],
-    #             background=colors[1],
-    #             border_width = 1,
-    #             line_width = 1,
-    #             core = "all",
-    #             type = "box"
-    #             ),
-        # widget.Sep(
-        #          linewidth = 1,
-        #          padding = 10,
-        #          foreground = colors[2],
-        #          background = colors[1]
-        #          ),
-    #    widget.TextBox(
-    #             font="FontAwesome",
-    #             text="  ",
-    #             foreground=colors[4],
-    #             background=colors[1],
-    #             padding = 0,
-    #             fontsize=16
-    #             ),
-    #    widget.Memory(
-    #             font="Noto Sans",
-    #             format = '{MemUsed}M/{MemTotal}M',
-    #             update_interval = 1,
-    #             fontsize = 12,
-    #             foreground = colors[5],
-    #             background = colors[1],
-    #            ),
-        # widget.Sep(
-        #          linewidth = 1,
-        #          padding = 10,
-        #          foreground = colors[2],
-        #          background = colors[1]
-        #          ),
-        widget.TextBox(
-            font="FontAwesome",
-            text="  ",
-            foreground=colors[3],
-            background=colors[1],
-            padding = 0,
-            fontsize=16
+        widget.Battery(
+            format='{percent:2.0%} {hour:d}:{min:02d}',
+            font='Hack',
+            fontsize = 16,
         ),
-        widget.Clock(
-            foreground = colors[5],
-            background = colors[1],
-            fontsize = 12,
-            format="%m-%d-%y %I:%M %P"
-        ),
-        # widget.Sep(
-        #     linewidth = 1,
-        #     padding = 10,
-        #     foreground = colors[2],
-        #     background = colors[1]
-        # ),
+        widget.Sep(),
         widget.Systray(
-            background=colors[1],
+            background=colors['bg_color'],
             icon_size=20,
-            padding = 4
+            padding = 4,
         ),
     ]
     return widgets_list
@@ -506,14 +413,12 @@ def init_widgets_screen1():
 
 def init_widgets_screen2():
     widgets_screen2 = init_widgets_list()
+    widgets_screen2.pop() # Remove the systray from screen 2
     return widgets_screen2
 
-widgets_screen1 = init_widgets_screen1()
-widgets_screen2 = init_widgets_screen2()
-
 def init_screens():
-    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=26, opacity=0.8)),
-            Screen(top=bar.Bar(widgets=init_widgets_screen2(), size=26, opacity=0.8))]
+    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=28, opacity=0.8)),
+            Screen(top=bar.Bar(widgets=init_widgets_screen2(), size=28, opacity=0.8))]
 screens = init_screens()
 
 # MOUSE CONFIGURATION
@@ -521,8 +426,12 @@ mouse = [
     Drag([mod], "Button1", lazy.window.set_position_floating(),
          start=lazy.window.get_position()),
     Drag([mod], "Button3", lazy.window.set_size_floating(),
-         start=lazy.window.get_size())
+         start=lazy.window.get_size()),
+    Click([mod], "Button2", lazy.window.bring_to_front())
 ]
+
+dgroups_key_binder = None
+dgroups_app_rules = []
 
 dgroups_key_binder = None
 dgroups_app_rules = []
@@ -581,45 +490,28 @@ def start_always():
     home = os.path.expanduser('~')
     subprocess.call([home + '/.config/qtile/scripts/autostart.sh'])
 
-@hook.subscribe.client_new
-def set_floating(window):
-    if (window.window.get_wm_transient_for()
-            or window.window.get_wm_type() in floating_types):
-        window.floating = True
-
-# RULES FOR FLOATING WINDOWS
-floating_types = ["notification", "toolbar", "splash", "dialog"]
-
 follow_mouse_focus = True
 bring_front_click = True
 cursor_warp = False
-floating_layout = layout.Floating(float_rules=[
-    {'wmclass': 'confirm'},
-    {'wmclass': 'dialog'},
-    {'wmclass': 'download'},
-    {'wmclass': 'error'},
-    {'wmclass': 'file_progress'},
-    {'wmclass': 'notification'},
-    {'wmclass': 'splash'},
-    {'wmclass': 'toolbar'},
-    {'wmclass': 'confirmreset'},
-    {'wmclass': 'makebranch'},
-    {'wmclass': 'maketag'},
-    {'wmclass': 'Arandr'},
-    {'wmclass': 'feh'},
-    {'wmclass': 'MEGAsync'},
-    {'wmclass': 'Galculator'},
-    {'wmclass': 'arcolinux-logout'},
-    {'wmclass': 'xfce4-terminal'},
-    {'wname': 'branchdialog'},
-    {'wname': 'Open File'},
-    {'wname': 'pinentry'},
-    {'wmclass': 'ssh-askpass'},
 
-],  fullscreen_border_width = 0, border_width = 0)
+floating_layout = layout.Floating(float_rules=[
+    *layout.Floating.default_float_rules,
+    Match(wm_class='confirmreset'),  # gitk
+    Match(wm_class='makebranch'),  # gitk
+    Match(wm_class='maketag'),  # gitk
+    Match(title='branchdialog'),  # gitk
+    Match(wm_class='pinentry'), # GPG key password entry
+    Match(wm_class='ssh-askpass'), # ssh-askpass
+    Match(wm_class='MEGAsync'),
+    Match(wm_class='Open File'),
+    Match(wm_class='Arandr'),
+], fullscreen_border_width = 0, border_width = 0)
+Match(title='branchdialog'),  # gitk
 auto_fullscreen = True
 
-focus_on_window_activation = "focus" # or smart
+reconfigure_screens = True
+
+focus_on_window_activation = "smart" # or focus
 
 # Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the

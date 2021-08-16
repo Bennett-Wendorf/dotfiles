@@ -16,7 +16,6 @@ autorandr -c
 # picom --config $HOME/.config/qtile/scripts/picom.conf &
 
 #starting user applications at boot time
-run volumeicon &
 nitrogen --restore &
 flameshot &
 megasync &
