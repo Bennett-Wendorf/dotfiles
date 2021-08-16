@@ -1,0 +1,152 @@
+configuration {
+	modi: "window,drun,ssh,combi";
+	display-drun:    	     "/";
+	display-window:  	     "";
+	show-icons:      	     true;	
+	sidebar-mode:    	     true;
+        terminal: 		     "terminator";	
+}
+
+* {
+
+	normal-bg:		     #303030;
+	selected-bg:		     #262626;
+	normal-text:		     #ffffff;
+	selected-text:		     #00bcd4;
+	test:			     #ff0000;
+	test2:		  	     #66ff66;
+	
+	/** This is essential! Do not remove this variable assignment as this value has to be
+	set globally and is not set elsewhere in this config file */
+	background-color:	     @normal-bg;
+
+	line-margin:                 10;
+	line-padding:                10;
+	separator-style:             "none";
+	hide-scrollbar:              "true";
+	margin:                      0px;
+	padding:                     0px;
+	font:            	     "Hack 13";
+}
+
+window {
+	location:	  west;
+	anchor:		  west; 
+	height:		  100%;
+	width:		  400px; 
+	orientation: 	  horizontal;
+	children:	  [mainbox];
+}
+
+mainbox {
+	spacing:  	  0em;
+	padding: 	  0px;
+	width: 	 	  200px;
+        border: 	  0px 0px 0px 0px solid;
+	children: 	  [ inputbar, message, listview, sidebar ];
+	expand: 	  true; 
+}
+
+button { 
+	padding: 	  8px 2px;   
+	text-color: 	  @normal-text; 
+}	
+
+button selected {
+	background-color: @selected-bg;
+	text-color:       @selected-text; 
+}
+
+inputbar {
+     	children: 	  [ prompt, textbox-prompt-colon, entry ];
+     	border: 	  0px 0px 10px 0px solid;
+}
+
+prompt{
+	spacing: 	  0;
+	padding: 	  12px;
+	vertical-align:   1;
+	text-color: 	  @normal-text;
+	font: 		  "Hack 12";
+}
+
+textbox-prompt-colon {                                                
+     	text-color: 	  inherit;                                              
+     	expand: 	  false;                                                    
+     	margin: 	  0 0.3em 0em 0em;
+ }
+
+listview {
+	spacing: 	  0em;
+	dynamic: 	  false;
+	cycle:   	  true;  
+}
+
+element { 
+	padding: 	  8px;
+	border:  	  0 0 0 5px solid; 
+    	horizontal-align: 0; 
+}
+
+entry {
+	expand:           true;
+	text-color:       @normal-text;
+	background-color: @selected-bg;
+	vertical-align:   1;
+	padding:          12px;
+	font:             "Hack 13";
+}
+
+element normal.normal {
+	background-color: @normal-bg;
+	text-color:       @normal-text;
+}
+
+element normal.urgent {
+	background-color: @normal-bg;
+	text-color:       @normal-text;
+}
+
+/** These only apply to the window switcher tab*/
+element normal.active {
+	background-color: @selected-text;
+	text-color:       @normal-bg;
+}
+
+element selected.normal {
+	background-color: @selected-bg;
+	text-color:       @selected-text;
+	padding: 16px;
+	border:           0 0 0 5px solid;
+	border-color:	  @selected-text;
+}
+
+element selected.urgent {
+	background-color: @test2;
+	text-color:       @normal-bg;
+}
+
+/** These only apply to the window switcher tab*/
+element selected.active {
+	background-color: @selected-bg;
+	text-color:       @selected-text;
+}
+
+element alternate.normal {
+	background-color: @normal-bg;
+	text-color:       @normal-text;
+}
+
+element alternate.urgent {
+	background-color: @normal-bg;
+	text-color:       @normal-text;
+}
+
+/** These only apply to the window switcher tab*/
+element alternate.active {
+	background-color: @selected-text;
+	text-color:       @normal-bg;
+}
+
+/* vim:ft=css
+@import "/usr/share/rofi/themes/Pop-Dark.rasi"
