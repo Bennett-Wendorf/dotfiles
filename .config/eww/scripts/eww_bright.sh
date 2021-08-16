@@ -31,6 +31,7 @@ echo "$(xbacklight -get | cut -d . -f 1)" > /tmp/bright
 state="$(eww windows | grep vol)"
 
 if [ ! "$state" == "*vol" ]; then
+    # This will make the widget show up on the current monitor in qtile, but it greatly increases the time it takes the widget to show up
     current_monitor_qtile="$(qtile cmd-obj -o screen -f info | awk -F ',' '{print $2}' | sed 's/[^0-9]//g')"
     eww open bright -m "$current_monitor_qtile"
     state="$(eww windows | grep bright)"

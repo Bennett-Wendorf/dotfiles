@@ -58,6 +58,7 @@ echo $(amixer get Master | grep % | awk '{print $5}'| sed 's/[^0-9]//g' | tail -
 state="$(eww windows | grep vol)"
 
 if [ ! "$state" == "*vol" ]; then
+    # This will make the widget show up on the current monitor in qtile, but it greatly increases the time it takes the widget to show up
     current_monitor_qtile="$(qtile cmd-obj -o screen -f info | awk -F ',' '{print $2}' | sed 's/[^0-9]//g')"
     eww open vol -m "$current_monitor_qtile"
     state="$(eww windows | grep vol)"

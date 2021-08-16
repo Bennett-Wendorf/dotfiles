@@ -21,6 +21,54 @@ contain are defined. -->
       </box>
     </def>
 
+    <def name="weather">
+      <box orientation="h"  space-evenly="false" class="weather">
+        <box class="weather-data">
+          {{ weather-data }}
+        </box>
+        <box class="weather-icon-side" style="color: {{weather-hex}}">{{weather-icon}}</box>
+        <box class="weather-info-side" orientation="v" space-evenly="false">
+          <box class="temp-info" orientation="h" halign="center" space-evenly="false">
+            <box class="temperature-side">{{temperature}}</box>
+            <box class="thermometer"></box>
+          </box>
+          <box class="weather-stat-side">{{weather-stat-side}}</box>
+          <box class="weather-quote1">{{weather-quote}}</box>
+        </box>
+      </box>
+    </def>
+
+    <def name="system-info">
+      <box orientation="v" space-evenly="true" class="sliders-side">
+        <box orientation="h" class="slider-cpu-side" space-evenly="false">
+          <box class="label-cpu-side"></box>
+          <scale min="0" active="false" max="100" value="{{cpu-used}}"/>
+        </box>
+        <box orientation="h" class="slider-ram-side" space-evenly="false">
+          <box class="label-ram-side"></box>
+          <scale min="0" active="false" max="100" value="{{ram-used}}"/>
+        </box>
+        <box orientation="h" class="slider-hdd-side" space-evenly="false">
+          <box class="label-hdd-side"></box>
+          <scale min="0" max="100" active="false" value="{{hdd-used}}"/>
+        </box>
+      </box>
+    </def>
+
+    <def name="vol-bright">
+      <box orientation="v" space-evenly="true" class="sliders-side">
+        <box orientation="h" class="slider-vol-side" space-evenly="false">
+          <!-- <box class="label-vol-side"></box> -->
+          <button class="label-vol-side" onclick="amixer -D pulse set Master 1+ toggle">{{if mute-status == "2" then "" else ""}}</button>
+          <scale min="0" active="true" max="100" value="{{current-vol}}" onchange="amixer -D pulse sset Master {}%"/>
+        </box>
+        <box orientation="h" class="slider-bright-side" space-evenly="false">
+          <box class="label-bright-side"></box>
+          <scale min="0" max="100" active="true" value="{{current-bright}}" onchange="xbacklight -set {}"/>
+        </box>
+      </box>
+    </def>
+
     <def name="vol">
       <box orientation="v" space-evenly="true" class="vol">
         <box class="vol-icon">{{vol-icon}}</box>
@@ -49,21 +97,41 @@ contain are defined. -->
     <script-var name="cover" interval="1s">~/.config/eww/scripts/echoart.sh</script-var>
     <script-var name="art" interval="1s">~/.config/eww/scripts/getart.sh || cp ~/.config/eww/images/image.png /tmp/spotify/cover.png</script-var>
 
+    <!-- Weather vars -->
+    <script-var name="weather-data" interval="5s">~/.config/eww/scripts/getweather.bash</script-var>
+    <script-var name="weather-icon" interval="5s">cat /tmp/weather/weather-icon</script-var>
+    <script-var name="weather-hex" interval="5s">cat /tmp/weather/weather-hex</script-var>
+    <script-var name="temperature" interval="5s">cat /tmp/weather/weather-degree</script-var>
+    <script-var name="weather-stat-side" interval="5s">~/.config/eww/scripts/weather_trimmer.bash</script-var>
+    <script-var name="weather-quote" interval="5s">~/.config/eww/scripts/getweathquote.zsh</script-var>
+
+    <!-- System info vars -->
+    <script-var name="cpu-used" interval="1s">~/.config/eww/scripts/getcpu.sh</script-var>
+    <script-var name="ram-used" interval="1s">~/.config/eww/scripts/getram.sh</script-var>
+    <script-var name="hdd-used" interval="5s">~/.config/eww/scripts/gethdd.sh</script-var>
+
 	  <!-- Vol vars -->
     <script-var name="vol-icon">tail -f /tmp/vol-icon</script-var>
-    <script-var name="current-vol">tail -f /tmp/vol</script-var>
+    <!-- <script-var name="current-vol">tail -f /tmp/vol</script-var> -->
+    <script-var name="current-vol" interval="1s">amixer get Master | grep % | awk '{print $5}'| sed 's/[^0-9]//g' | tail -1</script-var>
+    <script-var name="mute-status" interval="1s">amixer get Master | tail -2 | grep -c '\[on\]'</script-var>
+
     <!-- Bright vars -->
-    <script-var name="current-bright">tail -f /tmp/bright</script-var>
+    <!-- <script-var name="current-bright">tail -f /tmp/bright</script-var> -->
+    <script-var name="current-bright" interval="1s">xbacklight -get | cut -d . -f 1</script-var>
 
   </variables>
 
   <windows>
     <!-- These are the windows -->
     <window name="sidebar">
-      <geometry height="99%" y="2%" anchor="center left"/>
+      <geometry height="1056px" y="13px" anchor="center left"/>
       <widget>
         <box class="sidebar_box" orientation="v" space-evenly="false">
           <player/>
+          <weather/>
+          <vol-bright/>
+          <system-info/>
         </box>
       </widget>
     </window>
