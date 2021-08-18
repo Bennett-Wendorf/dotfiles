@@ -1,0 +1,1 @@
+All of the styles in this directory are from the same repo as the rest of these rofi configs, except for style_13. That style is a modified version of style_7 that uses only 1 column instead of 2 to make it better for showing key descriptions and longer pieces of text such as from greenclip. Also, I made some changes to the colors in this directory.
