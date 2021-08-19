@@ -125,7 +125,7 @@ contain are defined. -->
   <windows>
     <!-- These are the windows -->
     <window name="sidebar">
-      <geometry height="1056px" y="13px" anchor="center left"/>
+      <geometry height="1056px" y="16px" anchor="center left"/>
       <widget>
         <box class="sidebar_box" orientation="v" space-evenly="false">
           <player/>
