@@ -101,6 +101,7 @@ keys = [
 # QTILE LAYOUT KEYS
     Key([mod], "n", lazy.layout.normalize(), desc="Normalize the layout"),
     Key([mod], "space", lazy.next_layout(), desc="Change the layout to the next option"),
+    Key([mod, "shift"], "space", lazy.prev_layout(), desc="Change the layout to the previous option"),
 
 # CHANGE FOCUS
     Key([mod], "Up", lazy.layout.up(), desc="Change focus up"),
@@ -206,7 +207,7 @@ keys = [
 
 
     Key(["mod1"], "space", lazy.spawn("./.config/eww/scripts/eww_sidebar.sh"), desc="Toggle sidebar"),
-    Key([mod], "v", lazy.spawn("rofi -theme '~/.config/rofi/launchers/colorful/style_7.rasi' -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}'"), desc="Open clipboard manager"),
+    Key([mod], "v", lazy.spawn("rofi -theme '~/.config/rofi/launchers/colorful/style_13.rasi' -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}'"), desc="Open clipboard manager"),
     Key([mod], "equal", lazy.spawn("= -- -theme '~/.config/rofi/launchers/colorful/style_7.rasi'"), desc="Run calculator in rofi"),
 
 ]
@@ -232,7 +233,7 @@ def show_keys():
 	return key_help
 
 keys.extend([
-    Key([mod], "h",lazy.spawn("sh -c 'echo \"" + show_keys() + '" | rofi -theme "~/.config/rofi/launchers/colorful/style_7.rasi" -dmenu -i -p "?"\''), desc="Print keyboard bindings"),
+    Key([mod], "h",lazy.spawn("sh -c 'echo \"" + show_keys() + '" | rofi -theme "~/.config/rofi/launchers/colorful/style_13.rasi" -dmenu -i -p "?"\''), desc="Print keyboard bindings"),
 ])
 
 groups = []
