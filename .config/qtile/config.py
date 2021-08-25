@@ -310,6 +310,9 @@ def launch_power_menu():
 def init_widgets_list():
     prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
     widgets_list = [
+        widget.Spacer(
+            length=5,
+        ),
         widget.TextBox(
             font = "Font Awesome 5 Free Solid",
             text = "",
@@ -400,8 +403,11 @@ def init_widgets_list():
         widget.Sep(),
         widget.Systray(
             background=colors['bg_color'],
-            icon_size=20,
-            padding = 4,
+            icon_size=22,
+            padding = 6,
+        ),
+        widget.Spacer(
+            length=5,
         ),
     ]
     return widgets_list
@@ -418,8 +424,8 @@ def init_widgets_screen2():
     return widgets_screen2
 
 def init_screens():
-    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=28, opacity=0.8)),
-            Screen(top=bar.Bar(widgets=init_widgets_screen2(), size=28, opacity=0.8))]
+    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), margin=[8, 8, 0, 8], size=28, opacity=0.8)),
+            Screen(top=bar.Bar(widgets=init_widgets_screen2(), margin=[8, 8, 0, 8], size=28, opacity=0.8))]
 screens = init_screens()
 
 # MOUSE CONFIGURATION

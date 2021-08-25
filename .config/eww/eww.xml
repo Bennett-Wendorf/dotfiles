@@ -39,7 +39,7 @@ contain are defined. -->
     </def>
 
     <def name="system-info">
-      <box orientation="v" space-evenly="true" class="sliders-side">
+      <box orientation="v" space-evenly="true" class="sliders-side extra-bottom-margin">
         <box orientation="h" class="slider-cpu-side" space-evenly="false">
           <box class="label-cpu-side"></box>
           <scale min="0" active="false" max="100" value="{{cpu-used}}"/>
@@ -125,7 +125,8 @@ contain are defined. -->
   <windows>
     <!-- These are the windows -->
     <window name="sidebar">
-      <geometry height="1056px" y="16px" anchor="center left"/>
+      <!-- <geometry height="1056px" y="16px" anchor="center left"/> -->
+      <geometry x="8px" anchor="center left"/>
       <widget>
         <box class="sidebar_box" orientation="v" space-evenly="false">
           <player/>
