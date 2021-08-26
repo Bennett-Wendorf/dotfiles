@@ -18,7 +18,6 @@ echo "NOTE: At the moment, any setting up of git repos to track these dotfiles i
 
 mkdir -p ~/.config
 
-# TODO: Consider adding README to all configs that were downloaded that link back to my repo
 if [ -d ~/.config/autorandr ]; then
     echo "Autorandr configs detected; backing up..." | tee -a $log_file
     mkdir ~/.config/autorandr.old && mv ~/.config/autorandr/* ~/.config/autorandr.old/
@@ -293,7 +292,8 @@ if [ -d ~/scripts ]; then
     mkdir ~/scripts.old && mv ~/scripts/* ~/scripts.old/
     echo "Installing scripts..." | tee -a $log_file
     cp -r ~/dotfiles/scripts/* ~/scripts;
-    # TODO Check where this choice comes from
+    echo "Do you have a touchscreen on this device? [Y]es or [N]o."
+    read touchscreen_choice
     if [ "${touchscreen_choice^^}" = "Y" ]; then
         echo "Setting up touchscreen-fix service..." | tee -a $log_file
         sudo mkdir -p /opt/touchscreen_fix

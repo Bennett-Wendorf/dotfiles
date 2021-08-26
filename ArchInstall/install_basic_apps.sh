@@ -41,15 +41,6 @@ else
 fi
 echo ""
 
-# TODO: Move this into the full system install as it needs a reboot to take effect
-# Enable parallel downloads and some other pacman settings
-echo "Setting up some pacman settings such as parallel downloads before we begin..." | tee -a $log_file
-parallel_download_amount=5
-sudo sed -i "s/^#ParallelDownloads =.*/ParallelDownloads = ${parallel_download_amount}/" /etc/pacman.conf
-sudo sed -i "s/^#Color.*/Color/" /etc/pacman.conf
-sudo sed -i "s/^#VerbosePkgLists =.*/VerbosePkgLists/" /etc/pacman.conf
-echo ""
-
 echo "" | sudo tee -a /etc/pacman.conf
 echo "[multilib]" | sudo tee -a /etc/pacman.conf
 echo "Include = /etc/pacman.d/mirrorlist" | sudo tee -a /etc/pacman.conf
