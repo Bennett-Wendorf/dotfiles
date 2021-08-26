@@ -18,16 +18,17 @@ fi
 if [ ! $3 = "" ]; then
     package_manager=$3
 else
-    if type -p trizen; then
-        # Trizen is installed, so use that
-        package_manager="trizen"
-    elif type -p paru; then
+    if type -p paru; then
+        # Paru is installed, so use that
         package_manager="paru"
+    elif type -p trizen; then
+        package_manager="trizen"
     elif type -p yay; then
         package_manager="yay"
     else
         echo "No known AUR helper installed. Some things here WILL break!!!" | tee -a $log_file
         package_manager="sudo pacman"
+    fi
 fi
 
 # Grab lists of all installed AUR and regular packages and install them
@@ -39,19 +40,19 @@ git clone https://gist.github.com/Bennett-Wendorf/22361d7ab13b8be492934ea48eba64
 git clone https://gist.github.com/Bennett-Wendorf/99903062c63920216cc533ed3fb1850d.git /tmp/pkg_lists/aur
 
 echo "Installing packages from pacman" | tee -a $log_file
-$package_manager -S --noconfirm --needed - < /tmp/pkg_lists/pacman/pacman-list.pkg
+sudo pacman -S --noconfirm --needed - < /tmp/pkg_lists/pacman/pacman-list.pkg || echo "Pacman package install failed!" | tee -a $log_file
 
 # Install packages from the AUR, but only if a known AUR helper is installed
 if [ ! $package_manager = "sudo pacman" ]; then
     echo "Installing packages from AUR" | tee -a $log_file
-    $package_manager -S --noconfirm --needed - < /tmp/pkg_lists/aur/aur-list.pkg
+    $package_manager -S --noconfirm --needed - < /tmp/pkg_lists/aur/aur-list.pkg || echo "AUR package install failed!" | tee -a $log_file
 fi
 
 # Uninstall extra video drivers
 video_driver_list=(xf86-video-intel xf86-video-amdgpu nvidia nvidia-settings nvidia-utils)
-if $vid_driver = "xf86-video-amdgpu"; then
+if [ $vid_driver = "xf86-video-amdgpu" ]; then
     unset video_driver_list[1]
-elif $vid_driver = "nvidia nvidia-settings nvidia-utils"; then
+elif [ $vid_driver = "nvidia nvidia-settings nvidia-utils" ]; then
     unset video_driver_list[2]
     unset video_driver_list[3]
     unset video_driver_list[4]
