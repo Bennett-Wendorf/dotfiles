@@ -24,6 +24,9 @@ case $aur_choice in
         aur_helper='trizen'
         ;;
     3)
+        aur_helper='yay'
+        ;;
+    4)
         aur_helper=""
         ;;
     *)
@@ -197,8 +200,11 @@ Section "InputClass"
     Option "NaturalScrolling" "true"
 EndSection
 EOF
-fi
 sudo mv /tmp/30-touchpad.conf /etc/X11/xorg.conf.d/30-touchpad.conf
+fi
 echo ""
 
+echo $vid_driver
+echo $log_file
+echo $package_manager
 ./install_apps.sh $vid_driver $log_file $package_manager

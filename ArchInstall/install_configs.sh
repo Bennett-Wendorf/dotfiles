@@ -8,6 +8,7 @@ else
 fi
 
 if [ ! -d ~/dotfiles ]; then
+    # TODO also check for these in other locations
     # Download configs
     echo "Downloading config files..." | tee -a $log_file
     mkdir ~/dotfiles

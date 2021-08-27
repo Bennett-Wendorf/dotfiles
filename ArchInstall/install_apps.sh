@@ -40,12 +40,12 @@ git clone https://gist.github.com/Bennett-Wendorf/22361d7ab13b8be492934ea48eba64
 git clone https://gist.github.com/Bennett-Wendorf/99903062c63920216cc533ed3fb1850d.git /tmp/pkg_lists/aur
 
 echo "Installing packages from pacman" | tee -a $log_file
-sudo pacman -S --noconfirm --needed - < /tmp/pkg_lists/pacman/pacman-list.pkg || echo "Pacman package install failed!" | tee -a $log_file
+sudo pacman -S --needed - < /tmp/pkg_lists/pacman/pacman-list.pkg || echo "Pacman package install failed!" | tee -a $log_file
 
 # Install packages from the AUR, but only if a known AUR helper is installed
 if [ ! $package_manager = "sudo pacman" ]; then
     echo "Installing packages from AUR" | tee -a $log_file
-    $package_manager -S --noconfirm --needed - < /tmp/pkg_lists/aur/aur-list.pkg || echo "AUR package install failed!" | tee -a $log_file
+    $package_manager -S --needed - < /tmp/pkg_lists/aur/aur-list.pkg || echo "AUR package install failed!" | tee -a $log_file
 fi
 
 # Uninstall extra video drivers

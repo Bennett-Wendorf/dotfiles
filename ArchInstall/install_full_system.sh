@@ -55,9 +55,10 @@ if [ "${locale_choice^^}" = "Y" ]; then
     # TODO Set up systemd-timesyncd here
     echo "Uncommenting the proper locale..." | tee -a $log_file
     locale='en-US.UTF-8 UTF-8'
-    sudo sed -i "s/^#${locale}.*/${locale}/" /etc/locale.gen
+    sed -i "s/^#${locale}.*/${locale}/" /etc/locale.gen
     echo "Generating locale..." | tee -a $log_file
     locale-gen
+    # TODO Fix this usage of locale
     echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 else
     echo "OK! Not setting up locale information now. Please do this on your own later!" | tee -a $log_file
@@ -75,13 +76,13 @@ echo "Changing the root user password..." | tee -a $log_file
 passwd root
 
 echo "Installing some needed networking and dev packages..." | tee -a $log_file
-pacman -Sy base-devel linux-headers networkmanager network-manager-applet dialog
+pacman --needed --noconfirm -Sy base-devel linux-headers networkmanager network-manager-applet dialog
 
 echo "Would you like to install packages for wireless networking now? [Y]es or [N]o."
 read wifi_choice
 if [ "${wifi_choice^^}" = "Y" ]; then
     echo "Installing wireless networking tools now..." | tee -a $log_file
-    pacman -S wireless_tools wpa_supplicant
+    pacman --needed --noconfirm -S wireless_tools wpa_supplicant
 else
     echo "OK! Not installing wireless networking tools." | tee -a $log_file
 fi
@@ -90,7 +91,7 @@ echo "Would you like to install packages for MSDOS file systems now? [Y]es or [N
 read dos_file_choice
 if [ "${dos_file_choice^^}" = "Y" ]; then
     echo "Installing MSDOS filesystem tools now..." | tee -a $log_file
-    pacman -S mtools dosfstools
+    pacman --needed --noconfirm -S mtools dosfstools
 else
     echo "OK! Not installing MSDOS filesystem tools." | tee -a $log_file
 fi
@@ -99,7 +100,7 @@ echo "Does your system boot in UEFI mode? [Y]es or [N]o."
 read uefi_choice
 if [ "${uefi_choice^^}" = "Y" ]; then
     echo "Installing efi boot manager now..." | tee -a $log_file
-    pacman -S efibootmgr
+    pacman --needed --noconfirm -S efibootmgr
 else
     echo "OK! Not installing efi boot manager." | tee -a $log_file
 fi
@@ -108,13 +109,13 @@ echo "Are you dual booting your system with multiple operating systems? [Y]es or
 read dual_boot_choice
 if [ "${dual_boot_choice^^}" = "Y" ]; then
     echo "Installing os prober now..." | tee -a $log_file
-    pacman -S os-prober
+    pacman --needed --noconfirm -S os-prober
 else
     echo "OK! Not installing os prober." | tee -a $log_file
 fi
 
 echo "Installing grub..." | tee -a $log_file
-pacman -S grub
+pacman --needed --noconfirm -S grub
 
 if [ "${uefi_choice^^}" = "Y" ]; then
     echo "Setting up grub with UEFI boot..." | tee -a $log_file
@@ -149,7 +150,7 @@ echo "At this point you will need to do a few more things manually, as they cann
 echo "Make sure you read through all of these instructions before continuing. Some of them may clear your screen!" | tee -a $log_file
 echo "1) Run the 'exit' command to leave the chroot environment" | tee -a $log_file
 echo "2) Run 'umount -a' to unmount all disks. It should be OK if they are showing as busy." | tee -a $log_file
-echo "3) Reboot the computer and remove the installation media while it is off." | tee-a $log_file
+echo "3) Reboot the computer and remove the installation media while it is off." | tee -a $log_file
 echo "4) Ensure that grub shows up correctly and log in with the root user again." | tee -a $log_file
 echo "5) Upon login, run the setup_users.sh script to continue the remainder of the setup!" | tee -a $log_file
 echo "Thanks for using this portion of my install script!"
