@@ -1,6 +1,7 @@
 [global_config]
   focus = mouse
   always_on_top = True
+  title_font = Hack 9
 [keybindings]
 [profiles]
   [[default]]
