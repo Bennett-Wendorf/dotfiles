@@ -384,6 +384,20 @@ else
     cp ~/dotfiles/.xprofile ~/.xprofile;
 fi
 
+if [ -d /usr/share/icons/Abyss-DEEP-Suru-GLOW ]; then
+    echo "Abyss icons directory detected; backing up..." | tee -a $log_file
+    mkdir /usr/share/icons/Abyss-DEEP-Suru-GLOW.old && mv /usr/share/icons/Abyss-DEEP-Suru-GLOW* /usr/share/icons/Abyss-DEEP-Suru-GLOW.old/
+    echo "Installing abyss icons..." | tee -a $log_file
+    mkdir ~/Abyss-icons
+    git clone --branch Abyss-Desktop-Theme-Icons-and-Folders https://github.com/rtlewis88/rtl88-Themes ~/Abyss-icons
+    sudo cp -r ~/Abyss-icons/Abyss-DEEP-Suru-GLOW/ /usr/share/icons/
+else
+    echo "Installing abyss icons..." | tee -a $log_file
+    mkdir ~/Abyss-icons
+    git clone --branch Abyss-Desktop-Theme-Icons-and-Folders https://github.com/rtlewis88/rtl88-Themes ~/Abyss-icons
+    sudo cp -r ~/Abyss-icons/Abyss-DEEP-Suru-GLOW/ /usr/share/icons/
+fi
+
 echo "Would you like to reboot into the new system now? [Y]es or [N]o."
 read reboot_choice
 if [ "${reboot_choice^^}" = "Y" ]; then
