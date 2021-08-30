@@ -273,6 +273,26 @@ else
     cp ~/dotfiles/.config/mimeapps.list ~/.config/mimeapps.list;
 fi
 
+if [ -d ~/wallpapers ]; then
+    echo "Wallpapers directory detected; backing up..." | tee -a $log_file
+    mkdir ~/wallpapers.old && mv ~/wallpapers/* ~/wallpapers.old/
+    echo "Installing wallpapers..." | tee -a $log_file
+    cp -r ~/dotfiles/wallpapers/* ~/wallpapers;
+else
+    echo "Installing wallpapers..." | tee -a $log_file
+    mkdir ~/walpapers && cp -r ~/dotfiles/wallpapers/* ~/wallpapers;
+fi
+
+if [ -d ~/.config/nitrogen ]; then
+    echo "Nitrogen configs detected; backing up..." | tee -a $log_file
+    mkdir ~/.config/nitrogen.old && mv ~/.config/nitrogen/* ~/.config/nitrogen.old/
+    echo "Installing nitrogen configs..." | tee -a $log_file
+    cp -r ~/dotfiles/.config/nitrogen/* ~/.config/nitrogen;
+else
+    echo "Installing nitrogen configs..." | tee -a $log_file
+    mkdir ~/.config/nitrogen && cp -r ~/dotfiles/.config/nitrogen/* ~/.config/nitrogen;
+fi
+
 if [ -d ~/PacmanHooks ]; then
     echo "Pacman hooks directory detected; backing up..." | tee -a $log_file
     mkdir ~/PacmanHooks.old && mv ~/PacmanHooks/* ~/PacmanHooks.old/
