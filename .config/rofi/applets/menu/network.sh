@@ -56,10 +56,10 @@ case $chosen in
 		fi 
         ;;
     $bmon)
-        terminator -e bmon
+        termite -e bmon
         ;;
     $launch_cli)
-        terminator -e nmtui
+        termite -e nmtui
         ;;
     $launch)
         nm-connection-editor

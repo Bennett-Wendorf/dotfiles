@@ -11,8 +11,8 @@ dir="$HOME/.config/rofi/applets/menu/configs/$style"
 rofi_command="rofi -theme $dir/powermenu.rasi"
 
 uptime=$(uptime -p | sed -e 's/up //g')
-cpu=$(sh ~/.config/rofi/bin/usedcpu)
-memory=$(sh ~/.config/rofi/bin/usedram)
+cpu=$($HOME/.config/rofi/bin/usedcpu)
+memory=$($HOME/.config/rofi/bin/usedram)
 
 # Options
 shutdown=""
@@ -62,7 +62,7 @@ case $chosen in
         ;;
     $lock)
 		if [[ -f /usr/bin/i3lock ]]; then
-			~/.config/i3lock/i3lock.sh
+			i3lock
 		elif [[ -f /usr/bin/betterlockscreen ]]; then
 			betterlockscreen -l
 		fi
@@ -88,8 +88,6 @@ case $chosen in
 				bspc quit
 			elif [[ "$DESKTOP_SESSION" == "i3" ]]; then
 				i3-msg exit
-			elif [[ "$DESKTOP_SESSION" == "qtile" ]]; then
-				qtile cmd-obj -o cmd -f shutdown
 			fi
 		elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
 			exit 0

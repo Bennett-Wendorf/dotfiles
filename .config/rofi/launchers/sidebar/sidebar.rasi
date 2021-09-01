@@ -10,9 +10,9 @@ configuration {
 * {
 
 	normal-bg:		     #303030;
-	selected-bg:		     #262626;
-	normal-text:		     #ffffff;
-	selected-text:		     #00bcd4;
+	selected-bg:		 #262626;
+	normal-text:		 #ffffff;
+	selected-text:		 #00bcd4;
 	test:			     #ff0000;
 	test2:		  	     #66ff66;
 	
@@ -34,7 +34,7 @@ window {
 	anchor:		  west; 
 	height:		  100%;
 	width:		  400px; 
-	orientation: 	  horizontal;
+	orientation:  horizontal;
 	children:	  [mainbox];
 }
 
@@ -42,13 +42,13 @@ mainbox {
 	spacing:  	  0em;
 	padding: 	  0px;
 	width: 	 	  200px;
-        border: 	  0px 0px 0px 0px solid;
+    border: 	  0px 0px 0px 0px solid;
 	children: 	  [ inputbar, message, listview, sidebar ];
 	expand: 	  true; 
 }
 
 button { 
-	padding: 	  8px 2px;   
+	padding: 	  	  8px 2px;   
 	text-color: 	  @normal-text; 
 }	
 
@@ -63,11 +63,11 @@ inputbar {
 }
 
 prompt{
-	spacing: 	  0;
-	padding: 	  12px;
+	spacing: 	  	  0;
+	padding: 	  	  12px;
 	vertical-align:   1;
 	text-color: 	  @normal-text;
-	font: 		  "Hack 12";
+	font: 		  	  "Hack 12";
 }
 
 textbox-prompt-colon {                                                
@@ -85,7 +85,7 @@ listview {
 element { 
 	padding: 	  8px;
 	border:  	  0 0 0 5px solid; 
-    	horizontal-align: 0; 
+    horizontal-align: 0; 
 }
 
 entry {
@@ -95,6 +95,11 @@ entry {
 	vertical-align:   1;
 	padding:          12px;
 	font:             "Hack 13";
+}
+
+element-text {
+	background-color: @normal-bg;
+	text-color:		  @normal-text;
 }
 
 element normal.normal {
@@ -107,7 +112,6 @@ element normal.urgent {
 	text-color:       @normal-text;
 }
 
-/** These only apply to the window switcher tab*/
 element normal.active {
 	background-color: @selected-text;
 	text-color:       @normal-bg;
@@ -124,6 +128,16 @@ element selected.normal {
 element selected.urgent {
 	background-color: @test2;
 	text-color:       @normal-bg;
+}
+
+element-text selected {
+	background-color: @selected-bg;
+	text-color:		  @selected-text;
+}
+
+element-icon selected {
+	background-color: @selected-bg;
+	text-color:		  @selected-text;
 }
 
 /** These only apply to the window switcher tab*/
@@ -144,6 +158,16 @@ element alternate.urgent {
 
 /** These only apply to the window switcher tab*/
 element alternate.active {
+	background-color: @selected-text;
+	text-color:       @normal-bg;
+}
+
+element-text alternate.active {
+	background-color: @selected-text;
+	text-color:       @normal-bg;
+}
+
+element-icon alternate.active {
 	background-color: @selected-text;
 	text-color:       @normal-bg;
 }

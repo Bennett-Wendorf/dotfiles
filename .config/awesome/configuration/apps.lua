@@ -11,14 +11,14 @@ return {
   default = {
     terminal = 'env terminator',
     rofi = rofi_command,
-    calc = "=",
+    calc = '= -- -theme "~/.config/rofi/launchers/sidebar/sidebar.rasi"',
     lock = '/home/bennett/.config/i3lock/i3lock.sh',
     quake = 'terminator',
     screenshot = 'flameshot screen -c',
     region_screenshot = 'flameshot gui',
     delayed_screenshot = 'flameshot screen -c -d 5000',
     -- clipboard_manager = 'copyq menu',
-    clipboard_manager = 'rofi -modi "clipboard:greenclip print" -show clipboard -run-command "{cmd}"',
+    clipboard_manager = 'rofi -modi "clipboard:greenclip print" -show clipboard -run-command "{cmd}" -theme "~/.config/rofi/launchers/sidebar/sidebar.rasi"',
 
     -- Editing these also edits the default program
     -- associated with each tag/workspace
