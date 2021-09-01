@@ -239,6 +239,16 @@ else
     mkdir -p ~/.config/wal/colorschemes/dark && cp -r ~/dotfiles/.config/wal/colorschemes/dark/* ~/.config/wal/colorschemes/dark;
 fi
 
+if [ -d ~/.oh-my-zsh ]; then
+    echo "Oh-My-Zsh configs detected; backing up..." | tee -a $log_file
+    mkdir ~/.oh-my-zsh.old && mv ~/.oh-my-zsh/* ~/.oh-my-zsh.old/
+    echo "Installing oh-my-zsh..." | tee -a $log_file
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+else
+    echo "Installing oh-my-zsh..." | tee -a $log_file
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+
 if [ -d ~/.config/zsh ]; then
     echo "Zsh configs detected; backing up..." | tee -a $log_file
     mkdir ~/.config/zsh.old && mv ~/.config/zsh/* ~/.config/zsh.old/
@@ -246,6 +256,10 @@ if [ -d ~/.config/zsh ]; then
     cp -r ~/dotfiles/.config/zsh/* ~/.config/zsh;
     echo "Symlinking zshrc..." | tee -a $log_file
     sudo ln -s ~/.config/zsh/zshrc ~/.zshrc
+    if [ -d ~/.oh-my-zsh ]; then
+        echo "Symlinking oh-my-zsh theme..." | tee -a $log_file
+        ln -s ~/.config/zsh/themes/benoster.zsh-theme ~/.oh-my-zsh/themes/benoster.zsh-theme
+    fi
 else
     echo "Installing zsh configs..." | tee -a $log_file
     mkdir ~/.config/zsh && cp -r ~/dotfiles/.config/zsh/* ~/.config/zsh;
@@ -280,7 +294,7 @@ if [ -d ~/wallpapers ]; then
     cp -r ~/dotfiles/wallpapers/* ~/wallpapers;
 else
     echo "Installing wallpapers..." | tee -a $log_file
-    mkdir ~/walpapers && cp -r ~/dotfiles/wallpapers/* ~/wallpapers;
+    mkdir ~/wallpapers && cp -r ~/dotfiles/wallpapers/* ~/wallpapers;
 fi
 
 if [ -d ~/.config/nitrogen ]; then
@@ -386,16 +400,16 @@ fi
 
 if [ -d /usr/share/icons/Abyss-DEEP-Suru-GLOW ]; then
     echo "Abyss icons directory detected; backing up..." | tee -a $log_file
-    mkdir /usr/share/icons/Abyss-DEEP-Suru-GLOW.old && mv /usr/share/icons/Abyss-DEEP-Suru-GLOW* /usr/share/icons/Abyss-DEEP-Suru-GLOW.old/
+    sudo mkdir /usr/share/icons/Abyss-DEEP-Suru-GLOW.old && sudo mv /usr/share/icons/Abyss-DEEP-Suru-GLOW/* /usr/share/icons/Abyss-DEEP-Suru-GLOW.old/
     echo "Installing abyss icons..." | tee -a $log_file
     mkdir ~/Abyss-icons
     git clone --branch Abyss-Desktop-Theme-Icons-and-Folders https://github.com/rtlewis88/rtl88-Themes ~/Abyss-icons
-    sudo cp -r ~/Abyss-icons/Abyss-DEEP-Suru-GLOW/ /usr/share/icons/
+    sudo cp -r ~/Abyss-icons/Abyss-DEEP-Suru-GLOW /usr/share/icons/
 else
     echo "Installing abyss icons..." | tee -a $log_file
     mkdir ~/Abyss-icons
     git clone --branch Abyss-Desktop-Theme-Icons-and-Folders https://github.com/rtlewis88/rtl88-Themes ~/Abyss-icons
-    sudo cp -r ~/Abyss-icons/Abyss-DEEP-Suru-GLOW/ /usr/share/icons/
+    sudo cp -r ~/Abyss-icons/Abyss-DEEP-Suru-GLOW /usr/share/icons/
 fi
 
 echo "Would you like to reboot into the new system now? [Y]es or [N]o."
