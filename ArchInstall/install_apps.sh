@@ -48,6 +48,13 @@ if [ ! $package_manager = "sudo pacman" ]; then
     $package_manager -S --needed - < /tmp/pkg_lists/aur/aur-list.pkg || echo "AUR package install failed!" | tee -a $log_file
 fi
 
+if type -p reflector > /dev/null; then
+    echo "Reflector is installed. Updating pacman mirrors now..." | tee -a $log_file
+    sudo reflector -a 10 -c us -f 5 --sort rate --save /etc/pacman.d/mirrorlist
+else
+    echo "Reflector is not installed. Not updating pacman mirrors to be faster." | tee -a $log_file
+fi
+
 # Uninstall extra video drivers
 video_driver_list=(xf86-video-intel xf86-video-amdgpu nvidia nvidia-settings nvidia-utils)
 if [ $vid_driver = "xf86-video-amdgpu" ]; then
