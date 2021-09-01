@@ -54,7 +54,7 @@ if [ "${locale_choice^^}" = "Y" ]; then
     hwclock --systohc
     # TODO Set up systemd-timesyncd here
     echo "Uncommenting the proper locale..." | tee -a $log_file
-    locale='en-US.UTF-8 UTF-8'
+    locale='en_US.UTF-8 UTF-8'
     sed -i "s/^#${locale}.*/${locale}/" /etc/locale.gen
     echo "Generating locale..." | tee -a $log_file
     locale-gen
