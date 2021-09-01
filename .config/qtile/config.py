@@ -208,7 +208,7 @@ keys = [
 
     Key(["mod1"], "space", lazy.spawn("./.config/eww/scripts/eww_sidebar.sh"), desc="Toggle sidebar"),
     Key([mod], "v", lazy.spawn("rofi -theme '~/.config/rofi/launchers/colorful/style_13.rasi' -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}'"), desc="Open clipboard manager"),
-    Key([mod], "equal", lazy.spawn("= -- -theme '~/.config/rofi/launchers/colorful/style_7.rasi'"), desc="Run calculator in rofi"),
+    Key([mod], "equal", lazy.spawn("= -- -theme '~/.config/rofi/launchers/colorful/style_13.rasi'"), desc="Run calculator in rofi"),
 
 ]
 
