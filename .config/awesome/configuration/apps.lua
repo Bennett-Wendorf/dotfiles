@@ -45,7 +45,7 @@ return {
     -- to avoid multipled instances, inside the awspawn script
     'flameshot',
     'megasync',
-    'killall onedrive_tray', 'onedrive_tray',
+    -- 'killall onedrive_tray', 'onedrive_tray',
     'screenrotator',
     --'copyq',
     'killall greenclip', 'greenclip daemon',

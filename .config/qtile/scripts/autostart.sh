@@ -19,7 +19,7 @@ autorandr -c
 nitrogen --restore &
 flameshot &
 megasync &
-run onedrive_tray &
+# run onedrive_tray &
 screenrotator &
 run greenclip daemon &
 wal -restore &
