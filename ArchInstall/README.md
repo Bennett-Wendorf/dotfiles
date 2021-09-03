@@ -1,1 +1,1 @@
-This is a small collection of scripts that will install all my apps and copy their configs into the proper directories. To begin, run `chmod +x <filename>` on each script to enable execution and then run `install_basic_apps.sh` or `install_full_system.sh` to get started.
+This is a small collection of scripts that will install all my apps and copy their configs into the proper directories. To begin, run `install_basic_apps.sh` or `install_full_system.sh` to get started.
