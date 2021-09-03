@@ -149,4 +149,4 @@ Project Link: [https://github.com/Bennett-Wendorf/dotfiles](https://github.com/B
 [issues-shield]: https://img.shields.io/github/issues/bennett-wendorf/dotfiles.svg?style=flat&color=red
 [issues-url]: https://github.com/bennett-wendorf/dotfiles/issues
 [license-shield]: https://img.shields.io/github/license/bennett-wendorf/dotfiles.svg?style=flat
-[license-url]: https://github.com/bennett-wendorf/dotfiles/blob/master/LICENSE.txt
+[license-url]: https://github.com/bennett-wendorf/dotfiles/blob/master/LICENSE
