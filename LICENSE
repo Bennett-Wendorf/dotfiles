@@ -1,3 +1,7 @@
+MIT License
+
+Copyright (c) 2021 Bennett Wendorf
+
 The following license information applies to much of this repository, with a 
 few notable exceptions. Namely, the 'wallpapers' directory contains images that 
 I may not have rights to as described in the README.md file in that directory.
@@ -7,10 +11,6 @@ remove them as quickly as I am able. These may not be the only aspects of this
 repository that have code from elsewhere, but I will do my best to add README
 files in any location where I have borrowed code. Again, please let me know 
 if there are any violations of usage rights that need to be addressed.
-
-MIT License
-
-Copyright (c) 2021 Bennett Wendorf
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
