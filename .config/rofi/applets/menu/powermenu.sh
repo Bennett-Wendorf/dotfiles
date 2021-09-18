@@ -88,6 +88,8 @@ case $chosen in
 				bspc quit
 			elif [[ "$DESKTOP_SESSION" == "i3" ]]; then
 				i3-msg exit
+			elif [[ "$DESKTOP_SESSION" == qtile"" ]]; then
+				qtile cmd-obj -o cmd -f shutdown
 			fi
 		elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
 			exit 0
