@@ -86,12 +86,19 @@ def spawn_default_app(qtile):
     elif qtile.current_group is not None and groupIndex is None:
         qtile.cmd_spawn(run_launcher)
 
+def float_to_front(qtile):
+    """Bring all floating windows of the group to front"""
+    for window in qtile.currentGroup.windows:
+        if window.floating:
+            window.cmd_bring_to_front()
+
 keys = [
 
 # WINDOW CONTROLS
     Key([mod, "shift"], "q", lazy.window.kill(), desc="Kill current window"),
     Key([mod], "f", lazy.window.toggle_fullscreen(), desc="Toggle the fullscreen status of the current window"),
     Key([mod], "a", lazy.window.toggle_floating(), desc="Toggle floating status of the current window"),
+    Key([mod], "m", lazy.function(float_to_front), desc="Bring all floating windows from the current group to the front"),
 
 # QTILE FUNCTIONS
     Key([mod, "shift"], "r", lazy.restart(), desc="Restart Qtile"),
@@ -186,7 +193,7 @@ keys = [
     desc="Spawn run launcher"),
 
 # SPAWN DEFAULT APP FOR THIS GROUP
-    Key([mod], "t", lazy.function(spawn_default_app)),
+    Key([mod], "t", lazy.function(spawn_default_app), desc="Spawn the default app for the current group"),
 
 # SCREENSHOT
     Key([mod, "control"], "c", lazy.spawn("flameshot screen -c -d 5000"), desc="Wait 5 seconds and take a screenshot"),
@@ -400,15 +407,6 @@ def init_widgets_list():
             font='Hack',
             fontsize = 16,
         ),
-        widget.Sep(),
-        widget.Systray(
-            background=colors['bg_color'],
-            icon_size=22,
-            padding = 6,
-        ),
-        widget.Spacer(
-            length=5,
-        ),
     ]
     return widgets_list
 
@@ -416,11 +414,14 @@ widgets_list = init_widgets_list()
 
 def init_widgets_screen1():
     widgets_screen1 = init_widgets_list()
+    # Append needed systray widgets only to screen 1. I don't want these to show on my second screen
+    widgets_screen1.append(widget.Sep())
+    widgets_screen1.append(widget.Systray(background=colors['bg_color'], icon_size=22, padding=6))
+    widgets_screen1.append(widget.Spacer(length=5))
     return widgets_screen1
 
 def init_widgets_screen2():
     widgets_screen2 = init_widgets_list()
-    widgets_screen2.pop() # Remove the systray from screen 2
     return widgets_screen2
 
 def init_screens():
