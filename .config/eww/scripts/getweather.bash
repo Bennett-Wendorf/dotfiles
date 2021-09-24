@@ -16,7 +16,8 @@ fi
 #(completely free I swear, and then get your API Key and  your City ID)
 # I wish I was smart enough to do it like Elena, but this is the top I could do lol
 KEY="99942ee595a87616252bfa57979ed304"
-ID="5267537"
+#ID="5267537"
+ID="5258957"
 UNIT="imperial" #Options are 'metric' and 'imperial'
 weather=$(curl -sf "http://api.openweathermap.org/data/2.5/weather?appid="$KEY"&id="$ID"&units="$UNIT"")
 # echo $weather
