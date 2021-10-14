@@ -256,7 +256,7 @@ group_labels = ["", "︁", "", "", "", "", "", "", ""
 group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall",]
 #group_layouts = ["monadtall", "matrix", "monadtall", "bsp", "monadtall", "matrix", "monadtall", "bsp", "monadtall", "monadtall",]
 
-group_defaults = ["firefox", "code", "nautilus", run_launcher, run_launcher, run_launcher, run_launcher, "discord", "pavucontrol", "terminator -e bpytop",]
+group_defaults = ["firefox", "code", "nautilus", run_launcher, run_launcher, "firefox", run_launcher, "discord", "pavucontrol", "terminator -e bpytop",]
 
 for i in range(len(group_names)):
     group = Group(
@@ -422,6 +422,7 @@ def init_widgets_screen1():
 
 def init_widgets_screen2():
     widgets_screen2 = init_widgets_list()
+    widgets_screen2.append(widget.Spacer(length=5))
     return widgets_screen2
 
 def init_screens():
