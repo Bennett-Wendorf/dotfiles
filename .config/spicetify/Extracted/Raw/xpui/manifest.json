@@ -2,7 +2,7 @@
   "BundleType": "Application",
   "VendorIdentifier": "com.spotify",
   "BundleIdentifier": "xpui",
-  "BundleVersion": "1.1.67",
+  "BundleVersion": "1.1.72",
   "UserInstallable": false,
   "AppName": {
     "ar": "xpui",
@@ -60,5 +60,5 @@
     "zh-Hant",
     "ms"
   ],
-  "GitRevision": "bb5ef64e5ac"
+  "GitRevision": "c253025e796"
 }

@@ -16,10 +16,11 @@ application/x-extension-shtml=firefox.desktop
 application/xhtml+xml=firefox.desktop
 application/x-extension-xhtml=firefox.desktop
 application/x-extension-xht=firefox.desktop
+x-scheme-handler/etcher=balena-etcher-electron.desktop
 
 [Added Associations]
 application/zip=org.gnome.Nautilus.desktop;code-oss.desktop;
-application/pdf=okularApplication_pdf.desktop;
+application/pdf=okularApplication_pdf.desktop;firefox.desktop;
 application/octet-stream=libreoffice-writer.desktop;
 x-scheme-handler/mailto=userapp-Thunderbird-XX3TT0.desktop;
 message/rfc822=userapp-Thunderbird-XX3TT0.desktop;
@@ -43,3 +44,4 @@ application/xhtml+xml=firefox.desktop;
 application/x-extension-xhtml=firefox.desktop;
 application/x-extension-xht=firefox.desktop;
 text/csv=libreoffice-calc.desktop;
+application/json=notepadqq.desktop;
