@@ -73,3 +73,63 @@ Traceback (most recent call last):
   File "/usr/bin/bpytop", line 1157, in __init__
     raise ValueError(f'Incorrectly formatted hexadecimal rgb string: {self.hexa}')
 ValueError: Incorrectly formatted hexadecimal rgb string: #00000000
+27/12/21 (16:40:34) | ERROR: Incorrectly formatted hexadecimal rgb string: #00000000
+Traceback (most recent call last):
+  File "/usr/bin/bpytop", line 1157, in __init__
+    raise ValueError(f'Incorrectly formatted hexadecimal rgb string: {self.hexa}')
+ValueError: Incorrectly formatted hexadecimal rgb string: #00000000
+27/12/21 (16:40:50) | ERROR: Incorrectly formatted hexadecimal rgb string: #00000000
+Traceback (most recent call last):
+  File "/usr/bin/bpytop", line 1157, in __init__
+    raise ValueError(f'Incorrectly formatted hexadecimal rgb string: {self.hexa}')
+ValueError: Incorrectly formatted hexadecimal rgb string: #00000000
+27/12/21 (16:40:54) | ERROR: Incorrectly formatted hexadecimal rgb string: #00000000
+Traceback (most recent call last):
+  File "/usr/bin/bpytop", line 1157, in __init__
+    raise ValueError(f'Incorrectly formatted hexadecimal rgb string: {self.hexa}')
+ValueError: Incorrectly formatted hexadecimal rgb string: #00000000
+27/12/21 (16:41:10) | ERROR: Incorrectly formatted hexadecimal rgb string: #00000000
+Traceback (most recent call last):
+  File "/usr/bin/bpytop", line 1157, in __init__
+    raise ValueError(f'Incorrectly formatted hexadecimal rgb string: {self.hexa}')
+ValueError: Incorrectly formatted hexadecimal rgb string: #00000000
+27/12/21 (16:41:25) | ERROR: Incorrectly formatted hexadecimal rgb string: #00000000
+Traceback (most recent call last):
+  File "/usr/bin/bpytop", line 1157, in __init__
+    raise ValueError(f'Incorrectly formatted hexadecimal rgb string: {self.hexa}')
+ValueError: Incorrectly formatted hexadecimal rgb string: #00000000
+27/12/21 (16:42:02) | ERROR: Incorrectly formatted hexadecimal rgb string: #00000000
+Traceback (most recent call last):
+  File "/usr/bin/bpytop", line 1157, in __init__
+    raise ValueError(f'Incorrectly formatted hexadecimal rgb string: {self.hexa}')
+ValueError: Incorrectly formatted hexadecimal rgb string: #00000000
+27/12/21 (16:42:24) | ERROR: Incorrectly formatted hexadecimal rgb string: #00000000
+Traceback (most recent call last):
+  File "/usr/bin/bpytop", line 1157, in __init__
+    raise ValueError(f'Incorrectly formatted hexadecimal rgb string: {self.hexa}')
+ValueError: Incorrectly formatted hexadecimal rgb string: #00000000
+27/12/21 (16:42:42) | ERROR: Incorrectly formatted hexadecimal rgb string: #00000000
+Traceback (most recent call last):
+  File "/usr/bin/bpytop", line 1157, in __init__
+    raise ValueError(f'Incorrectly formatted hexadecimal rgb string: {self.hexa}')
+ValueError: Incorrectly formatted hexadecimal rgb string: #00000000
+27/12/21 (16:42:53) | ERROR: Incorrectly formatted hexadecimal rgb string: #00000000
+Traceback (most recent call last):
+  File "/usr/bin/bpytop", line 1157, in __init__
+    raise ValueError(f'Incorrectly formatted hexadecimal rgb string: {self.hexa}')
+ValueError: Incorrectly formatted hexadecimal rgb string: #00000000
+27/12/21 (16:46:10) | ERROR: Incorrectly formatted hexadecimal rgb string: #00000000
+Traceback (most recent call last):
+  File "/usr/bin/bpytop", line 1157, in __init__
+    raise ValueError(f'Incorrectly formatted hexadecimal rgb string: {self.hexa}')
+ValueError: Incorrectly formatted hexadecimal rgb string: #00000000
+27/12/21 (16:47:25) | ERROR: Incorrectly formatted hexadecimal rgb string: #00000000
+Traceback (most recent call last):
+  File "/usr/bin/bpytop", line 1157, in __init__
+    raise ValueError(f'Incorrectly formatted hexadecimal rgb string: {self.hexa}')
+ValueError: Incorrectly formatted hexadecimal rgb string: #00000000
+27/12/21 (16:47:30) | ERROR: Incorrectly formatted hexadecimal rgb string: #00000000
+Traceback (most recent call last):
+  File "/usr/bin/bpytop", line 1157, in __init__
+    raise ValueError(f'Incorrectly formatted hexadecimal rgb string: {self.hexa}')
+ValueError: Incorrectly formatted hexadecimal rgb string: #00000000
