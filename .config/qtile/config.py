@@ -327,7 +327,7 @@ def init_widgets_list():
             foreground = colors['highlight_color'],
             background = colors['bg_color'],
             padding = 5,
-            fontsize = 18,
+            fontsize = 22,
             mouse_callbacks = {"Button1": launch_power_menu}
         ),
         widget.TextBox(
@@ -336,12 +336,12 @@ def init_widgets_list():
             foreground=["#fba922", "#fba922"],
             background=colors['bg_color'],
             padding = 0,
-            fontsize=18
+            fontsize=22
         ),
         widget.Clock(
             foreground = colors['fg_color_alt'],
             background = colors['bg_color'],
-            fontsize = 16,
+            fontsize = 22,
             format="%I:%M %P"
         ),
         # TODO: Enable this widget on click of clock widget
@@ -365,7 +365,7 @@ def init_widgets_list():
         widget.Spacer(),
         widget.GroupBox(
             font="Font Awesome 5 Free Solid",
-            fontsize = 18,
+            fontsize = 22,
             margin_y = 2,
             margin_x = 0,
             padding_y = 6,
@@ -384,7 +384,7 @@ def init_widgets_list():
             hide_unused = True,
         ),
         widget.Spacer(),
-        # # do not activate in Virtualbox - will break qtile
+        # do not activate in Virtualbox - will break qtile
         widget.ThermalSensor(
             foreground = colors['fg_color_alt'],
             foreground_alert = colors['fg_crit'],
@@ -392,12 +392,12 @@ def init_widgets_list():
             metric = True,
             padding = 3,
             threshold = 85,
-            fontsize = 16,
+            fontsize = 22,
         ),
         widget.Sep(),
         arcobattery.BatteryIcon(
             padding=0,
-            scale=0.7,
+            scale=0.8,
             y_poss=2,
             theme_path=home + "/.config/qtile/icons/battery_icons_horiz",
             update_interval = 5,
@@ -406,7 +406,9 @@ def init_widgets_list():
         widget.Battery(
             format='{percent:2.0%} {hour:d}:{min:02d}',
             font='Hack',
-            fontsize = 16,
+            fontsize = 22,
+            background = colors['bg_color'],
+            padding=10
         ),
     ]
     return widgets_list
@@ -417,7 +419,7 @@ def init_widgets_screen1():
     widgets_screen1 = init_widgets_list()
     # Append needed systray widgets only to screen 1. I don't want these to show on my second screen
     widgets_screen1.append(widget.Sep())
-    widgets_screen1.append(widget.Systray(background=colors['bg_color'], icon_size=22, padding=6))
+    widgets_screen1.append(widget.Systray(background=colors['bg_color'], icon_size=26, padding=6))
     widgets_screen1.append(widget.Spacer(length=5))
     return widgets_screen1
 
@@ -427,8 +429,8 @@ def init_widgets_screen2():
     return widgets_screen2
 
 def init_screens():
-    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), margin=[8, 8, 0, 8], size=28, opacity=0.8)),
-            Screen(top=bar.Bar(widgets=init_widgets_screen2(), margin=[8, 8, 0, 8], size=28, opacity=0.8))]
+    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), margin=[8, 8, 0, 8], size=36, opacity=0.8)),
+            Screen(top=bar.Bar(widgets=init_widgets_screen2(), margin=[8, 8, 0, 8], size=36, opacity=0.8))]
 screens = init_screens()
 
 # MOUSE CONFIGURATION

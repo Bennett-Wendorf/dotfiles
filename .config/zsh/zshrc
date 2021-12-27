@@ -38,7 +38,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Aliases
 # Utilities
-alias batt="upower -i /org/freedesktop/UPower/devices/battery_BAT0"
+alias batt="upower -i /org/freedesktop/UPower/devices/battery_BAT1"
 alias zip="zip -r"
 alias space="sudo ncdu -x"
 

@@ -1,0 +1,46 @@
+; (defwidget player [] 
+    ;   <box orientation="h" space-evenly="false" class="player">
+    ;     (box :class "musicart" :halign "center" :valign "center" :style "background-image: url('{{cover}}');" art)
+    ;     <box orientation="v" class="music-info" valign="center" halign="center" space-evenly="false">
+    ;       (box :class "musictitle" music-title)
+    ;       (box :class "musicalbum" music-album)
+    ;       (box :class "musicartist" music-artist)
+    ;       (box :orientation "h" :halign "center" :valign "center" :class "musicbtn" :space-evenly "false" 
+    ;         (button :onclick "playerctl previous" "")
+    ;         (button :onclick "playerctl play-pause" musicstat)
+    ;         (button :onclick "playerctl next" ""))
+    ;       (!-- :<scale  :min 0 :max duration :active "false" :value position :class "progress-bar") -->
+    ;     </box>
+    ;   </box>)
+    ; (defwidget weather [] 
+    ;   (box :orientation "h" :space-evenly "false" :class "weather" 
+    ;     (box :class "weather-data" weather-data)
+    ;     (box :class "weather-icon-side" :style "color: ${weather-hex}" weather-icon)
+    ;     (box :class "weather-info-side" :orientation "v" :space-evenly "false" 
+    ;       (box :class "temp-info" :orientation "h" :halign "center" :space-evenly "false" 
+    ;         (box :class "temperature-side" temperature)
+    ;         (box :class "thermometer" ""))
+    ;       (box :class "weather-stat-side" weather-stat-side)
+    ;       (box :class "weather-quote1" weather-quote))))
+    ; (defwidget system-info [] 
+    ;   (box :orientation "v" :space-evenly "true" :class "sliders-side extra-bottom-margin" 
+    ;     (box :orientation "h" :class "slider-cpu-side" :space-evenly "false" 
+    ;       (box :class "label-cpu-side" "")
+    ;       (scale :min 0 :active "false" :max 100 :value cpu-used))
+    ;     (box :orientation "h" :class "slider-ram-side" :space-evenly "false" 
+    ;       (box :class "label-ram-side" "")
+    ;       (scale :min 0 :active "false" :max 100 :value ram-used))
+    ;     (box :orientation "h" :class "slider-hdd-side" :space-evenly "false" 
+    ;       (box :class "label-hdd-side" "")
+    ;       (scale :min 0 :max 100 :active "false" :value hdd-used))))
+    ; (defwidget vol-bright [] 
+    ;   <box orientation="v" space-evenly="true" class="sliders-side">
+    ;     <box orientation="h" class="slider-vol-side" space-evenly="false">
+    ;       ;;  (box :class "label-vol-side" "")
+    ;       ;  (button :class "label-vol-side" :onclick "amixer -D pulse set Master 1+ toggle" if mute-status == \"2\" then \"\" else \"\")
+    ;       (scale :min 0 :active "true" :max 100 :value current-vol :onchange "amixer -D pulse sset Master {}%")
+    ;     </box>
+    ;     (box :orientation "h" :class "slider-bright-side" :space-evenly "false" 
+    ;       (box :class "label-bright-side" "")
+    ;       (scale :min 0 :max 100 :active "true" :value current-bright :onchange "xbacklight -set {}"))
+    ;   </box>)
