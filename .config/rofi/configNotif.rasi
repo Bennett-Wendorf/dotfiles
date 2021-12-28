@@ -1,0 +1,157 @@
+// Thanks to https://github.com/Barbarossa93/Genome/blob/main/.config/rofi/configNotif.rasi for the majority of this config
+
+configuration {
+	display-drun:    " Apps";
+	display-window:  "缾 Windows";
+	show-icons: true;
+	font: "Hack 15";
+}
+
+@import "~/.config/rofi/launchers/colorful/colors.rasi"
+
+* {
+
+	background-color:            @bg;
+	text-color:                  @fg;
+	selbg:                       @se;
+	actbg:                       @ac;
+	urgbg:                       @se;
+	winbg:                       @bg;
+
+	selected-normal-foreground:    @fg;
+	normal-foreground:			   @fg;
+	selected-normal-background:	   @ac;
+	normal-background:			   @bg;
+
+	selected-urgent-foreground:    @se;
+	urgent-foreground:			   @fg;
+	selected-urgent-background:	   @ac;
+	urgent-background:			   @bg;
+
+	selected-active-foreground:  @se;
+	active-foreground:           @se;
+	selected-active-background:  @ac;
+	active-background:           @bg;
+
+	line-margin:                 2;
+	line-padding:                2;
+	separator-style:             "none";
+	hide-scrollbar:              "true";
+	margin:                      0;
+	padding:                     10;
+}
+
+window {
+	transparency: "real";
+	location:	 northeast;
+	anchor:		 northeast;
+	height:		 96%;
+	y-offset: 	 52px;
+    x-offset:    -6px;
+	width:		 25%;
+	orientation: horizontal;
+	children:	 [mainbox];
+    border-radius: 12px;
+    border: 2px solid;
+    border-color: @ac;
+}
+
+mainbox {
+	spacing:  0.8em;
+    orientation: vertical;
+	children: [ inputbar, listview ];
+}
+
+button { padding: 5px 2px; }
+
+button selected {
+	background-color: @active-background;
+	text-color:       @background-color;
+}
+
+inputbar {
+	padding: 5px;
+	spacing: 5px;
+}
+
+listview {
+	spacing: 0.5em;
+	dynamic: true;
+	cycle:   false;
+}
+
+element {
+        padding: 10px;
+}
+
+prompt {
+       padding:     35px 20px 20px 25px;
+       font:        "monospace 18";
+}
+
+entry {
+	expand:         true;
+	text-color:     @normal-foreground;
+	vertical-align: 0;
+	padding:        5px 0px 0px 20px;
+    enabled:        false;
+}
+
+element normal.normal {
+	background-color: @bg;
+    border-radius:    8px;
+	text-color:       @normal-foreground;
+}
+
+element normal.urgent {
+	background-color: @bg;
+    border-radius:    8px;
+	text-color:       @urgent-foreground;
+}
+
+element normal.active {
+	background-color: @bg;
+    border-radius:    8px;
+	text-color:       @active-foreground;
+}
+
+element selected.normal {
+	background-color: @selected-normal-background;
+	text-color:       @selected-normal-foreground;
+}
+
+element selected.urgent {
+	background-color: @selected-urgent-background;
+	text-color:       @selected-urgent-foreground;
+}
+
+element selected.active {
+	background-color: @selected-active-background;
+	text-color:       @selected-active-foreground;
+}
+
+element alternate.normal {
+	background-color: @bg;
+    border-radius:    8px;
+	text-color:       @normal-foreground;
+}
+
+element alternate.urgent {
+	background-color: @bg;
+    border-radius:    8px;
+	text-color:       @urgent-foreground;
+}
+
+element alternate.active {
+	background-color: @bg;
+    border-radius:    8px;
+	text-color:       @active-foreground;
+}
+element-icon {
+	size: 7ch;
+}
+element.selected {
+    border-radius: 8px;
+	border:           0 0 0 5px solid;
+	border-color:	    @winbg;
+}

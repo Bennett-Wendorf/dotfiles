@@ -423,6 +423,9 @@
 	foreground = "#88C0D0"
 	#frame_color = "#3B4252"
 	frame_color = "#303030"
-	timeout = 5	
+	timeout = 5
+
+[log_notifs]
+	script = ~/.config/dunst/scripts/dunst_logger.sh	
 
 # vim: ft=cfg

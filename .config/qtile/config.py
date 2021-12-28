@@ -106,7 +106,7 @@ keys = [
     Key([mod], "l", lazy.spawn("./.config/i3lock/i3lock.sh"), desc="Lock the screen with i3lock-color"),
 
 # QTILE LAYOUT KEYS
-    Key([mod], "n", lazy.layout.normalize(), desc="Normalize the layout"),
+    Key([mod], "r", lazy.layout.reset(), desc="Reset the layout"),
     Key([mod], "space", lazy.next_layout(), desc="Change the layout to the next option"),
     Key([mod, "shift"], "space", lazy.prev_layout(), desc="Change the layout to the previous option"),
 
@@ -217,6 +217,10 @@ keys = [
     Key([mod], "v", lazy.spawn("rofi -theme '~/.config/rofi/launchers/colorful/style_13.rasi' -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}'"), desc="Open clipboard manager"),
     Key([mod], "equal", lazy.spawn("= -- -theme '~/.config/rofi/launchers/colorful/style_13.rasi'"), desc="Run calculator in rofi"),
     Key(["control"], "m", lazy.spawn("find-cursor -c '#4dd0e1' -f -t -r 2"), desc="Launch the program to find the cursor"),
+
+# NOTIFICATIONS
+    Key([mod], "n", lazy.spawn("./.config/rofi/rofi_notif_center.sh"), desc="Launch the notification center"),
+    Key([], "XF86AudioMedia", lazy.spawn("./.config/rofi/rofi_notif_center.sh"), desc="Launch the notification center")
 
 ]
 
