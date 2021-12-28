@@ -133,3 +133,18 @@ Traceback (most recent call last):
   File "/usr/bin/bpytop", line 1157, in __init__
     raise ValueError(f'Incorrectly formatted hexadecimal rgb string: {self.hexa}')
 ValueError: Incorrectly formatted hexadecimal rgb string: #00000000
+27/12/21 (16:49:11) | ERROR: Incorrectly formatted hexadecimal rgb string: #00000000
+Traceback (most recent call last):
+  File "/usr/bin/bpytop", line 1157, in __init__
+    raise ValueError(f'Incorrectly formatted hexadecimal rgb string: {self.hexa}')
+ValueError: Incorrectly formatted hexadecimal rgb string: #00000000
+27/12/21 (16:49:23) | ERROR: Incorrectly formatted hexadecimal rgb string: #00000000
+Traceback (most recent call last):
+  File "/usr/bin/bpytop", line 1157, in __init__
+    raise ValueError(f'Incorrectly formatted hexadecimal rgb string: {self.hexa}')
+ValueError: Incorrectly formatted hexadecimal rgb string: #00000000
+27/12/21 (16:49:42) | ERROR: Incorrectly formatted hexadecimal rgb string: #00000000
+Traceback (most recent call last):
+  File "/usr/bin/bpytop", line 1157, in __init__
+    raise ValueError(f'Incorrectly formatted hexadecimal rgb string: {self.hexa}')
+ValueError: Incorrectly formatted hexadecimal rgb string: #00000000

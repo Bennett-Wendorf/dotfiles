@@ -117,7 +117,7 @@ keys = [
     Key([mod], "Right", lazy.layout.right(), desc="Change focus right"),
 
 # CHANGE SCREEN FOCUS
-    Key([mod], "p", lazy.next_screen(), desc="Next monitor"),
+    Key([mod], "o", lazy.next_screen(), desc="Next monitor"),
 
 # RESIZE UP, DOWN, LEFT, RIGHT
     Key([mod, "control"], "l",
@@ -219,6 +219,10 @@ keys = [
     Key(["control"], "m", lazy.spawn("find-cursor -c '#4dd0e1' -f -t -r 2"), desc="Launch the program to find the cursor"),
 
 ]
+
+keys.extend([
+    Key([mod], "p" ,lazy.spawn("./.config/qtile/scripts/displayselect.sh"), desc="Change display configuration with autorandr"),
+])
 
 def show_keys():
 	key_help = ""
