@@ -100,6 +100,10 @@ keys = [
     Key([mod], "a", lazy.window.toggle_floating(), desc="Toggle floating status of the current window"),
     Key([mod], "m", lazy.function(float_to_front), desc="Bring all floating windows from the current group to the front"),
 
+# WORKSPACES
+    Key([mod], "Tab", lazy.screen.next_group(), desc="Go to next workspace"),
+    Key([mod, "shift" ], "Tab", lazy.screen.prev_group(), desc="Go to previous workspace"),
+
 # QTILE FUNCTIONS
     Key([mod, "shift"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "shift"],"e", lazy.spawn("./.config/rofi/applets/menu/powermenu.sh"), desc="Launch exit menu"),
@@ -220,37 +224,11 @@ keys = [
 
 # NOTIFICATIONS
     Key([mod], "n", lazy.spawn("./.config/rofi/rofi_notif_center.sh"), desc="Launch the notification center"),
-    Key([], "XF86AudioMedia", lazy.spawn("./.config/rofi/rofi_notif_center.sh"), desc="Launch the notification center")
+    Key([], "XF86AudioMedia", lazy.spawn("./.config/rofi/rofi_notif_center.sh"), desc="Launch the notification center"),
+    
+    Key([mod], "p" ,lazy.spawn("./.config/qtile/scripts/displayselect.sh"), desc="Change display configuration with autorandr"),
 
 ]
-
-keys.extend([
-    Key([mod], "p" ,lazy.spawn("./.config/qtile/scripts/displayselect.sh"), desc="Change display configuration with autorandr"),
-])
-
-def show_keys():
-	key_help = ""
-	for k in keys:
-		mods = ""
-
-		for m in k.modifiers:
-			if m == "mod4":
-				mods += "Super + "
-			else:
-				mods += m.capitalize() + " + "
-
-		if len(k.key) > 1:
-			mods += k.key.capitalize()
-		else:
-			mods += k.key
-
-		key_help += "{:<30} {}".format(mods, k.desc + "\n")
-
-	return key_help
-
-keys.extend([
-    Key([mod], "h",lazy.spawn("sh -c 'echo \"" + show_keys() + '" | rofi -theme "~/.config/rofi/launchers/colorful/style_13.rasi" -dmenu -i -p "?"\''), desc="Print keyboard bindings"),
-])
 
 groups = []
 
@@ -275,20 +253,42 @@ for i in range(len(group_names)):
         )
     group.default_app = group_defaults[i]
     groups.append(group)
+
 for i in groups:
     keys.extend([
 
     #CHANGE WORKSPACES
-        Key([mod], i.name, lazy.group[i.name].toscreen()),
-        Key([mod], "Tab", lazy.screen.next_group(), desc="Go to next workspace"),
-        Key([mod, "shift" ], "Tab", lazy.screen.prev_group(), desc="Go to previous workspace"),
+        Key([mod], i.name, lazy.group[i.name].toscreen(toggle=True), desc=f"Go to workspace {i.name}"),
 
     # MOVE WINDOW TO SELECTED WORKSPACE 1-10 AND STAY ON WORKSPACE
-        Key([mod, "shift"], i.name, lazy.window.togroup(i.name)),
+        Key([mod, "shift"], i.name, lazy.window.togroup(i.name), desc=f"Move window to workspace {i.name}"),
     # MOVE WINDOW TO SELECTED WORKSPACE 1-10 AND FOLLOW MOVED WINDOW TO WORKSPACE
-        # Key([mod, "shift"], i.name, lazy.window.togroup(i.name) , lazy.group[i.name].toscreen()),
+        Key([mod, "shift", "control"], i.name, lazy.window.togroup(i.name) , lazy.group[i.name].toscreen(), desc=f"Move window to workspace {i.name} and follow it there"),
     ])
 
+def show_keys():
+	key_help = ""
+	for k in keys:
+		mods = ""
+
+		for m in k.modifiers:
+			if m == "mod4":
+				mods += "Super + "
+			else:
+				mods += m.capitalize() + " + "
+
+		if len(k.key) > 1:
+			mods += k.key.capitalize()
+		else:
+			mods += k.key
+
+		key_help += "{:<30} {}".format(mods, k.desc + "\n")
+
+	return key_help
+
+keys.extend([
+    Key([mod], "h",lazy.spawn("sh -c 'echo \"" + show_keys() + '" | rofi -theme "~/.config/rofi/launchers/colorful/style_13.rasi" -dmenu -i -p "?"\''), desc="Print keyboard bindings"),
+])
 
 def init_layout_theme():
     return {"margin":5,
