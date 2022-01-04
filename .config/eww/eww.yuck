@@ -12,9 +12,9 @@
   (box :orientation "horizontal" :space-evenly "false" :class "border-box"
     (box :class "musicart" :halign "center" :valign "center" :style "background-image: url('/tmp/spotify/cover.png');" art)
     (box :orientation "vertical" :class "music-info" :valign "center" :halign "center" :space-evenly "false"
-      (box :class "musictitle" music-title)
-      (box :class "musicalbum" music-album)
-      (box :class "musicartist" music-artist)
+      (label :class "musictitle" :limit-width "22" :text music-title)
+      (label :class "musicalbum" :limit-width "22" :text music-album)
+      (label :class "musicartist" :limit-width "22" :text music-artist)
       (box :orientation "h" :halign "center" :valign "center" :class "musicbtn" :space-evenly "false" 
         (button :onclick "playerctl previous" "")
         (button :onclick "playerctl play-pause" musicstat)
