@@ -46,3 +46,4 @@ application/x-extension-xht=firefox.desktop;
 text/csv=libreoffice-calc.desktop;
 application/json=notepadqq.desktop;
 text/x-rst=okularApplication_txt.desktop;
+image/svg+xml=org.inkscape.Inkscape.desktop;

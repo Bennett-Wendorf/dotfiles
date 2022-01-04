@@ -16,6 +16,11 @@ $indicator-bar-height: 20px;
 // $slider-bg-color: #434c5e;
 $slider-bg-color: #404040;
 
+// Background color
+$main-bg-color: #303030;
+$main-bg-color-translucent: rgba(48,48,48,0.8);
+$main-bg-color-transparent: rgba(48,48,48,0);
+
 // Highlight colors
 $light-blue: #88c0d0;
 $light-yellow: #ebcb8b;
@@ -28,13 +33,33 @@ $light-green: #a3be8c;
 
 //Global Styles
 window {
-  // background-color: #2e3440;
-  background-color: rgba(48, 48, 48, 0.8);
+  background-color: $main-bg-color-transparent;
   color: #e5e9f0;
   font-family: Hack;
 }
+ 
+// Styles on classes (see eww.yuck for more information)
 
-// Styles on classes (see eww.xml for more information)
+.border-box {
+  border-width: 3px;
+  border-style: solid;
+  border-color: $widget-border-color;
+  background-color: $sidebar-widget-bg-color;
+  border-radius: $widget-border-radius; 
+  margin: $sidebar-widget-margins;
+}
+
+.cal {
+  color: $light-blue;
+  padding: 5px;
+  padding-bottom: 1px;
+}
+
+.cal:selected {
+  color: $main-bg-color;
+  background: $light-blue;
+  border-radius: $widget-border-radius;
+}
 
 // vol
 .vol { 
@@ -101,18 +126,6 @@ window {
 }
 
 //player
-.player {
-  border-width: 3px;
-  border-style: solid;
-  border-color: $widget-border-color;
-  background-color: $sidebar-widget-bg-color;
-  border-radius: $widget-border-radius; 
-  // border-top-width: 5px;
-  // border-style: solid;
-  // border-color: #66cccc;
-  margin: $sidebar-widget-margins;
-  // width: 500px;
-}
 .musicart {
   $music-art-size: 150px;
   // background-size: 250px;
@@ -185,18 +198,6 @@ window {
 // }
 
 // Weather
-.weather {
-  border-width: 3px;
-  border-style: solid;
-  border-color: $widget-border-color;
-  background-color: $sidebar-widget-bg-color;
-  border-radius: $widget-border-radius;
-  //border-top-width: 5px;
-  //border-style: solid;
-  //border-color: #66cccc;
-  // margin: 40px 20px 40px 20px;
-  margin: $sidebar-widget-margins;
-}
 .weather-icon-side {
   // font-size: 112px;
   font-size: 70px;
@@ -248,18 +249,6 @@ window {
 
 //system-info
 .sliders-side {
-  all: unset;
-  border-width: 3px;
-  border-style: solid;
-  border-color: $widget-border-color;
-  background-color: $sidebar-widget-bg-color;
-  border-radius: $widget-border-radius; 
-  // border-top-width: 5px;
-  // border-width: 5px;
-  // border-style: solid;
-  // border-color: #66cccc;
-  // margin: 40px 40px 40px 20px;
-  margin: $sidebar-widget-margins;
   font-family: $icon-font;
 }
 

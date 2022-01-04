@@ -307,7 +307,7 @@ layouts = [
     layout.Floating(**layout_theme),
     layout.RatioTile(**layout_theme),
     layout.Max(**layout_theme),
-    layout.Zoomy(**layout_theme)
+    layout.Zoomy(**layout_theme),
 ]
 
 # WIDGETS FOR THE BAR
@@ -344,13 +344,15 @@ def init_widgets_list():
             foreground=["#fba922", "#fba922"],
             background=colors['bg_color'],
             padding = 0,
-            fontsize=22
+            fontsize=22,
+            mouse_callbacks = { "Button1": lazy.spawn("./.config/eww/scripts/eww_calendar.sh") }
         ),
         widget.Clock(
             foreground = colors['fg_color_alt'],
             background = colors['bg_color'],
             fontsize = 22,
-            format="%I:%M %P"
+            format="%I:%M %P",
+            mouse_callbacks = { "Button1": lazy.spawn("./.config/eww/scripts/eww_calendar.sh") }
         ),
         # TODO: Enable this widget on click of clock widget
         # widget.Clock(

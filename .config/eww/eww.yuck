@@ -1,124 +1,145 @@
 ;;  The main eww configuration file. This is where your widgets and how they appear on the screen and what they
 ;; contain are defined. 
-  
-    ;;  This is the place where you structure your widgets, align them and stuff. 
-    (defwidget player [] 
-      (box :orientation "horizontal" :space-evenly "false" :class "player"
-        (box :class "musicart" :halign "center" :valign "center" :style "background-image: url('{{cover}}');" art)
-        (box :orientation "vertical" :class "music-info" :valign "center" :halign "center" :space-evenly "false"
-          (box :class "musictitle" music-title)
-          (box :class "musicalbum" music-album)
-          (box :class "musicartist" music-artist)
-          (box :orientation "h" :halign "center" :valign "center" :class "musicbtn" :space-evenly "false" 
-            (button :onclick "playerctl previous" "")
-            (button :onclick "playerctl play-pause" musicstat)
-            (button :onclick "playerctl next" ""))
-          ; (scale :min 0 :max duration :active "false" :value position :class "progress-bar")
-        )
-      )
+
+(defwidget cal []
+  (box :class "border-box extra-bottom-margin"
+    (calendar :halign "center" :valign "center" :class "cal" :month current_month :year current_year :day current_day)
+  )
+)
+
+;;  This is the place where you structure your widgets, align them and stuff. 
+(defwidget player [] 
+  (box :orientation "horizontal" :space-evenly "false" :class "border-box"
+    (box :class "musicart" :halign "center" :valign "center" :style "background-image: url('/tmp/spotify/cover.png');" art)
+    (box :orientation "vertical" :class "music-info" :valign "center" :halign "center" :space-evenly "false"
+      (box :class "musictitle" music-title)
+      (box :class "musicalbum" music-album)
+      (box :class "musicartist" music-artist)
+      (box :orientation "h" :halign "center" :valign "center" :class "musicbtn" :space-evenly "false" 
+        (button :onclick "playerctl previous" "")
+        (button :onclick "playerctl play-pause" musicstat)
+        (button :onclick "playerctl next" ""))
+      ; (scale :min 0 :max duration :active "false" :value position :class "progress-bar")
     )
-    (defwidget weather [] 
-      (box :orientation "h" :space-evenly "false" :class "weather" 
-        (box :class "weather-data" weather-data)
-        (box :class "weather-icon-side" :style "color: ${weather-hex}" weather-icon)
-        (box :class "weather-info-side" :orientation "v" :space-evenly "false" 
-          (box :class "temp-info" :orientation "h" :halign "center" :space-evenly "false" 
-            (box :class "temperature-side" temperature)
-            (box :class "thermometer" ""))
-          (box :class "weather-stat-side" weather-stat-side)
-          (box :class "weather-quote1" weather-quote)
-        )
-      )
+  )
+)
+(defwidget weather [] 
+  (box :orientation "h" :space-evenly "false" :class "border-box" 
+    (box :class "weather-data" weather-data)
+    (box :class "weather-icon-side" :style "color: ${weather-hex}" weather-icon)
+    (box :class "weather-info-side" :orientation "v" :space-evenly "false" 
+      (box :class "temp-info" :orientation "h" :halign "center" :space-evenly "false" 
+        (box :class "temperature-side" temperature)
+        (box :class "thermometer" ""))
+      (box :class "weather-stat-side" weather-stat-side)
+      (box :class "weather-quote1" weather-quote)
     )
-    (defwidget system-info [] 
-      (box :orientation "v" :space-evenly "true" :class "sliders-side extra-bottom-margin" 
-        (box :orientation "h" :class "slider-cpu-side" :space-evenly "false" 
-          (box :class "label-cpu-side" "")
-          (scale :min 0 :active "false" :max 100 :value cpu-used))
-        (box :orientation "h" :class "slider-ram-side" :space-evenly "false" 
-          (box :class "label-ram-side" "")
-          (scale :min 0 :active "false" :max 100 :value ram-used))
-        (box :orientation "h" :class "slider-hdd-side" :space-evenly "false" 
-          (box :class "label-hdd-side" "")
-          (scale :min 0 :max 100 :active "false" :value hdd-used)
-        )
-      )
+  )
+)
+(defwidget system-info [] 
+  (box :orientation "v" :space-evenly "true" :class "sliders-side border-box" 
+    (box :orientation "h" :class "slider-cpu-side" :space-evenly "false" 
+      (box :class "label-cpu-side" "")
+      (scale :min 0 :active "false" :max 100 :value cpu-used))
+    (box :orientation "h" :class "slider-ram-side" :space-evenly "false" 
+      (box :class "label-ram-side" "")
+      (scale :min 0 :active "false" :max 100 :value ram-used))
+    (box :orientation "h" :class "slider-hdd-side" :space-evenly "false" 
+      (box :class "label-hdd-side" "")
+      (scale :min 0 :max 100 :active "false" :value hdd-used)
     )
-    (defwidget vol-bright [] 
-      (box :orientation "vertical" :space-evenly "true" :class "sliders-side"
-        (box :orientation "horizontal" :class "slider-vol-side" :space-evenly "false"
-          (button :class "label-vol-side" :onclick "amixer -D pulse set Master 1+ toggle" mutestat)
-          (scale :min 0 :active "true" :max 100 :value current-vol :onchange "amixer -D pulse sset Master {}%")
-        )
-        (box :orientation "h" :class "slider-bright-side" :space-evenly "false" 
-          (box :class "label-bright-side" "")
-          (scale :min 0 :max 100 :active "true" :value current-bright :onchange "xbacklight -set {}")
-        )
-      )
+  )
+)
+(defwidget vol-bright [] 
+  (box :orientation "vertical" :space-evenly "true" :class "sliders-side border-box"
+    (box :orientation "horizontal" :class "slider-vol-side" :space-evenly "false"
+      (button :class "label-vol-side" :onclick "amixer -D pulse set Master 1+ toggle" mutestat)
+      (scale :min 0 :active "true" :max 100 :value current-vol :onchange "amixer -D pulse sset Master {}%")
     )
-    (defwidget vol [] 
-      (box :orientation "v" :space-evenly "true" :class "vol" 
-        (box :class "vol-icon" vol-icon)
-        (scale :min 0 :max 100 :active "false" :value current-vol)
-      )
+    (box :orientation "h" :class "slider-bright-side" :space-evenly "false" 
+      (box :class "label-bright-side" "")
+      (scale :min 0 :max 100 :active "true" :value current-bright :onchange "xbacklight -set {}")
     )
-    (defwidget bright [] 
-      (box :orientation "v" :space-evenly "true" :class "bright" 
-        (box :class "bright-icon" "")
-        (scale :min 0 :max 100 :active "false" :value current-bright)
-      )
-    )
+  )
+)
+(defwidget vol [] 
+  (box :orientation "v" :space-evenly "true" :class "vol" 
+    (box :class "vol-icon" vol-icon)
+    (scale :min 0 :max 100 :active "false" :value current-vol)
+  )
+)
+(defwidget bright [] 
+  (box :orientation "v" :space-evenly "true" :class "bright" 
+    (box :class "bright-icon" "")
+    (scale :min 0 :max 100 :active "false" :value current-bright)
+  )
+)
 
 
-    ;;  Player vars 
-    (defpoll music-artist :interval "3s"  "playerctl metadata --format '{{ artist }}'")
-    (defpoll music-album :interval "3s"  "playerctl metadata --format '{{ album }}'")
-    (defpoll music-title :interval "3s"  "playerctl metadata --format '{{ title }}'")
-    (defpoll musicstat :interval "1s"  "~/.config/eww/scripts/get_audio_status.sh")
-    ;;  (defpoll position :interval "3s"  "current_track.py | jq -r '.progress_ms'")
+;;  Player vars 
+(defpoll music-artist :interval "3s"  "playerctl metadata --format '{{ artist }}'")
+(defpoll music-album :interval "3s"  "playerctl metadata --format '{{ album }}'")
+(defpoll music-title :interval "3s"  "playerctl metadata --format '{{ title }}'")
+(defpoll musicstat :interval "1s"  "~/.config/eww/scripts/get_audio_status.sh")
+;;  (defpoll position :interval "3s"  "current_track.py | jq -r '.progress_ms'")
 ;;     (defpoll duration :interval "2s"  "current_track.py | jq -r '.item.duration_ms'")
-     (defpoll cover :interval "1s"  "~/.config/eww/scripts/echoart.sh")
-    (defpoll art :interval "1s"  "~/.config/eww/scripts/getart.sh || cp ~/.config/eww/images/image.png /tmp/spotify/cover.png")
+(defpoll art :interval "1s"  "~/.config/eww/scripts/getart.sh || cp ~/.config/eww/images/image.png /tmp/spotify/cover.png")
 
-    ;;  Weather vars 
-    (defpoll weather-data :interval "5s"  "~/.config/eww/scripts/getweather.bash")
-    (defpoll weather-icon :interval "5s"  "cat /tmp/weather/weather-icon")
-    (defpoll weather-hex :interval "5s"  "cat /tmp/weather/weather-hex")
-    (defpoll temperature :interval "5s"  "cat /tmp/weather/weather-degree")
-    (defpoll weather-stat-side :interval "5s"  "~/.config/eww/scripts/weather_trimmer.bash")
-    (defpoll weather-quote :interval "5s"  "~/.config/eww/scripts/getweathquote.zsh")
+;;  Weather vars 
+(defpoll weather-data :interval "5s"  "~/.config/eww/scripts/getweather.bash")
+(defpoll weather-icon :interval "5s"  "cat /tmp/weather/weather-icon")
+(defpoll weather-hex :interval "5s"  "cat /tmp/weather/weather-hex")
+(defpoll temperature :interval "5s"  "cat /tmp/weather/weather-degree")
+(defpoll weather-stat-side :interval "5s"  "~/.config/eww/scripts/weather_trimmer.bash")
+(defpoll weather-quote :interval "5s"  "~/.config/eww/scripts/getweathquote.zsh")
 
-    ;;  System info vars 
-    (defpoll cpu-used :interval "1s"  "~/.config/eww/scripts/getcpu.sh")
-    (defpoll ram-used :interval "1s"  "~/.config/eww/scripts/getram.sh")
-    (defpoll hdd-used :interval "5s"  "~/.config/eww/scripts/gethdd.sh")
+;;  System info vars 
+(defpoll cpu-used :interval "1s"  "~/.config/eww/scripts/getcpu.sh")
+(defpoll ram-used :interval "1s"  "~/.config/eww/scripts/getram.sh")
+(defpoll hdd-used :interval "5s"  "~/.config/eww/scripts/gethdd.sh")
 
-	  ;;  Vol vars 
-    (deflisten vol-icon "tail -f /tmp/vol-icon")
-    ;;  (defpoll current-vol  "tail -f /tmp/vol")
-     (defpoll current-vol :interval "1s"  "amixer get Master | grep % | awk '{print $5}'| sed 's/[^0-9]//g' | tail -1")
-    (defpoll mute-status :interval "1s"  "amixer get Master | tail -2 | grep -c '\[on\]'")
-    (defpoll mutestat :interval "1s"  "~/.config/eww/scripts/get_mute_status.sh")
+;;  Vol vars 
+(deflisten vol-icon "tail -f /tmp/vol-icon")
+;;  (defpoll current-vol  "tail -f /tmp/vol")
+(defpoll current-vol :interval "1s"  "amixer get Master | grep % | awk '{print $5}'| sed 's/[^0-9]//g' | tail -1")
+(defpoll mute-status :interval "1s"  "amixer get Master | tail -2 | grep -c '\[on\]'")
+(defpoll mutestat :interval "1s"  "~/.config/eww/scripts/get_mute_status.sh")
 
-    ;;  Bright vars 
-    ;;  (defpoll current-bright  "tail -f /tmp/bright")
-     (defpoll current-bright :interval "1s"  "xbacklight -get | cut -d . -f 1")
+;;  Bright vars 
+;;  (defpoll current-bright  "tail -f /tmp/bright")
+(defpoll current-bright :interval "1s"  "xbacklight -get | cut -d . -f 1")
+
+;;  Calendar vars
+(defpoll current_year :interval "1m" "date +'%Y'")
+(defpoll current_month :interval "1m" "$(($(date +'%-m')-1))")
+(defpoll current_day :interval "1m" "date +'%d'")
 
 
-    ;;  These are the windows 
-    (defwindow sidebar 
-			    :geometry (geometry :height "1056px" :y "16px" :anchor "center left")
-				;;      
-        (box :class "sidebar_box" :orientation "v" :space-evenly "false" 
-          (player)
-          (weather)
-          (vol-bright)
-          (system-info)))
-    (defwindow vol 
-			    :geometry (geometry :height "16%" :y "25%" :anchor "center")
-			     				(vol))
-    (defwindow bright 
-			    :geometry (geometry :height "16%" :y "25%" :anchor "center")
-			     				(bright))
-  
+;;  These are the windows 
+(defwindow sidebar 
+      :geometry (geometry :height "1056px" :y "16px" :anchor "center left")
+    ;;      
+    (box :class "sidebar_box" :orientation "v" :space-evenly "false" 
+      (player)
+      (weather)
+      (vol-bright)
+      (system-info)
+      (cal)))
+(defwindow vol 
+      :geometry (geometry :height "16%" :y "25%" :anchor "center")
+              (vol))
+(defwindow bright 
+      :geometry (geometry :height "16%" :y "25%" :anchor "center")
+              (bright))
 
+(defwindow calendar
+      :wm-ignore: true
+      :windowtype "dock"
+      :geometry (geometry :x "8px" :y "52px" :width "340px" :height "260px" :anchor "top left")
+              (cal)
+)
+
+(defwindow lock
+  :geometry (geometry :anchor "bottom right" :y "-15px")
+      (weather)
+)

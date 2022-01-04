@@ -19,6 +19,21 @@ clear_color="00000000"
 accent_color="86c8e0ff"
 verify_color="348e71ff"
 
+# Pre lock hooks
+function pre_lock() {
+	:
+}
+
+# Stuff to render on top of the i3lock screen
+function on_lock() {
+	eww open lock
+}
+
+# Post unlock hooks
+function post_unlock() {
+	eww close lock
+}
+
 if $use_image; then
 	BACKGROUND=( --image=$image -t)
 else
@@ -76,4 +91,16 @@ done
 
 echo ${command_params[@]}
 
-i3lock "${command_params[@]}"
+pre_lock
+
+i3lock "${command_params[@]}" -n & # -n and & are needed to ensure that $! gets the correct PID
+
+PID=$!
+
+sleep 1 # Give i3lock some time to properly render
+
+on_lock # Run applications that we want to render on top of the lockscreen
+
+wait "$PID"
+
+post_unlock # Run any post unlock hooks
