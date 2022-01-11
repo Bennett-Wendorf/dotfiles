@@ -46,7 +46,7 @@ terminal = "terminator"
 run_launcher = "rofi -show drun -theme '~/.config/rofi/launchers/colorful/style_1.rasi'"
 
 # COLORS
-colors = {
+blue_grey_theme = {
     # 'bg_color': "#2F343F",
     'bg_color': "#303030",
     'fg_color': "#c0c5ce",
@@ -56,6 +56,18 @@ colors = {
     'border_focus': "#4dd0e1",
     'border_normal': "#303030",
 }
+
+one_dark_theme = {
+    'bg_color': "#282C34",
+    'fg_color': "#5c6370",
+    'fg_color_alt': "#abb2bf",
+    'fg_crit': "#e06c75",
+    'highlight_color': "#61afef",
+    'border_focus': "#61afef",
+    'border_normal': "#1e2127"
+}
+
+colors = one_dark_theme
 
 @lazy.function
 def window_to_prev_group(qtile):

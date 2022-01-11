@@ -6,25 +6,33 @@ $medium-text-size: 20px;
 $icon-font: "Font Awesome 5 Free Solid";
 $popup-icon-size: 96px;
 $sidebar-widget-margins: 20px 20px 0px 20px;
-// $sidebar-widget-bg-color: #232831;
-$sidebar-widget-bg-color: #262626;
 $widget-border-radius: 12px;
-// $widget-border-color: #3b4252;
-$widget-border-color: #404040;
 $indicator-icon-size: 40px;
 $indicator-bar-height: 20px;
-// $slider-bg-color: #434c5e;
-$slider-bg-color: #404040;
 
-// Background color
-$main-bg-color: #303030;
-$main-bg-color-translucent: rgba(48,48,48,0.8);
+// Blue Grey Theme
+// $sidebar-widget-bg-color: #262626;
+// $widget-border-color: #404040;
+// $slider-bg-color: #404040;
+// $main-bg-color: #303030;
+// $main-bg-color-translucent: rgba(48,48,48,0.8);
+// $light-blue: #88c0d0;
+// $light-yellow: #ebcb8b;
+// $light-pink: #b48ead;
+// $light-green: #a3be8c;
+// $main-fg-color: #e5e9f0;
 
-// Highlight colors
-$light-blue: #88c0d0;
-$light-yellow: #ebcb8b;
-$light-pink: #b48ead;
-$light-green: #a3be8c;
+// One Dark Theme
+$sidebar-widget-bg-color: #282C34;
+$widget-border-color: #1e2127;
+$slider-bg-color: #1e2127;
+$main-bg-color: #282C34;
+$main-bg-color-translucent: rgba(40,44,52,0.8);
+$light-blue: #61afef;
+$light-yellow: #d19a66;
+$light-pink: #c678dd;
+$light-green: #98c379;
+$main-fg-color: #fffefe;
 
 * {
   all: unset; //Unsets everything so you can style everything from scratch
@@ -33,7 +41,7 @@ $light-green: #a3be8c;
 //Global Styles
 window {
   // background-color: $main-bg-color-translucent;
-  color: #e5e9f0;
+  color: $main-fg-color;
   font-family: Hack;
 }
  

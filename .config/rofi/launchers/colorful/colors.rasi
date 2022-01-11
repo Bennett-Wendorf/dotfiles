@@ -1,9 +1,19 @@
 /* colors */
 
+// Blue Grey theme
+// * {
+//   al:  #30303000;
+//   bg:  #303030bf;
+//   se:  #404040bf;
+//   fg:  #FFFFFFff;
+//   ac:  #86c8e0e6;
+// }
+
+// One Dark Theme
 * {
-  al:  #30303000;
-  bg:  #303030bf;
-  se:  #404040bf;
-  fg:  #FFFFFFff;
-  ac:  #86c8e0e6;
+  al: #282C3400;
+  bg: #282C34bf;
+  se: #1e2127bf;
+  fg: #fffefeff;
+  ac: #61afefe6;
 }
