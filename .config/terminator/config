@@ -1,10 +1,38 @@
 [global_config]
   focus = mouse
   always_on_top = True
+  enabled_plugins = LaunchpadBugURLHandler, LaunchpadCodeURLHandler, APTURLHandler, TerminatorThemes
+  always_split_with_profile = True
   title_font = Hack 9
 [keybindings]
 [profiles]
   [[default]]
+    icon_bell = False
+    background_color = "#1e2127"
+    background_darkness = 0.9
+    background_type = transparent
+    cursor_color = "#676c76"
+    font = Hack 12
+    foreground_color = "#5c6370"
+    show_titlebar = False
+    scrollbar_position = hidden
+    scrollback_infinite = True
+    palette = "#000000:#e06c75:#98c379:#d19a66:#61afef:#c678dd:#56b6c2:#abb2bf:#5c6370:#e06c75:#98c379:#d19a66:#61afef:#c678dd:#56b6c2:#fffefe"
+    use_system_font = False
+  [[One dark]]
+    icon_bell = False
+    background_color = "#1e2127"
+    background_darkness = 0.9
+    background_type = transparent
+    cursor_color = "#676c76"
+    font = Hack 12
+    foreground_color = "#5c6370"
+    show_titlebar = False
+    scrollbar_position = hidden
+    scrollback_infinite = True
+    palette = "#000000:#e06c75:#98c379:#d19a66:#61afef:#c678dd:#56b6c2:#abb2bf:#5c6370:#e06c75:#98c379:#d19a66:#61afef:#c678dd:#56b6c2:#fffefe"
+    use_system_font = False
+  [[Grey Blue]]
     icon_bell = False
     background_color = "#303030"
     background_darkness = 0.9

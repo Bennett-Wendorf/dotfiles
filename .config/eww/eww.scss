@@ -19,7 +19,6 @@ $slider-bg-color: #404040;
 // Background color
 $main-bg-color: #303030;
 $main-bg-color-translucent: rgba(48,48,48,0.8);
-$main-bg-color-transparent: rgba(48,48,48,0);
 
 // Highlight colors
 $light-blue: #88c0d0;
@@ -33,7 +32,7 @@ $light-green: #a3be8c;
 
 //Global Styles
 window {
-  background-color: $main-bg-color-transparent;
+  // background-color: $main-bg-color-translucent;
   color: #e5e9f0;
   font-family: Hack;
 }
@@ -67,6 +66,7 @@ window {
   border-style: solid;
   border-color: $widget-border-color;
   border-radius: $widget-border-radius;
+  background-color: $main-bg-color-translucent;
 }
 
 .vol scale trough highlight {
@@ -99,6 +99,7 @@ window {
   border-style: solid;
   border-color: $widget-border-color;
   border-radius: $widget-border-radius;
+  background-color: $main-bg-color-translucent;
 }
 
 .bright scale trough highlight {
@@ -136,7 +137,7 @@ window {
   // min-width: 250px;
   min-width: $music-art-size;
   margin: 30px;
-  border-radius: 1$widget-border-radius;
+  border-radius: $widget-border-radius;
   // padding: 10px;
 }
 
@@ -205,6 +206,7 @@ window {
   font-family: $icon-font;
   margin: 5px 0px 5px 30px;
 }
+
 .weather-stat-side {
   // font-size: 35px;
   font-size: $large-main-text-size;

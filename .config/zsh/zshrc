@@ -60,7 +60,7 @@ alias dotfiles="/usr/bin/git --git-dir=/home/bennett/.dotfiles --work-tree=/home
 # Import colorscheme from 'wal' asynchronously
 # & means run the process in the background
 # () mean to run the process in a subshell to eliminate output
-( \cat ~/.cache/wal/sequences & )
+#( \cat ~/.cache/wal/sequences & )
 
 # Set up rbenv for multiple Ruby versions
 eval "$(rbenv init -)"
