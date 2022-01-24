@@ -1,0 +1,89 @@
+#Bashtop theme with default colors and black background
+#by aristocratos
+
+# Colors should be in 6 or 2 character hexadecimal or single spaced rgb decimal: "#RRGGBB", "#BW" or "0-255 0-255 0-255"
+# example for white: "#FFFFFF", "#ff" or "255 255 255".
+
+# All graphs and meters can be gradients
+# For single color graphs leave "mid" and "end" variable empty.
+# Use "start" and "end" variables for two color gradient
+# Use "start", "mid" and "end" for three color gradient
+
+# Main background, empty for terminal default, need to be empty if you want transparent background
+theme[main_bg]=""
+
+# Main text color
+theme[main_fg]="#61afef"
+
+# Title color for boxes
+theme[title]="#61afef"
+
+# Higlight color for keyboard shortcuts
+theme[hi_fg]="#c678dd"
+
+# Background color of selected item in processes box
+theme[selected_bg]="#61afef" 
+
+# Foreground color of selected item in processes box
+theme[selected_fg]="#282C34"
+
+# Color of inactive/disabled text
+theme[inactive_fg]="#5c6370"
+
+# Misc colors for processes box including mini cpu graphs, details memory graph and details status text
+theme[proc_misc]="#c678dd"
+
+# Cpu box outline color
+theme[cpu_box]="#61afef"
+
+# Memory/disks box outline color
+theme[mem_box]="#61afef"
+
+# Net up/down box outline color
+theme[net_box]="#61afef"
+
+# Processes box outline color
+theme[proc_box]="#61afef"
+
+# Box divider line and small boxes line color
+theme[div_line]="#98c379"
+
+# Temperature graph colors
+theme[temp_start]="#c678dd"
+theme[temp_mid]="#25a4da"
+theme[temp_end]="#51b6e1"
+
+# CPU graph colors
+theme[cpu_start]="#c678dd"
+theme[cpu_mid]="#61afef"
+theme[cpu_end]="#249DD0"
+
+# Mem/Disk free meter
+theme[free_start]="#1fc3e0"
+theme[free_mid]="#56b6c2"
+theme[free_end]="#06e4f1"
+
+# Mem/Disk cached meter
+theme[cached_start]="#c678dd"
+theme[cached_mid]="#25a4da"
+theme[cached_end]="#51b6e1"
+
+# Mem/Disk available meter
+theme[available_start]="#1fc3e0"
+theme[available_mid]="#56b6c2"
+theme[available_end]="#06e4f1"
+
+# Mem/Disk used meter
+theme[used_start]="#c678dd"
+theme[used_mid]="#25a4da"
+theme[used_end]="#51b6e1"
+
+# Download graph colors
+theme[download_start]="#61afef"
+theme[download_mid]="#61afef"
+theme[download_end]="#61afef"
+
+# Upload graph colors
+theme[upload_start]="#61afef"
+theme[upload_mid]="#61afef"
+theme[upload_end]="#61afef"

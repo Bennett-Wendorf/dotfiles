@@ -22,12 +22,14 @@
     use_system_font = False
   [[One dark]]
     icon_bell = False
-    background_color = "#1e2127"
+    # background_color = "#1e2127"
+    background_color = "#282C34"
     background_darkness = 0.9
     background_type = transparent
     cursor_color = "#676c76"
     font = Hack 12
-    foreground_color = "#5c6370"
+    # foreground_color = "#5c6370"
+    foreground_color = "#fffefe"
     show_titlebar = False
     scrollbar_position = hidden
     scrollback_infinite = True
