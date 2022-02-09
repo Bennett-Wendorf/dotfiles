@@ -342,7 +342,7 @@ def init_widgets_list():
             length=5,
         ),
         widget.TextBox(
-            font = "Font Awesome 5 Free Solid",
+            font = "Font Awesome 6 Free Solid",
             text = "",
             foreground = colors['highlight_color'],
             background = colors['bg_color'],
@@ -351,7 +351,7 @@ def init_widgets_list():
             mouse_callbacks = {"Button1": launch_power_menu}
         ),
         widget.TextBox(
-            font="Font Awesome 5 Free Regular",
+            font="Font Awesome 6 Free Regular",
             text="  ",
             foreground=["#fba922", "#fba922"],
             background=colors['bg_color'],
@@ -386,7 +386,7 @@ def init_widgets_list():
         ),
         widget.Spacer(),
         widget.GroupBox(
-            font="Font Awesome 5 Free Solid",
+            font="Font Awesome 6 Free Solid",
             fontsize = 22,
             margin_y = 2,
             margin_x = 0,
@@ -430,7 +430,8 @@ def init_widgets_list():
             font='Hack',
             fontsize = 22,
             background = colors['bg_color'],
-            padding=10
+            padding=10,
+            update_interval = 5
         ),
     ]
     return widgets_list
