@@ -1,0 +1,13 @@
+{
+  "name": "bennett_one_dark",
+  "title": "Bennett One Dark",
+  "displayName": "Bennett One Dark",
+  "theme": "ui",
+  "version": "0.1.0",
+  "description": "Bennett one dark theme for Mail spring. Derived from Atom One Dark from Rafi993's repo.",
+  "license": "GPL-3.0",
+  "engines": {
+    "mailspring": "*"
+  }
+}
+
