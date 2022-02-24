@@ -536,6 +536,7 @@ floating_layout = layout.Floating(float_rules=[
     Match(wm_class='maketag'),  # gitk
     Match(title='branchdialog'),  # gitk
     Match(wm_class='pinentry'), # GPG key password entry
+    Match(wm_class='pinentry-gtk-2'),
     Match(wm_class='ssh-askpass'), # ssh-askpass
     Match(wm_class='MEGAsync'),
     Match(wm_class='Open File'),
