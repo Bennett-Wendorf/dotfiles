@@ -440,3 +440,8 @@ Traceback (most recent call last):
   File "/usr/lib/python3.10/urllib/request.py", line 1351, in do_open
     raise URLError(err)
 urllib.error.URLError: <urlopen error [Errno -2] Name or service not known>
+02/03/22 (13:50:03) | ERROR: Incorrectly formatted hexadecimal rgb string: #00000000
+Traceback (most recent call last):
+  File "/usr/bin/bpytop", line 1157, in __init__
+    raise ValueError(f'Incorrectly formatted hexadecimal rgb string: {self.hexa}')
+ValueError: Incorrectly formatted hexadecimal rgb string: #00000000

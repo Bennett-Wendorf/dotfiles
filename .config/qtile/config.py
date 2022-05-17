@@ -186,16 +186,16 @@ keys = [
     Key([mod, "shift"], "f", lazy.layout.flip(), desc="Flip layout for Monadtall and Monadwide"),
 
 # FLIP LAYOUT FOR BSP
-    Key([mod, "mod1"], "k", lazy.layout.flip_up(), desc="Flip layout up for BSP"),
-    Key([mod, "mod1"], "j", lazy.layout.flip_down(), desc="Flip layout down for BSP"),
-    Key([mod, "mod1"], "l", lazy.layout.flip_right(), desc="Flip layout right for BSP"),
-    Key([mod, "mod1"], "h", lazy.layout.flip_left(), desc="Flip layout left for BSP"),
+    Key([mod, "mod1"], "Up", lazy.layout.flip_up(), desc="Flip layout up for BSP"),
+    Key([mod, "mod1"], "Down", lazy.layout.flip_down(), desc="Flip layout down for BSP"),
+    Key([mod, "mod1"], "Left", lazy.layout.flip_right(), desc="Flip layout right for BSP"),
+    Key([mod, "mod1"], "Right", lazy.layout.flip_left(), desc="Flip layout left for BSP"),
 
 # MOVE WINDOWS UP OR DOWN BSP LAYOUT
-    Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
-    Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
-    Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window left"),
-    Key([mod, "shift"], "l", lazy.layout.shuffle_right(), desc="Move window right"),
+    Key([mod, "shift"], "Up", lazy.layout.shuffle_up(), desc="Move window up"),
+    Key([mod, "shift"], "Down", lazy.layout.shuffle_down(), desc="Move window down"),
+    Key([mod, "shift"], "Left", lazy.layout.shuffle_left(), desc="Move window left"),
+    Key([mod, "shift"], "Right", lazy.layout.shuffle_right(), desc="Move window right"),
 
 # MOVE WINDOWS UP OR DOWN MONADTALL/MONADWIDE LAYOUT
     Key([mod, "shift"], "Up", lazy.layout.shuffle_up(), desc="Move window up"),
@@ -233,6 +233,7 @@ keys = [
     Key([mod], "v", lazy.spawn("rofi -theme '~/.config/rofi/launchers/colorful/style_13.rasi' -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}'"), desc="Open clipboard manager"),
     Key([mod], "equal", lazy.spawn("= -- -theme '~/.config/rofi/launchers/colorful/style_13.rasi'"), desc="Run calculator in rofi"),
     Key(["control"], "m", lazy.spawn("find-cursor -c '#4dd0e1' -f -t -r 2"), desc="Launch the program to find the cursor"),
+    Key([mod, "shift"], "l", lazy.spawn("./scripts/autolock_toggle/autolock_toggle.sh"), desc="Toggle the xidlehook program for autolocking"),
 
 # NOTIFICATIONS
     Key([mod], "n", lazy.spawn("./.config/rofi/rofi_notif_center.sh"), desc="Launch the notification center"),
