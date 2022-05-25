@@ -16,9 +16,11 @@ Autolock off"
 
     if [[ $matching = "Autolock on" ]]; then
         $HOME/scripts/xidlehook.sh
+        $HOME/scripts/xss-lock.sh
         notify-send "Autolock Toggle" "🔒 ${matching}"
     else
         killall xidlehook
+        killall xss-lock
         notify-send "Autolock Toggle" "🔓 ${matching}"
     fi
 }

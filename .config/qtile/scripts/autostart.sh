@@ -23,7 +23,6 @@ megasync &
 screenrotator &
 run greenclip daemon &
 wal -restore &
-xss-lock --transfer-sleep-lock -- $HOME/.config/i3lock/i3lock.sh --nofork &
-killall xidlehook
+$HOME/scripts/xss-lock.sh
 $HOME/scripts/xidlehook.sh
 eww daemon &

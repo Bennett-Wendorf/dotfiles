@@ -445,3 +445,15 @@ Traceback (most recent call last):
   File "/usr/bin/bpytop", line 1157, in __init__
     raise ValueError(f'Incorrectly formatted hexadecimal rgb string: {self.hexa}')
 ValueError: Incorrectly formatted hexadecimal rgb string: #00000000
+20/05/22 (14:41:22) | ERROR: Exception when sending signal 9 to pid 6006
+20/05/22 (14:41:22) | ERROR: [Errno 1] Operation not permitted
+Traceback (most recent call last):
+  File "/usr/bin/bpytop", line 5479, in process_keys
+    os.kill(pid, sig)
+PermissionError: [Errno 1] Operation not permitted
+20/05/22 (14:41:35) | ERROR: Exception when sending signal 9 to pid 6006
+20/05/22 (14:41:35) | ERROR: [Errno 1] Operation not permitted
+Traceback (most recent call last):
+  File "/usr/bin/bpytop", line 5479, in process_keys
+    os.kill(pid, sig)
+PermissionError: [Errno 1] Operation not permitted

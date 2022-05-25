@@ -67,5 +67,10 @@ alias dotfiles="/usr/bin/git --git-dir=/home/bennett/.dotfiles --work-tree=/home
 # Set up rbenv for multiple Ruby versions
 eval "$(rbenv init -)"
 
+# Set up pyenv to work in the shell
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
 # This command acts as a greeting
 fortune -a computers
