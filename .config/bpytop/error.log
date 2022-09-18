@@ -457,3 +457,13 @@ Traceback (most recent call last):
   File "/usr/bin/bpytop", line 5479, in process_keys
     os.kill(pid, sig)
 PermissionError: [Errno 1] Operation not permitted
+25/05/22 (16:33:25) | ERROR: Incorrectly formatted hexadecimal rgb string: #00000000
+Traceback (most recent call last):
+  File "/usr/bin/bpytop", line 1157, in __init__
+    raise ValueError(f'Incorrectly formatted hexadecimal rgb string: {self.hexa}')
+ValueError: Incorrectly formatted hexadecimal rgb string: #00000000
+25/05/22 (16:33:27) | ERROR: Incorrectly formatted hexadecimal rgb string: #00000000
+Traceback (most recent call last):
+  File "/usr/bin/bpytop", line 1157, in __init__
+    raise ValueError(f'Incorrectly formatted hexadecimal rgb string: {self.hexa}')
+ValueError: Incorrectly formatted hexadecimal rgb string: #00000000

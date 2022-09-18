@@ -542,6 +542,8 @@ floating_layout = layout.Floating(float_rules=[
     Match(wm_class='MEGAsync'),
     Match(wm_class='Open File'),
     Match(wm_class='Arandr'),
+    Match(wm_class='xfreerdp'),
+    Match(wm_class='org.remmina.Remmina'),
 ], fullscreen_border_width = 0, border_width = 0)
 Match(title='branchdialog'),  # gitk
 auto_fullscreen = True
