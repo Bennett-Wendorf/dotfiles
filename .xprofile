@@ -11,6 +11,8 @@ export PATH="/usr/lib/jvm/java-14-openjkd/bin:$PATH"
 export GDK_DPI_SCALE=1.3
 export QT_SCALE_FACTOR=1.3
 
+export GTK_THEME=AtomOneDarkTheme
+
 # Set virsh to use the system hypervisor connection by default
 export LIBVIRT_DEFAULT_URI=qemu:///system
 

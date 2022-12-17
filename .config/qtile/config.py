@@ -35,6 +35,7 @@ from libqtile.widget import Spacer
 import arcobattery
 from libqtile.log_utils import logger
 from libqtile import qtile
+from libqtile import hook
 
 #mod4 or mod = super key
 mod = "mod4"
@@ -44,6 +45,8 @@ home = os.path.expanduser('~')
 terminal = "terminator"
 # run_launcher = "dmenu_run -i -fn 'Hack-10' -nb '#2E3440' -nf '#88C0D0' -sb '#88C0D0' -sf '#2E3440'"
 run_launcher = "rofi -show drun -theme '~/.config/rofi/launchers/colorful/style_1.rasi'"
+
+flameshot_env_modifiers = 'env QT_SCALE_FACTOR=""'
 
 # COLORS
 blue_grey_theme = {
@@ -103,6 +106,10 @@ def float_to_front(qtile):
     for window in qtile.currentGroup.windows:
         if window.floating:
             window.cmd_bring_to_front()
+
+@hook.subscribe.screens_reconfigured
+def restart_on_randr(qtile):
+    qtile.cmd_restart()
 
 keys = [
 
@@ -212,11 +219,11 @@ keys = [
     Key([mod], "t", lazy.function(spawn_default_app), desc="Spawn the default app for the current group"),
 
 # SCREENSHOT
-    Key([mod, "control"], "c", lazy.spawn("flameshot screen -c -d 5000"), desc="Wait 5 seconds and take a screenshot"),
-    Key([mod], "c", lazy.spawn("flameshot screen -c"), desc="Take a screenshot"),
-    Key([mod, "shift"], "c", lazy.spawn("flameshot gui"), desc="Mark an area and screenshot it"),
-    Key([], "Print", lazy.spawn("flameshot screen -c"), desc="Take a screenshot"),
-    Key(["shift"], "Print", lazy.spawn("flameshot gui"), desc="Mark an area and screenshot it"),
+    Key([mod, "control"], "c", lazy.spawn(f"{flameshot_env_modifiers} flameshot screen -c -d 5000"), desc="Wait 5 seconds and take a screenshot"),
+    Key([mod], "c", lazy.spawn(f"{flameshot_env_modifiers} flameshot screen -c"), desc="Take a screenshot"),
+    Key([mod, "shift"], "c", lazy.spawn(f"{flameshot_env_modifiers} flameshot gui"), desc="Mark an area and screenshot it"),
+    Key([], "Print", lazy.spawn(f"{flameshot_env_modifiers} flameshot screen -c"), desc="Take a screenshot"),
+    Key(["shift"], "Print", lazy.spawn(f"{flameshot_env_modifiers} flameshot gui"), desc="Mark an area and screenshot it"),
 
 # MUlTIMEDIA
     Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause"), desc="Play or pause audio with playerctl"),
@@ -256,7 +263,7 @@ group_labels = ["", "︁", "", "", "", "", "", "", ""
 group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall",]
 #group_layouts = ["monadtall", "matrix", "monadtall", "bsp", "monadtall", "matrix", "monadtall", "bsp", "monadtall", "monadtall",]
 
-group_defaults = ["firefox", "code", "nautilus", run_launcher, run_launcher, "firefox", run_launcher, "discord", "pavucontrol", "terminator -e bpytop",]
+group_defaults = ["firefox", "code", "nemo", run_launcher, run_launcher, "firefox", run_launcher, "discord", "pavucontrol", "terminator -e bpytop",]
 
 for i in range(len(group_names)):
     group = Group(
@@ -544,6 +551,7 @@ floating_layout = layout.Floating(float_rules=[
     Match(wm_class='Arandr'),
     Match(wm_class='xfreerdp'),
     Match(wm_class='org.remmina.Remmina'),
+    Match(title='flameshot'),
 ], fullscreen_border_width = 0, border_width = 0)
 Match(title='branchdialog'),  # gitk
 auto_fullscreen = True
