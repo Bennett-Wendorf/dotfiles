@@ -32,10 +32,13 @@ from libqtile.config import Drag, Key, Screen, Group, Drag, Click, Rule, Match
 from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook
 from libqtile.widget import Spacer
-import arcobattery
 from libqtile.log_utils import logger
 from libqtile import qtile
 from libqtile import hook
+
+import arcobattery
+from spawn_default_app import spawn_default_app
+import ibattery
 
 #mod4 or mod = super key
 mod = "mod4"
@@ -83,23 +86,6 @@ def window_to_next_group(qtile):
     if qtile.currentWindow is not None:
         i = qtile.groups.index(qtile.currentGroup)
         qtile.currentWindow.togroup(qtile.groups[i + 1].name)
-
-def getIndex(currentGroupName):
-    if groups:
-        for i in range(len(groups)):
-            if groups[i].name == currentGroupName:
-                return i
-    else:
-        return None
-
-# Spawn the default app for this group
-def spawn_default_app(qtile):
-    groupIndex = getIndex(qtile.current_group.name)
-    if qtile.current_group is not None and groupIndex is not None:
-        app = groups[groupIndex].default_app
-        qtile.cmd_spawn(app)
-    elif qtile.current_group is not None and groupIndex is None:
-        qtile.cmd_spawn(run_launcher)
 
 def float_to_front(qtile):
     """Bring all floating windows of the group to front"""
@@ -215,9 +201,6 @@ keys = [
     Key([mod], "d", lazy.spawn(run_launcher),
     desc="Spawn run launcher"),
 
-# SPAWN DEFAULT APP FOR THIS GROUP
-    Key([mod], "t", lazy.function(spawn_default_app), desc="Spawn the default app for the current group"),
-
 # SCREENSHOT
     Key([mod, "control"], "c", lazy.spawn(f"{flameshot_env_modifiers} flameshot screen -c -d 5000"), desc="Wait 5 seconds and take a screenshot"),
     Key([mod], "c", lazy.spawn(f"{flameshot_env_modifiers} flameshot screen -c"), desc="Take a screenshot"),
@@ -247,7 +230,6 @@ keys = [
     Key([], "XF86AudioMedia", lazy.spawn("./.config/rofi/rofi_notif_center.sh"), desc="Launch the notification center"),
     
     Key([mod], "p" ,lazy.spawn("./.config/qtile/scripts/displayselect.sh"), desc="Change display configuration with autorandr"),
-
 ]
 
 groups = []
@@ -263,7 +245,7 @@ group_labels = ["", "︁", "", "", "", "", "", "", ""
 group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall",]
 #group_layouts = ["monadtall", "matrix", "monadtall", "bsp", "monadtall", "matrix", "monadtall", "bsp", "monadtall", "monadtall",]
 
-group_defaults = ["firefox", "code", "nemo", run_launcher, run_launcher, "firefox", run_launcher, "discord", "pavucontrol", "terminator -e bpytop",]
+group_defaults = ["firefox", "code", "nemo", None, None, "firefox", None, "discord", "pavucontrol", "terminator -e bpytop",]
 
 for i in range(len(group_names)):
     group = Group(
@@ -273,6 +255,11 @@ for i in range(len(group_names)):
         )
     group.default_app = group_defaults[i]
     groups.append(group)
+
+keys.extend([
+    # SPAWN DEFAULT APP FOR THIS GROUP
+    Key([mod], "t", lazy.function(spawn_default_app, groups, group_defaults, unset_default_app=run_launcher), desc="Spawn the default app for the current group"),
+])
 
 for i in groups:
     keys.extend([
@@ -425,22 +412,23 @@ def init_widgets_list():
             fontsize = 22,
         ),
         widget.Sep(),
-        arcobattery.BatteryIcon(
-            padding=0,
-            scale=0.8,
-            y_poss=2,
-            theme_path=home + "/.config/qtile/icons/battery_icons_horiz",
-            update_interval = 5,
-            background = colors['bg_color']
-        ),
-        widget.Battery(
-            format='{percent:2.0%} {hour:d}:{min:02d}',
-            font='Hack',
-            fontsize = 22,
-            background = colors['bg_color'],
-            padding=10,
-            update_interval = 5
-        ),
+        ibattery.Battery(),
+        #arcobattery.BatteryIcon(
+        #    padding=0,
+        #    scale=0.8,
+        #    y_poss=2,
+        #    theme_path=home + "/.config/qtile/icons/battery_icons_horiz",
+        #    update_interval = 5,
+        #    background = colors['bg_color']
+        #),
+        #widget.Battery(
+        #    format='{percent:2.0%} {hour:d}:{min:02d}',
+        #    font='Hack',
+        #    fontsize = 22,
+        #    background = colors['bg_color'],
+        #    padding=10,
+        #    update_interval = 5
+        #),
     ]
     return widgets_list
 
