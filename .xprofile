@@ -8,6 +8,13 @@ export PATH="$HOME/.gem/ruby/2.7.0/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/lib/jvm/java-14-openjkd/bin:$PATH"
 
+# Perl config
+PATH="/home/bennett/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/bennett/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/bennett/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/bennett/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/bennett/perl5"; export PERL_MM_OPT;
+
 export GDK_DPI_SCALE=1.3
 export QT_SCALE_FACTOR=1.3
 
@@ -15,6 +22,9 @@ export GTK_THEME=AtomOneDarkTheme
 
 # Set virsh to use the system hypervisor connection by default
 export LIBVIRT_DEFAULT_URI=qemu:///system
+
+# Set up VDPAU for hardware video decode
+export VDPAU_DRIVER=va_gl
 
 # Polkit Agent
 /usr/lib/polkit-kde-authentication-agent-1 &

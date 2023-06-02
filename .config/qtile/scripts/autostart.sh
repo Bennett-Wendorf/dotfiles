@@ -17,7 +17,6 @@ autorandr -c
 
 #starting user applications at boot time
 nitrogen --restore &
-flameshot &
 megasync &
 # run onedrive_tray &
 screenrotator &

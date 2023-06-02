@@ -19,6 +19,7 @@ application/x-extension-xht=firefox.desktop
 x-scheme-handler/etcher=balena-etcher-electron.desktop
 x-scheme-handler/discord-903883530822627370=discord-903883530822627370.desktop
 x-scheme-handler/discord-692435241373270077=discord-692435241373270077.desktop
+x-scheme-handler/me.blueone.linux=bluemail.desktop
 
 [Added Associations]
 application/zip=org.gnome.Nautilus.desktop;code-oss.desktop;
