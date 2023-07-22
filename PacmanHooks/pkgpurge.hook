@@ -1,6 +1,4 @@
 [Trigger]
-Operation = Upgrade
-Operation = Install
 Operation = Remove
 Type = Package
 Target = *
@@ -8,4 +6,4 @@ Target = *
 [Action]
 Description = Removing cache of uninstalled packages...
 When = PostTransaction
-Exec = /usr/bin/paccache -rvuk0
+Exec = /home/bennett/scripts/pacman_hooks_helpers/pkgpurge.sh

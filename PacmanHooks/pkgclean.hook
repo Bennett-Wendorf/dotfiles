@@ -6,6 +6,6 @@ Type = Package
 Target = *
 
 [Action]
-Description = Cleaning pacman cache...
+Description = Cleaning pacman and yay caches...
 When = PostTransaction
-Exec = /usr/bin/paccache -rvk1
+Exec = /home/bennett/scripts/pacman_hooks_helpers/pkgclean.sh
