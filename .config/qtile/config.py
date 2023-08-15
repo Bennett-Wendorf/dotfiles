@@ -96,8 +96,10 @@ flameshot_env_modifiers = 'env QT_SCALE_FACTOR=""'
 
 blue_grey_theme = {
     'bg_color': "#303030",
+    'bg_color_alt': "#262626",
     'fg_color': "#c0c5ce",
     'fg_color_alt': "#f3f4f5",
+    'fg_dark': "#7d889b",
     'fg_crit': "#cd1f3f",
     'highlight_color': "#4dd0e1",
     'border_focus': "#4dd0e1",
@@ -105,9 +107,12 @@ blue_grey_theme = {
 }
 
 one_dark_theme = {
-    'bg_color': "#282C34",
+    # 'bg_color': "#282C34",
+    'bg_color': "#2a323d",
+    'bg_color_alt': "#1f262d",
     'fg_color': "#5c6370",
     'fg_color_alt': "#abb2bf",
+    'fg_dark': "#116397",
     'fg_crit': "#e06c75",
     'highlight_color': "#61afef",
     'border_focus': "#61afef",
@@ -295,16 +300,16 @@ keys = [
 groups = []
 
 group_configs = [
-    {"name": "1", "label": "", "layout": "monadtall", "default_app": "firefox"},
-    {"name": "2", "label": "︁", "layout": "monadtall", "default_app": "code"},
-    {"name": "3", "label": "", "layout": "monadtall", "default_app": "nemo"},
-    {"name": "4", "label": "", "layout": "monadtall", "default_app": None},
-    {"name": "5", "label": "", "layout": "monadtall", "default_app": None},
-    {"name": "6", "label": "", "layout": "monadtall", "default_app": "firefox"},
-    {"name": "7", "label": "", "layout": "monadtall", "default_app": None},
-    {"name": "8", "label": "", "layout": "monadtall", "default_app": "discord"},
-    {"name": "9", "label": "", "layout": "monadtall", "default_app": "pavucontrol"},
-    {"name": "0", "label": "", "layout": "monadtall", "default_app": "terminator -e bpytop"},
+    {"name": "1", "label": "", "layout": "monadtall", "default_app": "firefox"},
+    {"name": "2", "label": "", "layout": "monadtall", "default_app": "code"},
+    {"name": "3", "label": "", "layout": "monadtall", "default_app": "nemo"},
+    {"name": "4", "label": "", "layout": "monadtall", "default_app": None},
+    {"name": "5", "label": "", "layout": "monadtall", "default_app": None},
+    {"name": "6", "label": "", "layout": "monadtall", "default_app": "firefox"},
+    {"name": "7", "label": "", "layout": "monadtall", "default_app": None},
+    {"name": "8", "label": "", "layout": "monadtall", "default_app": "discord"},
+    {"name": "9", "label": "", "layout": "monadtall", "default_app": "pavucontrol"},
+    {"name": "0", "label": "", "layout": "monadtall", "default_app": "terminator -e bpytop"},
 ]
 
 for config in group_configs:
@@ -401,55 +406,49 @@ layouts = [
 
 widget_defaults = {
     "icon_font": "Font Awesome 6 Free Solid",
-    "font": "Noto Sans",
+    "font": "Hack",
     "fontsize": 22,
     "padding": 2,
     "background": colors['bg_color'],
+    "background_alt": colors['bg_color_alt'],
     "foreground": colors['fg_color'],
 }
 
-def init_widgets_list():
-    widgets_list = [
+weather_symbols = {
+    "unknown": "",
+    "01d": "", "01n": "",
+    "02d": "", "02n": "",
+    "03d": "", "03n": "",
+    "04d": "", "04n": "",
+    "09d": "", "09n": "",
+    "10d": "", "10n": "",
+    "11d": "", "11n": "",
+    "13d": "", "13n": "",
+    "50d": "", "50n": "",
+}
+
+def init_left_widgets_list():
+    return [
         widget.Spacer(
-            length = 5,
+            length = 20,
+            background = widget_defaults['background_alt'],
         ),
         widget.TextBox(
             font = widget_defaults['icon_font'],
             text = "",
             foreground = colors['highlight_color'],
-            background = widget_defaults['background'],
+            background = widget_defaults['background_alt'],
             padding = 5,
             fontsize = widget_defaults['fontsize'],
             mouse_callbacks = {"Button1": lambda : qtile.cmd_spawn(f'{home}/.config/rofi/applets/menu/powermenu.sh')}
         ),
-        widget.TextBox(
-            font = "Font Awesome 6 Free Regular",
-            text = "  ",
-            foreground = ["#fba922", "#fba922"],
-            background = widget_defaults['background'],
-            padding = 0,
-            fontsize = widget_defaults['fontsize'],
-            mouse_callbacks = { "Button1": lazy.spawn(f"{eww_scripts_dir}/eww_calendar.sh") }
+        widget.Spacer(
+            length = 10,
+            background = widget_defaults['background_alt'],
         ),
-        widget.Clock(
-            foreground = colors['fg_color_alt'],
-            background = widget_defaults['background'],
-            fontsize = widget_defaults['fontsize'],
-            format = "%I:%M %P",
-            mouse_callbacks = { "Button1": lazy.spawn(f"{eww_scripts_dir}/eww_calendar.sh") }
+        widget.Image(
+            filename = f"{home}/.config/qtile/res/slant_left_two_tone.png",
         ),
-        widget.Sep(
-            linewidth = 1,
-            padding = 10,
-            foreground = widget_defaults['foreground'],
-            background = widget_defaults['background'],
-        ),
-        widget.CurrentLayoutIcon(
-            foreground = widget_defaults['foreground'],
-            background = widget_defaults['background'],
-            scale = .75,
-        ),
-        widget.Spacer(),
         widget.GroupBox(
             font = widget_defaults['icon_font'],
             fontsize = widget_defaults['fontsize'],
@@ -459,16 +458,82 @@ def init_widgets_list():
             padding_x = 8,
             borderwidth = 0,
             disable_drag = True,
-            active = "#116397",
-            inactive = colors['fg_color_alt'],
-            rounded = True,
+            active = colors['fg_dark'],
+            inactive = colors['border_normal'],
             highlight_method = "text",
             this_current_screen_border = colors['highlight_color'],
             foreground = widget_defaults['foreground'],
             background = widget_defaults['background'],
-            hide_unused = True,
+        ),
+        widget.Image(
+            filename = f"{home}/.config/qtile/res/slant_right_two_tone.png",
+        ),
+        widget.Spacer(
+            length = 10,
+            background = widget_defaults['background_alt'],
+        ),
+        widget.CurrentLayoutIcon(
+            foreground = widget_defaults['foreground'],
+            background = widget_defaults['background_alt'],
+            scale = .65,
+        ),
+        widget.Image(
+            filename = f"{home}/.config/qtile/res/slant_right_dark_color.png",
+        ),
+        widget.Spacer(
+            length = 10,
+            background = widget_defaults['background_alt'],
+        ),
+        widget.TextBox(
+            font = widget_defaults['icon_font'],
+            text = "",
+            foreground = colors['highlight_color'],
+            background = widget_defaults['background_alt'],
+            padding = 5,
+            fontsize = widget_defaults['fontsize'],
+        ),
+        widget.Spacer(
+            length = 5,
+            background = widget_defaults['background_alt'],
+        ),
+        widget.CPU(
+            foreground = widget_defaults['foreground'],
+            background = widget_defaults['background_alt'],
+            format = "{freq_current} GHz  {load_percent}%",
+        ),
+        widget.Image(
+            filename = f"{home}/.config/qtile/res/curve_right_two_tone.png",
         ),
         widget.Spacer(),
+    ]
+
+def init_right_widgets_list():
+    return [
+        widget.OpenWeather(
+            font = widget_defaults['icon_font'],
+            fontsize = 19,
+            background = widget_defaults['background_alt'],
+            foreground = widget_defaults['foreground'],
+            format = "{location_city}   {icon}   {temp:.0f} {units_temperature}",
+            zip = "54467",
+            metric = False,
+            weather_symbols = weather_symbols,
+            api_key = "4413f6eb74f8618a4f1a2d2570c8cf2d",
+        ),
+        widget.Image(
+            filename = f"{home}/.config/qtile/res/slant_left_two_tone.png",
+        ),
+        widget.TextBox(
+            font = widget_defaults['icon_font'],
+            text = "",
+            foreground = colors['highlight_color'],
+            background = widget_defaults['background'],
+            padding = 5,
+            fontsize = widget_defaults['fontsize'],
+        ),
+        widget.Spacer(
+            length = 15,
+        ),
         # do not activate in Virtualbox - will break qtile
         widget.ThermalSensor(
             foreground = colors['fg_color_alt'],
@@ -477,30 +542,77 @@ def init_widgets_list():
             metric = True,
             padding = 3,
             threshold = 85,
+            format = "{temp:.0f} C",
             fontsize = widget_defaults['fontsize'],
         ),
-        widget.Sep(),
-        ibattery.Battery(),
+        widget.Image(
+            filename = f"{home}/.config/qtile/res/slant_left_base_color.png",
+        ),
+        ibattery.Battery(
+            foreground = colors['fg_color_alt'],
+            background = widget_defaults['background'],
+        ),
+        widget.Image(
+            filename = f"{home}/.config/qtile/res/curve_left_two_tone.png",
+        ),
+        widget.Spacer(
+            length = 5,
+            background = widget_defaults['background_alt'],
+        ),
+        widget.TextBox(
+            font = widget_defaults['icon_font'],
+            text = "",
+            foreground = colors['highlight_color'],
+            background = widget_defaults['background_alt'],
+            padding = 5,
+            fontsize = widget_defaults['fontsize'],
+        ),
+        widget.Spacer(
+            length = 5,
+            background = widget_defaults['background_alt'],
+        ),
+        widget.Clock(
+            foreground = colors['fg_color_alt'],
+            background = widget_defaults['background_alt'],
+            fontsize = widget_defaults['fontsize'],
+            format = "%I:%M %P",
+            mouse_callbacks = { "Button1": lazy.spawn(f"{eww_scripts_dir}/eww_calendar.sh") }
+        ),
+        widget.Spacer(
+            length=20,
+            background=widget_defaults['background_alt']
+        ),
     ]
-    return widgets_list
 
 def init_widgets_screen_1():
-    widgets_screen1 = init_widgets_list()
+    widgets_screen_1 = init_left_widgets_list()
     # Append needed systray widgets only to screen 1. I don't want these to show on my second screen
-    widgets_screen1.append(widget.Sep())
-    widgets_screen1.append(widget.Systray(background=colors['bg_color'], icon_size=26, padding=6))
-    widgets_screen1.append(widget.Spacer(length=5))
-    return widgets_screen1
+    widgets_screen_1.append(widget.Image(
+        filename = f"{home}/.config/qtile/res/curve_left_two_tone.png",
+    ))
+    widgets_screen_1.append(widget.Systray(
+        background = widget_defaults['background_alt'],
+        icon_size = 26,
+        padding = 6,
+    ))
+    widgets_screen_1.append(widget.Image(
+        filename = f"{home}/.config/qtile/res/slant_right_dark_color.png",
+    ))
+    widgets_screen_1.extend(init_right_widgets_list())
+    return widgets_screen_1
 
 def init_widgets_screen_2():
-    widgets_screen2 = init_widgets_list()
-    widgets_screen2.append(widget.Spacer(length=5))
-    return widgets_screen2
+    widgets_screen_2 = init_left_widgets_list()
+    widgets_screen_2.append(widget.Image(
+        filename = f"{home}/.config/qtile/res/curve_left_two_tone.png",
+    ))
+    widgets_screen_2.extend(init_right_widgets_list())
+    return widgets_screen_2
 
 screen_config = {
     "margin": [8, 8, 0, 8],
-    "size": 36, 
-    "opacity": 0.8,
+    "size": 40, 
+    "opacity": 1,
 }
 
 screens = [
