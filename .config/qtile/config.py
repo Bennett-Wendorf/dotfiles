@@ -45,6 +45,7 @@ import os
 import re
 import socket
 import subprocess
+import requests
 from libqtile.config import Drag, Key, Screen, Group, Drag, Click, Rule, Match
 from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook
@@ -85,6 +86,19 @@ run_launcher = f"rofi -show drun -theme '{rofi_run_launcher_theme}'"
 
 # This prevents flameshot from scaling in a weird way if the QT_SCALE_FACTOR is set globally
 flameshot_env_modifiers = 'env QT_SCALE_FACTOR=""'
+
+try:
+    res = requests.get('https://ipinfo.io/loc', timeout = 1)
+    lat, lon = res.text[:-2].split(',')
+except requests.exceptions.ConnectionError:
+    print("No internet connection")
+    lat, lon = None, None
+except requests.exceptions.Timeout:
+    print("Request timed out")
+    lat, lon = None, None
+except:
+    print("Unknown error")
+    lat, lon = None, None
 #endregion
 
 # region COLORS
@@ -414,19 +428,6 @@ widget_defaults = {
     "foreground": colors['fg_color'],
 }
 
-weather_symbols = {
-    "unknown": "",
-    "01d": "", "01n": "",
-    "02d": "", "02n": "",
-    "03d": "", "03n": "",
-    "04d": "", "04n": "",
-    "09d": "", "09n": "",
-    "10d": "", "10n": "",
-    "11d": "", "11n": "",
-    "13d": "", "13n": "",
-    "50d": "", "50n": "",
-}
-
 def init_left_widgets_list():
     return [
         widget.Spacer(
@@ -510,14 +511,13 @@ def init_left_widgets_list():
 def init_right_widgets_list():
     return [
         widget.OpenWeather(
-            font = widget_defaults['icon_font'],
-            fontsize = 19,
+            font = widget_defaults['font'],
+            fontsize = widget_defaults['fontsize'],
             background = widget_defaults['background_alt'],
             foreground = widget_defaults['foreground'],
-            format = "{location_city}   {icon}   {temp:.0f} {units_temperature}",
-            zip = "54467",
+            format = "{location_city}: {icon} {temp:.0f}°{units_temperature}",
+            coordinates = {'latitude': lat or '0', 'longitude': lon or '0'},
             metric = False,
-            weather_symbols = weather_symbols,
             api_key = "4413f6eb74f8618a4f1a2d2570c8cf2d",
         ),
         widget.Image(
@@ -542,7 +542,7 @@ def init_right_widgets_list():
             metric = True,
             padding = 3,
             threshold = 85,
-            format = "{temp:.0f} C",
+            format = "{temp:.0f}°C",
             fontsize = widget_defaults['fontsize'],
         ),
         widget.Image(
@@ -566,6 +566,7 @@ def init_right_widgets_list():
             background = widget_defaults['background_alt'],
             padding = 5,
             fontsize = widget_defaults['fontsize'],
+            mouse_callbacks = { "Button1": lazy.spawn(f"{eww_scripts_dir}/eww_calendar.sh") }
         ),
         widget.Spacer(
             length = 5,

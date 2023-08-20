@@ -189,72 +189,42 @@ window {
   color: $light-blue;
 }
 
-// .music-info scale trough highlight {
-//   all: unset;
-// 	background-color: #8fbcbb;;
-// 	color: #000000;
-// 	border-radius: 50px;
-// }
-
-// .music-info scale trough {
-// 	all: unset;
-// 	background-color: #434c5e;
-// 	border-radius: 50px;
-// 	min-height: 25px;
-//   min-width: 250px;
-//   margin-top: 10px;
-//   margin-left: 0px;
-//   margin-right: 30px;
-// }
-
 // Weather
+.weather-info-side {
+  margin: $sidebar-widget-margins;
+  margin-bottom: 20px;
+}
+
 .weather-icon-side {
-  // font-size: 112px;
   font-size: 70px;
   font-family: $icon-font;
   margin: 5px 0px 5px 30px;
 }
 
 .weather-stat-side {
-  // font-size: 35px;
   font-size: $large-main-text-size;
-  //padding-top: 10px;
-  //padding-bottom: 5px;
   font-weight: bold;
-  margin-right: 30px;
   margin-bottom: 25px;
   color: $light-blue;
 }
 
-.weather-quote1 {
-  // font-size: 20px; 
+.weather-quote {
   font-size: $medium-text-size; 
-  //color: #8fbcbb;
-  margin-right: 30px;
-  margin-bottom: 30px;
+}
+
+.temp-info {
+  margin-bottom: 20px;
 }
 
 .temperature-side {
-  // font-family: icons;
-  // font-size: 65px;
   font-size: $xl-text-size;
   font-weight: 900;
-  //margin: 30px;
-  margin-top: 55px;
-  // margin-bottom: 40px;
-  margin-bottom: 20px;
   margin-right: 30px;
-  //color: #88c0d0;
 }
 
 .thermometer {
   font-family: $icon-font;
-  // font-size: 65px;
   font-size: $xl-text-size;
-  margin-top: 55px;
-  // margin-bottom: 40px;
-  margin-bottom: 20px;
-  margin-right: 30px;
   color: #d08770;
 }
 
