@@ -82,6 +82,9 @@ of the config files I use on my Arch linux system on a daily basis.
 <!-- GETTING STARTED -->
 ## Getting Started
 
+### NOTE:
+Regardless of the method chosen, you'll need to set up the `.xprofile-template` file to make everything work properly. Take the included template (`.xprofile-tempate`) and rename it to `.xprofile`. Then, inside that file, fill in the details with your API keys for Open Weather Map and IP Info. Both are totally free to sign up for :)
+
 There are three main ways you can utilize this repository. The first and maybe simplist is to just grab the configs that you want from here and paste them into your own dirctories. Alternatively, I have created scripts to either help you just [install the config files](#config-file-installation), or to [install a full Arch Linux system](#full-arch-system-installation) from the ground up. For either of these methods, clone this repo, navigate into the ArchInstall directory, and run the appropriate script.
 
 ### Config File Installation

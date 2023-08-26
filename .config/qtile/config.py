@@ -88,7 +88,7 @@ run_launcher = f"rofi -show drun -theme '{rofi_run_launcher_theme}'"
 flameshot_env_modifiers = 'env QT_SCALE_FACTOR=""'
 
 try:
-    res = requests.get('https://ipinfo.io/loc', timeout = 1)
+    res = requests.get(f'https://ipinfo.io/loc?token={os.environ["IPINFO_API_KEY"]}', timeout = 1)
     lat, lon = res.text[:-2].split(',')
 except requests.exceptions.ConnectionError:
     print("No internet connection")
@@ -517,7 +517,7 @@ def init_right_widgets_list():
             format = "{location_city}: {icon} {temp:.0f}°{units_temperature}",
             coordinates = {'latitude': lat or '0', 'longitude': lon or '0'},
             metric = False,
-            api_key = "4413f6eb74f8618a4f1a2d2570c8cf2d",
+            api_key = os.environ['OPENWEATHERMAP_API_KEY'],
         ),
         widget.Image(
             filename = f"{home}/.config/qtile/res/slant_left_two_tone.png",

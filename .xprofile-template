@@ -26,6 +26,12 @@ export LIBVIRT_DEFAULT_URI=qemu:///system
 # Set up VDPAU for hardware video decode
 export VDPAU_DRIVER=va_gl
 
+# Set up Open Weather Map API Key
+export OPENWEATHERMAP_API_KEY="<Your Key Here>" # Get one for free at https://openweathermap.org/
+
+# Set up IP Info API Key
+export IPINFO_API_KEY="<Your Key Here>" # Get one for free at https://ipinfo.io
+
 # Polkit Agent
 /usr/lib/polkit-kde-authentication-agent-1 &
 
