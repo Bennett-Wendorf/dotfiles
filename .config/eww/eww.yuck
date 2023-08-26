@@ -1,5 +1,38 @@
-;;  The main eww configuration file. This is where your widgets and how they appear on the screen and what they
-;; contain are defined. 
+;;  ██    ██  █████  ██████  ██  █████  ██████  ██      ███████ ███████ 
+;;  ██    ██ ██   ██ ██   ██ ██ ██   ██ ██   ██ ██      ██      ██      
+;;  ██    ██ ███████ ██████  ██ ███████ ██████  ██      █████   ███████ 
+;;   ██  ██  ██   ██ ██   ██ ██ ██   ██ ██   ██ ██      ██           ██ 
+;;    ████   ██   ██ ██   ██ ██ ██   ██ ██████  ███████ ███████ ███████ 
+
+;;  Player vars 
+(defpoll music-artist :interval "1s"  "playerctl metadata --format '{{ artist }}'")
+(defpoll music-album :interval "1s"  "playerctl metadata --format '{{ album }}'")
+(defpoll music-title :interval "1s"  "playerctl metadata --format '{{ title }}'")
+(defpoll musicstat :interval "1s"  "if [ \"$(playerctl status)\" == Playing ]; then printf \"\"; else printf \"\"; fi")
+(defpoll music-art :interval "3s"  "playerctl metadata mpris:artUrl | sed -e 's/open.spotify.com/i.scdn.co/g'")
+
+;;  Weather vars 
+(defpoll weather-data :interval "10m"  "~/.config/eww/scripts/getweather.bash")
+
+;;  Vol vars 
+(defpoll current-vol :interval "1s"  "amixer get Master | grep % | awk '{print $5}'| sed 's/[^0-9]//g' | tail -1")
+(defpoll mute-status :interval "1s"  "amixer get Master | tail -2 | grep -c '\[on\]'")
+(defpoll mutestat :interval "1s"  "~/.config/eww/scripts/get_mute_status.sh")
+
+;;  Bright vars 
+(defpoll current-bright :interval "1s"  "xbacklight -get | cut -d . -f 1")
+
+;;  Calendar vars
+(defpoll current-year :interval "1m" "date +'%Y'")
+(defpoll current-month :interval "1m" "$(($(date +'%-m')-1))")
+(defpoll current-day :interval "1m" "date +'%d'")
+
+
+;;  ██     ██ ██ ██████   ██████  ███████ ████████ ███████ 
+;;  ██     ██ ██ ██   ██ ██       ██         ██    ██      
+;;  ██  █  ██ ██ ██   ██ ██   ███ █████      ██    ███████ 
+;;  ██ ███ ██ ██ ██   ██ ██    ██ ██         ██         ██ 
+;;   ███ ███  ██ ██████   ██████  ███████    ██    ███████
 
 (defwidget cal [month year day]
   (box :class "border-box extra-bottom-margin"
@@ -7,14 +40,13 @@
   )
 )
 
-;;  This is the place where you structure your widgets, align them and stuff. 
 (defwidget player [art title album artist music-status] 
   (box :orientation "horizontal" :space-evenly "false" :class "border-box"
-    (box :class "musicart" :halign "center" :valign "center" :style "background-image: url('/tmp/spotify/cover.png');" art)
-    (box :orientation "vertical" :class "music-info" :valign "center" :halign "center" :space-evenly "false"
-      (label :class "musictitle" :limit-width "22" :text title)
-      (label :class "musicalbum" :limit-width "22" :text album)
-      (label :class "musicartist" :limit-width "22" :text artist)
+    (box :class "musicart" :halign "center" :valign "center" :style "background-image: url('${art}');")
+    (box :orientation "vertical" :class "music-info" :valign "center" :space-evenly "false"
+      (label :class "musictitle" :limit-width "20" :halign "center" :text title)
+      (label :class "musicalbum" :limit-width "22" :halign "center" :text album)
+      (label :class "musicartist" :limit-width "22" :halign "center" :text artist)
       (box :orientation "h" :halign "center" :valign "center" :class "musicbtn" :space-evenly "false" 
         (button :onclick "playerctl previous" "")
         (button :onclick "playerctl play-pause" music-status)
@@ -36,13 +68,13 @@
 )
 (defwidget system-info [] 
   (box :orientation "v" :space-evenly "true" :class "sliders-side border-box" 
-    (box :orientation "h" :class "slider-cpu-side" :space-evenly "false" 
+    (box :orientation "h" :class "slider-cpu-side" :space-evenly "false" :halign "center"
       (box :class "label-cpu-side" "")
       (scale :min 0 :active "false" :max 100 :value {EWW_CPU.avg}))
-    (box :orientation "h" :class "slider-ram-side" :space-evenly "false" 
+    (box :orientation "h" :class "slider-ram-side" :space-evenly "false" :halign "center"
       (box :class "label-ram-side" "")
       (scale :min 0 :active "false" :max 100 :value {EWW_RAM.used_mem_perc}))
-    (box :orientation "h" :class "slider-hdd-side" :space-evenly "false" 
+    (box :orientation "h" :class "slider-hdd-side" :space-evenly "false" :halign "center"
       (box :class "label-hdd-side" "")
       (scale :min 0 :max 100 :active "false" :value {EWW_DISK["/"].used_perc})
     )
@@ -50,11 +82,11 @@
 )
 (defwidget vol-bright [mute-status cur-vol cur-bright] 
   (box :orientation "vertical" :space-evenly "true" :class "sliders-side border-box"
-    (box :orientation "horizontal" :class "slider-vol-side" :space-evenly "false"
+    (box :orientation "horizontal" :class "slider-vol-side" :space-evenly "false" :halign "center"
       (button :class "label-vol-side" :onclick "amixer -D pulse set Master 1+ toggle" mute-status)
       (scale :min 0 :active "true" :max 100 :value cur-vol :onchange "amixer -D pulse sset Master {}%")
     )
-    (box :orientation "h" :class "slider-bright-side" :space-evenly "false" 
+    (box :orientation "h" :class "slider-bright-side" :space-evenly "false" :halign "center"
       (box :class "label-bright-side" "")
       (scale :min 0 :max 100 :active "true" :value cur-bright :onchange "xbacklight -set {}")
     )
@@ -74,31 +106,12 @@
 )
 
 
-;;  Player vars 
-(defpoll music-artist :interval "3s"  "playerctl metadata --format '{{ artist }}'")
-(defpoll music-album :interval "3s"  "playerctl metadata --format '{{ album }}'")
-(defpoll music-title :interval "3s"  "playerctl metadata --format '{{ title }}'")
-(defpoll musicstat :interval "1s"  "if [ \"$(playerctl status)\" == Playing ]; then printf \"\"; else printf \"\"; fi")
-(defpoll music-art :interval "1s"  "~/.config/eww/scripts/getart.sh || cp ~/.config/eww/images/image.png /tmp/spotify/cover.png")
+;;  ██     ██ ██ ███    ██ ██████   ██████  ██     ██ ███████ 
+;;  ██     ██ ██ ████   ██ ██   ██ ██    ██ ██     ██ ██      
+;;  ██  █  ██ ██ ██ ██  ██ ██   ██ ██    ██ ██  █  ██ ███████ 
+;;  ██ ███ ██ ██ ██  ██ ██ ██   ██ ██    ██ ██ ███ ██      ██ 
+;;   ███ ███  ██ ██   ████ ██████   ██████   ███ ███  ███████
 
-;;  Weather vars 
-(defpoll weather-data :interval "5s"  "~/.config/eww/scripts/getweather.bash")
-
-;;  Vol vars 
-(defpoll current-vol :interval "1s"  "amixer get Master | grep % | awk '{print $5}'| sed 's/[^0-9]//g' | tail -1")
-(defpoll mute-status :interval "1s"  "amixer get Master | tail -2 | grep -c '\[on\]'")
-(defpoll mutestat :interval "1s"  "~/.config/eww/scripts/get_mute_status.sh")
-
-;;  Bright vars 
-(defpoll current-bright :interval "1s"  "xbacklight -get | cut -d . -f 1")
-
-;;  Calendar vars
-(defpoll current-year :interval "1m" "date +'%Y'")
-(defpoll current-month :interval "1m" "$(($(date +'%-m')-1))")
-(defpoll current-day :interval "1m" "date +'%d'")
-
-
-;;  These are the windows 
 (defwindow sidebar 
       :geometry (geometry :height "1056px" :y "16px" :anchor "center left")     
     (box :class "sidebar_box" :orientation "v" :space-evenly "false" 

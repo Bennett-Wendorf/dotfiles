@@ -121,7 +121,6 @@ blue_grey_theme = {
 }
 
 one_dark_theme = {
-    # 'bg_color': "#282C34",
     'bg_color': "#2a323d",
     'bg_color_alt': "#1f262d",
     'fg_color': "#5c6370",

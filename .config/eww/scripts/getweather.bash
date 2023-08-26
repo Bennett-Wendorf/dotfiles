@@ -1,17 +1,6 @@
 #!/bin/bash
 
-tmp_weather="/tmp/weather"
-tmp_weather_stat=$tmp_weather/weather-stat
-tmp_weather_degree=$tmp_weather/weather-degree
-tmp_weather_quote=$tmp_weather/weather-quote
-tmp_weather_hex=$tmp_weather/weather-hex
-tmp_weather_icon=$tmp_weather/weather-icon
-
-# if [ ! -d $tmp_weather ]; then
-#         mkdir -p $tmp_weather
-# fi
-
-IFS=', ' read -r -a array <<< $(curl 'ipinfo.io/loc')
+IFS=', ' read -r -a array <<< $(curl "ipinfo.io/loc")
 lat=${array[0]}
 lon=${array[1]}
 
@@ -32,7 +21,7 @@ if [ ! -z "$weather" ]; then
 	if [ "$weather_icon_code" == "50d"  ]; then
 		weather_icon=" "
         weather_quote="Forecast says it's misty"
-        weather_hex="#81a1c1"  #a7b8b2
+        weather_hex="#81a1c1"
     elif [ "$weather_icon_code" == "50n"  ]; then
         weather_icon=" "
         weather_quote="Forecast says it's a misty night"
@@ -47,7 +36,7 @@ if [ ! -z "$weather" ]; then
         weather_hex="#eceff4"
     elif [ "$weather_icon_code" == "02d"  ]; then
         weather_icon=" "
-        weather_quote="It's  cloudy, sort of gloomy"
+        weather_quote="It's cloudy, sort of gloomy"
         weather_hex="#b48ead"
     elif [ "$weather_icon_code" == "02n"  ]; then
         weather_icon=" "
@@ -55,7 +44,7 @@ if [ ! -z "$weather" ]; then
         weather_hex="#b48ead"
     elif [ "$weather_icon_code" == "03d"  ]; then
         weather_icon=" "
-        weather_quote="It's  cloudy, sort of gloomy"
+        weather_quote="It's cloudy, sort of gloomy"
         weather_hex="#b48ead"
     elif [ "$weather_icon_code" == "03n"  ]; then
         weather_icon=" "
@@ -63,7 +52,7 @@ if [ ! -z "$weather" ]; then
         weather_hex="#b48ead"
     elif [ "$weather_icon_code" == "04d"  ]; then
         weather_icon=" "
-        weather_quote="It's  cloudy, sort of gloomy"
+        weather_quote="It's cloudy, sort of gloomy"
         weather_hex="#b48ead"
     elif [ "$weather_icon_code" == "04n"  ]; then
         weather_icon=" "
@@ -75,7 +64,7 @@ if [ ! -z "$weather" ]; then
         weather_hex="#5e81ac"
     elif [ "$weather_icon_code" == "09n"  ]; then
         weather_icon=" "
-        weather_quote=" It's gonna rain tonight it seems"
+        weather_quote="It's gonna rain tonight it seems"
         weather_hex="#5e81ac"
     elif [ "$weather_icon_code" == "10d"  ]; then
         weather_icon=" "
@@ -83,7 +72,7 @@ if [ ! -z "$weather" ]; then
         weather_hex="#5e81ac"
     elif [ "$weather_icon_code" == "10n"  ]; then
         weather_icon=" "
-        weather_quote=" It's gonna rain tonight it seems"
+        weather_quote="It's gonna rain tonight it seems"
         weather_hex="#5e81ac"
     elif [ "$weather_icon_code" == "11d"  ]; then
         weather_icon=""
@@ -114,21 +103,12 @@ if [ ! -z "$weather" ]; then
         weather_quote="Sort of odd, I don't know what to forecast"
         weather_hex="#b48ead"
     fi
-        # echo "$weather_icon" >  $tmp_weather_icon
-        # echo "$weather_description" > $tmp_weather_stat
-        # echo "$weather_temp""°F" > $tmp_weather_degree
-        # echo "$weather_quote" > $tmp_weather_quote
-        # echo "$weather_hex" > $tmp_weather_hex
-        # echo "$weather_icon"
-        # echo "$weather_description"
-        # echo "$weather_temp""°F"
-        # echo "$weather_quote"
-        # echo "$weather_hex"
-        echo "{\"icon\":\"$weather_icon\",\"description\":\"$weather_description\",\"temp\":\"$weather_temp°F\",\"quote\":\"$weather_quote\",\"color\":\"$weather_hex\"}"
 else
-    echo "Weather Unavailable" > $tmp_weather_stat
-    echo " " > $tmp_weather_icon
-    echo "Ah well, no weather huh? \nEven if there's no weather, it's gonna be a great day!" > $tmp_weather_quote
-    echo "-" > $tmp_weather_degree
-    echo "#b48ead" > $tmp_weather_hex
+    weather_icon=" "
+    weather_description="Weather Unavailable"
+    weather_temp="-"
+    weather_quote="Ah well, no weather huh?"
+    weather_hex="#b48ead"
 fi
+
+echo "{\"icon\":\"$weather_icon\",\"description\":\"$weather_description\",\"temp\":\"$weather_temp°F\",\"quote\":\"$weather_quote\",\"color\":\"$weather_hex\"}"

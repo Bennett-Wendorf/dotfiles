@@ -1,14 +1,8 @@
-// Variables
-$giant-text: 65px;
-$xl-text-size: 35px;
-$large-main-text-size: 24px;
-$medium-text-size: 20px;
-$icon-font: "Font Awesome 6 Free Solid";
-$popup-icon-size: 96px;
-$sidebar-widget-margins: 20px 20px 0px 20px;
-$widget-border-radius: 12px;
-$indicator-icon-size: 40px;
-$indicator-bar-height: 20px;
+//  ████████ ██   ██ ███████ ███    ███ ███████ 
+//     ██    ██   ██ ██      ████  ████ ██      
+//     ██    ███████ █████   ██ ████ ██ █████   
+//     ██    ██   ██ ██      ██  ██  ██ ██      
+//     ██    ██   ██ ███████ ██      ██ ███████
 
 // Blue Grey Theme
 // $sidebar-widget-bg-color: #262626;
@@ -34,19 +28,47 @@ $light-pink: #c678dd;
 $light-green: #98c379;
 $main-fg-color: #fffefe;
 
+
+//  ██    ██  █████  ██████  ██  █████  ██████  ██      ███████ ███████ 
+//  ██    ██ ██   ██ ██   ██ ██ ██   ██ ██   ██ ██      ██      ██      
+//  ██    ██ ███████ ██████  ██ ███████ ██████  ██      █████   ███████ 
+//   ██  ██  ██   ██ ██   ██ ██ ██   ██ ██   ██ ██      ██           ██ 
+//    ████   ██   ██ ██   ██ ██ ██   ██ ██████  ███████ ███████ ███████
+
+$giant-text: 65px;
+$xl-text-size: 35px;
+$large-main-text-size: 24px;
+$medium-text-size: 20px;
+$icon-font: "Font Awesome 6 Free Solid";
+$popup-icon-size: 96px;
+$sidebar-widget-margins: 20px 20px 0px 20px;
+$widget-border-radius: 12px;
+$indicator-icon-size: 40px;
+$indicator-bar-height: 20px;
+$slider-icon-min-width: 50px;
+$slider-icon-outer-margin: 20px;
+$slider-icon-inner-margin: 10px;
+$slider-left-margin: 20px;
+$data-min-width: 300px;
+$music-art-size: 150px;
+$sidebar-min-width: 550px;
+
+
+//   ██████  ██       ██████  ██████   █████  ██      
+//  ██       ██      ██    ██ ██   ██ ██   ██ ██      
+//  ██   ███ ██      ██    ██ ██████  ███████ ██      
+//  ██    ██ ██      ██    ██ ██   ██ ██   ██ ██      
+//   ██████  ███████  ██████  ██████  ██   ██ ███████
+
 * {
   all: unset; //Unsets everything so you can style everything from scratch
 }
 
-//Global Styles
 window {
-  // background-color: $main-bg-color-translucent;
   color: $main-fg-color;
   font-family: Hack;
 }
  
-// Styles on classes (see eww.yuck for more information)
-
 .border-box {
   border-width: 3px;
   border-style: solid;
@@ -54,12 +76,25 @@ window {
   background-color: $sidebar-widget-bg-color;
   border-radius: $widget-border-radius; 
   margin: $sidebar-widget-margins;
+  min-width: $sidebar-min-width;
+  padding: 10px;
 }
+
+.extra-bottom-margin {
+  margin-bottom: 20px;
+}
+
+
+//   ██████  █████  ██      ███████ ███    ██ ██████   █████  ██████  
+//  ██      ██   ██ ██      ██      ████   ██ ██   ██ ██   ██ ██   ██ 
+//  ██      ███████ ██      █████   ██ ██  ██ ██   ██ ███████ ██████  
+//  ██      ██   ██ ██      ██      ██  ██ ██ ██   ██ ██   ██ ██   ██ 
+//   ██████ ██   ██ ███████ ███████ ██   ████ ██████  ██   ██ ██   ██
 
 .cal {
   color: $light-blue;
   padding: 5px;
-  padding-bottom: 1px;
+  padding-bottom: 0px;
 }
 
 .cal:selected {
@@ -68,7 +103,13 @@ window {
   border-radius: $widget-border-radius;
 }
 
-// vol
+
+//  ██    ██  ██████  ██      ██    ██ ███    ███ ███████ 
+//  ██    ██ ██    ██ ██      ██    ██ ████  ████ ██      
+//  ██    ██ ██    ██ ██      ██    ██ ██ ████ ██ █████   
+//   ██  ██  ██    ██ ██      ██    ██ ██  ██  ██ ██      
+//    ████    ██████  ███████  ██████  ██      ██ ███████
+
 .vol { 
   border-width: 3px;
   border-style: solid;
@@ -101,7 +142,13 @@ window {
   color: $light-blue;
 }
 
-// bright
+
+//  ██████  ██████  ██  ██████  ██   ██ ████████ ███    ██ ███████ ███████ ███████ 
+//  ██   ██ ██   ██ ██ ██       ██   ██    ██    ████   ██ ██      ██      ██      
+//  ██████  ██████  ██ ██   ███ ███████    ██    ██ ██  ██ █████   ███████ ███████ 
+//  ██   ██ ██   ██ ██ ██    ██ ██   ██    ██    ██  ██ ██ ██           ██      ██ 
+//  ██████  ██   ██ ██  ██████  ██   ██    ██    ██   ████ ███████ ███████ ███████
+
 .bright { 
   border-width: 3px;
   border-style: solid;
@@ -130,23 +177,29 @@ window {
   font-family: $icon-font;
   font-size: $popup-icon-size; 
   margin-top: 80px; 
-  //margin-right: 9px;
   color: $light-yellow;
 }
 
-//player
+
+//  ██████  ██       █████  ██    ██ ██████   █████   ██████ ██   ██ 
+//  ██   ██ ██      ██   ██  ██  ██  ██   ██ ██   ██ ██      ██  ██  
+//  ██████  ██      ███████   ████   ██████  ███████ ██      █████   
+//  ██      ██      ██   ██    ██    ██   ██ ██   ██ ██      ██  ██  
+//  ██      ███████ ██   ██    ██    ██████  ██   ██  ██████ ██   ██ 
+
+
+.music-info {
+  min-width: $sidebar-min-width - $music-art-size - 60px;
+  margin-top: 20px;
+}
+
 .musicart {
-  $music-art-size: 150px;
-  // background-size: 250px;
   background-size: $music-art-size;
   background-repeat: no-repeat;
-  // min-height: 250px;
   min-height: $music-art-size;
-  // min-width: 250px;
   min-width: $music-art-size;
   margin: 30px;
   border-radius: $widget-border-radius;
-  // padding: 10px;
 }
 
 .musictitle {
@@ -189,7 +242,13 @@ window {
   color: $light-blue;
 }
 
-// Weather
+
+//  ██     ██ ███████  █████  ████████ ██   ██ ███████ ██████  
+//  ██     ██ ██      ██   ██    ██    ██   ██ ██      ██   ██ 
+//  ██  █  ██ █████   ███████    ██    ███████ █████   ██████  
+//  ██ ███ ██ ██      ██   ██    ██    ██   ██ ██      ██   ██ 
+//   ███ ███  ███████ ██   ██    ██    ██   ██ ███████ ██   ██
+
 .weather-info-side {
   margin: $sidebar-widget-margins;
   margin-bottom: 20px;
@@ -209,7 +268,7 @@ window {
 }
 
 .weather-quote {
-  font-size: $medium-text-size; 
+  font-size: $medium-text-size;
 }
 
 .temp-info {
@@ -228,37 +287,20 @@ window {
   color: #d08770;
 }
 
-//system-info
+
+//  ███████ ██    ██ ███████ ████████ ███████ ███    ███     ██ ███    ██ ███████  ██████  
+//  ██       ██  ██  ██         ██    ██      ████  ████     ██ ████   ██ ██      ██    ██ 
+//  ███████   ████   ███████    ██    █████   ██ ████ ██     ██ ██ ██  ██ █████   ██    ██ 
+//       ██    ██         ██    ██    ██      ██  ██  ██     ██ ██  ██ ██ ██      ██    ██ 
+//  ███████    ██    ███████    ██    ███████ ██      ██     ██ ██   ████ ██       ██████ 
+
 .sliders-side {
   font-family: $icon-font;
+  padding: 5px;
 }
 
-.slider-ram-side scale trough highlight {
-  all: unset;
-	background-color: $light-yellow;
-	color: #000000;
-	border-radius: 50px;
-}
 
-.slider-ram-side scale trough {
-	all: unset;
-	background-color: $slider-bg-color;
-	border-radius: 50px;
-	// min-height: 35px;
-	min-height: $indicator-bar-height;
-  min-width: 300px;
-  margin-top: 0px;
-  margin-left: 17px;
-  margin-right: 30px;
-}
-
-.label-ram-side {
-  // font-size: 64px;
-  font-size: $indicator-icon-size;
-  margin-left: 30px;
-  color: $light-yellow;
-}
-
+// CPU
 .slider-cpu-side scale trough highlight {
   all: unset;
 	background-color: $light-pink;
@@ -270,23 +312,49 @@ window {
 	all: unset;
 	background-color: $slider-bg-color;
 	border-radius: 50px;
-	// min-height: 35px;
 	min-height: $indicator-bar-height;
   min-width: 300px;
-  margin-top: 35px;
-  margin-left: 17px;
-  margin-right: 30px;
+  margin-top: 22px;
+  margin-left: $slider-left-margin;
+  margin-right: $slider-icon-outer-margin;
 }
 
 .label-cpu-side {
-  // font-size: 64px; 
   font-size: $indicator-icon-size;
-  margin-left: 30px; 
-  margin-right: 13px;
-  margin-top: 35px;
+  margin-left: $slider-icon-outer-margin;
+  margin-top: $slider-icon-outer-margin;
   color: #b48ead;
+  min-width: $slider-icon-min-width;
 }
 
+// RAM
+.slider-ram-side scale trough highlight {
+  all: unset;
+	background-color: $light-yellow;
+	color: #000000;
+	border-radius: 50px;
+}
+
+.slider-ram-side scale trough {
+	all: unset;
+	background-color: $slider-bg-color;
+	border-radius: 50px;
+	min-height: $indicator-bar-height;
+  min-width: 300px;
+  margin-top: 8px;
+  margin-left: $slider-left-margin;
+  margin-right: $slider-icon-outer-margin;
+}
+
+.label-ram-side {
+  font-size: $indicator-icon-size;
+  margin-left: $slider-icon-outer-margin;
+  margin-top: $slider-icon-inner-margin;
+  color: $light-yellow;
+  min-width: $slider-icon-min-width;
+}
+
+// HDD
 .slider-hdd-side scale trough highlight {
   all: unset;
 	background-color: $light-green;
@@ -298,24 +366,29 @@ window {
 	all: unset;
 	background-color: $slider-bg-color;
 	border-radius: 50px;
-	// min-height: 35px;
 	min-height: $indicator-bar-height;
   min-width: 300px;
-  margin-bottom: 35px;
-  margin-left: 17px;
-  margin-right: 30px;
+  margin-top: -8px;
+  margin-left: $slider-left-margin;
+  margin-right: $slider-icon-outer-margin;
 }
 
 .label-hdd-side {
-  // font-size: 64px;
   font-size: $indicator-icon-size;
-  margin-bottom: 35px;
-  margin-left: 30px; 
-  margin-right: 9px;
+  margin-bottom: $slider-icon-outer-margin;
+  margin-left: $slider-icon-outer-margin;
+  margin-top: $slider-icon-inner-margin;
   color: $light-green;
+  min-width: $slider-icon-min-width;
 }
 
-// vol-bright
+
+//  ██    ██  ██████  ██            ██████  ██████  ██  ██████  ██   ██ ████████ 
+//  ██    ██ ██    ██ ██            ██   ██ ██   ██ ██ ██       ██   ██    ██    
+//  ██    ██ ██    ██ ██      █████ ██████  ██████  ██ ██   ███ ███████    ██    
+//   ██  ██  ██    ██ ██            ██   ██ ██   ██ ██ ██    ██ ██   ██    ██    
+//    ████    ██████  ███████       ██████  ██   ██ ██  ██████  ██   ██    ██   
+
 .slider-vol-side scale trough highlight {
 	background-color: $light-blue;
 	color: #000000;
@@ -325,12 +398,11 @@ window {
 .slider-vol-side scale trough {
 	background-color: $slider-bg-color;
 	border-radius: 50px;
-	// min-height: 35px;
 	min-height: $indicator-bar-height;
   min-width: 300px;
-  margin-top: 35px;
-  margin-left: 8px;
-  margin-right: 30px;
+  margin-top: 3px;
+  margin-left: $slider-left-margin;
+  margin-right: $slider-icon-outer-margin;
 }
 
 .slider-vol-side scale slider {
@@ -340,10 +412,9 @@ window {
 
 .label-vol-side {
   font-size: $indicator-icon-size;
-  margin-left: 30px; 
-  margin-right: 13px;
-  margin-top: 35px;
+  margin-left: $slider-icon-outer-margin; 
   color: $light-blue;
+  min-width: $slider-icon-min-width;
 }
 
 .slider-bright-side scale trough highlight {
@@ -357,12 +428,11 @@ window {
 	all: unset;
 	background-color: $slider-bg-color;
 	border-radius: 50px;
-	// min-height: 35px;
 	min-height: $indicator-bar-height;
   min-width: 300px;
-  margin-bottom: 35px;
-  margin-left: 17px;
-  margin-right: 30px;
+  margin-bottom: 20px;
+  margin-left: $slider-left-margin;
+  margin-right: $slider-icon-outer-margin;
   margin-top: 10px;
 }
 
@@ -372,15 +442,10 @@ window {
 }
 
 .label-bright-side {
-  // font-size: 64px;
   font-size: $indicator-icon-size;
-  margin-bottom: 35px;
-  margin-left: 30px; 
-  margin-right: 9px;
-  margin-top: 10px;
+  margin-bottom: $slider-icon-outer-margin;
+  margin-left: $slider-icon-outer-margin; 
+  margin-top: $slider-icon-inner-margin;
   color: $light-yellow;
-}
-
-.extra-bottom-margin {
-  margin-bottom: 20px;
+  min-width: $slider-icon-min-width;
 }
