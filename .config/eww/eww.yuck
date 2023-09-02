@@ -57,12 +57,12 @@
 (defwidget weather [icon icon_color temp stat quote] 
   (box :orientation "h" :space-evenly "false" :class "border-box" 
     (box :class "weather-icon-side" :style {'color: ' + icon_color} icon)
-    (box :class "weather-info-side" :orientation "v" :space-evenly "false" 
+    (box :class "weather-info-side" :orientation "v" :halign "center" :space-evenly "false" 
       (box :class "temp-info" :orientation "h" :halign "center" :space-evenly "false" 
         (box :class "temperature-side" temp)
         (box :class "thermometer" ""))
-      (box :class "weather-stat-side" stat)
-      (box :class "weather-quote" quote)
+      (box :class "weather-stat-side" :halign "center" stat)
+      (box :class "weather-quote" :halign "center" quote)
     )
   )
 )
@@ -132,9 +132,4 @@
       :windowtype "dock"
       :geometry (geometry :x "8px" :y "40px" :width "340px" :height "260px" :anchor "top right")
               (cal :month {current-month} :year {current-year} :day {current-day})
-)
-
-(defwindow lock
-  :geometry (geometry :anchor "bottom right" :y "-15px")
-      (weather :icon {weather-data.icon} :icon_color {weather-data.color} :temp {weather-data.temp} :stat {weather-data.description} :quote {weather-data.quote})
 )

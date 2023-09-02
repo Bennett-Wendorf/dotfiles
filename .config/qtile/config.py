@@ -42,17 +42,12 @@
 #  ██ ██      ██ ██       ██████  ██   ██    ██    ███████
 
 import os
-import re
-import socket
 import subprocess
 import requests
-from libqtile.config import Drag, Key, Screen, Group, Drag, Click, Rule, Match
+from libqtile.config import Key, Screen, Group, Drag, Click, Match
 from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook
-from libqtile.widget import Spacer
-from libqtile.log_utils import logger
 from libqtile import qtile
-from libqtile import hook
 
 from spawn_default_app import spawn_default_app
 import ibattery
@@ -359,24 +354,24 @@ for i in groups:
     ])
 
 def show_keys():
-	key_help = ""
-	for k in keys:
-		mods = ""
+    key_help = ""
+    for k in keys:
+        mods = ""
 
-		for m in k.modifiers:
-			if m == "mod4":
-				mods += "Super + "
-			else:
-				mods += m.capitalize() + " + "
+        for m in k.modifiers:
+            if m == "mod4":
+                mods += "Super + "
+            else:
+                mods += m.capitalize() + " + "
 
-		if len(k.key) > 1:
-			mods += k.key.capitalize()
-		else:
-			mods += k.key
+        if len(k.key) > 1:
+            mods += k.key.capitalize()
+        else:
+            mods += k.key
 
-		key_help += "{:<30} {}".format(mods, k.desc + "\n")
+        key_help += "{:<30} {}".format(mods, k.desc + "\n")
 
-	return key_help
+    return key_help
 
 keys.extend([
     Key([mod_primary], "h", lazy.spawn(f"sh -c 'echo \"{show_keys()}\" | rofi -theme \"{rofi_util_theme}\" -dmenu -i -p \"?\"'"), desc="Print keyboard bindings"),

@@ -26,12 +26,12 @@ function pre_lock() {
 
 # Stuff to render on top of the i3lock screen
 function on_lock() {
-	eww open lock
+    :
 }
 
 # Post unlock hooks
 function post_unlock() {
-	eww close lock
+    :
 }
 
 if $use_image; then

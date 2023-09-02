@@ -203,10 +203,8 @@ window {
 }
 
 .musictitle {
-  // font-size: 24px;
   font-size: $large-main-text-size;
   font-weight: bold;
-  //margin-top: 80px;
   margin-bottom: 10px;
   margin-right: 30px;
   color: $light-green;
@@ -216,15 +214,12 @@ window {
     font-size: $medium-text-size;
     margin-bottom: 10px;
     margin-right: 30px;
-    //color: #8fbcbb;
-    // width: 100px;
 }
 
 .musicartist {
   font-size: $medium-text-size;
   margin-bottom: 0px; 
   margin-right: 30px;
-  //color: #88c0d0;
 }
 
 .musicbtn {
@@ -252,6 +247,8 @@ window {
 .weather-info-side {
   margin: $sidebar-widget-margins;
   margin-bottom: 20px;
+  min-width: 350px;
+  
 }
 
 .weather-icon-side {
@@ -327,6 +324,7 @@ window {
   min-width: $slider-icon-min-width;
 }
 
+
 // RAM
 .slider-ram-side scale trough highlight {
   all: unset;
@@ -353,6 +351,7 @@ window {
   color: $light-yellow;
   min-width: $slider-icon-min-width;
 }
+
 
 // HDD
 .slider-hdd-side scale trough highlight {
