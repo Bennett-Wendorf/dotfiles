@@ -86,13 +86,13 @@ try:
     res = requests.get(f'https://ipinfo.io/loc?token={os.environ["IPINFO_API_KEY"]}', timeout = 1)
     lat, lon = res.text[:-2].split(',')
 except requests.exceptions.ConnectionError:
-    print("No internet connection")
+    subprocess.call(['notify-send', '--app-name="Qtile"', '--urgency="critical"', "No internet connection"])
     lat, lon = None, None
 except requests.exceptions.Timeout:
-    print("Request timed out")
+    subprocess.call(['notify-send', '--app-name="Qtile"', '--urgency="critical"', "Request timed out"])
     lat, lon = None, None
 except:
-    print("Unknown error")
+    subprocess.call(['notify-send', '--app-name="Qtile"', '--urgency="critical"', "Unknown error"])
     lat, lon = None, None
 #endregion
 
