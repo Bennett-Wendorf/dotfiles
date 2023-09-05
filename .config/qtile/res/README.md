@@ -1,0 +1,1 @@
+The base files in this directory are courtesy of [Darkkal44](https://github.com/Darkkal44) and their [Cozytile repo](https://github.com/Darkkal44/Cozytile). The colors are modified to fit my needs
