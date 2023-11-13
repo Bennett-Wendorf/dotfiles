@@ -56,6 +56,9 @@ alias df="df -h"
 alias ..="cd .."
 alias ...="cd ../.."
 
+# UWL VPN
+alias vpn="PREV_DIR=pwd; cd $HOME/files/TokenVpn; pipenv run python token_vpn.py; cd $PREV_DIR"
+
 #Git
 alias dotfiles="/usr/bin/git --git-dir=/home/bennett/.dotfiles --work-tree=/home/bennett"
 
@@ -74,3 +77,5 @@ eval "$(pyenv init -)"
 
 # This command acts as a greeting
 fortune -a computers
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/.local/lib/mojo
+export PATH=$PATH:~/.modular/pkg/packages.modular.com_mojo/bin/
