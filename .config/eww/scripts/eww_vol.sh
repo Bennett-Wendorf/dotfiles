@@ -13,13 +13,13 @@ change_amount=5
 
 case $1 in
     up)
-        amixer -D pulse sset Master "$change_amount"%+
+        pactl set-sink-volume @DEFAULT_SINK@ +"$change_amount"%
     ;;
     down)
-        amixer -D pulse sset Master "$change_amount"%-
+        pactl set-sink-volume @DEFAULT_SINK@ -"$change_amount"%
     ;;
     mute)
-        amixer -D pulse set Master 1+ toggle
+        pactl set-sink-mute @DEFAULT_SINK@ toggle 
     ;;
 esac
 
