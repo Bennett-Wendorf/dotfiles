@@ -50,6 +50,7 @@ from libqtile import layout, bar, widget, hook
 from libqtile import qtile
 
 from spawn_default_app import spawn_default_app
+from open_weather import OpenWeather
 import ibattery
 #endregion
 
@@ -81,19 +82,6 @@ run_launcher = f"rofi -show drun -theme '{rofi_run_launcher_theme}'"
 
 # This prevents flameshot from scaling in a weird way if the QT_SCALE_FACTOR is set globally
 flameshot_env_modifiers = 'env QT_SCALE_FACTOR=""'
-
-try:
-    res = requests.get(f'https://ipinfo.io/loc?token={os.environ["IPINFO_API_KEY"]}', timeout = 1)
-    lat, lon = res.text[:-2].split(',')
-except requests.exceptions.ConnectionError:
-    subprocess.call(['notify-send', '--app-name="Qtile"', '--urgency="critical"', "No internet connection"])
-    lat, lon = None, None
-except requests.exceptions.Timeout:
-    subprocess.call(['notify-send', '--app-name="Qtile"', '--urgency="critical"', "Request timed out"])
-    lat, lon = None, None
-except:
-    subprocess.call(['notify-send', '--app-name="Qtile"', '--urgency="critical"', "Unknown error"])
-    lat, lon = None, None
 #endregion
 
 # region COLORS
@@ -157,6 +145,20 @@ def start_once():
 @hook.subscribe.startup
 def start_always():
     subprocess.call([f"{home}/.config/qtile/scripts/autostart.sh"])
+
+def get_lat_lon():
+    try:
+        res = requests.get(f'https://ipinfo.io/loc?token={os.environ["IPINFO_API_KEY"]}', timeout = 1)
+        return res.text[:-2].split(',')
+    except requests.exceptions.ConnectionError:
+        subprocess.call(['notify-send', '--app-name=qtile', "No internet connection"])
+        return None, None
+    except requests.exceptions.Timeout:
+        subprocess.call(['notify-send', '--app-name=qtile', "Request timed out"])
+        return None, None
+    except:
+        subprocess.call(['notify-send', '--app-name=qtile', "Unknown error"])
+        return None, None
 #endregion
 
 #region KEYBINDS
@@ -504,15 +506,18 @@ def init_left_widgets_list():
 
 def init_right_widgets_list():
     return [
-        widget.OpenWeather(
+        OpenWeather(
             font = widget_defaults['font'],
             fontsize = widget_defaults['fontsize'],
             background = widget_defaults['background_alt'],
             foreground = widget_defaults['foreground'],
             format = "{location_city}: {icon} {temp:.0f}°{units_temperature}",
-            coordinates = {'latitude': lat or '0', 'longitude': lon or '0'},
+            # coordinates = {'latitude': lat, 'longitude': lon} if (coords := get_lat_lon()) and (lat := coords[0]) and (lon := coords[1]) else {'latitude': '0', 'longitude': '0'},
             metric = False,
             api_key = os.environ['OPENWEATHERMAP_API_KEY'],
+            use_current_location = True,
+            ipinfo_api_key = os.environ['IPINFO_API_KEY'],
+            # update_interval = 30,
         ),
         widget.Image(
             filename = f"{home}/.config/qtile/res/slant_left_two_tone.png",
