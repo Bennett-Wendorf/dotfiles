@@ -25,3 +25,4 @@ wal -restore &
 $HOME/scripts/xss-lock.sh
 $HOME/scripts/xidlehook.sh
 eww daemon &
+run solaar -w hide &
