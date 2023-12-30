@@ -10,10 +10,12 @@ output VIRTUAL1
 off
 output eDP1
 crtc 0
+filter bilinear
 mode 2256x1504
 pos 0x0
 primary
 rate 60.00
+transform 0.999893,0.000000,0.000000,0.000000,0.999893,0.000000,0.000000,0.000000,1.000000
 x-prop-broadcast_rgb Automatic
 x-prop-colorspace Default
 x-prop-max_bpc 12
