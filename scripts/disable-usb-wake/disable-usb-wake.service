@@ -1,0 +1,9 @@
+[Unit]
+Description=Disable usb devices from waking the computer from sleep
+
+[Service]
+ExecStart=/home/bennett/scripts/disable-usb-wake/disable-usb-wake.sh
+Type=oneshot
+
+[Install]
+WantedBy=multi-user.target
