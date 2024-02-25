@@ -20,25 +20,21 @@ case $1 in
     ;;
 esac
 
-state="$(eww windows | grep vol)"
-
 # This will make the widget show up on the current monitor in qtile, but it greatly increases the time it takes the widget to show up
 # current_monitor_qtile="$(qtile cmd-obj -o screen -f info | awk -F ',' '{print $2}' | sed 's/[^0-9]//g')"
 
 current_monitor="$(~/.config/eww/scripts/get_curr_screen.sh)"
 
-if [ ! "$state" == "*vol" ]; then
+if ! $(eww active-windows | grep -q bright); then
     eww open bright --screen "$current_monitor"
-    state="$(eww windows | grep bright)"
 fi
 
 start=$SECONDS
 
-while [ "$state" == "*bright" ]; do
+while $(eww active-windows | grep -q bright); do
     duration=$(( SECONDS - start ))
     if [[ $duration -gt 1 ]]; then
         eww close bright       
-        state="$(eww windows | grep bright)"
     fi
     sleep 0.2
 done

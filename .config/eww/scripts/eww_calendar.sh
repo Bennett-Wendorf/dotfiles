@@ -6,8 +6,8 @@ set -euo pipefail
 
 current_monitor="$(~/.config/eww/scripts/get_curr_screen.sh)"
 
-if $(eww active-windows | grep -q sidebar); then
-    eww close sidebar
+if $(eww active-windows | grep -q calendar); then
+    eww close calendar
 else
-    eww open sidebar --screen "$current_monitor"
+    eww open calendar --screen "$current_monitor"
 fi
