@@ -19,8 +19,8 @@ Autolock off"
         $HOME/scripts/xss-lock.sh
         notify-send "Autolock Toggle" "🔒 ${matching}"
     else
-        killall xidlehook
-        killall xss-lock
+        killall xidlehook -q
+        killall xss-lock -q
         notify-send "Autolock Toggle" "🔓 ${matching}"
     fi
 }
