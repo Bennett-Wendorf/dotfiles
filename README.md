@@ -68,7 +68,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<p align='center'><img src='res/linux-config-screenshot-01.png'></p>
+<p align='center'><img src='res/linux-config-screenshot-02.png'></p>
 
 This project began in the summer of 2020 when I decided to jump ship from Windows and move to GNU/Linux full time on my main system. When I started out, I fell in love with customizing, or 'ricing,' my system. Because of this, I needed a safe place to store all my config files that I was creating. Thus, this repository was born. Now that I've been on Linux for over a year, I decided to start working on some installation scripts to make the process of reinstalling my system easier. Check out the [Getting Started](#getting-started) section of this page. Enjoy!
 
