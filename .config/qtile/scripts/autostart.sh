@@ -24,5 +24,6 @@ run greenclip daemon &
 wal -restore &
 $HOME/scripts/xss-lock.sh
 $HOME/scripts/xidlehook.sh
+xset s off -dpms
 eww daemon &
 run solaar -w hide &
