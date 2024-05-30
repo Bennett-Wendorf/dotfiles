@@ -45,7 +45,7 @@ import os
 import subprocess
 import requests
 from libqtile.config import Key, Screen, Group, Drag, Click, Match
-from libqtile.command import lazy
+from libqtile.lazy import lazy
 from libqtile import layout, bar, widget, hook
 from libqtile import qtile
 
