@@ -618,6 +618,8 @@ screen_config = {
 screens = [
     Screen(top=bar.Bar(widgets=init_widgets_screen_1(), **screen_config)),
     Screen(top=bar.Bar(widgets=init_widgets_screen_2(), **screen_config)),
+    Screen(top=bar.Bar(widgets=init_widgets_screen_2(), **screen_config)),
+    Screen(top=bar.Bar(widgets=init_widgets_screen_2(), **screen_config)),
 ]
 #endregion
 
