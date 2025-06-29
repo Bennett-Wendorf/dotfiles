@@ -10,7 +10,8 @@
 configuration {
 	font:							"Iosevka Nerd Font 10";
     show-icons:                     true;
-	icon-theme: 					"Papirus";
+	//icon-theme: 					"Papirus";
+    icon-theme:                     "Sardi-Ghost-Flexible-Viking";
     display-drun: 					"";
     drun-display-format:            "{name}";
     disable-history:                false;

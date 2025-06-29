@@ -36,8 +36,8 @@ Krita/Ocio/OcioConfigPath=
 Krita/Ocio/OcioLockColorVisualRepresentation=false
 Krita/Ocio/OcioLutPath=
 Krita/Ocio/UseOcio=false
-LastBackGroundColor=<!DOCTYPE LastBackGroundColor>\n<LastBackGroundColor>\n <RGB b="0.668436706066132" space="sRGB-elle-V2-srgbtrc.icc" g="0.154650181531906" r="0.209597930312157"/>\n</LastBackGroundColor>\n
-LastForeGroundColor=<!DOCTYPE LastForeGroundColor>\n<LastForeGroundColor>\n <RGB b="0" space="sRGB-elle-V2-srgbtrc.icc" g="0" r="0"/>\n</LastForeGroundColor>\n
+LastBackGroundColor=<!DOCTYPE LastBackGroundColor>\n<LastBackGroundColor>\n <RGB g="0.154650181531906" b="0.668436706066132" space="sRGB-elle-V2-srgbtrc.icc" r="0.209597930312157"/>\n</LastBackGroundColor>\n
+LastForeGroundColor=<!DOCTYPE LastForeGroundColor>\n<LastForeGroundColor>\n <RGB g="0" b="0" space="sRGB-elle-V2-srgbtrc.icc" r="0"/>\n</LastForeGroundColor>\n
 LastPreset=b) Basic-5 Size
 LastPreset_-1=b) Basic-5 Size
 LineSmoothingDelayDistance=50
@@ -50,6 +50,8 @@ LineSmoothingTailAggressiveness=0.15
 LineSmoothingType=1
 LineSmoothingUseDelayDistance=true
 NumberOfLayersForNewImage=2
+SpecificColorSelector/HsxMode=0
+SpecificColorSelector/UseHsx=false
 SpecificColorSelector/UsePercentage=false
 baseLength=60
 canvasState=OPENGL_SUCCESS
@@ -157,6 +159,9 @@ savenodeasimage=/home/bennett/svgs
 global/itemSize=medium
 global/itemSizeCustom=32
 global/viewMode=icon
+
+[KisResourceItemChooser_paintoppresets]
+splitterState_1row=\x00\x00\x00\xff\x00\x00\x00\x01\x00\x00\x00\x02\xff\xff\xff\xff\xff\xff\xff\xff\x01\xff\xff\xff\xff\x01\x00\x00\x00\x01\x00
 
 [KisToolCrop]
 allowGrow=false
@@ -554,6 +559,7 @@ customSelectorBackgroundColor=160,160,164
 gamma=2.2
 lumaG=0.7152
 lumaR=0.2126
+minimalShadeSelectorLineConfig=0|0.2|0|0|0|0|0;1|0|1|1|0|0|0;2|0|-1|1|0|0|0
 showColorSelector=true
 useCustomColorForBackground=false
 
@@ -565,13 +571,13 @@ ColorSpaceExtensionsPlugins=\\0
 ColorSpaceExtensionsPluginsDisabled=
 ColorSpacePlugins=\\0
 ColorSpacePluginsDisabled=
-DockerPlugins=,,,,,,,,,,,,,,,,,,,,,,,,,,
+DockerPlugins=,,,,,,,,,,,,,,,,,,,,,,,,,,,
 DockerPluginsDisabled=
 FlakePlugins=\\0
 FlakePluginsDisabled=
 ShapePlugins=\\0
 ShapePluginsDisabled=
-ToolPlugins=,,,,,,,,,,,,
+ToolPlugins=,,,,,,,,,,,,,
 ToolPluginsDisabled=
 
 [tool_color_picker]
