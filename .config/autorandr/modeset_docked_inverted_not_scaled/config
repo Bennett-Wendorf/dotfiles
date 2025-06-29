@@ -1,29 +1,27 @@
-output DP1
+output DP-1
 off
-output DP2
+output DP-2
 off
-output DP3
+output DP-3
 off
-output VIRTUAL1
-off
-output DP4
+output DP-4
 crtc 1
 mode 1920x1080
-pos 2256x0
+pos 0x0
 rate 60.00
-rotate left
-transform 1.199997,0.000000,0.000000,0.000000,1.199997,0.000000,0.000000,0.000000,1.000000
 x-prop-audio auto
 x-prop-broadcast_rgb Automatic
 x-prop-colorspace Default
 x-prop-max_bpc 12
 x-prop-non_desktop 0
-output eDP1
+output eDP-1
 crtc 0
+filter bilinear
 mode 2256x1504
-pos 0x400
+pos 1920x0
 primary
 rate 60.00
+transform 0.999878,0.000000,0.000000,0.000000,0.999878,0.000000,0.000000,0.000000,1.000000
 x-prop-broadcast_rgb Automatic
 x-prop-colorspace Default
 x-prop-max_bpc 12

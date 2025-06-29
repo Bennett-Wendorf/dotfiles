@@ -12,7 +12,7 @@ output DP1-3
 crtc 3
 mode 2560x1440
 pos 0x0
-rate 100.00
+rate 59.95
 x-prop-audio auto
 x-prop-broadcast_rgb Automatic
 x-prop-max_bpc 12
@@ -21,7 +21,7 @@ output DP1-1
 crtc 1
 mode 2560x1440
 pos 2560x0
-rate 100.00
+rate 50.00
 x-prop-audio auto
 x-prop-broadcast_rgb Automatic
 x-prop-max_bpc 12
@@ -30,7 +30,7 @@ output DP1-2
 crtc 2
 mode 2560x1440
 pos 5120x0
-rate 100.00
+rate 50.00
 x-prop-audio auto
 x-prop-broadcast_rgb Automatic
 x-prop-max_bpc 12
@@ -38,7 +38,7 @@ x-prop-non_desktop 0
 output eDP1
 crtc 0
 mode 2256x1504
-pos 2712x1440
+pos 2657x1440
 primary
 rate 60.00
 x-prop-broadcast_rgb Automatic
