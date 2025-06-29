@@ -16,7 +16,8 @@ autorandr -c
 # picom --config $HOME/.config/qtile/scripts/picom.conf &
 
 #starting user applications at boot time
-nitrogen --restore &
+#nitrogen --restore &
+variety &
 megasync &
 # run onedrive_tray &
 screenrotator &
