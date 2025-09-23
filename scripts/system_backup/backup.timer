@@ -2,7 +2,7 @@
 Description=Run the backup service every weekday at 11:00
 
 [Timer]
-OnCalendar=Mon...Fri *-*-* 11:00:00
+OnCalendar=Mon,Tue,Wed,Thu,Fri *-*-* 11:00:00
 
 [Install]
 WantedBy=timers.target

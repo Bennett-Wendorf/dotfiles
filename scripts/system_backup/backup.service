@@ -1,7 +1,9 @@
 [Unit]
 Description=Run a system backup to PBS on Coreworlds
-OnFailure=mail-systemd-failure@%n.service
 
 [Service]
 Type=oneshot
-ExecStart=/home/bennett/scripts/system_backup/backup.sh
+EnvironmentFile=/etc/systemd/system/backup.env
+ExecStart=/etc/systemd/system/backup.sh
+User=root
+Group=root
