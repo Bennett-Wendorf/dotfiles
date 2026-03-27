@@ -1,0 +1,255 @@
+"""
+iBattery widget courtesy of Fadi.
+The pull request can be found here.
+A widget that displays a nice battery icon using cairo
+it is similar to the one in iOS 16.
+
+Use:
+    1. import it to your qtile config.py as follows:
+    from ibattery import Battery as MyBattery
+    2. add it to your widget list in your bar:
+    MyBattery(),
+requirements: psutil (used to gather info about the battery.)
+optional: dbus-next (used to send notification.)
+"""
+from libqtile.widget import base
+from libqtile.log_utils import logger
+from libqtile.utils import send_notification
+from libqtile import bar
+import math
+import cairocffi as cairo
+import psutil
+
+class Battery(base._Widget):
+    """A widget to display a nice battery.
+    requirements: psutil
+    optional: dbus-next (used to send notification).
+    """
+    orientations = base.ORIENTATION_HORIZONTAL
+    defaults = [
+        (
+            "padding",
+            2,
+            "int. padding on either side of of the widget."
+        ),
+        (
+            "foreground",
+            "d5d5d5",
+            "string. Battery color in normal mode."
+        ),
+        (
+            "charging_fg",
+            "02a724",
+            "string. foreground color when battery is charging."
+        ),
+        (
+            "update_interval",
+            20,
+            "int. time to wait until the widgets refreshes."
+        ),
+        (
+            "low_foreground",
+            "ff0000",
+            "string. change color when battery is low."
+        ),
+        (
+            "warn_below",
+            10,
+            "int. battery level to indicate battery is low."
+        ),
+        (
+            "notify",
+            False,
+            "bool. send a notification when battery is low."
+        ),
+        (
+            "notification_timeout",
+            10,
+            "int. time in seconds to display notification."
+        ),
+        (
+            "size",
+            (18, 35),
+            "Size of the widget. takes a tuple: (height:int, width:int). "
+        ),
+        (
+            "font_family",
+            "sans",
+            "string. font family for the numbers inside the battery icon."
+        ),
+        (
+            "font_size",
+            15,
+            "int. font size of the numbers inside the battery."
+        ),
+        (
+            "font_color",
+            None,
+            "string. font color"
+        ),
+        (
+            "battery_border",
+            False,
+            "bool. add a border to the battery icon."
+        ),
+    ]
+
+    def __init__(self, **config):
+        base._Widget.__init__(self, bar.CALCULATED, **config)
+        self.add_defaults(Battery.defaults)
+        self.HEIGHT, self.BAR_WIDTH = self.size  # battery bar
+        self.margin = 2
+        self._has_notified = False
+        self.timeout = int(self.notification_timeout * 1000)
+        self._foreground = self.foreground if self.foreground else "d5d5d5"
+        
+    def calculate_length(self):
+        if self.bar.horizontal:
+            return self.padding * 2 + self.BAR_WIDTH + 7.5 + self.margin * 2
+        else:
+            return 0
+
+    def update(self):
+        # This is called by Qtile's update mechanism
+        self.draw()
+
+    def draw(self):
+        if self.drawer is None:
+            return
+            
+        percent, charging = self.get_bat()
+        self.configure(percent, charging)
+        
+        # Clear the drawer with background color
+        self.drawer.clear(self.background or self.bar.background)
+        
+        # Draw the battery
+        self.draw_battery(percent, charging)
+        
+        # Finish drawing
+        self.drawer.draw(offsetx=self.offsetx, offsety=self.offsety)
+
+    def configure(self, percent, charging):
+        if charging:
+            self.current_fg = self.charging_fg
+        elif percent < self.warn_below:
+            self.current_fg = self.low_foreground
+        else:
+            self.current_fg = self._foreground
+
+    def get_bat(self):
+        try:
+            # Try to get battery info from psutil
+            battery = psutil.sensors_battery()
+            if battery is None:
+                return 0, False
+            
+            percent = int(battery.percent)
+            charging = battery.power_plugged
+            return percent, charging
+        except Exception as e:
+            logger.warning(f"Error getting battery info: {e}")
+            return 0, False
+
+    def _notify(self, percent):
+        if not self._has_notified:
+            send_notification(
+                "LOW BATTERY",
+                f"Battery at {percent}% remaining",
+                urgent=True,
+                timeout=self.timeout
+            )
+            self._has_notified = True
+
+    def draw_battery(self, percent, charging):
+        if self.drawer is None:
+            return
+            
+        # Get the drawing context
+        ctx = self.drawer.ctx
+        
+        # Set up battery dimensions
+        bar_width = self.BAR_WIDTH
+        bar_height = self.HEIGHT
+        margin = self.margin
+        
+        # Calculate positions for battery body
+        x = margin
+        y = (self.bar.height - bar_height) // 2
+        
+        # Draw battery outline with rounded corners
+        ctx.set_source_rgb(*self.hex_to_rgb(self.current_fg))
+        
+        # Create rounded rectangle path
+        radius = 4  # Rounded corner radius
+        self.rounded_rectangle(ctx, x, y, bar_width + 2 * margin, bar_height, radius)
+        ctx.set_line_width(1)
+        ctx.stroke()
+        
+        # Draw battery tip (connector) with rounded corners
+        tip_x = x + bar_width + 2 * margin
+        tip_y = y + bar_height // 2 - 4
+        tip_width = 4
+        tip_height = 8
+        
+        ctx.rectangle(tip_x, tip_y, tip_width, tip_height)
+        ctx.set_line_width(1)
+        ctx.stroke()
+        
+        # Draw battery fill with rounded corners
+        if percent > 0:
+            fill_width = int((percent / 100.0) * bar_width)
+            fill_height = bar_height - 4
+            
+            # Position the fill inside the battery body with proper padding
+            fill_x = x + 2
+            fill_y = y + 2
+            
+            # Create rounded rectangle for fill
+            self.rounded_rectangle(ctx, fill_x, fill_y, fill_width, fill_height, radius-1)
+            
+            if charging:
+                # Use charging color for fill when charging
+                ctx.set_source_rgb(*self.hex_to_rgb("#02a724"))
+            else:
+                # Use regular battery color for fill
+                ctx.set_source_rgb(*self.hex_to_rgb(self.current_fg))
+                
+            ctx.fill_preserve()  # Fill and keep the path
+            
+            # Stroke the fill to make it visible (optional)
+            ctx.set_source_rgb(*self.hex_to_rgb(self.current_fg))
+            ctx.set_line_width(1)
+            ctx.stroke()
+        
+        # Draw percentage text inside battery
+        if percent > 0 and percent <= 100:
+            try:
+                ctx.select_font_face("Sans", cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD)
+                ctx.set_font_size(10)
+                ctx.set_source_rgb(1, 1, 1)  # White text
+                
+                # Position text in center of battery
+                text = f"{percent}%"
+                text_extents = ctx.text_extents(text)
+                text_x = x + (bar_width + 2 * margin - text_extents.width) / 2
+                text_y = y + bar_height / 2 + text_extents.height / 2
+                
+                ctx.move_to(text_x, text_y)
+                ctx.show_text(text)
+            except:
+                pass  # Skip text if there's an issue
+
+    def rounded_rectangle(self, ctx, x, y, width, height, radius):
+        """Draw a rounded rectangle"""
+        ctx.new_path()
+        ctx.arc(x + width - radius, y + radius, radius, -0.5 * math.pi, 0)
+        ctx.arc(x + width - radius, y + height - radius, radius, 0, 0.5 * math.pi)
+        ctx.arc(x + radius, y + height - radius, radius, 0.5 * math.pi, math.pi)
+        ctx.arc(x + radius, y + radius, radius, math.pi, 1.5 * math.pi)
+        ctx.close_path()
+
+    def hex_to_rgb(self, hex_color):
+        """Convert hex color to RGB tuple"""
+        hex_color = hex_color.lstrip('#')
+        return tuple(int(hex_color[i:i+2], 16)/255.0 for i in (0, 2, 4))

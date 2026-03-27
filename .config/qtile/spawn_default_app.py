@@ -47,10 +47,10 @@ def spawn_default_app(qtile, groups: list, default_apps: list[str], use_run_as_u
     group_index = get_index(qtile.current_group.name) if qtile.current_group is not None else None
     if qtile.current_group is not None and group_index is not None and default_apps is not None and default_apps[group_index] is not None:
         app = default_apps[group_index]
-        qtile.cmd_spawn(app)
+        qtile.spawn(app)
     else:
         if use_run_as_unset_default or unset_default_app is None:
             lazy.spawncmd()
         else:
-            qtile.cmd_spawn(unset_default_app)
+            qtile.spawn(unset_default_app)
 

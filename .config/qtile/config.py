@@ -50,7 +50,7 @@ from libqtile import layout, bar, widget, hook
 from libqtile import qtile
 
 from spawn_default_app import spawn_default_app
-from open_weather import OpenWeather
+#from open_weather import OpenWeather
 import ibattery
 #endregion
 
@@ -131,11 +131,11 @@ def float_to_front(qtile):
     for group in qtile.groups:
         for window in group.windows:
             if window.floating:
-                window.cmd_bring_to_front()
+                window.bring_to_front()
 
 @hook.subscribe.screens_reconfigured
 def restart_on_randr(qtile):
-    qtile.cmd_restart()
+    qtile.restart()
 
 @hook.subscribe.startup_once
 def start_once():
@@ -415,7 +415,7 @@ layouts = [
 #  ██████  ██   ██ ██   ██
 
 widget_defaults = {
-    "icon_font": "Font Awesome 6 Free Solid",
+    "icon_font": "Font Awesome 7 Free Solid",
     "font": "Hack",
     "fontsize": 22,
     "padding": 2,
@@ -437,7 +437,7 @@ def init_left_widgets_list():
             background = widget_defaults['background_alt'],
             padding = 5,
             fontsize = widget_defaults['fontsize'],
-            mouse_callbacks = {"Button1": lambda : qtile.cmd_spawn(f'{home}/.config/rofi/applets/menu/powermenu.sh')}
+            mouse_callbacks = {"Button1": lambda : qtile.spawn(f'{home}/.config/rofi/applets/menu/powermenu.sh')}
         ),
         widget.Spacer(
             length = 10,
@@ -469,10 +469,11 @@ def init_left_widgets_list():
             length = 10,
             background = widget_defaults['background_alt'],
         ),
-        widget.CurrentLayoutIcon(
+        widget.CurrentLayout(
             foreground = widget_defaults['foreground'],
             background = widget_defaults['background_alt'],
             scale = .65,
+            mode = "icon",
         ),
         widget.Image(
             filename = f"{home}/.config/qtile/res/slant_right_dark_color.png",
@@ -506,19 +507,19 @@ def init_left_widgets_list():
 
 def init_right_widgets_list():
     return [
-        OpenWeather(
-            font = widget_defaults['font'],
-            fontsize = widget_defaults['fontsize'],
-            background = widget_defaults['background_alt'],
-            foreground = widget_defaults['foreground'],
-            format = "{location_city}: {icon} {temp:.0f}°{units_temperature}",
-            # coordinates = {'latitude': lat, 'longitude': lon} if (coords := get_lat_lon()) and (lat := coords[0]) and (lon := coords[1]) else {'latitude': '0', 'longitude': '0'},
-            metric = False,
-            api_key = os.environ['OPENWEATHERMAP_API_KEY'],
-            use_current_location = True,
-            ipinfo_api_key = os.environ['IPINFO_API_KEY'],
-            # update_interval = 30,
-        ),
+        #OpenWeather(
+        #    font = widget_defaults['font'],
+        #    fontsize = widget_defaults['fontsize'],
+        #    background = widget_defaults['background_alt'],
+        #    foreground = widget_defaults['foreground'],
+        #    format = "{location_city}: {icon} {temp:.0f}°{units_temperature}",
+        #    # coordinates = {'latitude': lat, 'longitude': lon} if (coords := get_lat_lon()) and (lat := coords[0]) and (lon := coords[1]) else {'latitude': '0', 'longitude': '0'},
+        #    metric = False,
+        #    api_key = os.environ['OPENWEATHERMAP_API_KEY'],
+        #    use_current_location = True,
+        #    ipinfo_api_key = os.environ['IPINFO_API_KEY'],
+        #    # update_interval = 30,
+        #),
         widget.Image(
             filename = f"{home}/.config/qtile/res/slant_left_two_tone.png",
         ),
@@ -542,7 +543,7 @@ def init_right_widgets_list():
             padding = 3,
             threshold = 85,
             format = "{temp:.0f}°C",
-            fontsize = widget_defaults['fontsize'],
+           fontsize = widget_defaults['fontsize'],
         ),
         widget.Image(
             filename = f"{home}/.config/qtile/res/slant_left_base_color.png",
