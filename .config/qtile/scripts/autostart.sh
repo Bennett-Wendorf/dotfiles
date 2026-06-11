@@ -18,7 +18,8 @@ autorandr -c
 #starting user applications at boot time
 #nitrogen --restore &
 variety &
-megasync &
+#megasync &
+run nextcloud &
 # run onedrive_tray &
 screenrotator &
 run greenclip daemon &
