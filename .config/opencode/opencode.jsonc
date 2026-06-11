@@ -1,0 +1,138 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "disabled_providers": [],
+  "agent": {
+    "general": {
+        "mode": "primary",
+        "permission": {
+            "external_directory": {
+                "~/.config/opencode/**": "allow"
+            }
+        }
+    },
+    "build": {
+        "disable": true
+    },
+    "plan": {
+        "disable": true
+    },
+    "explore": {
+        "disable": true
+    },
+    "scout": {
+        "disable": true
+    }
+  },
+  "permission": {
+    "*": "ask",
+    "edit": "allow",
+    "read": "allow",
+    "grep": "allow",
+    "glob": "allow",
+    "skill": "allow",
+    "task": "allow", // Allows subagents
+    "todowrite": "allow",
+    "webfetch": "allow",
+    "websearch": "allow",
+    "question": "allow",
+    "external_directory": {
+        "/tmp/**": "allow"
+    },
+    "doom_loop": "allow",
+    "bash": {
+        // Default
+        "*": "ask",
+
+        // Basic bash commands
+        "grep *": "allow",
+        "rg *": "allow",
+        "pwd *": "allow",
+        "true": "allow",
+        "tail *": "allow",
+        "head *": "allow",
+        "diff *": "allow",
+        "find *": "allow",
+        "sort *": "allow",
+        "ls *": "allow",
+        "cat *": "allow",
+        "echo *": "allow",
+        "test *": "allow",
+        "cd *": "allow",
+        "wc *": "allow",
+        "mkdir *": "allow",
+        "which *": "allow",
+        "touch *": "allow",
+        "cp *": "allow",
+        "make build *": "allow",
+
+        // Git commands
+        "git log *": "allow",
+        "git * log *": "allow", // with arguments like -C for path
+        "git diff *": "allow",
+        "git * diff *": "allow",
+        "git show *": "allow",
+        "git * show *": "allow",
+        "git status *": "allow",
+        "git * status *": "allow",
+        "git branch --list *": "allow",
+        "git * branch --list *": "allow",
+        "git ls-files *": "allow",
+        "git * ls-files *": "allow",
+        "git worktree list": "allow",
+        "git * worktree list": "allow",
+        "git diff *": "allow",
+        "git * diff *": "allow",
+        "git rev-parse *": "allow",
+        "git * rev-parse *": "allow",
+
+        // Rust commands
+        "cargo check *": "allow",
+        "cargo build *": "allow",
+        "cargo test *": "allow",
+        "cargo clippy *": "allow",
+        "cargo fmt *": "allow",
+
+        // Npm commands
+        "npm run *": "allow",
+        "npm install": "allow",
+        "npm test *": "allow",
+        "npx eslint *": "allow"
+    }
+  },
+  "compaction": {
+    "auto": true,
+    "prune": true,
+    "reserved": 10000
+  },
+  "provider": {
+    "llama-swap": {
+      "name": "Llama Swap",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "http://10.66.1.30:9292/v1"
+      },
+      "models": {
+        "qwen3.6:35b-a3b:thinking-coding": {
+          "name": "Qwen 3.6 35B A3B"
+        },
+        "qwen3.6:27b:thinking-coding": {
+          "name": "Qwen 3.6 27B",
+          "limit": {
+            "context": 200000,
+            "output": 16384
+          }
+        },
+        "qwen3.6:27b-mtp:thinking-coding": {
+          "name": "Qwen 3.6 27B MTP",
+          "limit": {
+            "context": 200000,
+            "output": 16384
+          }
+        }
+      }
+    }
+  },
+  "plugin": [
+    "@mohak34/opencode-notifier@latest"
+  ]
+}
